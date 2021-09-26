@@ -13,7 +13,7 @@ module KDomain
 
       attr_reader :source_file
       attr_reader :template_file
-      attr_reader :target_ruby_class
+      attr_reader :schema_loader
     
       def initialize(source_file)#, target_file)
         @source_file = source_file
@@ -34,42 +34,44 @@ module KDomain
 
         lines = content.lines.map { |line| "    #{line}" }.join()
 
-        @target_ruby_class = File
+        @schema_loader = File
           .read(template_file)
           .gsub('{{source_file}}', source_file)
           .gsub('{{rails_schema}}', lines)
       end
 
       # rename to target_ruby
-      def write_target(target_file)
-        if target_ruby_class.nil?
+      # This is an internal ruby structure that is evaluated
+      # writing is only needed for debugging purposes
+      def write_schema_loader(target_file)
+        if schema_loader.nil?
           puts '.call method has not been executed'
           return
         end
 
         FileUtils.mkdir_p(File.dirname(target_file))
-        File.write(target_file, target_ruby_class)
+        File.write(target_file, schema_loader)
       end
 
       def write_json(json_file)
-        if target_ruby_class.nil?
+        if schema_loader.nil?
           puts '.call method has not been executed'
           return
         end
 
         FileUtils.mkdir_p(File.dirname(json_file))
-        File.write(json_file, JSON.pretty_generate(json))
+        File.write(json_file, JSON.pretty_generate(schema))
       end
 
       # rename to hash
-      def json
-        if target_ruby_class.nil?
+      def schema
+        if schema_loader.nil?
           puts '.call method has not been executed'
           return
         end
 
         # load target_file
-        eval target_ruby_class
+        eval schema_loader
     
         loader = LoadSchema.new
         loader.load_schema()
