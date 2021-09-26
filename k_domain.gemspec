@@ -38,5 +38,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   # spec.extensions    = ['ext/k_domain/extconf.rb']
 
+  spec.add_dependency 'dry-struct', '~> 1'
   spec.add_dependency 'k_log' , '~> 0.0.0'
 end
