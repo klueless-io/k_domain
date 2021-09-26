@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe KDomain::RawSchema::Transform do
+RSpec.describe KDomain::RawDbSchema::Transform do
   let(:instance) { described_class.new(source_file)}
-  let(:source_file) { 'spec/samples/raw_schema.rb' }
+  let(:source_file) { 'spec/samples/raw_db_schema.rb' }
   let(:target_file) { 'spec/samples/output/schema.rb' }
 
   describe '#initialize' do
@@ -14,7 +14,7 @@ RSpec.describe KDomain::RawSchema::Transform do
     context '.template_file' do
       subject { instance.template_file }
     
-      it { is_expected.to eq('lib/k_domain/raw_schema/template.rb') }
+      it { is_expected.to eq('lib/k_domain/raw_db_schema/template.rb') }
     end
   end
 

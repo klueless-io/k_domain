@@ -23,7 +23,7 @@ class LoadSchema
 
   # ----------------------------------------------------------------------
   # Inject start
-  # original file: spec/samples/raw_schema.rb
+  # original file: spec/samples/raw_db_schema.rb
   # ----------------------------------------------------------------------
   def load_schema
     # This file was generated from an ASP.net database schema, note any relational DB can be used.
@@ -249,7 +249,7 @@ class LoadSchema
   end
 
   # ----------------------------------------------------------------------
-  # original file: spec/samples/raw_schema.rb
+  # original file: spec/samples/raw_db_schema.rb
   # Inject end
   # ----------------------------------------------------------------------
 
