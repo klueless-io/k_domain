@@ -1,8 +1,18 @@
 # frozen_string_literal: true
 
 require 'k_log'
+require 'dry-struct'
 require 'k_domain/version'
+require 'k_domain/raw_db_schema/models/_'
 require 'k_domain/raw_db_schema/transform'
+require 'k_domain/raw_db_schema/load'
+require 'k_domain/domain_model/a'
+
+# # This is useful if you want to initialize structures via Hash
+# class SymbolizeStruct < Dry::Struct
+#   transform_keys(&:to_sym)
+# end
+
 
 module KDomain
   # raise KDomain::Error, 'Sample message'

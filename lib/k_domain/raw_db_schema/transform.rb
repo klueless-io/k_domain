@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 # Annotates the original schema with methods that implement existing method calls
 # that are already in the schema so that we can build a hash.
 #
 # Writes a new annotated schema.rb file with a public method called load that
 # builds the hash
-# frozen_string_literal: true
 
 module KDomain
   module RawDbSchema
@@ -39,6 +40,7 @@ module KDomain
           .gsub('{{rails_schema}}', lines)
       end
 
+      # rename to target_ruby
       def write_target(target_file)
         if target_ruby_class.nil?
           puts '.call method has not been executed'
@@ -49,6 +51,17 @@ module KDomain
         File.write(target_file, target_ruby_class)
       end
 
+      def write_json(json_file)
+        if target_ruby_class.nil?
+          puts '.call method has not been executed'
+          return
+        end
+
+        FileUtils.mkdir_p(File.dirname(json_file))
+        File.write(json_file, JSON.pretty_generate(json))
+      end
+
+      # rename to hash
       def json
         if target_ruby_class.nil?
           puts '.call method has not been executed'

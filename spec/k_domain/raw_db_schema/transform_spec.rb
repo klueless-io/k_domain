@@ -57,9 +57,3 @@ RSpec.describe KDomain::RawDbSchema::Transform do
     end
   end
 end
-  # context '.target_file' do
-    #   subject { instance.target_file }
-    
-    #   it { is_expected.to eq(target_file) }
-    # end
-  
