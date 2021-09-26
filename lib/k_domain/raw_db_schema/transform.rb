@@ -6,7 +6,7 @@
 # frozen_string_literal: true
 
 module KDomain
-  module RawSchema
+  module RawDbSchema
     class Transform
       include KLog::Logging
 
@@ -16,7 +16,7 @@ module KDomain
     
       def initialize(source_file)#, target_file)
         @source_file = source_file
-        @template_file = 'lib/k_domain/raw_schema/template.rb'
+        @template_file = 'lib/k_domain/raw_db_schema/template.rb'
       end
  
       def call
