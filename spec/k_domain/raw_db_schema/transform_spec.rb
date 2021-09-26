@@ -18,8 +18,8 @@ RSpec.describe KDomain::RawDbSchema::Transform do
     end
   end
 
-  context '.target_ruby_class' do
-    subject { instance.target_ruby_class }
+  context '.schema_loader' do
+    subject { instance.schema_loader }
 
     context 'when #call not executed' do
       it { is_expected.to be_nil }
@@ -32,19 +32,19 @@ RSpec.describe KDomain::RawDbSchema::Transform do
     end
   end
 
-  describe '#write_target' do
+  describe '#write_schema_loader' do
     subject { File.exist?(target_file) }
 
     before do
       instance.call
-      instance.write_target(target_file)
+      instance.write_schema_loader(target_file)
     end
 
     it { is_expected.to be_truthy }
   end
 
-  context '.json' do
-    subject { instance.json }
+  context '.schema' do
+    subject { instance.schema }
 
     context 'when #call not executed' do
       it { is_expected.to be_nil }

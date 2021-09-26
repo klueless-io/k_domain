@@ -2,19 +2,17 @@
 
 module KDomain
   module RawDbSchema
-    module Models
-      class Schema < Dry::Struct
-        class Meta < Dry::Struct
-          attribute :rails                , Types::Strict::Integer
-          attribute :database             , KDomain::RawDbSchema::Models::Database
-          attribute :unique_keys          , Types::Strict::Array.of(KDomain::RawDbSchema::Models::UniqueKey)
-        end
-
-        attribute :tables               , Types::Strict::Array.of(KDomain::RawDbSchema::Models::Table)
-        attribute :foreign_keys?        , Types::Strict::Array.of(KDomain::RawDbSchema::Models::ForeignKey)
-        attribute :indexes?             , Types::Strict::Array.of(KDomain::RawDbSchema::Models::Index)
-        attribute :meta                 , KDomain::RawDbSchema::Models::Schema::Meta
+    class Schema < Dry::Struct
+      class Meta < Dry::Struct
+        attribute :rails                , Types::Strict::Integer
+        attribute :database             , KDomain::RawDbSchema::Database
+        attribute :unique_keys          , Types::Strict::Array.of(KDomain::RawDbSchema::UniqueKey)
       end
+
+      attribute :tables               , Types::Strict::Array.of(KDomain::RawDbSchema::Table)
+      attribute :foreign_keys?        , Types::Strict::Array.of(KDomain::RawDbSchema::ForeignKey)
+      attribute :indexes?             , Types::Strict::Array.of(KDomain::RawDbSchema::Index)
+      attribute :meta                 , KDomain::RawDbSchema::Schema::Meta
     end
   end
 end

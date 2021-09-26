@@ -2,19 +2,11 @@
 
 RSpec.describe KDomain::RawDbSchema::Load do
   let(:instance) { described_class.new(source_file) }
-  
-  # Setup transformed JSON before load be used
-  let(:transformer) { KDomain::RawDbSchema::Transform.new(raw_db_schema_file) }
-  let(:transform) do
-    transformer.call
-    transformer.write_json(raw_db_schema_json_file)
-    transformer.json
-  end
-  let(:raw_db_schema_file) { 'spec/samples/raw_db_schema.rb' }
-  let(:raw_db_schema_json_file) { 'spec/samples/raw_db_schema.json' }
 
   context 'with existing db_schema.json' do
-    before { transform }
+    include_examples :transform_db_schema
+
+    before { db_transform }
 
     let(:source_file) { raw_db_schema_json_file }
 
