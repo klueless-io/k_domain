@@ -2,7 +2,7 @@
 
 require 'k_log'
 require 'k_domain/version'
-require 'k_domain/raw_schema/transform'
+require 'k_domain/raw_db_schema/transform'
 
 module KDomain
   # raise KDomain::Error, 'Sample message'
