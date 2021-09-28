@@ -16,25 +16,25 @@ module KDomain
         attribute? :all_methods               , Dry::Struct.optional.default(nil) do
           attribute? :klass                   , Types::Strict::Array do
             attribute :name                   , Types::Strict::String
-            attribute :scope                  , Types::Strict::String #.optional.default(nil)
+            attribute :scope                  , Types::Strict::String # .optional.default(nil)
             attribute :class_method           , Types::Strict::Bool
             attribute :arguments              , Types::Strict::String
           end
           attribute? :instance                , Types::Strict::Array do
             attribute :name                   , Types::Strict::String
-            attribute :scope                  , Types::Strict::String #.optional.default(nil)
+            attribute :scope                  , Types::Strict::String # .optional.default(nil)
             attribute :class_method           , Types::Strict::Bool
             attribute :arguments              , Types::Strict::String
           end
           attribute? :instance_public         , Types::Strict::Array do
             attribute :name                   , Types::Strict::String
-            attribute :scope                  , Types::Strict::String #.optional.default(nil)
+            attribute :scope                  , Types::Strict::String # .optional.default(nil)
             attribute :class_method           , Types::Strict::Bool
             attribute :arguments              , Types::Strict::String
           end
           attribute? :instance_private        , Types::Strict::Array do
             attribute :name                   , Types::Strict::String
-            attribute :scope                  , Types::Strict::String #.optional.default(nil)
+            attribute :scope                  , Types::Strict::String # .optional.default(nil)
             attribute :class_method           , Types::Strict::Bool
             attribute :arguments              , Types::Strict::String
           end
@@ -45,26 +45,26 @@ module KDomain
 
         attribute? :scopes                  , Types::Strict::Array do
           attribute :name                   , Types::Strict::String
-          attribute :scope                  , Types::Strict::String #.optional.default(nil)
+          attribute :scope                  , Types::Strict::String # .optional.default(nil)
         end
         attribute? :belongs_to              , Types::Strict::Array do
           attribute :name                   , Types::Strict::String
-          attribute :options                , Types::Strict::Hash.optional.default({})
+          attribute :options                , Types::Strict::Hash.optional.default({}.freeze)
           attribute :raw_options            , Types::Strict::String
         end
         attribute? :has_one                 , Types::Strict::Array do
           attribute :name                   , Types::Strict::String
-          attribute :options                , Types::Strict::Hash.optional.default({})
+          attribute :options                , Types::Strict::Hash.optional.default({}.freeze)
           attribute :raw_options            , Types::Strict::String
         end
         attribute? :has_many                , Types::Strict::Array do
           attribute :name                   , Types::Strict::String
-          attribute :options                , Types::Strict::Hash.optional.default({})
+          attribute :options                , Types::Strict::Hash.optional.default({}.freeze)
           attribute :raw_options            , Types::Strict::String
         end
         attribute? :has_and_belongs_to_many , Types::Strict::Array do
           attribute :name                   , Types::Strict::String
-          attribute :options                , Types::Strict::Hash.optional.default({})
+          attribute :options                , Types::Strict::Hash.optional.default({}.freeze)
           attribute :raw_options            , Types::Strict::String
         end
         attribute? :validate_on             , Types::Strict::Array do
