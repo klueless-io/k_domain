@@ -14,6 +14,7 @@ Metrics/PerceivedComplexity:
   Exclude:
     - "lib/k_domain/domain_model/transform_steps/*.rb"
     - "lib/k_domain/domain_model/dtos/entity.rb"
+    - "lib/k_domain/domain_model/dtos/old/entity.rb"
 
 Metrics/AbcSize:
   Exclude:
@@ -21,16 +22,21 @@ Metrics/AbcSize:
     - "lib/k_domain/domain_model/dtos/rails_model.rb"
     - "lib/k_domain/domain_model/dtos/entity.rb"
     - "lib/k_domain/domain_model/dtos/column_old.rb"
+    - "lib/k_domain/domain_model/dtos/old/column_old.rb"
+    - "lib/k_domain/domain_model/dtos/old/rails_model.rb"
+    - "lib/k_domain/domain_model/dtos/old/entity.rb"
 
 Metrics/CyclomaticComplexity:
   Exclude:
     - "lib/k_domain/domain_model/transform_steps/*.rb"
     - "lib/k_domain/domain_model/dtos/entity.rb"
+    - "lib/k_domain/domain_model/dtos/old/entity.rb"
 
 Metrics/BlockLength:
   Exclude:
     - "**/spec/**/*"
     - "*.gemspec"
+    - 'lib/k_domain/domain_model/dtos/erd_file.rb'    
   IgnoredMethods:
     - configure
     - context
@@ -56,6 +62,8 @@ Metrics/MethodLength:
   Exclude:
     - "lib/k_domain/domain_model/transform_steps/*.rb"
     - "lib/k_domain/domain_model/dtos/rails_model.rb"
+    - "lib/k_domain/domain_model/dtos/old/entity.rb"
+    - "lib/k_domain/domain_model/dtos/old/rails_model.rb"
 
 Layout/LineLength:
   Max: 200
