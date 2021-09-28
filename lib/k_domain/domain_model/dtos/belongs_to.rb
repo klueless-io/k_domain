@@ -3,7 +3,7 @@
 module KDomain
   module DomainModel
     class BelongsTo
-      KEYS = %i[a_lambda polymorphic class_name foreign_key primary_key inverse_of with_deleted code_duplicate]
+      KEYS = %i[a_lambda polymorphic class_name foreign_key primary_key inverse_of with_deleted code_duplicate].freeze
 
       attr_accessor :name
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MenuCategory < ActiveRecord::Base
   belongs_to :shop
 end

@@ -6,7 +6,26 @@ AllCops:
   NewCops: enable
   Exclude:
     - "_/**/*"
-    - "spec/samples/**/*"
+    - "spec/sample_input/**/*"
+    - "spec/sample_output/**/*"
+    - "lib/k_domain/raw_db_schema/template.rb"
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - "lib/k_domain/domain_model/transform_steps/*.rb"
+    - "lib/k_domain/domain_model/dtos/entity.rb"
+
+Metrics/AbcSize:
+  Exclude:
+    - "lib/k_domain/domain_model/transform_steps/*.rb"
+    - "lib/k_domain/domain_model/dtos/rails_model.rb"
+    - "lib/k_domain/domain_model/dtos/entity.rb"
+    - "lib/k_domain/domain_model/dtos/column_old.rb"
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - "lib/k_domain/domain_model/transform_steps/*.rb"
+    - "lib/k_domain/domain_model/dtos/entity.rb"
 
 Metrics/BlockLength:
   Exclude:
@@ -34,12 +53,17 @@ Metrics/BlockLength:
 
 Metrics/MethodLength:
   Max: 25
+  Exclude:
+    - "lib/k_domain/domain_model/transform_steps/*.rb"
+    - "lib/k_domain/domain_model/dtos/rails_model.rb"
 
 Layout/LineLength:
   Max: 200
   # Ignores annotate output
   IgnoredPatterns: ['\A# \*\*']
   IgnoreCopDirectives: true
+  Exclude:
+    - "lib/k_domain/domain_model/transform_steps/*.rb"
 
 Lint/UnusedMethodArgument:
   AllowUnusedKeywordArguments: true
@@ -75,6 +99,12 @@ Lint/AmbiguousBlockAssociation:
     - "**/spec/**/*"
 
 Style/AccessorGrouping:
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false
+
+Style/Documentation:
   Enabled: false
 
 Layout/SpaceBeforeComma:

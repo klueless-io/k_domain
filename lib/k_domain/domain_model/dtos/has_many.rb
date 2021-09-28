@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module KDomain
   module DomainModel
     class HasMany
-      KEYS = %i[a_lambda as dependent through class_name inverse_of primary_key foreign_key source code_duplicate]
+      KEYS = %i[a_lambda as dependent through class_name inverse_of primary_key foreign_key source code_duplicate].freeze
 
       attr_accessor :name
 

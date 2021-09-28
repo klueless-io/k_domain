@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module KDomain
   module DomainModel
     class Entity
@@ -68,11 +70,11 @@ module KDomain
       attr_accessor :validates
       attr_accessor :validate
 
-      def has_relations
+      def relations?
         # log.kv 'has_one', has_one.length
         # log.kv 'has_many', has_many.length
         # log.kv 'has_and_belongs_to_many', has_and_belongs_to_many.length
-        has_one.length > 0 || has_many.length > 0 || has_and_belongs_to_many.length > 0
+        has_one.length.positive? || has_many.length.positive? || has_and_belongs_to_many.length.positive?
       end
 
       def initialize
@@ -255,56 +257,56 @@ module KDomain
         c_tabular_detailed  = flags.include?(:columns_tabular_detailed)
         c_tabular_extra     = flags.include?(:columns_tabular_extra)
 
-        if c_simple || c_detailed || c_extra || c_tabular || c_tabular_detailed || c_tabular_extra
-          log.section_heading('columns')
+        return unless c_simple || c_detailed || c_extra || c_tabular || c_tabular_detailed || c_tabular_extra
 
-          column_list.each { |column| column.debug(:simple) }   if c_simple
-          column_list.each { |column| column.debug(:detailed) } if c_detailed
-          column_list.each { |column| column.debug(:extra) }    if c_extra
-          tp column_list, *Column::SIMPLE_ATTRIBS               if c_tabular
-          tp column_list, *Column::DETAILED_ATTRIBS             if c_tabular_detailed
-          tp column_list, *Column::EXTRA_ATTRIBS                if c_tabular_extra
-        end
+        log.section_heading('columns')
+
+        column_list.each { |column| column.debug(:simple) }   if c_simple
+        column_list.each { |column| column.debug(:detailed) } if c_detailed
+        column_list.each { |column| column.debug(:extra) }    if c_extra
+        tp column_list, *Column::SIMPLE_ATTRIBS               if c_tabular
+        tp column_list, *Column::DETAILED_ATTRIBS             if c_tabular_detailed
+        tp column_list, *Column::EXTRA_ATTRIBS                if c_tabular_extra
       end
 
       def debug_belongs_to(*flags)
         c_simple = flags.include?(:belongs_to_tabular)
 
-        if c_simple && belongs_to.length > 0
-          log.section_heading('belongs_to')
+        return unless c_simple && belongs_to.length.positive?
 
-          tp belongs_to, :name, :model_name, :model_name_plural, *BelongsTo::KEYS
-        end
+        log.section_heading('belongs_to')
+
+        tp belongs_to, :name, :model_name, :model_name_plural, *BelongsTo::KEYS
       end
 
       def debug_has_one(*flags)
         c_simple = flags.include?(:has_one_tabular)
 
-        if c_simple && has_one.length > 0
-          log.section_heading('has_one')
+        return unless c_simple && has_one.length.positive?
 
-          tp has_one, :name, :model_name, :model_name_plural, *HasOne::KEYS
-        end
+        log.section_heading('has_one')
+
+        tp has_one, :name, :model_name, :model_name_plural, *HasOne::KEYS
       end
 
       def debug_has_many(*flags)
         c_simple = flags.include?(:has_many_tabular)
 
-        if c_simple && has_many.length > 0
-          log.section_heading('has_many')
+        return unless c_simple && has_many.length.positive?
 
-          tp has_many, :name, :model_name, :model_name_plural, *HasMany::KEYS
-        end
+        log.section_heading('has_many')
+
+        tp has_many, :name, :model_name, :model_name_plural, *HasMany::KEYS
       end
 
       def debug_has_and_belongs_to_many(*flags)
         c_simple = flags.include?(:has_and_belongs_to_many_tabular)
 
-        if c_simple && has_and_belongs_to_many.length > 0
-          log.section_heading('has_and_belongs_to_many')
+        return unless c_simple && has_and_belongs_to_many.length.positive?
 
-          tp has_and_belongs_to_many, :name, :model_name, :model_name_plural, *HasAndBelongsToMany::KEYS
-        end
+        log.section_heading('has_and_belongs_to_many')
+
+        tp has_and_belongs_to_many, :name, :model_name, :model_name_plural, *HasAndBelongsToMany::KEYS
       end
     end
     # ---------------------------------------------

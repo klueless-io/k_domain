@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module KDomain
   module DomainModel
     class ForeignKey
-      KEYS = %i[column name on_update on_delete]
+      KEYS = %i[column name on_update on_delete].freeze
 
       attr_accessor :left
       attr_accessor :right

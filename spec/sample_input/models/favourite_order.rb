@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FavouriteOrder < ActiveRecord::Base
   belongs_to :app_user
   belongs_to :order

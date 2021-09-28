@@ -25,11 +25,11 @@ module KDomain
       attribute :erd_location         , KDomain::DomainModel::Model::ErdLocation
       attribute :columns              , Types::Strict::Array.of(KDomain::DomainModel::Column)
 
-      def has_ruby?
+      def ruby?
         location.exist
       end
 
-      def has_pk?
+      def pk?
         pk.exist
       end
 

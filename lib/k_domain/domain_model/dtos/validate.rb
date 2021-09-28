@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module KDomain
   module DomainModel
     class Validate
-      KEYS = [:on]
+      KEYS = [:on].freeze
 
       attr_accessor :methods
 

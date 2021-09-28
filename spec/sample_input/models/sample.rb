@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Sample < ActiveRecord::Base
   default_scope { where(deleted: false) }
 

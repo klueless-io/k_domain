@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # log.warn 'models->domain' if AppDebug.require?
 
 require_relative './dictionary/dictionary'

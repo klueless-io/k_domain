@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module KDomain
   module DomainModel
     class Validates
-      KEYS = %i[length unless format presence]
+      KEYS = %i[length unless format presence].freeze
 
       attr_accessor :name
 
