@@ -16,6 +16,10 @@ As a Developer, I can customize domain configuration, so that I can have opinion
 
 - Handle traits
 
+As a Developer, I can read native rails model data, so that I can leverage existing rails applications for ERD modeling
+
+- Use Meta Programming and re-implement ActiveRecord::Base
+
 ## Stories and tasks
 
 ### Tasks - completed
