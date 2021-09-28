@@ -33,12 +33,30 @@ RSpec.describe KDomain::DomainModel::Load do
         it { is_expected.not_to be_nil }
       end
 
-      # TODO
-      # context '.investigate' do
-      #   subject { instance.data.investigate }
+      context '.investigate' do
+        subject { instance.data.investigate }
 
-      #   it { is_expected.not_to be_nil }
-      # end
+        it { is_expected.not_to be_nil }
+
+        context '.issues' do
+          subject { instance.data.investigate.issues }
+  
+          it { is_expected.to be_an(Array) }
+
+          context '.first' do
+            subject { instance.data.investigate.issues.first }
+
+            it do
+              is_expected.to have_attributes(
+                step: be_an(String),
+                location: be_an(String),
+                key: be_an(String),
+                message: be_an(String),
+              )
+            end
+          end
+        end
+      end
 
       context '.domain' do
         subject { instance.data.domain }
@@ -50,7 +68,7 @@ RSpec.describe KDomain::DomainModel::Load do
 
           it { is_expected.not_to be_nil }
 
-          context '.models::first' do
+          context '.first' do
             subject { instance.data.domain.models.first }
 
             it do
@@ -77,7 +95,7 @@ RSpec.describe KDomain::DomainModel::Load do
 
               it { is_expected.not_to be_nil }
 
-              context '.columns::first' do
+              context '.first' do
                 subject { instance.data.domain.models.first.columns.first }
 
                 it do
@@ -107,7 +125,7 @@ RSpec.describe KDomain::DomainModel::Load do
 
           it { is_expected.not_to be_nil }
 
-          context '.dictionary::first' do
+          context '.first' do
             subject { instance.data.domain.dictionary.first }
 
             it do
