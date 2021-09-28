@@ -58,7 +58,7 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
       ruby: ruby_code,
       public: public_code,
       private: private_code,
-      methods: grab_methods(public_code, private_code)
+      all_methods: grab_methods(public_code, private_code)
     }
   end
 
@@ -348,7 +348,7 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     instance_private  = all_instance.select { |method| method[:scope] == :private }
 
     {
-      class: class_methods,
+      klass: class_methods,
       instance: all_instance,
       instance_public: instance_public,
       instance_private: instance_private
