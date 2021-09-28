@@ -40,7 +40,7 @@ RSpec.describe KDomain::DomainModel::Load do
 
         context '.issues' do
           subject { instance.data.investigate.issues }
-  
+
           it { is_expected.to be_an(Array) }
 
           context '.first' do
@@ -51,7 +51,7 @@ RSpec.describe KDomain::DomainModel::Load do
                 step: be_an(String),
                 location: be_an(String),
                 key: be_an(String),
-                message: be_an(String),
+                message: be_an(String)
               )
             end
           end
@@ -129,9 +129,8 @@ RSpec.describe KDomain::DomainModel::Load do
             subject { sample }
 
             let(:sample) { instance.data.domain.erd_files.find { |erd| erd[:name] == 'sample' } }
-            
-            context '.source' do
 
+            context '.source' do
               it do
                 is_expected.to have_attributes(
                   name: be_an(String),
@@ -153,7 +152,7 @@ RSpec.describe KDomain::DomainModel::Load do
 
               context 'source.methods.klass' do
                 subject { sample.source.all_methods.klass.first }
-              
+
                 it do
                   is_expected.to have_attributes(
                     name: be_a(String),
@@ -166,7 +165,7 @@ RSpec.describe KDomain::DomainModel::Load do
 
               context 'source.methods.instance' do
                 subject { sample.source.all_methods.instance.first }
-              
+
                 it do
                   is_expected.to have_attributes(
                     name: be_a(String),
@@ -179,7 +178,7 @@ RSpec.describe KDomain::DomainModel::Load do
 
               context 'source.methods.instance_private' do
                 subject { sample.source.all_methods.instance_private.first }
-              
+
                 it do
                   is_expected.to have_attributes(
                     name: be_a(String),
@@ -192,7 +191,7 @@ RSpec.describe KDomain::DomainModel::Load do
 
               context 'source.methods.instance_public' do
                 subject { sample.source.all_methods.instance_public.first }
-              
+
                 it do
                   is_expected.to have_attributes(
                     name: be_a(String),
@@ -217,7 +216,7 @@ RSpec.describe KDomain::DomainModel::Load do
 
               context 'dsl.scopes' do
                 subject { sample.dsl.scopes.first }
-              
+
                 it do
                   is_expected.to have_attributes(
                     name: be_a(String),
@@ -228,7 +227,7 @@ RSpec.describe KDomain::DomainModel::Load do
 
               context 'dsl.belongs_to' do
                 subject { sample.dsl.belongs_to.first }
-              
+
                 it do
                   is_expected.to have_attributes(
                     name: be_a(String),
@@ -240,7 +239,7 @@ RSpec.describe KDomain::DomainModel::Load do
 
               context 'dsl.has_one' do
                 subject { sample.dsl.has_one.first }
-              
+
                 it do
                   is_expected.to have_attributes(
                     name: be_a(String),
@@ -252,7 +251,7 @@ RSpec.describe KDomain::DomainModel::Load do
 
               context 'dsl.has_many' do
                 subject { sample.dsl.has_many.first }
-              
+
                 it do
                   is_expected.to have_attributes(
                     name: be_a(String),
@@ -264,7 +263,7 @@ RSpec.describe KDomain::DomainModel::Load do
 
               context 'dsl.has_and_belongs_to_many' do
                 subject { sample.dsl.has_and_belongs_to_many.first }
-              
+
                 it do
                   is_expected.to have_attributes(
                     name: be_a(String),
@@ -276,7 +275,7 @@ RSpec.describe KDomain::DomainModel::Load do
 
               context 'dsl.validate_on' do
                 subject { sample.dsl.validate_on.first }
-              
+
                 it do
                   is_expected.to have_attributes(line: be_a(String))
                 end
@@ -284,7 +283,7 @@ RSpec.describe KDomain::DomainModel::Load do
 
               context 'dsl.validates_on' do
                 subject { sample.dsl.validates_on.first }
-              
+
                 it do
                   is_expected.to have_attributes(
                     name: be_a(String),
