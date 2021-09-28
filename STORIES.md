@@ -20,6 +20,17 @@ As a Developer, I can read native rails model data, so that I can leverage exist
 
 - Use Meta Programming and re-implement ActiveRecord::Base
 
+### Tasks next on list
+
+Refactor / Simply
+
+- Replace complex objects an with structs for ancillary data structures such as investigate
+
+User acceptance testing
+
+- Provide sample printers for each data structure to visually check data is loading
+- Point raw_db_schema loader towards a complex ERD and check how it performs
+
 ## Stories and tasks
 
 ### Tasks - completed
