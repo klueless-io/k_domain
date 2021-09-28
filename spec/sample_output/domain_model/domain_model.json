@@ -6076,7 +6076,7 @@
         "step": "step4_attach_erd_files_models",
         "location": "extract_options",
         "key": null,
-        "message": "undefined local variable or method `belongs_to_required' for #<Step4AttachErdFiles:0x00007fce08181978>"
+        "message": "undefined local variable or method `belongs_to_required' for #<Step4AttachErdFiles:0x00007fd764ac17f8>"
       }
     ]
   }
