@@ -7,7 +7,7 @@
 # builds the hash
 
 module KDomain
-  module RawDbSchema
+  module DomainModel
     class Load
       include KLog::Logging
 
@@ -22,7 +22,7 @@ module KDomain
         json = File.read(source_file)
         data = KUtil.data.json_parse(json, as: :hash_symbolized)
 
-        @data = KDomain::RawDbSchema::Schema.new(data)
+        @data = KDomain::DomainModel::Schema.new(data)
       end
     end
   end
