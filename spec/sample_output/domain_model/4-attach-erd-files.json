@@ -2122,8 +2122,8 @@
           "ruby": "# frozen_string_literal: true\n\nclass Sample < ActiveRecord::Base\n  default_scope { where(deleted: false) }\n\n  scope :has_geo, -> { where.not(longitude: nil, latitude: nil) }\n\n  scope :has_address, lambda {\n    where.not(address: nil)\n  }\n\n  belongs_to :app_user\n\n  belongs_to :tenant, **belongs_to_required\n\n  belongs_to :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_one :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :tasks, as: :taskable\n\n  has_many :messages, class_name: 'CampaignMessage', dependent: :destroy\n  has_many :trackers, through: :messages\n  has_many :hits, through: :trackers\n  has_many :orders, inverse_of: :company\n\n  has_and_belongs_to_many :trackers, -> { uniq }\n  has_and_belongs_to_many :contact_lists, -> { uniq }, autosave: true\n\n  validate :ensure_valid_financial_year, on: :create\n  validate :name_must_be_unique, :name_must_not_be_in_global\n  validate :check_email_valid\n\n  validates :user, presence: { message: 'must exist' }\n  validates :tenant, presence: { message: 'must exist' } if rails4?\n  validates :first_name, presence: { message: 'First Name is required.' }, on: :create\n  validates :email, format: /\\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}\\z/i\n  validates :password, length: { minimum: 8, message: '8+ characters' }, unless: :skip_password_validation\n\n  # class methods\n  def self.class_method1\n  end\n\n  def self.class_method2(was, here)\n  end\n\n  def self.class_method3(key: 1, another_key: nil)\n  end\n\n  # public methods\n  def public_method1\n  end\n\n  def public_method2(was, here)\n  end\n\n  def public_method3(key: 1, another_key: nil)\n  end\n\n  private\n\n  # private methods\n  def some_private_method\n  end\n\n  def some_method(was, here)\n  end\n\n  def some_method(key: 1, another_key: nil)\n  end\nend\n\n# shops\n#\n# id                                       bigint\n# app_user_id                              integer\n# name                                     text\n# address                                  text\n# longitude                                float\n# latitude                                 float\n",
           "public": "# frozen_string_literal: true\n\nclass Sample < ActiveRecord::Base\n  default_scope { where(deleted: false) }\n\n  scope :has_geo, -> { where.not(longitude: nil, latitude: nil) }\n\n  scope :has_address, lambda {\n    where.not(address: nil)\n  }\n\n  belongs_to :app_user\n\n  belongs_to :tenant, **belongs_to_required\n\n  belongs_to :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_one :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :tasks, as: :taskable\n\n  has_many :messages, class_name: 'CampaignMessage', dependent: :destroy\n  has_many :trackers, through: :messages\n  has_many :hits, through: :trackers\n  has_many :orders, inverse_of: :company\n\n  has_and_belongs_to_many :trackers, -> { uniq }\n  has_and_belongs_to_many :contact_lists, -> { uniq }, autosave: true\n\n  validate :ensure_valid_financial_year, on: :create\n  validate :name_must_be_unique, :name_must_not_be_in_global\n  validate :check_email_valid\n\n  validates :user, presence: { message: 'must exist' }\n  validates :tenant, presence: { message: 'must exist' } if rails4?\n  validates :first_name, presence: { message: 'First Name is required.' }, on: :create\n  validates :email, format: /\\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}\\z/i\n  validates :password, length: { minimum: 8, message: '8+ characters' }, unless: :skip_password_validation\n\n  # class methods\n  def self.class_method1\n  end\n\n  def self.class_method2(was, here)\n  end\n\n  def self.class_method3(key: 1, another_key: nil)\n  end\n\n  # public methods\n  def public_method1\n  end\n\n  def public_method2(was, here)\n  end\n\n  def public_method3(key: 1, another_key: nil)\n  end\n\n  ",
           "private": "private\n\n  # private methods\n  def some_private_method\n  end\n\n  def some_method(was, here)\n  end\n\n  def some_method(key: 1, another_key: nil)\n  end\nend\n\n# shops\n#\n# id                                       bigint\n# app_user_id                              integer\n# name                                     text\n# address                                  text\n# longitude                                float\n# latitude                                 float\n",
-          "methods": {
-            "class": [
+          "all_methods": {
+            "klass": [
               {
                 "name": "class_method1",
                 "scope": "public",
@@ -2411,8 +2411,8 @@
           "ruby": "# frozen_string_literal: true\n\nclass AppUser < ActiveRecord::Base\n  belongs_to :asp_net_user\nend\n\n# app_users\n#\n# id                                       bigint\n# user_id                                  text\n# first_name                               text\n# last_name                                text\n# phone_number                             text\n",
           "public": null,
           "private": null,
-          "methods": {
-            "class": [
+          "all_methods": {
+            "klass": [
 
             ],
             "instance": [
@@ -2537,8 +2537,8 @@
           "ruby": "# frozen_string_literal: true\n\nclass CustomerShop < ActiveRecord::Base\n  belongs_to :app_user\n  belongs_to :shop\nend\n\n# customer_shops\n#\n# id                                       bigint\n# status                                   integer\n# customer_id                              integer\n# shop_id                                  integer\n",
           "public": null,
           "private": null,
-          "methods": {
-            "class": [
+          "all_methods": {
+            "klass": [
 
             ],
             "instance": [
@@ -2634,8 +2634,8 @@
           "ruby": "# frozen_string_literal: true\n\nclass FavouriteOrder < ActiveRecord::Base\n  belongs_to :app_user\n  belongs_to :order\nend\n\n# favourite_orders\n#\n# id                                       bigint\n# customer_id                              integer\n# order_id                                 integer\n",
           "public": null,
           "private": null,
-          "methods": {
-            "class": [
+          "all_methods": {
+            "klass": [
 
             ],
             "instance": [
@@ -2731,8 +2731,8 @@
           "ruby": "# frozen_string_literal: true\n\nclass ItemVariation < ActiveRecord::Base\n  belongs_to :item\nend\n\n# item_variations\n#\n# id                                       bigint\n# item_id                                  integer\n# name                                     text\n# default                                  boolean\n# qty                                      integer\n# qty_variation                            text\n",
           "public": null,
           "private": null,
-          "methods": {
-            "class": [
+          "all_methods": {
+            "klass": [
 
             ],
             "instance": [
@@ -2822,8 +2822,8 @@
           "ruby": "# frozen_string_literal: true\n\nclass Item < ActiveRecord::Base\nend\n\n# items\n#\n# id                                       bigint\n# title                                    text\n# group                                    text\n",
           "public": null,
           "private": null,
-          "methods": {
-            "class": [
+          "all_methods": {
+            "klass": [
 
             ],
             "instance": [
@@ -2908,8 +2908,8 @@
           "ruby": "# frozen_string_literal: true\n\nclass MenuCategory < ActiveRecord::Base\n  belongs_to :shop\nend\n\n# menu_categories\n#\n# id                                       bigint\n# shop_id                                  integer\n# name                                     text\n# position                                 integer\n",
           "public": null,
           "private": null,
-          "methods": {
-            "class": [
+          "all_methods": {
+            "klass": [
 
             ],
             "instance": [
@@ -2999,8 +2999,8 @@
           "ruby": "# frozen_string_literal: true\n\nclass MenuCategoryProduct < ActiveRecord::Base\n  belongs_to :menu_category\n  belongs_to :product\nend\n\n# menu_category_products\n#\n# id                                       bigint\n# menu_category_id                         integer\n# product_id                               integer\n# position                                 integer\n",
           "public": null,
           "private": null,
-          "methods": {
-            "class": [
+          "all_methods": {
+            "klass": [
 
             ],
             "instance": [
@@ -3096,8 +3096,8 @@
           "ruby": "# frozen_string_literal: true\n\nclass Order < ActiveRecord::Base\n  belongs_to :app_user\n  belongs_to :shop\nend\n\n# orders\n#\n# id                                       bigint\n# customer_id                              integer\n# shop_id                                  integer\n# order_details                            jsonb\n# placed_at                                datetime\n# in_queue_at                              datetime\n# making_at                                datetime\n# made_at                                  datetime\n# cancelled_at                             datetime\n# collected_at                             datetime\n# fail_at                                  datetime\n# fail_reason                              text\n",
           "public": null,
           "private": null,
-          "methods": {
-            "class": [
+          "all_methods": {
+            "klass": [
 
             ],
             "instance": [
@@ -3193,8 +3193,8 @@
           "ruby": "# frozen_string_literal: true\n\nclass ProductVariation < ActiveRecord::Base\n  belongs_to :product\n  belongs_to :item_variation\nend\n\n# product_variations\n#\n# id                                       bigint\n# product_id                               integer\n# item_variation_id                        integer\n# active                                   boolean\n# title                                    text\n# price_offset                             float\n",
           "public": null,
           "private": null,
-          "methods": {
-            "class": [
+          "all_methods": {
+            "klass": [
 
             ],
             "instance": [
@@ -3290,8 +3290,8 @@
           "ruby": "# frozen_string_literal: true\n\nclass Product < ActiveRecord::Base\n  belongs_to :shop\nend\n\n# products\n#\n# id                                       bigint\n# shop_id                                  integer\n# title                                    text\n# price                                    float\n",
           "public": null,
           "private": null,
-          "methods": {
-            "class": [
+          "all_methods": {
+            "klass": [
 
             ],
             "instance": [
@@ -3381,8 +3381,8 @@
           "ruby": "# frozen_string_literal: true\n\nclass Shop < ActiveRecord::Base\n  belongs_to :app_user, a: 1, b: 3, fuckit: 'xxxx', ff: ' # ', c: 4, d: 33 # asdfklasj # abc\nend\n\n# shops\n#\n# id                                       bigint\n# app_user_id                              integer\n# name                                     text\n# address                                  text\n# longitude                                float\n# latitude                                 float\n",
           "public": null,
           "private": null,
-          "methods": {
-            "class": [
+          "all_methods": {
+            "klass": [
 
             ],
             "instance": [
@@ -3478,8 +3478,8 @@
           "ruby": "# frozen_string_literal: true\n\nclass Staff < ActiveRecord::Base\n  belongs_to :shop\n  belongs_to :app_user\nend\n\n# staffs\n#\n# id                                       bigint\n# shop_id                                  integer\n# user_id                                  integer\n# type                                     text\n",
           "public": null,
           "private": null,
-          "methods": {
-            "class": [
+          "all_methods": {
+            "klass": [
 
             ],
             "instance": [
@@ -5171,7 +5171,7 @@
         "step": "step4_attach_erd_files_models",
         "location": "extract_options",
         "key": null,
-        "message": "undefined local variable or method `belongs_to_required' for #<Step4AttachErdFiles:0x00007faef01d6518>"
+        "message": "undefined local variable or method `belongs_to_required' for #<Step4AttachErdFiles:0x00007ffcde0c7de8>"
       }
     ]
   }
