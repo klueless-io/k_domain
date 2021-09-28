@@ -18,7 +18,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  Dir[File.join(File.dirname(__dir__), 'spec/support/**/*.rb')].each { |f| require f }
+  Dir[File.join(File.dirname(__dir__), 'spec/support/**/*.rb')].sort.each { |f| require f }
 
   # # ----------------------------------------------------------------------
   # # Usecase Documentor

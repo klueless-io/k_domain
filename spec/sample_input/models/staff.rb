@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Staff < ActiveRecord::Base
   belongs_to :shop
   belongs_to :app_user

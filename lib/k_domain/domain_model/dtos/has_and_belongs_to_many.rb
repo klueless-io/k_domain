@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module KDomain
   module DomainModel
     class HasAndBelongsToMany
-      KEYS = %i[a_lambda autosave code_duplicate]
+      KEYS = %i[a_lambda autosave code_duplicate].freeze
 
       attr_accessor :name
 

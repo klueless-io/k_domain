@@ -98,6 +98,7 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     # - value of scope to end of line
     regex = /^(?<spaces>\s*)scope :(?<name>\w*)[, ]?(?<scope>.*)/
 
+    # rubocop:disable Metrics/BlockLength
     ruby_code.scan(regex) do
       m = $LAST_MATCH_INFO
       spaces = m[:spaces] # .delete("\n")
@@ -140,7 +141,10 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     end
     entries
   rescue StandardError => e
+    # bin ding.pry
+    puts e.message
   end
+  # rubocop:enable Metrics/BlockLength
 
   def grab_belongs_to
     entries = []
@@ -154,9 +158,9 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     ruby_code.scan(regex) do
       m = $LAST_MATCH_INFO
 
-      spaces = m[:spaces] # .delete("\n")
-      last_lf = spaces.rindex("\n")
-      spaces = last_lf ? spaces[spaces.rindex("\n") + 1..-1] : spaces
+      # spaces = m[:spaces] # .delete("\n")
+      # last_lf = spaces.rindex("\n")
+      # spaces = last_lf ? spaces[spaces.rindex("\n") + 1..-1] : spaces
       name = m[:name]
 
       options = m[:options]
@@ -171,6 +175,8 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     end
     entries
   rescue StandardError => e
+    # bin ding.pry
+    puts e.message
   end
 
   def grab_has_one
@@ -185,9 +191,9 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     ruby_code.scan(regex) do
       m = $LAST_MATCH_INFO
 
-      spaces = m[:spaces] # .delete("\n")
-      last_lf = spaces.rindex("\n")
-      spaces = last_lf ? spaces[spaces.rindex("\n") + 1..-1] : spaces
+      # spaces = m[:spaces] # .delete("\n")
+      # last_lf = spaces.rindex("\n")
+      # spaces = last_lf ? spaces[spaces.rindex("\n") + 1..-1] : spaces
       name = m[:name]
       options = m[:options]
                 .strip
@@ -201,6 +207,8 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     end
     entries
   rescue StandardError => e
+    # bin ding.pry
+    puts e.message
   end
 
   def grab_has_many
@@ -214,9 +222,9 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     ruby_code.scan(regex) do
       m = $LAST_MATCH_INFO
 
-      spaces = m[:spaces] # .delete("\n")
-      last_lf = spaces.rindex("\n")
-      spaces = last_lf ? spaces[spaces.rindex("\n") + 1..-1] : spaces
+      # spaces = m[:spaces] # .delete("\n")
+      # last_lf = spaces.rindex("\n")
+      # spaces = last_lf ? spaces[spaces.rindex("\n") + 1..-1] : spaces
       name = m[:name]
       options = m[:options]
                 .gsub(':dependent => ', 'dependent: ')
@@ -231,6 +239,8 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     end
     entries
   rescue StandardError => e
+    # bin ding.pry
+    puts e.message
   end
 
   def grab_has_and_belongs_to_many
@@ -244,9 +254,9 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     ruby_code.scan(regex) do
       m = $LAST_MATCH_INFO
 
-      spaces = m[:spaces] # .delete("\n")
-      last_lf = spaces.rindex("\n")
-      spaces = last_lf ? spaces[spaces.rindex("\n") + 1..-1] : spaces
+      # spaces = m[:spaces] # .delete("\n")
+      # last_lf = spaces.rindex("\n")
+      # spaces = last_lf ? spaces[spaces.rindex("\n") + 1..-1] : spaces
       name = m[:name]
       options = m[:options]
                 .gsub(':dependent => ', 'dependent: ')
@@ -261,6 +271,8 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     end
     entries
   rescue StandardError => e
+    # bin ding.pry
+    puts e.message
   end
 
   def grab_validates
@@ -274,9 +286,9 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     ruby_code.scan(regex) do
       m = $LAST_MATCH_INFO
 
-      spaces = m[:spaces] # .delete("\n")
-      last_lf = spaces.rindex("\n")
-      spaces = last_lf ? spaces[spaces.rindex("\n") + 1..-1] : spaces
+      # spaces = m[:spaces] # .delete("\n")
+      # last_lf = spaces.rindex("\n")
+      # spaces = last_lf ? spaces[spaces.rindex("\n") + 1..-1] : spaces
       name = m[:name]
 
       options = m[:options].strip
@@ -287,6 +299,8 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     end
     entries
   rescue StandardError => e
+    # bin ding.pry
+    puts e.message
   end
 
   def grab_validate
@@ -301,9 +315,9 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     ruby_code.scan(regex) do
       m = $LAST_MATCH_INFO
 
-      spaces = m[:spaces] # .delete("\n")
-      last_lf = spaces.rindex("\n")
-      spaces = last_lf ? spaces[spaces.rindex("\n") + 1..-1] : spaces
+      # spaces = m[:spaces] # .delete("\n")
+      # last_lf = spaces.rindex("\n")
+      # spaces = last_lf ? spaces[spaces.rindex("\n") + 1..-1] : spaces
       line = m[:line]
 
       entries << { line: line }
@@ -311,6 +325,8 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     end
     entries
   rescue StandardError => e
+    # bin ding.pry
+    puts e.message
   end
 
   def grab_methods(public_code = ruby_code, private_code = nil)
@@ -385,6 +401,7 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     value.gsub("'", "\\\\'")
   end
 
+  # rubocop:disable Style/EvalWithLocation, Security/Eval, Style/DocumentDynamicEvalDefinition
   def extract_options(options)
     eval("{ #{options} }")
   rescue StandardError => e
@@ -399,7 +416,7 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     # may be the issue is from a comment at the off the line
     comment_index = options.rindex('#') - 1
 
-    if comment_index > 0
+    if comment_index.positive?
       options_minus_comment = options[0..comment_index].squish
       return extract_options(options_minus_comment)
     end
@@ -412,6 +429,7 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     )
     {}
   end
+  # rubocop:enable Style/EvalWithLocation, Security/Eval, Style/DocumentDynamicEvalDefinition
 
   def clean_lambda(options)
     if /^->/.match?(options)
@@ -430,5 +448,7 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
     end
     options
   rescue StandardError => e
+    # bin ding.pry
+    puts e.message
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module KDomain
   module DomainModel
     # Rails model represents information that is found the model.rb class in the rails project

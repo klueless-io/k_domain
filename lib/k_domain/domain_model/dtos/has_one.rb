@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module KDomain
   module DomainModel
     class HasOne
       # KEYS = [:model_name, :model_name_plural, :a_lambda, :class_name, :foreign_key, :primary_key, :infer_key]
-      KEYS = %i[a_lambda class_name foreign_key primary_key infer_key code_duplicate]
+      KEYS = %i[a_lambda class_name foreign_key primary_key infer_key code_duplicate].freeze
 
       attr_accessor :name
 

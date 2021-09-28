@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AppUser < ActiveRecord::Base
   belongs_to :asp_net_user
 end

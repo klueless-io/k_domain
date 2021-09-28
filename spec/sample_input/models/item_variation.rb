@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ItemVariation < ActiveRecord::Base
   belongs_to :item
 end

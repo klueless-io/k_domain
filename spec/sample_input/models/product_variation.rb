@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProductVariation < ActiveRecord::Base
   belongs_to :product
   belongs_to :item_variation

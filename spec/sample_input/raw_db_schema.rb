@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file was generated from an ASP.net database schema, note any relational DB can be used.
 
 # The tool used to generate this schema was a Rails tool "rake db:schema:dump"
