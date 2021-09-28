@@ -142,7 +142,10 @@ RSpec.describe KDomain::DomainModel::Load do
                     public: be_a(String),
                     private: be_a(String),
                     all_methods: have_attributes(
-                      klass: be_an(Array)
+                      klass: be_an(Array),
+                      instance: be_an(Array),
+                      instance_private: be_an(Array),
+                      instance_public: be_an(Array)
                     )
                   )
                 )
