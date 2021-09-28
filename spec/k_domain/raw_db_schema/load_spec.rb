@@ -13,13 +13,13 @@ RSpec.describe KDomain::RawDbSchema::Load do
     describe '#initialize' do
       context '.source_file' do
         subject { instance.source_file }
-      
+
         it { is_expected.not_to be_empty }
       end
-  
+
       context '.data' do
         subject { instance.data }
-      
+
         it { is_expected.to be_nil }
       end
     end
@@ -29,12 +29,12 @@ RSpec.describe KDomain::RawDbSchema::Load do
 
       context '.data' do
         subject { instance.data }
-      
+
         it { is_expected.not_to be_nil }
 
         context '.meta' do
           subject { instance.data.meta }
-        
+
           it { is_expected.not_to be_nil }
 
           it do
@@ -52,7 +52,7 @@ RSpec.describe KDomain::RawDbSchema::Load do
 
         context '.indexes' do
           subject { instance.data.indexes }
-        
+
           it { is_expected.to be_an(Array) }
 
           context '.first' do
@@ -70,7 +70,7 @@ RSpec.describe KDomain::RawDbSchema::Load do
 
         context '.foreign_keys' do
           subject { instance.data.foreign_keys }
-        
+
           it { is_expected.to be_an(Array) }
 
           context '.first' do
@@ -87,7 +87,7 @@ RSpec.describe KDomain::RawDbSchema::Load do
 
         context '.tables' do
           subject { instance.data.tables }
-        
+
           it { is_expected.to be_an(Array) }
 
           context '.first' do
@@ -98,7 +98,7 @@ RSpec.describe KDomain::RawDbSchema::Load do
                 name: be_an(String),
                 columns: be_an(Array),
                 indexes: be_an(Array),
-                rails_schema: have_attributes(primary_key: "MigrationId")
+                rails_schema: have_attributes(primary_key: 'MigrationId')
               )
             end
           end

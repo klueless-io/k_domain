@@ -8,9 +8,13 @@ As an Application Developer, I need a rich and configurable ERD schema, so I can
 
 ### Stories next on list
 
-As a Developer, I can DO_SOMETHING, so that I QUALITY_OF_LIFE
+As a Developer, I can print any of the domain structures, so that I can visually my domain
 
-- Subtask
+- Hook up log.structure
+
+As a Developer, I can customize domain configuration, so that I can have opinions about names and types
+
+- Handle traits
 
 ## Stories and tasks
 

@@ -1,0 +1,1557 @@
+{
+  "domain": {
+    "models": [
+
+    ],
+    "erd_files": [
+
+    ],
+    "dictionary": [
+
+    ]
+  },
+  "database": {
+    "tables": [
+      {
+        "name": "__EFMigrationsHistory",
+        "primary_key": "MigrationId",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "ProductVersion",
+            "type": "string",
+            "limit": 32,
+            "null": false
+          }
+        ],
+        "indexes": [
+
+        ],
+        "rails_schema": {
+          "primary_key": "MigrationId",
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "samples",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "deleted",
+            "type": "boolean",
+            "null": false
+          },
+          {
+            "name": "app_user_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "sales_user_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "longitude",
+            "type": "float",
+            "null": false
+          },
+          {
+            "name": "latitude",
+            "type": "float",
+            "null": false
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "address",
+            "type": "text"
+          },
+          {
+            "name": "shop_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "type",
+            "type": "text"
+          }
+        ],
+        "indexes": [
+
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "app_users",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "user_id",
+            "type": "text"
+          },
+          {
+            "name": "first_name",
+            "type": "text"
+          },
+          {
+            "name": "last_name",
+            "type": "text"
+          },
+          {
+            "name": "phone_number",
+            "type": "text"
+          }
+        ],
+        "indexes": [
+          {
+            "name": "IX_app_users_user_id",
+            "fields": [
+              "user_id"
+            ],
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "asp_net_role_claims",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "role_id",
+            "type": "text",
+            "null": false
+          },
+          {
+            "name": "claim_type",
+            "type": "text"
+          },
+          {
+            "name": "claim_value",
+            "type": "text"
+          }
+        ],
+        "indexes": [
+          {
+            "name": "IX_asp_net_role_claims_role_id",
+            "fields": [
+              "role_id"
+            ],
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "asp_net_roles",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "name",
+            "type": "string",
+            "limit": 256
+          },
+          {
+            "name": "normalized_name",
+            "type": "string",
+            "limit": 256
+          },
+          {
+            "name": "concurrency_stamp",
+            "type": "text"
+          }
+        ],
+        "indexes": [
+          {
+            "name": "RoleNameIndex",
+            "fields": [
+              "normalized_name"
+            ],
+            "unique": true,
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "asp_net_user_claims",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "user_id",
+            "type": "text",
+            "null": false
+          },
+          {
+            "name": "claim_type",
+            "type": "text"
+          },
+          {
+            "name": "claim_value",
+            "type": "text"
+          }
+        ],
+        "indexes": [
+          {
+            "name": "IX_asp_net_user_claims_user_id",
+            "fields": [
+              "user_id"
+            ],
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "asp_net_user_logins",
+        "primary_key": null,
+        "primary_key_type": null,
+        "columns": [
+          {
+            "name": "login_provider",
+            "type": "string",
+            "limit": 128,
+            "null": false
+          },
+          {
+            "name": "provider_key",
+            "type": "string",
+            "limit": 128,
+            "null": false
+          },
+          {
+            "name": "provider_display_name",
+            "type": "text"
+          },
+          {
+            "name": "user_id",
+            "type": "text",
+            "null": false
+          }
+        ],
+        "indexes": [
+          {
+            "name": "IX_asp_net_user_logins_user_id",
+            "fields": [
+              "user_id"
+            ],
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": false,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "asp_net_user_roles",
+        "primary_key": null,
+        "primary_key_type": null,
+        "columns": [
+          {
+            "name": "user_id",
+            "type": "text",
+            "null": false
+          },
+          {
+            "name": "role_id",
+            "type": "text",
+            "null": false
+          }
+        ],
+        "indexes": [
+          {
+            "name": "IX_asp_net_user_roles_role_id",
+            "fields": [
+              "role_id"
+            ],
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": false,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "asp_net_user_tokens",
+        "primary_key": null,
+        "primary_key_type": null,
+        "columns": [
+          {
+            "name": "user_id",
+            "type": "text",
+            "null": false
+          },
+          {
+            "name": "login_provider",
+            "type": "string",
+            "limit": 128,
+            "null": false
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "limit": 128,
+            "null": false
+          },
+          {
+            "name": "value",
+            "type": "text"
+          }
+        ],
+        "indexes": [
+
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": false,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "asp_net_users",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "user_name",
+            "type": "string",
+            "limit": 256
+          },
+          {
+            "name": "normalized_user_name",
+            "type": "string",
+            "limit": 256
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "limit": 256
+          },
+          {
+            "name": "normalized_email",
+            "type": "string",
+            "limit": 256
+          },
+          {
+            "name": "email_confirmed",
+            "type": "boolean",
+            "null": false
+          },
+          {
+            "name": "password_hash",
+            "type": "text"
+          },
+          {
+            "name": "security_stamp",
+            "type": "text"
+          },
+          {
+            "name": "concurrency_stamp",
+            "type": "text"
+          },
+          {
+            "name": "phone_number",
+            "type": "text"
+          },
+          {
+            "name": "phone_number_confirmed",
+            "type": "boolean",
+            "null": false
+          },
+          {
+            "name": "two_factor_enabled",
+            "type": "boolean",
+            "null": false
+          },
+          {
+            "name": "lockout_end",
+            "type": "datetime"
+          },
+          {
+            "name": "lockout_enabled",
+            "type": "boolean",
+            "null": false
+          },
+          {
+            "name": "access_failed_count",
+            "type": "integer",
+            "null": false
+          }
+        ],
+        "indexes": [
+          {
+            "name": "EmailIndex",
+            "fields": [
+              "normalized_email"
+            ],
+            "using": "btree"
+          },
+          {
+            "name": "UserNameIndex",
+            "fields": [
+              "normalized_user_name"
+            ],
+            "unique": true,
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "customer_shops",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "status",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "customer_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "shop_id",
+            "type": "integer",
+            "null": false
+          }
+        ],
+        "indexes": [
+          {
+            "name": "IX_customer_shops_customer_id",
+            "fields": [
+              "customer_id"
+            ],
+            "using": "btree"
+          },
+          {
+            "name": "IX_customer_shops_shop_id",
+            "fields": [
+              "shop_id"
+            ],
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "favourite_orders",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "customer_id",
+            "type": "integer"
+          },
+          {
+            "name": "order_id",
+            "type": "integer"
+          }
+        ],
+        "indexes": [
+          {
+            "name": "IX_favourite_orders_customer_id",
+            "fields": [
+              "customer_id"
+            ],
+            "using": "btree"
+          },
+          {
+            "name": "IX_favourite_orders_order_id",
+            "fields": [
+              "order_id"
+            ],
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "item_variations",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "item_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "default",
+            "type": "boolean",
+            "null": false
+          },
+          {
+            "name": "qty",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "qty_variation",
+            "type": "text"
+          }
+        ],
+        "indexes": [
+          {
+            "name": "IX_item_variations_item_id",
+            "fields": [
+              "item_id"
+            ],
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "items",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "title",
+            "type": "text"
+          },
+          {
+            "name": "group",
+            "type": "text"
+          }
+        ],
+        "indexes": [
+
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "menu_categories",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "shop_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "position",
+            "type": "integer",
+            "null": false
+          }
+        ],
+        "indexes": [
+          {
+            "name": "IX_menu_categories_shop_id",
+            "fields": [
+              "shop_id"
+            ],
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "menu_category_products",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "menu_category_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "product_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "position",
+            "type": "integer",
+            "null": false
+          }
+        ],
+        "indexes": [
+          {
+            "name": "IX_menu_category_products_menu_category_id",
+            "fields": [
+              "menu_category_id"
+            ],
+            "using": "btree"
+          },
+          {
+            "name": "IX_menu_category_products_product_id",
+            "fields": [
+              "product_id"
+            ],
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "orders",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "customer_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "shop_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "order_details",
+            "type": "jsonb"
+          },
+          {
+            "name": "placed_at",
+            "type": "datetime",
+            "null": false
+          },
+          {
+            "name": "in_queue_at",
+            "type": "datetime",
+            "null": false
+          },
+          {
+            "name": "making_at",
+            "type": "datetime",
+            "null": false
+          },
+          {
+            "name": "made_at",
+            "type": "datetime",
+            "null": false
+          },
+          {
+            "name": "cancelled_at",
+            "type": "datetime",
+            "null": false
+          },
+          {
+            "name": "collected_at",
+            "type": "datetime",
+            "null": false
+          },
+          {
+            "name": "fail_at",
+            "type": "datetime",
+            "null": false
+          },
+          {
+            "name": "fail_reason",
+            "type": "text"
+          }
+        ],
+        "indexes": [
+          {
+            "name": "IX_orders_customer_id",
+            "fields": [
+              "customer_id"
+            ],
+            "using": "btree"
+          },
+          {
+            "name": "IX_orders_shop_id",
+            "fields": [
+              "shop_id"
+            ],
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "product_variations",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "item_variation_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "active",
+            "type": "boolean",
+            "null": false
+          },
+          {
+            "name": "title",
+            "type": "text"
+          },
+          {
+            "name": "price_offset",
+            "type": "float",
+            "null": false
+          }
+        ],
+        "indexes": [
+          {
+            "name": "IX_product_variations_item_variation_id",
+            "fields": [
+              "item_variation_id"
+            ],
+            "using": "btree"
+          },
+          {
+            "name": "IX_product_variations_product_id",
+            "fields": [
+              "product_id"
+            ],
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "products",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "shop_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "title",
+            "type": "text"
+          },
+          {
+            "name": "price",
+            "type": "float",
+            "null": false
+          }
+        ],
+        "indexes": [
+          {
+            "name": "IX_products_shop_id",
+            "fields": [
+              "shop_id"
+            ],
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "shops",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "app_user_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "address",
+            "type": "text"
+          },
+          {
+            "name": "longitude",
+            "type": "float",
+            "null": false
+          },
+          {
+            "name": "latitude",
+            "type": "float",
+            "null": false
+          }
+        ],
+        "indexes": [
+          {
+            "name": "IX_shops_app_user_id",
+            "fields": [
+              "app_user_id"
+            ],
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      },
+      {
+        "name": "staffs",
+        "primary_key": "id",
+        "primary_key_type": "bigint",
+        "columns": [
+          {
+            "name": "shop_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "null": false
+          },
+          {
+            "name": "type",
+            "type": "text"
+          }
+        ],
+        "indexes": [
+          {
+            "name": "IX_staffs_shop_id",
+            "fields": [
+              "shop_id"
+            ],
+            "using": "btree"
+          },
+          {
+            "name": "IX_staffs_user_id",
+            "fields": [
+              "user_id"
+            ],
+            "using": "btree"
+          }
+        ],
+        "rails_schema": {
+          "primary_key": null,
+          "id": null,
+          "force": "cascade"
+        }
+      }
+    ],
+    "foreign_keys": [
+      {
+        "left": "app_users",
+        "right": "asp_net_users",
+        "column": "user_id",
+        "name": "fk_app_users_asp_net_users_user_id",
+        "on_delete": "restrict"
+      },
+      {
+        "left": "asp_net_role_claims",
+        "right": "asp_net_roles",
+        "column": "role_id",
+        "name": "fk_asp_net_role_claims_asp_net_roles_role_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "asp_net_user_claims",
+        "right": "asp_net_users",
+        "column": "user_id",
+        "name": "fk_asp_net_user_claims_asp_net_users_user_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "asp_net_user_logins",
+        "right": "asp_net_users",
+        "column": "user_id",
+        "name": "fk_asp_net_user_logins_asp_net_users_user_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "asp_net_user_roles",
+        "right": "asp_net_roles",
+        "column": "role_id",
+        "name": "fk_asp_net_user_roles_asp_net_roles_role_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "asp_net_user_roles",
+        "right": "asp_net_users",
+        "column": "user_id",
+        "name": "fk_asp_net_user_roles_asp_net_users_user_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "asp_net_user_tokens",
+        "right": "asp_net_users",
+        "column": "user_id",
+        "name": "fk_asp_net_user_tokens_asp_net_users_user_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "customer_shops",
+        "right": "app_users",
+        "column": "customer_id",
+        "name": "fk_customer_shops_app_users_customer_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "customer_shops",
+        "right": "shops",
+        "name": "fk_customer_shops_shops_shop_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "favourite_orders",
+        "right": "app_users",
+        "column": "customer_id",
+        "name": "fk_favourite_orders_app_users_customer_id",
+        "on_delete": "restrict"
+      },
+      {
+        "left": "favourite_orders",
+        "right": "orders",
+        "name": "fk_favourite_orders_orders_order_id",
+        "on_delete": "restrict"
+      },
+      {
+        "left": "item_variations",
+        "right": "items",
+        "name": "fk_item_variations_items_item_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "menu_categories",
+        "right": "shops",
+        "name": "fk_menu_categories_shops_shop_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "menu_category_products",
+        "right": "menu_categories",
+        "name": "fk_menu_category_products_menu_categories_menu_category_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "menu_category_products",
+        "right": "products",
+        "name": "fk_menu_category_products_products_product_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "orders",
+        "right": "app_users",
+        "column": "customer_id",
+        "name": "fk_orders_app_users_customer_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "orders",
+        "right": "shops",
+        "name": "fk_orders_shops_shop_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "product_variations",
+        "right": "item_variations",
+        "name": "fk_product_variations_item_variations_item_variation_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "product_variations",
+        "right": "products",
+        "name": "fk_product_variations_products_product_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "products",
+        "right": "shops",
+        "name": "fk_products_shops_shop_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "shops",
+        "right": "app_users",
+        "name": "fk_shops_app_users_app_user_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "staffs",
+        "right": "app_users",
+        "column": "user_id",
+        "name": "fk_staffs_app_users_user_id",
+        "on_delete": "cascade"
+      },
+      {
+        "left": "staffs",
+        "right": "shops",
+        "name": "fk_staffs_shops_shop_id",
+        "on_delete": "cascade"
+      }
+    ],
+    "indexes": [
+      {
+        "name": "EmailIndex",
+        "fields": [
+          "normalized_email"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_app_users_user_id",
+        "fields": [
+          "user_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_asp_net_role_claims_role_id",
+        "fields": [
+          "role_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_asp_net_user_claims_user_id",
+        "fields": [
+          "user_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_asp_net_user_logins_user_id",
+        "fields": [
+          "user_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_asp_net_user_roles_role_id",
+        "fields": [
+          "role_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_customer_shops_customer_id",
+        "fields": [
+          "customer_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_customer_shops_shop_id",
+        "fields": [
+          "shop_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_favourite_orders_customer_id",
+        "fields": [
+          "customer_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_favourite_orders_order_id",
+        "fields": [
+          "order_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_item_variations_item_id",
+        "fields": [
+          "item_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_menu_categories_shop_id",
+        "fields": [
+          "shop_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_menu_category_products_menu_category_id",
+        "fields": [
+          "menu_category_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_menu_category_products_product_id",
+        "fields": [
+          "product_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_orders_customer_id",
+        "fields": [
+          "customer_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_orders_shop_id",
+        "fields": [
+          "shop_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_product_variations_item_variation_id",
+        "fields": [
+          "item_variation_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_product_variations_product_id",
+        "fields": [
+          "product_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_products_shop_id",
+        "fields": [
+          "shop_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_shops_app_user_id",
+        "fields": [
+          "app_user_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_staffs_shop_id",
+        "fields": [
+          "shop_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "IX_staffs_user_id",
+        "fields": [
+          "user_id"
+        ],
+        "using": "btree"
+      },
+      {
+        "name": "RoleNameIndex",
+        "fields": [
+          "normalized_name"
+        ],
+        "unique": true,
+        "using": "btree"
+      },
+      {
+        "name": "UserNameIndex",
+        "fields": [
+          "normalized_user_name"
+        ],
+        "unique": true,
+        "using": "btree"
+      }
+    ],
+    "meta": {
+      "rails": 4,
+      "database": {
+        "type": "postgres",
+        "version": null,
+        "extensions": [
+          "plpgsql"
+        ]
+      },
+      "unique_keys": [
+        {
+          "type": "columns",
+          "category": null,
+          "key": "all",
+          "keys": [
+            "name",
+            "type",
+            "limit",
+            "null"
+          ]
+        },
+        {
+          "type": "columns",
+          "category": null,
+          "key": "name,type",
+          "keys": [
+            "name",
+            "type"
+          ]
+        },
+        {
+          "type": "columns",
+          "category": null,
+          "key": "name,type,limit",
+          "keys": [
+            "name",
+            "type",
+            "limit"
+          ]
+        },
+        {
+          "type": "columns",
+          "category": null,
+          "key": "name,type,limit,null",
+          "keys": [
+            "name",
+            "type",
+            "limit",
+            "null"
+          ]
+        },
+        {
+          "type": "columns",
+          "category": null,
+          "key": "name,type,null",
+          "keys": [
+            "name",
+            "type",
+            "null"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "boolean",
+          "key": "all",
+          "keys": [
+            "name",
+            "type",
+            "null"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "boolean",
+          "key": "name,type,null",
+          "keys": [
+            "name",
+            "type",
+            "null"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "datetime",
+          "key": "all",
+          "keys": [
+            "name",
+            "type",
+            "null"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "datetime",
+          "key": "name,type",
+          "keys": [
+            "name",
+            "type"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "datetime",
+          "key": "name,type,null",
+          "keys": [
+            "name",
+            "type",
+            "null"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "float",
+          "key": "all",
+          "keys": [
+            "name",
+            "type",
+            "null"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "float",
+          "key": "name,type,null",
+          "keys": [
+            "name",
+            "type",
+            "null"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "integer",
+          "key": "all",
+          "keys": [
+            "name",
+            "type",
+            "null"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "integer",
+          "key": "name,type",
+          "keys": [
+            "name",
+            "type"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "integer",
+          "key": "name,type,null",
+          "keys": [
+            "name",
+            "type",
+            "null"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "jsonb",
+          "key": "all",
+          "keys": [
+            "name",
+            "type"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "jsonb",
+          "key": "name,type",
+          "keys": [
+            "name",
+            "type"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "string",
+          "key": "all",
+          "keys": [
+            "name",
+            "type",
+            "limit",
+            "null"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "string",
+          "key": "name,type,limit",
+          "keys": [
+            "name",
+            "type",
+            "limit"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "string",
+          "key": "name,type,limit,null",
+          "keys": [
+            "name",
+            "type",
+            "limit",
+            "null"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "text",
+          "key": "all",
+          "keys": [
+            "name",
+            "type",
+            "null"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "text",
+          "key": "name,type",
+          "keys": [
+            "name",
+            "type"
+          ]
+        },
+        {
+          "type": "fields",
+          "category": "text",
+          "key": "name,type,null",
+          "keys": [
+            "name",
+            "type",
+            "null"
+          ]
+        },
+        {
+          "type": "foreign_keys",
+          "category": null,
+          "key": "all",
+          "keys": [
+            "left",
+            "right",
+            "column",
+            "name",
+            "on_delete"
+          ]
+        },
+        {
+          "type": "foreign_keys",
+          "category": null,
+          "key": "left,right,column,name,on_delete",
+          "keys": [
+            "left",
+            "right",
+            "column",
+            "name",
+            "on_delete"
+          ]
+        },
+        {
+          "type": "foreign_keys",
+          "category": null,
+          "key": "left,right,name,on_delete",
+          "keys": [
+            "left",
+            "right",
+            "name",
+            "on_delete"
+          ]
+        },
+        {
+          "type": "indexes",
+          "category": null,
+          "key": "all",
+          "keys": [
+            "name",
+            "fields",
+            "using",
+            "unique"
+          ]
+        },
+        {
+          "type": "indexes",
+          "category": null,
+          "key": "name,fields,unique,using",
+          "keys": [
+            "name",
+            "fields",
+            "unique",
+            "using"
+          ]
+        },
+        {
+          "type": "indexes",
+          "category": null,
+          "key": "name,fields,using",
+          "keys": [
+            "name",
+            "fields",
+            "using"
+          ]
+        }
+      ]
+    }
+  },
+  "investigate": {
+    "issues": [
+
+    ]
+  }
+}

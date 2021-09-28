@@ -1,3 +1,0 @@
-class RailsController
-  # ToDo
-end

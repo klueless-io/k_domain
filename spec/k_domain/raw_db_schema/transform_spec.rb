@@ -1,19 +1,20 @@
 # frozen_string_literal: true
 
 RSpec.describe KDomain::RawDbSchema::Transform do
-  let(:instance) { described_class.new(source_file)}
-  let(:source_file) { 'spec/samples/raw_db_schema.rb' }
-  let(:target_file) { 'spec/samples/output/schema.rb' }
+  let(:instance)            { described_class.new(source_file) }
+  let(:source_file)         { 'spec/sample_input/raw_db_schema.rb' }
+  let(:schema_loader_file)  { 'spec/sample_output/raw_db_schema/schema_loader.rb' }
+  let(:target_json_file)    { 'spec/sample_output/raw_db_schema/schema.json' }
 
   describe '#initialize' do
     context '.source_file' do
       subject { instance.source_file }
-    
+
       it { is_expected.to eq(source_file) }
     end
     context '.template_file' do
       subject { instance.template_file }
-    
+
       it { is_expected.to eq('lib/k_domain/raw_db_schema/template.rb') }
     end
   end
@@ -33,11 +34,22 @@ RSpec.describe KDomain::RawDbSchema::Transform do
   end
 
   describe '#write_schema_loader' do
-    subject { File.exist?(target_file) }
+    subject { File.exist?(schema_loader_file) }
 
     before do
       instance.call
-      instance.write_schema_loader(target_file)
+      instance.write_schema_loader(schema_loader_file)
+    end
+
+    it { is_expected.to be_truthy }
+  end
+
+  describe '#write_json' do
+    subject { File.exist?(target_json_file) }
+
+    before do
+      instance.call
+      instance.write_json(target_json_file)
     end
 
     it { is_expected.to be_truthy }

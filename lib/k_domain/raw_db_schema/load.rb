@@ -13,15 +13,15 @@ module KDomain
 
       attr_reader :source_file
       attr_reader :data
-    
+
       def initialize(source_file)
         @source_file = source_file
       end
- 
+
       def call
         json = File.read(source_file)
         data = KUtil.data.json_parse(json, as: :hash_symbolized)
-        
+
         @data = KDomain::RawDbSchema::Schema.new(data)
       end
     end

@@ -5,7 +5,6 @@
 #
 # Writes a new annotated schema.rb file with a public method called load that
 # builds the hash
-
 module KDomain
   module RawDbSchema
     class Transform
@@ -14,12 +13,13 @@ module KDomain
       attr_reader :source_file
       attr_reader :template_file
       attr_reader :schema_loader
-    
-      def initialize(source_file)#, target_file)
+
+      # , target_file)
+      def initialize(source_file)
         @source_file = source_file
         @template_file = 'lib/k_domain/raw_db_schema/template.rb'
       end
- 
+
       def call
         # log.kv 'source_file', source_file
         # log.kv 'template_file', template_file
@@ -32,12 +32,12 @@ module KDomain
         content
           .gsub!(/ActiveRecord::Schema.define/, 'load')
 
-        lines = content.lines.map { |line| "    #{line}" }.join()
+        lines = content.lines.map { |line| "    #{line}" }.join
 
         @schema_loader = File
-          .read(template_file)
-          .gsub('{{source_file}}', source_file)
-          .gsub('{{rails_schema}}', lines)
+                         .read(template_file)
+                         .gsub('{{source_file}}', source_file)
+                         .gsub('{{rails_schema}}', lines)
       end
 
       # rename to target_ruby
@@ -63,7 +63,7 @@ module KDomain
         File.write(json_file, JSON.pretty_generate(schema))
       end
 
-      # rename to hash
+      # rubocop:disable Security/Eval
       def schema
         if schema_loader.nil?
           puts '.call method has not been executed'
@@ -72,11 +72,12 @@ module KDomain
 
         # load target_file
         eval schema_loader
-    
+
         loader = LoadSchema.new
-        loader.load_schema()
+        loader.load_schema
         loader.schema
       end
+      # rubocop:enable Security/Eval
     end
   end
 end
