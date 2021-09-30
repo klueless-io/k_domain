@@ -5,7 +5,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
 
   include_examples :load_domain_model
 
-  # let(:load_db_schema_file) { 'spec/sample_output/raw_db_schema/schema.json' }
+  # let(:load_domain_model_file) { 'spec/sample_output/printspeak/domain_model.json' }
 
   def show_length(array)
     return '' if array.nil?

@@ -12,6 +12,21 @@ RSpec.describe KDomain::DomainModel::Transform do
   let(:target_file)         { 'spec/sample_output/domain_model/domain_model.json' }
   let(:target_step_file)    { 'spec/sample_output/domain_model/%{step}.json' }
 
+  context 'complex erd' do
+    let(:raw_db_schema_file)      { '/Users/davidcruwys/dev/printspeak/printspeak-master/db/schema.rb' }
+    let(:raw_db_schema_json_file) { 'spec/sample_output/printspeak/schema.json' }
+    let(:erd_path)                { '/Users/davidcruwys/dev/printspeak/printspeak-master/app/models' }
+  
+    let(:source_file)             { target_file }
+    let(:target_file)             { 'spec/sample_output/printspeak/domain_model.json' }
+    let(:target_step_file)        { 'spec/sample_output/printspeak/%{step}.json' }
+    
+    fit { 
+      db_transform
+      instance.call
+    }
+  end
+
   describe '#initialize' do
     context '.db_schema' do
       subject { instance.db_schema }
