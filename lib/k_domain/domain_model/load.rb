@@ -22,7 +22,7 @@ module KDomain
         json = File.read(source_file)
         data = KUtil.data.json_parse(json, as: :hash_symbolized)
 
-        @data = KDomain::DomainModel::Schema.new(data)
+        @data = KDomain::Schemas::DomainModel.new(data)
       end
     end
   end
