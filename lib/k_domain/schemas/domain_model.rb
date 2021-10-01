@@ -2,8 +2,8 @@
 
 # DomainModel holds the entire domain model including database and ancillary information
 module KDomain
-  module DomainModel
-    class Schema < Dry::Struct
+  module Schemas
+    class DomainModel < Dry::Struct
       attribute :domain         , KDomain::DomainModel::Domain
       attribute :database       , KDomain::Database::Schema
       # attribute :rails_files    , KDomain::RailsFiles::Schema
