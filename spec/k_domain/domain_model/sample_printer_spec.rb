@@ -5,6 +5,16 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
 
   include_examples :load_domain_model
 
+  let(:root_graph) {
+    {
+      investigate: { skip: true },
+      domain: { skip: true },
+      rails: { skip: true },
+      rail_files: { skip: true },
+      database: { skip: true }
+    }
+  }
+
   # let(:load_domain_model_file) { 'spec/sample_output/printspeak/domain_model.json' }
 
   def show_length(array)
@@ -111,6 +121,32 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
 
     it do
       log.structure(load_domain_model.domain, title: 'Dictionary', line_width: 200, graph: graph)
+    end
+  end
+
+  context 'print investigations' do
+    let(:graph) do
+      {
+        investigate: {
+          title: 'Investigations',
+          issues: {
+            take: 4,
+            columns: [
+              :step,
+              :location,
+              :key,
+              { message: { width: 200 } },
+            ]
+          },
+        }
+      }
+    end
+
+    it do
+      log.structure(load_domain_model,
+                    title: 'Investigations',
+                    line_width: 200,
+                    graph: root_graph.merge(graph))
     end
   end
 end

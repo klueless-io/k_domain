@@ -3,12 +3,10 @@
 # log.warn 'models->domain' if AppDebug.require?
 
 require_relative './dictionary'
-require_relative './investigate'
 require_relative './models/column'
 require_relative './models/model'
 require_relative './erd_file'
 require_relative './domain'
-require_relative './schema'
 
 module KDomain
   module DomainModel
