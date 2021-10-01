@@ -23,3 +23,13 @@ group :development, :test do
   gem 'rubocop-rake', require: false
   gem 'rubocop-rspec', require: false
 end
+
+# If local dependency
+if ENV['KLUE_LOCAL_GEMS']&.to_s&.downcase == 'true'
+  group :development, :test do
+    puts 'Using Local GEMs'
+    gem 'peeky'                   , path: '../peeky'
+    gem 'k_log'                   , path: '../k_log'
+    gem 'k_util'                  , path: '../k_util'
+  end
+end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module KDomain
-  module RawDbSchema
+  module Database
     class Column < Dry::Struct
       attribute :name                 , Types::Strict::String
       attribute :type                 , Types::Strict::String

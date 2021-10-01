@@ -2115,6 +2115,22 @@
 
     ]
   },
+  "rails": {
+    "models": [
+
+    ],
+    "controllers": [
+
+    ]
+  },
+  "rails_files": {
+    "models": [
+
+    ],
+    "controllers": [
+
+    ]
+  },
   "database": {
     "tables": [
       {

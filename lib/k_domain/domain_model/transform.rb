@@ -27,6 +27,7 @@ module KDomain
         valid &&= step3
         valid &&= step4
         valid &&= step5
+        valid &&= step8 # NOT SURE WHERE THIS BELONGS
 
         raise 'DomainModal transform failed' unless valid
 
@@ -60,6 +61,11 @@ module KDomain
         write(step: '5-attach-dictionary')
       end
 
+      def step8
+        Step8LocateRailsModels.run(domain_data, erd_path: erd_path)
+        write(step: '8-rails-files-models')
+      end
+
       def write(step: nil)
         file = if step.nil?
                  target_file
@@ -77,6 +83,14 @@ module KDomain
             models: [],
             erd_files: [],
             dictionary: []
+          },
+          rails: {
+            models: [],
+            controllers: [],
+          },
+          rails_files: {
+            models: [],
+            controllers: [],
           },
           database: {
             tables: [],

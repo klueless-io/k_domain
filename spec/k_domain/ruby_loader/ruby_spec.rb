@@ -154,13 +154,15 @@ files = %w[
   user
   wip
   workflow
-]# .select { |n| n == 'adjustment' } # .take(1)
+][1..10]# .select { |n| n == 'adjustment' } # .take(1)
 
-def load_retry(path, times)
+def load_retry(file, path, times)
   return if times < 0
 
   log.info(path)
   load(path)
+  
+  get_method_info(file)
 rescue => ex
   # if ex.is_a?(NoMethodError)
   #   log.exception(ex)
@@ -174,6 +176,26 @@ rescue => ex
   log.exception(ex)
 end
 
+def get_method_info(file)
+  # puts file
+  klass = case file
+  when 'clearbit_quota'
+    ClearbitQuota
+  when 'account_history_data'
+    AccountHistoryData    
+  else
+    Module.const_get(file.classify)
+  end
+
+  class_info = Peeky.api.build_class_info(klass.new)
+
+  puts Peeky.api.render_class(:class_interface, class_info: class_info)
+
+  # puts class_info
+rescue => ex
+  log.exception(ex)
+end  
+
 files.each do |file|
   # EVAL will not work (YET)
   # here is a hint to making it work
@@ -182,7 +204,7 @@ files.each do |file|
   # puts ruby_file
   # eval(ruby_file)
 
-  load_retry(File.join(path, "#{file}.rb"), 10)
+  load_retry(file, File.join(path, "#{file}.rb"), 10)
 rescue => ex
   log.exception(ex)
 end

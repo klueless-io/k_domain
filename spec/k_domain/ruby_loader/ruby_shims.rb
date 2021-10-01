@@ -82,18 +82,18 @@ module ActiveRecord
     end
 
     def self.custom_set(key, value = {})
-      class_info[:custx] = {} unless class_info[:custx]
-      class_info[:custx][key] = class_info[:custx][key] || {}
-      class_info[:custx][key] = value
+      class_info[:custom] = {} unless class_info[:custom]
+      class_info[:custom][key] = class_info[:custom][key] || {}
+      class_info[:custom][key] = value
     end
 
     def self.custom_add(key, value)
-      class_info[:custx] = {} unless class_info[:custx]
-      class_info[:custx][key] = class_info[:custx][key] || []
+      class_info[:custom] = {} unless class_info[:custom]
+      class_info[:custom][key] = class_info[:custom][key] || []
       if value.is_a?(Array)
-        class_info[:custx][key] = class_info[:custx][key] + value
+        class_info[:custom][key] = class_info[:custom][key] + value
       else
-        class_info[:custx][key] << value
+        class_info[:custom][key] << value
       end
     end
 

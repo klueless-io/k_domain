@@ -21,10 +21,10 @@ RSpec.describe KDomain::DomainModel::Transform do
     let(:target_file)             { 'spec/sample_output/printspeak/domain_model.json' }
     let(:target_step_file)        { 'spec/sample_output/printspeak/%{step}.json' }
     
-    fit { 
-      db_transform
-      instance.call
-    }
+    # fit { 
+    #   db_transform
+    #   instance.call
+    # }
   end
 
   describe '#initialize' do

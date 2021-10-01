@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module KDomain
-  module RawDbSchema
+  module Database
     class Index < Dry::Struct
       attribute :name                 , Types::Strict::String
       attribute :fields               , Types::Nominal::Any.optional.default('xxxxx1')

@@ -4477,6 +4477,22 @@
       }
     ]
   },
+  "rails": {
+    "models": [
+
+    ],
+    "controllers": [
+
+    ]
+  },
+  "rails_files": {
+    "models": [
+
+    ],
+    "controllers": [
+
+    ]
+  },
   "database": {
     "tables": [
       {
@@ -6076,7 +6092,7 @@
         "step": "step4_attach_erd_files_models",
         "location": "extract_options",
         "key": null,
-        "message": "undefined local variable or method `belongs_to_required' for #<Step4AttachErdFiles:0x00007f89a2061b10>"
+        "message": "undefined local variable or method `belongs_to_required' for #<Step4AttachErdFiles:0x00007ffe87220cd0>"
       }
     ]
   }
