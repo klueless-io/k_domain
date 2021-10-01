@@ -12,7 +12,7 @@ RSpec.describe 'KDomain::RawDbSchema::SamplePrinter' do
       {
         tables: {
           # heading: 'Database Tables',
-          take: :all,
+          take: 4,
           columns: [
             :name,
             :primary_key,
@@ -38,7 +38,7 @@ RSpec.describe 'KDomain::RawDbSchema::SamplePrinter' do
       {
         tables: { skip: true },
         foreign_keys: {
-          take: :all,
+          take: 4,
           columns: [
             :left,
             :right,
@@ -65,7 +65,7 @@ RSpec.describe 'KDomain::RawDbSchema::SamplePrinter' do
         foreign_keys: { skip: true },
         indexes: {
           # heading: "PostgreSQL - All indexes",
-          take: :all,
+          take: 4,
           columns: [
             :name,
             { fields: { width: 150, display_method: ->(row) { row.fields.join(', ') } } },

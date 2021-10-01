@@ -14,7 +14,6 @@ module KDomain
       attr_reader :template_file
       attr_reader :schema_loader
 
-      # , target_file)
       def initialize(source_file)
         @source_file = source_file
         @template_file = 'lib/k_domain/raw_db_schema/template.rb'
@@ -70,12 +69,13 @@ module KDomain
           return
         end
 
-        # load target_file
-        eval schema_loader
+        eval(schema_loader)#, __FILE__, __LINE__)
 
         loader = LoadSchema.new
         loader.load_schema
-        loader.schema
+        return loader.schema
+      rescue => ex
+        log.exception(ex)
       end
       # rubocop:enable Security/Eval
     end

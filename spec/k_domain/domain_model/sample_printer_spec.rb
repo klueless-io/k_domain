@@ -5,7 +5,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
 
   include_examples :load_domain_model
 
-  # let(:load_db_schema_file) { 'spec/sample_output/raw_db_schema/schema.json' }
+  # let(:load_domain_model_file) { 'spec/sample_output/printspeak/domain_model.json' }
 
   def show_length(array)
     return '' if array.nil?
@@ -19,7 +19,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
       {
         models: {
           title: 'Models',
-          take: :all,
+          take: 4,
           columns: [
             :name,
             :name_plural,
@@ -57,7 +57,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
         models: { skip: true },
         erd_files: {
           title: 'ERD Files',
-          take: :all,
+          take: 4,
           columns: [
             :name,
             :name_plural,
@@ -93,7 +93,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
         models: { skip: true },
         dictionary: {
           title: 'Dictionary',
-          take: :all,
+          take: 4,
           columns: [
             :name,
             :type,
