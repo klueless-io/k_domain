@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module KDomain
-  module RawDbSchema
+  module Database
     class ForeignKey < Dry::Struct
       attribute :left                 , Types::Strict::String
       attribute :right                , Types::Strict::String

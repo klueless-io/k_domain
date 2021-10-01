@@ -5,7 +5,8 @@ module KDomain
   module DomainModel
     class Schema < Dry::Struct
       attribute :domain         , KDomain::DomainModel::Domain
-      attribute :database       , KDomain::RawDbSchema::Schema
+      attribute :database       , KDomain::Database::Schema
+      # attribute :rails_files    , KDomain::RailsFiles::Schema
       attribute :investigate    , KDomain::DomainModel::Investigate
     end
   end

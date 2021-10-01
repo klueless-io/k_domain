@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module KDomain
-  module RawDbSchema
+  module Database
     # Keep a track of unique keys that appear in the data structures
     # so that we can track what new attributes to add to the models
     class UniqueKey < Dry::Struct
