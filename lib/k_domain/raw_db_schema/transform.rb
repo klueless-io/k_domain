@@ -16,7 +16,7 @@ module KDomain
 
       def initialize(source_file)
         @source_file = source_file
-        @template_file = 'lib/k_domain/raw_db_schema/template.rb'
+        @template_file = KDomain::Gem.resource('templates/load_schema.rb')
       end
 
       def call
@@ -24,7 +24,6 @@ module KDomain
         # log.kv 'template_file', template_file
         # log.kv 'source_file?', File.exist?(source_file)
         # log.kv 'template_file?', File.exist?(template_file)
-
         log.error "Template not found: #{template_file}" unless File.exist?(template_file)
 
         content = File.read(source_file)
@@ -34,9 +33,9 @@ module KDomain
         lines = content.lines.map { |line| "    #{line}" }.join
 
         @schema_loader = File
-                         .read(template_file)
-                         .gsub('{{source_file}}', source_file)
-                         .gsub('{{rails_schema}}', lines)
+          .read(template_file)
+          .gsub('{{source_file}}', source_file)
+          .gsub('{{rails_schema}}', lines)
       end
 
       # rename to target_ruby

@@ -15,7 +15,7 @@ RSpec.describe KDomain::RawDbSchema::Transform do
     context '.template_file' do
       subject { instance.template_file }
 
-      it { is_expected.to eq('lib/k_domain/raw_db_schema/template.rb') }
+      it { is_expected.to eq(File.expand_path('templates/load_schema.rb')) }
     end
   end
 

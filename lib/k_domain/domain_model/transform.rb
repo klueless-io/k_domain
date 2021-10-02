@@ -13,7 +13,7 @@ module KDomain
       attr_reader :target_file
       attr_reader :erd_path
 
-      def initialize(db_schema, target_file, target_step_file, erd_path)
+      def initialize(db_schema: , target_file: , target_step_file: , erd_path:)
         @db_schema        = db_schema
         @target_step_file = target_step_file
         @target_file      = target_file
@@ -82,7 +82,6 @@ module KDomain
           domain: {
             models: [],
             erd_files: [],
-            dictionary: []
           },
           rails: {
             models: [],
@@ -91,6 +90,9 @@ module KDomain
           rails_resource: {
             models: [],
             controllers: [],
+          },
+          dictionary: {
+            items: []
           },
           database: {
             tables: [],

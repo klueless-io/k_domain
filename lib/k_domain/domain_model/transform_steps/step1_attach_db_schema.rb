@@ -13,7 +13,7 @@ module KDomain
         guard('indexes are missing')              if database[:indexes].nil?
         guard('foreign keys are missing')         if database[:foreign_keys].nil?
         guard('rails version is missing')         if database[:meta][:rails].nil?
-        guard('postgres extensions are missing')  if database[:meta][:database][:extensions].nil?
+        guard('postgres extensions are missing')  if database[:meta][:db_info][:extensions].nil?
         guard('unique keys are missing')          if database[:meta][:unique_keys].nil?
       end
     end

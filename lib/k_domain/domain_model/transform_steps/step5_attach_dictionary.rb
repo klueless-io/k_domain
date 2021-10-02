@@ -13,7 +13,9 @@ class Step5AttachDictionary < KDomain::DomainModel::Step
       end
     end
 
-    domain[:dictionary] = dictionary.values
+    domain_data[:dictionary] = {
+      items: dictionary.values
+    }
   end
 
   private

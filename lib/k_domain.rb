@@ -21,6 +21,15 @@ module KDomain
   # raise KDomain::Error, 'Sample message'
   class Error < StandardError; end
 
+  module Gem
+    def self.root
+      File.expand_path('..', File.dirname(__FILE__))
+    end
+    def self.resource(resource_path)
+      File.join(root, resource_path)
+    end
+  end
+
   # Your code goes here...
 end
 
