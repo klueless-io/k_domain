@@ -4485,7 +4485,7 @@
 
     ]
   },
-  "rails_files": {
+  "rails_resource": {
     "models": [
       {
         "model_name": "__EFMigrationsHistory",
@@ -4495,144 +4495,144 @@
         "state": "model_not_found"
       },
       {
-        "model_name": "samples",
-        "table_name": "sample",
+        "model_name": "sample",
+        "table_name": "samples",
         "file": "spec/sample_input/models/sample.rb",
         "exist": true,
-        "state": "has_ruby_model, non_conventional_name"
+        "state": "has_ruby_model"
       },
       {
-        "model_name": "app_users",
-        "table_name": "app_user",
+        "model_name": "app_user",
+        "table_name": "app_users",
         "file": "spec/sample_input/models/app_user.rb",
         "exist": true,
-        "state": "has_ruby_model, non_conventional_name"
+        "state": "has_ruby_model"
       },
       {
-        "model_name": "asp_net_role_claims",
-        "table_name": "asp_net_role_claim",
+        "model_name": "asp_net_role_claim",
+        "table_name": "asp_net_role_claims",
         "file": "",
         "exist": false,
         "state": "model_not_found"
       },
       {
-        "model_name": "asp_net_roles",
-        "table_name": "asp_net_role",
+        "model_name": "asp_net_role",
+        "table_name": "asp_net_roles",
         "file": "",
         "exist": false,
         "state": "model_not_found"
       },
       {
-        "model_name": "asp_net_user_claims",
-        "table_name": "asp_net_user_claim",
+        "model_name": "asp_net_user_claim",
+        "table_name": "asp_net_user_claims",
         "file": "",
         "exist": false,
         "state": "model_not_found"
       },
       {
-        "model_name": "asp_net_user_logins",
-        "table_name": "asp_net_user_login",
+        "model_name": "asp_net_user_login",
+        "table_name": "asp_net_user_logins",
         "file": "",
         "exist": false,
         "state": "model_not_found"
       },
       {
-        "model_name": "asp_net_user_roles",
-        "table_name": "asp_net_user_role",
+        "model_name": "asp_net_user_role",
+        "table_name": "asp_net_user_roles",
         "file": "",
         "exist": false,
         "state": "model_not_found"
       },
       {
-        "model_name": "asp_net_user_tokens",
-        "table_name": "asp_net_user_token",
+        "model_name": "asp_net_user_token",
+        "table_name": "asp_net_user_tokens",
         "file": "",
         "exist": false,
         "state": "model_not_found"
       },
       {
-        "model_name": "asp_net_users",
-        "table_name": "asp_net_user",
+        "model_name": "asp_net_user",
+        "table_name": "asp_net_users",
         "file": "",
         "exist": false,
         "state": "model_not_found"
       },
       {
-        "model_name": "customer_shops",
-        "table_name": "customer_shop",
+        "model_name": "customer_shop",
+        "table_name": "customer_shops",
         "file": "spec/sample_input/models/customer_shop.rb",
         "exist": true,
-        "state": "has_ruby_model, non_conventional_name"
+        "state": "has_ruby_model"
       },
       {
-        "model_name": "favourite_orders",
-        "table_name": "favourite_order",
+        "model_name": "favourite_order",
+        "table_name": "favourite_orders",
         "file": "spec/sample_input/models/favourite_order.rb",
         "exist": true,
-        "state": "has_ruby_model, non_conventional_name"
+        "state": "has_ruby_model"
       },
       {
-        "model_name": "item_variations",
-        "table_name": "item_variation",
+        "model_name": "item_variation",
+        "table_name": "item_variations",
         "file": "spec/sample_input/models/item_variation.rb",
         "exist": true,
-        "state": "has_ruby_model, non_conventional_name"
+        "state": "has_ruby_model"
       },
       {
-        "model_name": "items",
-        "table_name": "item",
+        "model_name": "item",
+        "table_name": "items",
         "file": "spec/sample_input/models/item.rb",
         "exist": true,
-        "state": "has_ruby_model, non_conventional_name"
+        "state": "has_ruby_model"
       },
       {
-        "model_name": "menu_categories",
-        "table_name": "menu_category",
+        "model_name": "menu_category",
+        "table_name": "menu_categories",
         "file": "spec/sample_input/models/menu_category.rb",
         "exist": true,
-        "state": "has_ruby_model, non_conventional_name"
+        "state": "has_ruby_model"
       },
       {
-        "model_name": "menu_category_products",
-        "table_name": "menu_category_product",
+        "model_name": "menu_category_product",
+        "table_name": "menu_category_products",
         "file": "spec/sample_input/models/menu_category_product.rb",
         "exist": true,
-        "state": "has_ruby_model, non_conventional_name"
+        "state": "has_ruby_model"
       },
       {
-        "model_name": "orders",
-        "table_name": "order",
+        "model_name": "order",
+        "table_name": "orders",
         "file": "spec/sample_input/models/order.rb",
         "exist": true,
-        "state": "has_ruby_model, non_conventional_name"
+        "state": "has_ruby_model"
       },
       {
-        "model_name": "product_variations",
-        "table_name": "product_variation",
+        "model_name": "product_variation",
+        "table_name": "product_variations",
         "file": "spec/sample_input/models/product_variation.rb",
         "exist": true,
-        "state": "has_ruby_model, non_conventional_name"
+        "state": "has_ruby_model"
       },
       {
-        "model_name": "products",
-        "table_name": "product",
+        "model_name": "product",
+        "table_name": "products",
         "file": "spec/sample_input/models/product.rb",
         "exist": true,
-        "state": "has_ruby_model, non_conventional_name"
+        "state": "has_ruby_model"
       },
       {
-        "model_name": "shops",
-        "table_name": "shop",
+        "model_name": "shop",
+        "table_name": "shops",
         "file": "spec/sample_input/models/shop.rb",
         "exist": true,
-        "state": "has_ruby_model, non_conventional_name"
+        "state": "has_ruby_model"
       },
       {
-        "model_name": "staffs",
-        "table_name": "staff",
+        "model_name": "staff",
+        "table_name": "staffs",
         "file": "spec/sample_input/models/staff.rb",
         "exist": true,
-        "state": "has_ruby_model, non_conventional_name"
+        "state": "has_ruby_model"
       }
     ],
     "controllers": [
@@ -6238,7 +6238,7 @@
         "step": "step4_attach_erd_files_models",
         "location": "extract_options",
         "key": null,
-        "message": "undefined local variable or method `belongs_to_required' for #<Step4AttachErdFiles:0x00007fc257cdab10>"
+        "message": "undefined local variable or method `belongs_to_required' for #<Step4AttachErdFiles:0x00007fbae189c508>"
       }
     ]
   }

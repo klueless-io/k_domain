@@ -2,7 +2,7 @@
 
 # Domain class holds a dictionary entry
 module KDomain
-  module DomainModel
+  module Schemas
     class Investigate < Dry::Struct
       attribute :issues                 , Types::Strict::Array do
         attribute :step                 , Types::Strict::String

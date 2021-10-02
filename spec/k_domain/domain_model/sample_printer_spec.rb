@@ -135,7 +135,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
               :step,
               :location,
               :key,
-              { message: { width: 200 } },
+              { message: { width: 200 } }
             ]
           },
         }
@@ -145,6 +145,35 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
     it do
       log.structure(load_domain_model,
                     title: 'Investigations',
+                    line_width: 200,
+                    graph: root_graph.merge(graph))
+    end
+  end
+
+  context 'print rails resources' do
+    let(:graph) do
+      {
+        rails_files: {
+          models: {
+            # pry_at: [:before_array],
+            take: 4,
+            title: 'Resource path - Rails Models',
+            columns: [
+              :model_name,
+              :table_name,
+              { file: { width: 200 } },
+              :exist,
+              { state: { width: 40 } },
+            ]
+          },
+          controllers: { skip: true }
+        }
+      }
+    end
+
+    it do
+      log.structure(load_domain_model,
+                    title: 'Rails Resources - Models',
                     line_width: 200,
                     graph: root_graph.merge(graph))
     end
