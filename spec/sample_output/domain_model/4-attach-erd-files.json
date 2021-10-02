@@ -3567,9 +3567,6 @@
           ]
         }
       }
-    ],
-    "dictionary": [
-
     ]
   },
   "rails": {
@@ -3585,6 +3582,11 @@
 
     ],
     "controllers": [
+
+    ]
+  },
+  "dictionary": {
+    "items": [
 
     ]
   },
@@ -4821,7 +4823,7 @@
     ],
     "meta": {
       "rails": 4,
-      "database": {
+      "db_info": {
         "type": "postgres",
         "version": null,
         "extensions": [
@@ -5187,7 +5189,7 @@
         "step": "step4_attach_erd_files_models",
         "location": "extract_options",
         "key": null,
-        "message": "undefined local variable or method `belongs_to_required' for #<Step4AttachErdFiles:0x00007fbae189c508>"
+        "message": "undefined local variable or method `belongs_to_required' for #<Step4AttachErdFiles:0x00007fa7641cb4d0>"
       }
     ]
   }

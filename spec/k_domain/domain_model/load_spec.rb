@@ -296,12 +296,12 @@ RSpec.describe KDomain::DomainModel::Load do
         end
 
         context '.dictionary' do
-          subject { instance.data.domain.dictionary }
+          subject { instance.data.dictionary }
 
           it { is_expected.not_to be_nil }
 
           context '.first' do
-            subject { instance.data.domain.dictionary.first }
+            subject { instance.data.dictionary.items.first }
 
             it do
               is_expected.to have_attributes(

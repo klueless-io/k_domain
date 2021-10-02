@@ -40,7 +40,7 @@ RSpec.describe KDomain::RawDbSchema::Load do
           it do
             is_expected.to have_attributes(
               rails: 4,
-              database: have_attributes(
+              db_info: have_attributes(
                 type: 'postgres',
                 version: be_nil,
                 extensions: be_an(Array)

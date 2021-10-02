@@ -10,7 +10,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
       investigate: { skip: true },
       domain: { skip: true },
       rails: { skip: true },
-      rail_files: { skip: true },
+      rail_resource: { skip: true },
       database: { skip: true }
     }
   }
@@ -153,7 +153,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
   context 'print rails resources' do
     let(:graph) do
       {
-        rails_files: {
+        rails_resource: {
           models: {
             # pry_at: [:before_array],
             take: 4,
