@@ -44,22 +44,22 @@ module KDomain
       end
 
       # Rails File Accessor/Helpers
-      def rails_files
-        guard('rails_files is missing') if domain_data[:rails_files].nil?
+      def rails_resource
+        guard('rails_resource is missing') if domain_data[:rails_resource].nil?
 
-        domain_data[:rails_files]
+        domain_data[:rails_resource]
       end
 
-      def rails_files_models
-        rails_files[:models]
+      def rails_resource_models
+        rails_resource[:models]
       end
 
-      def rails_files_models=(value)
-        rails_files[:models] = value
+      def rails_resource_models=(value)
+        rails_resource[:models] = value
       end
 
-      def rails_files_controllers
-        rails_files[:controllers]
+      def rails_resource_controllers
+        rails_resource[:controllers]
       end
 
       # Database Accessor/Helpers
