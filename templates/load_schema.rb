@@ -11,7 +11,7 @@ class LoadSchema
       indexes: [],
       meta: {
         rails: @rails_version,
-        database: {
+        db_info: {
           type: 'postgres',
           version: nil,         # TODO
           extensions: []
@@ -50,14 +50,14 @@ class LoadSchema
     sort
     # code to time
 
-    # log.kv 'extensions', schema[:database][:extensions].length
+    # log.kv 'extensions', schema[:db_info][:extensions].length
     # log.kv 'tables', schema[:tables].length
     # log.kv 'indexes', schema[:indexes].length  
     # # a low foreign_keys count is indicative of not using SQL referential integrity
     # log.kv 'foreign_keys', schema[:foreign_keys].length
     # log.kv 'Time Taken', (finish - start)
 
-    # puts schema[:database][:extensions]
+    # puts schema[:db_info][:extensions]
     # print_unique_keys(type: :foreign_keys, title: 'unique options for foreign_keys')
     # print_unique_keys(type: :columns, title: 'unique options for columns')
     # print_unique_keys(type: :fields, category: :integer , title: 'unique options for column - integer')
@@ -74,7 +74,7 @@ class LoadSchema
 
   def enable_extension(name)
     # puts "enable_extension(#{name})"
-    schema[:meta][:database][:extensions] << name
+    schema[:meta][:db_info][:extensions] << name
   end
 
   def create_table(name, **opts)

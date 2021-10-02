@@ -3,14 +3,20 @@
 RSpec.describe KDomain::DomainModel::Transform do
   include_examples :transform_db_schema
 
-  let(:db_schema)           { db_transform }
+  let(:db_schema)                 { db_transform }
 
-  let(:instance)            { described_class.new(db_schema, target_file, target_step_file, erd_path) }
-  let(:source_file)         { 'spec/sample_input/raw_db_schema.rb' }
-  let(:erd_path)            { 'spec/sample_input/models' }
+  let(:instance)                  do
+    described_class.new(
+      db_schema: db_schema,
+      target_file: target_file,
+      target_step_file: target_step_file,
+      erd_path: erd_path)
+  end
+  let(:source_file)               { 'spec/sample_input/raw_db_schema.rb' }
+  let(:erd_path)                  { 'spec/sample_input/models' }
 
-  let(:target_file)         { 'spec/sample_output/domain_model/domain_model.json' }
-  let(:target_step_file)    { 'spec/sample_output/domain_model/%{step}.json' }
+  let(:target_file)               { 'spec/sample_output/domain_model/domain_model.json' }
+  let(:target_step_file)          { 'spec/sample_output/domain_model/%{step}.json' }
 
   context 'complex erd' do
     let(:raw_db_schema_file)      { '/Users/davidcruwys/dev/printspeak/printspeak-master/db/schema.rb' }
@@ -45,7 +51,6 @@ RSpec.describe KDomain::DomainModel::Transform do
           is_expected.to include(
             models: be_empty,
             erd_files: be_empty,
-            dictionary: be_empty
           )
         end
       end
@@ -61,6 +66,12 @@ RSpec.describe KDomain::DomainModel::Transform do
             meta: be_empty
           )
         end
+      end
+
+      context '.dictionary' do
+        subject { instance.domain_data[:dictionary] }
+
+        it { is_expected.to include(items: be_empty) }
       end
 
       context '.investigate' do
@@ -106,8 +117,14 @@ RSpec.describe KDomain::DomainModel::Transform do
       it { is_expected.not_to be_empty }
     end
 
-    context '.attach_dictionary' do
-      subject { instance.domain_data[:domain][:dictionary] }
+    context '.dictionary->items' do
+      subject { instance.domain_data[:dictionary][:items] }
+
+      it { is_expected.not_to be_empty }
+    end
+
+    context '.investigate->issues' do
+      subject { instance.domain_data[:investigate][:issues] }
 
       it { is_expected.not_to be_empty }
     end

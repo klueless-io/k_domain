@@ -83,4 +83,29 @@ RSpec.describe 'KDomain::RawDbSchema::SamplePrinter' do
       log.structure(load_db_schema, title: 'All Indexes', line_width: 200, graph: graph)
     end
   end
+
+  context 'print meta' do
+    let(:graph) do
+      {
+        tables: { skip: true },
+        foreign_keys: { skip: true },
+        indexes: { skip: true },
+        meta: { 
+          unique_keys: {
+            columns: [
+              :type,
+              :category,
+              { key: { width: 100 } },
+              { keys: { width: 100, display_method: ->(row) { row.keys.take(5).join(', ') } } }
+            ]
+          }
+
+        }
+      }
+    end
+
+    it do
+      log.structure(load_db_schema, title: 'Meta', line_width: 200, graph: graph)
+    end
+  end
 end

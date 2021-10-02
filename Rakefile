@@ -26,7 +26,9 @@ task :publish do
   system 'gem build'
   system "gem push #{GEM_NAME}-#{KDomain::VERSION}.gem"
 end
-
+task :build do
+  system 'gem build'
+end
 desc 'Remove old *.gem files'
 task :clean do
   system 'rm *.gem'

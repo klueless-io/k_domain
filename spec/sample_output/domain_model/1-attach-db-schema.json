@@ -5,9 +5,6 @@
     ],
     "erd_files": [
 
-    ],
-    "dictionary": [
-
     ]
   },
   "rails": {
@@ -23,6 +20,11 @@
 
     ],
     "controllers": [
+
+    ]
+  },
+  "dictionary": {
+    "items": [
 
     ]
   },
@@ -1259,7 +1261,7 @@
     ],
     "meta": {
       "rails": 4,
-      "database": {
+      "db_info": {
         "type": "postgres",
         "version": null,
         "extensions": [

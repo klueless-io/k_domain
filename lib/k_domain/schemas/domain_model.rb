@@ -6,6 +6,7 @@ module KDomain
     class DomainModel < Dry::Struct
       attribute :domain         , KDomain::DomainModel::Domain
       attribute :database       , KDomain::Database::Schema
+      attribute :dictionary     , KDomain::Schemas::Dictionary
       attribute :rails_resource , KDomain::Schemas::RailsResource
       attribute :investigate    , KDomain::Schemas::Investigate
     end

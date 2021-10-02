@@ -3,7 +3,7 @@
 module KDomain
   module Database
     class Schema < Dry::Struct
-      class Database < Dry::Struct
+      class DbInfo < Dry::Struct
         attribute :type                 , Types::Strict::String
         attribute :version              , Types::Nominal::Any.optional.default(nil)
         attribute :extensions           , Types::Strict::Array
@@ -18,7 +18,7 @@ module KDomain
   
       class Meta < Dry::Struct
         attribute :rails                , Types::Strict::Integer
-        attribute :database             , KDomain::Database::Schema::Database
+        attribute :db_info              , KDomain::Database::Schema::DbInfo
         attribute :unique_keys          , Types::Strict::Array.of(KDomain::Database::Schema::UniqueKey)
       end
 
