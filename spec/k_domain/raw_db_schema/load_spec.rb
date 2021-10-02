@@ -22,11 +22,23 @@ RSpec.describe KDomain::RawDbSchema::Load do
 
         it { is_expected.to be_nil }
       end
+
+      context '.to_h' do
+        subject { instance.to_h }
+  
+        it { is_expected.to be_nil }
+      end
     end
 
     describe '#call' do
       before { instance.call }
 
+      context '.to_h' do
+        subject { instance.to_h }
+  
+        it { is_expected.not_to be_nil }
+      end
+  
       context '.data' do
         subject { instance.data }
 
