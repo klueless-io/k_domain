@@ -20,9 +20,15 @@ module KDomain
 
       def call
         json = File.read(source_file)
-        data = KUtil.data.json_parse(json, as: :hash_symbolized)
+        @raw_data = KUtil.data.json_parse(json, as: :hash_symbolized)
 
-        @data = KDomain::Schemas::DomainModel.new(data)
+        @data = KDomain::Schemas::DomainModel.new(@raw_data)
+      end
+
+      def to_h
+        return nil unless defined? @raw_data
+
+        @raw_data
       end
     end
   end
