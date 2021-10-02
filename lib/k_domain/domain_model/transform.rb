@@ -88,7 +88,7 @@ module KDomain
             models: [],
             controllers: [],
           },
-          rails_files: {
+          rails_resource: {
             models: [],
             controllers: [],
           },

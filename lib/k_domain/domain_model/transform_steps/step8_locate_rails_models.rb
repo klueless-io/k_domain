@@ -7,12 +7,14 @@ class Step8LocateRailsModels < KDomain::DomainModel::Step
   def call
     raise 'ERD path not supplied' if opts[:erd_path].nil?
 
-    self.rails_files_models = domain_models.map { |model| locate_rails_model(model[:name], model[:table_name]) }
+    self.rails_resource_models = domain_models.map do |model|
+      locate_rails_model(model[:name], model[:table_name])
+    end
   end
 
   private
 
-  def locate_rails_model(table_name, model_name)
+  def locate_rails_model(model_name, table_name)
     file_normal = File.join(opts[:erd_path], "#{model_name}.rb")
     file_custom = File.join(opts[:erd_path], "#{table_name}.rb")
     file_exist  = true

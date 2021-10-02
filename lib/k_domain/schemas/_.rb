@@ -6,6 +6,7 @@ module Types
   include Dry.Types()
 end
 
+require_relative 'rails_resource'
 require_relative 'investigate'
 require_relative 'database/_'
 require_relative 'domain/_'
