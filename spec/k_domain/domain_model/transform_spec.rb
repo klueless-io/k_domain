@@ -12,6 +12,7 @@ RSpec.describe KDomain::DomainModel::Transform do
       target_step_file: target_step_file,
       erd_path: erd_path)
   end
+
   let(:source_file)               { 'spec/sample_input/raw_db_schema.rb' }
   let(:erd_path)                  { 'spec/sample_input/models' }
 
