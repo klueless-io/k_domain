@@ -43,7 +43,7 @@ module KDomain
         domain[:models]
       end
 
-      # Rails File Accessor/Helpers
+      # Rails Resource File Accessor/Helpers
       def rails_resource
         guard('rails_resource is missing') if domain_data[:rails_resource].nil?
 
@@ -60,6 +60,25 @@ module KDomain
 
       def rails_resource_controllers
         rails_resource[:controllers]
+      end
+
+      # Rails Structure File Accessor/Helpers
+      def rails_structure
+        guard('rails_structure is missing') if domain_data[:rails_structure].nil?
+
+        domain_data[:rails_structure]
+      end
+
+      def rails_structure_models
+        rails_structure[:models]
+      end
+
+      def rails_structure_models=(value)
+        rails_structure[:models] = value
+      end
+
+      def rails_structure_controllers
+        rails_structure[:controllers]
       end
 
       # Database Accessor/Helpers

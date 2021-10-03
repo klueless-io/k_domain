@@ -33,7 +33,7 @@
           "exist": true
         },
         "erd_location": {
-          "file": "spec/sample_input/models/sample.rb",
+          "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/sample.rb",
           "exist": true,
           "state": [
             "has_ruby_model"
@@ -55,7 +55,7 @@
           "exist": true
         },
         "erd_location": {
-          "file": "spec/sample_input/models/app_user.rb",
+          "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/app_user.rb",
           "exist": true,
           "state": [
             "has_ruby_model"
@@ -231,7 +231,7 @@
           "exist": true
         },
         "erd_location": {
-          "file": "spec/sample_input/models/customer_shop.rb",
+          "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/customer_shop.rb",
           "exist": true,
           "state": [
             "has_ruby_model"
@@ -253,7 +253,7 @@
           "exist": true
         },
         "erd_location": {
-          "file": "spec/sample_input/models/favourite_order.rb",
+          "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/favourite_order.rb",
           "exist": true,
           "state": [
             "has_ruby_model"
@@ -275,7 +275,7 @@
           "exist": true
         },
         "erd_location": {
-          "file": "spec/sample_input/models/item_variation.rb",
+          "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/item_variation.rb",
           "exist": true,
           "state": [
             "has_ruby_model"
@@ -297,7 +297,7 @@
           "exist": true
         },
         "erd_location": {
-          "file": "spec/sample_input/models/item.rb",
+          "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/item.rb",
           "exist": true,
           "state": [
             "has_ruby_model"
@@ -319,7 +319,7 @@
           "exist": true
         },
         "erd_location": {
-          "file": "spec/sample_input/models/menu_category.rb",
+          "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/menu_category.rb",
           "exist": true,
           "state": [
             "has_ruby_model"
@@ -341,7 +341,7 @@
           "exist": true
         },
         "erd_location": {
-          "file": "spec/sample_input/models/menu_category_product.rb",
+          "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/menu_category_product.rb",
           "exist": true,
           "state": [
             "has_ruby_model"
@@ -363,7 +363,7 @@
           "exist": true
         },
         "erd_location": {
-          "file": "spec/sample_input/models/order.rb",
+          "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/order.rb",
           "exist": true,
           "state": [
             "has_ruby_model"
@@ -385,7 +385,7 @@
           "exist": true
         },
         "erd_location": {
-          "file": "spec/sample_input/models/product_variation.rb",
+          "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/product_variation.rb",
           "exist": true,
           "state": [
             "has_ruby_model"
@@ -407,7 +407,7 @@
           "exist": true
         },
         "erd_location": {
-          "file": "spec/sample_input/models/product.rb",
+          "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/product.rb",
           "exist": true,
           "state": [
             "has_ruby_model"
@@ -429,7 +429,7 @@
           "exist": true
         },
         "erd_location": {
-          "file": "spec/sample_input/models/shop.rb",
+          "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/shop.rb",
           "exist": true,
           "state": [
             "has_ruby_model"
@@ -451,7 +451,7 @@
           "exist": true
         },
         "erd_location": {
-          "file": "spec/sample_input/models/staff.rb",
+          "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/staff.rb",
           "exist": true,
           "state": [
             "has_ruby_model"
@@ -468,7 +468,7 @@
 
     ]
   },
-  "rails": {
+  "rails_resource": {
     "models": [
 
     ],
@@ -476,7 +476,7 @@
 
     ]
   },
-  "rails_resource": {
+  "rails_structure": {
     "models": [
 
     ],

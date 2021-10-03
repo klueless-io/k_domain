@@ -33,9 +33,9 @@ module KDomain
         lines = content.lines.map { |line| "    #{line}" }.join
 
         @schema_loader = File
-          .read(template_file)
-          .gsub('{{source_file}}', source_file)
-          .gsub('{{rails_schema}}', lines)
+                         .read(template_file)
+                         .gsub('{{source_file}}', source_file)
+                         .gsub('{{rails_schema}}', lines)
       end
 
       # rename to target_ruby
@@ -68,13 +68,13 @@ module KDomain
           return
         end
 
-        eval(schema_loader)#, __FILE__, __LINE__)
+        eval(schema_loader) # , __FILE__, __LINE__)
 
         loader = LoadSchema.new
         loader.load_schema
-        return loader.schema
-      rescue => ex
-        log.exception(ex)
+        loader.schema
+      rescue StandardError => e
+        log.exception(e)
       end
       # rubocop:enable Security/Eval
     end

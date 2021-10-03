@@ -10,11 +10,12 @@ RSpec.describe KDomain::DomainModel::Transform do
       db_schema: db_schema,
       target_file: target_file,
       target_step_file: target_step_file,
-      erd_path: erd_path)
+      erd_path: erd_path
+    )
   end
 
   let(:source_file)               { 'spec/sample_input/raw_db_schema.rb' }
-  let(:erd_path)                  { 'spec/sample_input/models' }
+  let(:erd_path)                  { File.expand_path('spec/sample_input/models') }
 
   let(:target_file)               { 'spec/sample_output/domain_model/domain_model.json' }
   let(:target_step_file)          { 'spec/sample_output/domain_model/%{step}.json' }
@@ -23,12 +24,12 @@ RSpec.describe KDomain::DomainModel::Transform do
     let(:raw_db_schema_file)      { '/Users/davidcruwys/dev/printspeak/printspeak-master/db/schema.rb' }
     let(:raw_db_schema_json_file) { 'spec/sample_output/printspeak/schema.json' }
     let(:erd_path)                { '/Users/davidcruwys/dev/printspeak/printspeak-master/app/models' }
-  
+
     let(:source_file)             { target_file }
     let(:target_file)             { 'spec/sample_output/printspeak/domain_model.json' }
     let(:target_step_file)        { 'spec/sample_output/printspeak/%{step}.json' }
-    
-    # fit { 
+
+    # fit {
     #   db_transform
     #   instance.call
     # }
@@ -51,7 +52,7 @@ RSpec.describe KDomain::DomainModel::Transform do
         it do
           is_expected.to include(
             models: be_empty,
-            erd_files: be_empty,
+            erd_files: be_empty
           )
         end
       end
@@ -65,6 +66,28 @@ RSpec.describe KDomain::DomainModel::Transform do
             indexes: be_empty,
             foreign_keys: be_empty,
             meta: be_empty
+          )
+        end
+      end
+
+      context '.rails_resource' do
+        subject { instance.domain_data[:rails_resource] }
+
+        it do
+          is_expected.to include(
+            models: be_empty,
+            controllers: be_empty
+          )
+        end
+      end
+
+      context '.rails_structure' do
+        subject { instance.domain_data[:rails_structure] }
+
+        it do
+          is_expected.to include(
+            models: be_empty,
+            controllers: be_empty
           )
         end
       end
@@ -116,6 +139,32 @@ RSpec.describe KDomain::DomainModel::Transform do
       subject { instance.domain_data[:domain][:erd_files] }
 
       it { is_expected.not_to be_empty }
+    end
+
+    context '.rails_resource' do
+      context '.models' do
+        subject { instance.domain_data[:rails_resource][:models] }
+
+        it { is_expected.not_to be_empty }
+      end
+      context '.controllers' do
+        subject { instance.domain_data[:rails_resource][:controllers] }
+
+        it { is_expected.to be_empty }
+      end
+    end
+
+    context '.rails_structure' do
+      context '.models' do
+        subject { instance.domain_data[:rails_structure][:models] }
+
+        # it { is_expected.not_to be_empty }
+      end
+      context '.controllers' do
+        subject { instance.domain_data[:rails_structure][:controllers] }
+
+        it { is_expected.to be_empty }
+      end
     end
 
     context '.dictionary->items' do

@@ -8,7 +8,9 @@ AllCops:
     - "_/**/*"
     - "spec/sample_input/**/*"
     - "spec/sample_output/**/*"
-    - "lib/k_domain/raw_db_schema/template.rb"
+    - "templates/**/*"
+    - "lib/k_domain/schemas/domain/old/**/*"
+    - "spec/k_domain/ruby_loader/**/*"
 
 Metrics/PerceivedComplexity:
   Exclude:
