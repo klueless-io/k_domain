@@ -1,6 +1,7 @@
 # frozen_string_literal: true
-
 class Sample < ActiveRecord::Base
+  extend RailsUpgrade
+
   default_scope { where(deleted: false) }
 
   scope :has_geo, -> { where.not(longitude: nil, latitude: nil) }

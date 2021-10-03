@@ -11,8 +11,8 @@ require 'k_domain/raw_db_schema/load'
 require 'k_domain/domain_model/transform'
 require 'k_domain/domain_model/transform_steps/_'
 require 'k_domain/domain_model/load'
-require 'k_domain/rails_code_extractor/load_shim'
-# require 'k_domain/rails_code_extractor/extract_model'
+require 'k_domain/rails_code_extractor/shim_loader'
+require 'k_domain/rails_code_extractor/extract_model'
 
 # # This is useful if you want to initialize structures via Hash
 # class SymbolizeStruct < Dry::Struct

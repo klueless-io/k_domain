@@ -1,10 +1,10 @@
 module ActiveRecord
-  def self.all_loaded_classes
-    @all_loaded_classes ||= []
+  def self.current_class
+    @current_class ||= nil
   end
 
-  def self.last_loaded_class
-    @last_loaded_class ||= nil
+  def self.current_class=(value)
+    @current_class = value
   end
 
   class Base
@@ -15,17 +15,11 @@ module ActiveRecord
     end
 
     def self.class_info
-      return @class_info if defined? @class_info
+      return ActiveRecord.current_class if ActiveRecord.current_class
 
-      ActiveRecord.last_loaded_class = name
-
-      @class_info = {
+      ActiveRecord.current_class = {
         class_name: name
       }
-
-      ActiveRecord.all_loaded_classes << class_info
-
-      @class_info
     end
 
     def self.set(key, value)
@@ -158,8 +152,6 @@ module ActiveRecord
     def self.validate(*names, **opts, &block)
       block_source = nil
       block_source = lambda_source(block, 'validate') if block_given?
-
-      set(:default_scope, opts.merge(block: block_source))
 
       add(:validate, {
             names: names,
