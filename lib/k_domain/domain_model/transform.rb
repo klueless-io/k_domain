@@ -71,7 +71,7 @@ module KDomain
 
       def step9
         Step9RailsStructureModels.run(domain_data, erd_path: erd_path)
-        write(step: '8-rails-structure-models')
+        write(step: '9-rails-structure-models')
       end
 
       def write(step: nil)

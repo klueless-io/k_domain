@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe KDomain::RailsCodeExtractor::LoadShim do
+RSpec.describe KDomain::RailsCodeExtractor::ShimLoader do
   let(:instance) { described_class.new }
 
   describe '#initialize' do
@@ -58,5 +58,33 @@ RSpec.describe KDomain::RailsCodeExtractor::LoadShim do
         end
       end
     end
+  end
+
+  describe '#call' do
+    before do
+      instance.register(:active_record, KDomain::Gem.resource('templates/active_record_shims.rb'))
+      instance.register(:fake_module  , KDomain::Gem.resource('templates/fake_module_shims.rb'))
+      instance.register(:bad  , 'bad_shims.rb')
+    end
+
+    context 'before call' do
+      it do
+        expect(defined?(ActiveRecord)).to be_falsey
+        expect(defined?(Rails)).to be_falsey
+        expect(defined?(ActsAsCommentable)).to be_falsey
+      end
+
+      context 'after call' do
+        before { instance.call }
+
+        it do
+          expect(defined?(ActiveRecord)).to be_truthy
+          expect(defined?(ActiveRecord::Base)).to be_truthy
+          expect(defined?(Rails)).to be_truthy
+          expect(defined?(ActsAsCommentable)).to be_truthy
+        end
+      end
+    end
+  
   end
 end
