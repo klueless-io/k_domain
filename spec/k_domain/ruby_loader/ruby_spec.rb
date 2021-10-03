@@ -4,7 +4,7 @@
 
 # require_relative 'ruby_shims'
 
-# path = "/Users/davidcruwys/dev/printspeak/printspeak-master/app/models/"
+# path = '/Users/davidcruwys/dev/printspeak/printspeak-master/app/models/'
 # files = %w[
 #   account_history_data
 #   activity
@@ -154,47 +154,47 @@
 #   user
 #   wip
 #   workflow
-# ][1..10]# .select { |n| n == 'adjustment' } # .take(1)
+# ][1..10] # .select { |n| n == 'adjustment' } # .take(1)
 
 # def load_retry(file, path, times)
 #   return if times < 0
 
 #   log.info(path)
 #   load(path)
-  
+
 #   get_method_info(file)
-# rescue => ex
+# rescue StandardError => e
 #   # if ex.is_a?(NoMethodError)
 #   #   log.exception(ex)
 #   #   return
 #   # end
-#   if ex.is_a?(NameError)
-#     log.kv('add module', ex.name)
-#     eval("module #{ex.name}; end")
-#     return load_retry(path, times-1)
+#   if e.is_a?(NameError)
+#     log.kv('add module', e.name)
+#     eval("module #{e.name}; end")
+#     return load_retry(path, times - 1)
 #   end
-#   log.exception(ex)
+#   log.exception(e)
 # end
 
 # def get_method_info(file)
 #   # puts file
 #   klass = case file
-#   when 'clearbit_quota'
-#     ClearbitQuota
-#   when 'account_history_data'
-#     AccountHistoryData    
-#   else
-#     Module.const_get(file.classify)
-#   end
+#           when 'clearbit_quota'
+#             ClearbitQuota
+#           when 'account_history_data'
+#             AccountHistoryData
+#           else
+#             Module.const_get(file.classify)
+#           end
 
 #   class_info = Peeky.api.build_class_info(klass.new)
 
 #   puts Peeky.api.render_class(:class_interface, class_info: class_info)
 
 #   # puts class_info
-# rescue => ex
-#   log.exception(ex)
-# end  
+# rescue StandardError => e
+#   log.exception(e)
+# end
 
 # files.each do |file|
 #   # EVAL will not work (YET)
@@ -205,8 +205,8 @@
 #   # eval(ruby_file)
 
 #   load_retry(file, File.join(path, "#{file}.rb"), 10)
-# rescue => ex
-#   log.exception(ex)
+# rescue StandardError => e
+#   log.exception(e)
 # end
 
 # shim_writer

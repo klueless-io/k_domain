@@ -25,7 +25,7 @@ RSpec.describe KDomain::RawDbSchema::Load do
 
       context '.to_h' do
         subject { instance.to_h }
-  
+
         it { is_expected.to be_nil }
       end
     end
@@ -35,10 +35,10 @@ RSpec.describe KDomain::RawDbSchema::Load do
 
       context '.to_h' do
         subject { instance.to_h }
-  
+
         it { is_expected.not_to be_nil }
       end
-  
+
       context '.data' do
         subject { instance.data }
 

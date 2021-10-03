@@ -20,6 +20,7 @@ module KDomain
         @erd_path         = erd_path
       end
 
+      # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
       def call
         valid = true
         valid &&= step1
@@ -27,7 +28,8 @@ module KDomain
         valid &&= step3
         valid &&= step4
         valid &&= step5
-        valid &&= step8 # NOT SURE WHERE THIS BELONGS
+        valid &&= step8
+        valid &&= step9
 
         raise 'DomainModal transform failed' unless valid
 
@@ -35,6 +37,7 @@ module KDomain
 
         nil
       end
+      # rubocop:enable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
 
       def step1
         Step1AttachDbSchema.run(domain_data, db_schema: db_schema)
@@ -62,8 +65,13 @@ module KDomain
       end
 
       def step8
-        Step8LocateRailsModels.run(domain_data, erd_path: erd_path)
-        write(step: '8-rails-files-models')
+        Step8RailsResourceModels.run(domain_data, erd_path: erd_path)
+        write(step: '8-rails-resource-models')
+      end
+
+      def step9
+        Step9RailsStructureModels.run(domain_data, erd_path: erd_path)
+        write(step: '8-rails-structure-models')
       end
 
       def write(step: nil)
@@ -76,20 +84,21 @@ module KDomain
         File.write(file, JSON.pretty_generate(domain_data))
       end
 
+      # rubocop:disable Metrics/MethodLength
       def domain_data
         # The initial domain model structure is created here, but populated during the workflows.
         @domain_data ||= {
           domain: {
             models: [],
-            erd_files: [],
-          },
-          rails: {
-            models: [],
-            controllers: [],
+            erd_files: []
           },
           rails_resource: {
             models: [],
-            controllers: [],
+            controllers: []
+          },
+          rails_structure: {
+            models: [],
+            controllers: []
           },
           dictionary: {
             items: []
@@ -105,6 +114,8 @@ module KDomain
           }
         }
       end
+
+      # rubocop:enable Metrics/MethodLength
     end
   end
 end

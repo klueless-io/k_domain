@@ -90,7 +90,7 @@ RSpec.describe 'KDomain::RawDbSchema::SamplePrinter' do
         tables: { skip: true },
         foreign_keys: { skip: true },
         indexes: { skip: true },
-        meta: { 
+        meta: {
           unique_keys: {
             columns: [
               :type,
