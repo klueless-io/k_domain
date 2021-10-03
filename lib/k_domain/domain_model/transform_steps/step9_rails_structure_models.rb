@@ -2,10 +2,8 @@
 
 # Locate rails model files
 class Step9RailsStructureModels < KDomain::DomainModel::Step
-  attr_accessor :ruby_code
-
   def call
-    raise 'ERD path not supplied' if opts[:erd_path].nil?
+    raise 'ERD path not supplied' unless opts[:erd_path]
 
     self.rails_structure_models = rails_resource_models.map do |resource|
       process_resource(OpenStruct.new(resource))
@@ -15,8 +13,6 @@ class Step9RailsStructureModels < KDomain::DomainModel::Step
   private
 
   def process_resource(resource)
-    erd_path = opts[:erd_path]
-    puts erd_path
     @model = {
       model_name: resource.model_name,
       table_name: resource.table_name,
@@ -28,6 +24,28 @@ class Step9RailsStructureModels < KDomain::DomainModel::Step
       functions: {}
     }
 
+    return @model unless  resource.exist
+
+    @model[:behaviours] = extract_model_behavior(resource.file)
+      
     @model
+  end
+
+  def extract_model_behavior(file)
+    extractor.extract(file)
+    extractor.model
+  end
+
+  def extractor
+    @extractor ||= KDomain::RailsCodeExtractor::ExtractModel.new(shim_loader)
+  end
+
+  def shim_loader
+    return opts[:shim_loader] if !opts[:shim_loader].nil? && opts[:shim_loader].is_a?(KDomain::RailsCodeExtractor::ShimLoader)
+
+    shim_loader = KDomain::RailsCodeExtractor::ShimLoader.new
+    shim_loader.register(:fake_module  , KDomain::Gem.resource('templates/fake_module_shims.rb'))
+    shim_loader.register(:active_record, KDomain::Gem.resource('templates/active_record_shims.rb'))
+    shim_loader
   end
 end

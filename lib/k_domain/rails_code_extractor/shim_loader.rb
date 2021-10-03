@@ -8,20 +8,17 @@
 # 2. Inject fake module/classes that would otherwise break code loading with various exceptions
 module KDomain
   module RailsCodeExtractor
-    class LoadShim
+    class ShimLoader
       include KLog::Logging
 
       attr_reader :shim_files
-
-      attr_reader :dsl_shim_file
-      attr_reader :fake_module_file
 
       def initialize
         @shim_files = []
       end
 
       def call
-        log.kv 'preload', preload
+        shim_files.select { |sf| sf[:exist] }.each { |sf| require sf[:file] }
       end
 
       def register(name, file)
