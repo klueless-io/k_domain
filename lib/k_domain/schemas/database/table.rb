@@ -19,7 +19,7 @@ module KDomain
         attribute :null?                , Types::Strict::Bool.optional.default(nil)
         attribute :limit?               , Types::Strict::Integer.optional.default(nil)
       end
-  
+
       attribute :name                 , Types::Strict::String
       attribute :primary_key          , Types::Strict::String.optional.default(nil)
       attribute :primary_key_type     , Types::Strict::String.optional.default(nil)

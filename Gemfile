@@ -28,8 +28,8 @@ end
 if ENV['KLUE_LOCAL_GEMS']&.to_s&.downcase == 'true'
   group :development, :test do
     puts 'Using Local GEMs'
-    gem 'peeky'                   , path: '../peeky'
     gem 'k_log'                   , path: '../k_log'
     gem 'k_util'                  , path: '../k_util'
+    gem 'peeky'                   , path: '../peeky'
   end
 end

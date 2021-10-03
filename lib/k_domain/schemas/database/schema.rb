@@ -15,7 +15,7 @@ module KDomain
         attribute :key                  , Types::Strict::String
         attribute :keys                 , Types::Strict::Array
       end
-  
+
       class Meta < Dry::Struct
         attribute :rails                , Types::Strict::Integer
         attribute :db_info              , KDomain::Database::Schema::DbInfo

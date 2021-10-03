@@ -3,6 +3,7 @@
 # Domain class holds a list of the entities
 module KDomain
   module DomainModel
+    # rubocop:disable Metrics/BlockLength
     class ErdFile < Dry::Struct
       attribute :name                         , Types::Strict::String
       attribute :name_plural                  , Types::Strict::String
@@ -76,5 +77,6 @@ module KDomain
         end
       end
     end
+    # rubocop:enable Metrics/BlockLength
   end
 end

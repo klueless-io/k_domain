@@ -24,7 +24,8 @@ class Step4AttachErdFiles < KDomain::DomainModel::Step
   end
 
   def load_dsl(model)
-    print '.'
+    # this should be a configuration
+    # print '.'
 
     reset_dsl
 

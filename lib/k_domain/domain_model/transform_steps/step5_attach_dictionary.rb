@@ -27,7 +27,8 @@ class Step5AttachDictionary < KDomain::DomainModel::Step
       entry[:model_count] = entry[:model_count] + 1
 
       unless entry[:types].include?(column_type)
-        log.warn("#{model_name} has a type mismatch for column name: #{column_name}")
+        # ADD to investigate
+        # log.warn("#{model_name} has a type mismatch for column name: #{column_name}")
         entry[:types] << column_type
         entry[:type_count] = entry[:type_count] + 1
       end

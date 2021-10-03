@@ -5,7 +5,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
 
   include_examples :load_domain_model
 
-  let(:root_graph) {
+  let(:root_graph) do
     {
       investigate: { skip: true },
       domain: { skip: true },
@@ -13,7 +13,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
       rail_resource: { skip: true },
       database: { skip: true }
     }
-  }
+  end
 
   # let(:load_domain_model_file) { 'spec/sample_output/printspeak/domain_model.json' }
 
@@ -137,7 +137,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
               :key,
               { message: { width: 200 } }
             ]
-          },
+          }
         }
       }
     end
@@ -163,7 +163,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
               :table_name,
               { file: { width: 200 } },
               :exist,
-              { state: { width: 40 } },
+              { state: { width: 40 } }
             ]
           },
           controllers: { skip: true }
