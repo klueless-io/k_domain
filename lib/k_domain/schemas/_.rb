@@ -7,6 +7,7 @@ module Types
 end
 
 require_relative 'rails_resource'
+require_relative 'rails_structure'
 require_relative 'investigate'
 require_relative 'database/_'
 require_relative 'dictionary'

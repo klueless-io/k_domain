@@ -45,6 +45,122 @@ RSpec.describe KDomain::DomainModel::Load do
         it { is_expected.not_to be_nil }
       end
 
+      context '.rails_resource' do
+        subject { instance.data.rails_resource }
+
+        it { is_expected.not_to be_nil }
+
+        context '.models.first' do
+          subject { instance.data.rails_resource.models.first }
+
+          it do
+            is_expected.to have_attributes(
+              model_name: be_a(String),
+              table_name: be_a(String),
+              file: be_a(String),
+              exist: eq(false),
+              state: be_a(String)
+            )
+          end
+        end
+      end
+
+      context '.rails_structure' do
+        subject { instance.data.rails_structure }
+
+        it { is_expected.not_to be_nil }
+
+        context '.models.first' do
+          subject { instance.data.rails_structure.models.first }
+
+          it do
+            is_expected.to have_attributes(
+              model_name: be_a(String),
+              table_name: be_a(String),
+              file: be_a(String),
+              exist: eq(false),
+              state: be_a(String),
+              code: be_a(String),
+              behaviours: be_a(KDomain::Schemas::RailsStructure::Behaviours),
+              functions: be_a(KDomain::Schemas::RailsStructure::Functions)
+            )
+          end
+        end
+
+        context '.model#sample' do
+          subject { sample }
+
+          let(:sample) { instance.data.rails_structure.models.find { |m| m.model_name == 'sample' } }
+
+          it do
+            is_expected.to have_attributes(
+              model_name: be_a(String),
+              table_name: be_a(String),
+              file: be_a(String),
+              exist: eq(true),
+              state: be_a(String),
+              code: be_a(String),
+              behaviours: be_a(KDomain::Schemas::RailsStructure::Behaviours),
+              functions: be_a(KDomain::Schemas::RailsStructure::Functions)
+            )
+          end
+
+          context '.behaviours' do
+            subject { sample.behaviours }
+
+            it do
+              is_expected.to have_attributes(
+                class_name: 'Sample',
+                default_scope: have_attributes(block: '{ where(deleted: false) }'),
+                scopes: have_attributes(length: 2),
+                belongs_to: have_attributes(length: 3),
+                has_one: have_attributes(length: 1),
+                has_many: have_attributes(length: 6),
+                has_and_belongs_to_many: have_attributes(length: 2),
+                validate: have_attributes(length: 3),
+                validates: have_attributes(length: 5),
+                attr_accessor: have_attributes(length: 2),
+                attr_reader: have_attributes(length: 1),
+                attr_writer: have_attributes(length: 3)
+              )
+            end
+          end
+
+          context '.functions' do
+            subject { sample.functions }
+          end
+        end
+
+        context '.controllers.first' do
+          subject { instance.data.rails_structure.controllers.first }
+
+          it { is_expected.to be_nil }
+        end
+      end
+
+      context '.dictionary' do
+        subject { instance.data.dictionary }
+
+        it { is_expected.not_to be_nil }
+
+        context '.first' do
+          subject { instance.data.dictionary.items.first }
+
+          it do
+            is_expected.to have_attributes(
+              name: be_a(String),
+              type: be_a(String),
+              label: be_a(String),
+              segment: be_a(String),
+              models: be_a(Array),
+              model_count: be_a(Integer),
+              types: be_a(Array),
+              type_count: be_a(Integer)
+            )
+          end
+        end
+      end
+
       context '.investigate' do
         subject { instance.data.investigate }
 
@@ -53,17 +169,17 @@ RSpec.describe KDomain::DomainModel::Load do
         context '.issues' do
           subject { instance.data.investigate.issues }
 
-          it { is_expected.to be_an(Array) }
+          it { is_expected.to be_a(Array) }
 
           context '.first' do
             subject { instance.data.investigate.issues.first }
 
             it do
               is_expected.to have_attributes(
-                step: be_an(String),
-                location: be_an(String),
-                key: be_an(String),
-                message: be_an(String)
+                step: be_a(String),
+                location: be_a(String),
+                key: be_a(String),
+                message: be_a(String)
               )
             end
           end
@@ -85,20 +201,20 @@ RSpec.describe KDomain::DomainModel::Load do
 
             it do
               is_expected.to have_attributes(
-                name: be_an(String),
-                name_plural: be_an(String),
-                table_name: be_an(String),
+                name: be_a(String),
+                name_plural: be_a(String),
+                table_name: be_a(String),
                 pk: have_attributes(
-                  name: be_an(String),
-                  type: be_an(String),
+                  name: be_a(String),
+                  type: be_a(String),
                   exist: eq(true)
                 ),
                 erd_location: have_attributes(
-                  file: be_an(String),
+                  file: be_a(String),
                   exist: eq(false),
-                  state: be_an(Array)
+                  state: be_a(Array)
                 ),
-                columns: be_an(Array)
+                columns: be_a(Array)
               )
             end
 
@@ -112,19 +228,19 @@ RSpec.describe KDomain::DomainModel::Load do
 
                 it do
                   is_expected.to have_attributes(
-                    name: be_an(String),
-                    name_plural: be_an(String),
-                    type: be_an(Symbol),
+                    name: be_a(String),
+                    name_plural: be_a(String),
+                    type: be_a(Symbol),
                     precision: be_nil,
                     scale: be_nil,
                     default: be_nil,
                     null: be_nil,
                     limit: be_nil,
                     array: be_nil,
-                    structure_type: be_an(Symbol),
+                    structure_type: be_a(Symbol),
                     foreign_key: eq(false),
-                    foreign_table: be_an(String),
-                    foreign_table_plural: be_an(String)
+                    foreign_table: be_a(String),
+                    foreign_table_plural: be_a(String)
                   )
                 end
               end
@@ -145,18 +261,18 @@ RSpec.describe KDomain::DomainModel::Load do
             context '.source' do
               it do
                 is_expected.to have_attributes(
-                  name: be_an(String),
-                  name_plural: be_an(String),
-                  dsl_file: be_an(String),
+                  name: be_a(String),
+                  name_plural: be_a(String),
+                  dsl_file: be_a(String),
                   source: have_attributes(
                     ruby: be_a(String),
                     public: be_a(String),
                     private: be_a(String),
                     all_methods: have_attributes(
-                      klass: be_an(Array),
-                      instance: be_an(Array),
-                      instance_private: be_an(Array),
-                      instance_public: be_an(Array)
+                      klass: be_a(Array),
+                      instance: be_a(Array),
+                      instance_private: be_a(Array),
+                      instance_public: be_a(Array)
                     )
                   )
                 )
@@ -220,9 +336,9 @@ RSpec.describe KDomain::DomainModel::Load do
 
               it do
                 is_expected.to have_attributes(
-                  default_scope: be_an(String),
-                  scopes: be_an(Array),
-                  belongs_to: be_an(Array)
+                  default_scope: be_a(String),
+                  scopes: be_a(Array),
+                  belongs_to: be_a(Array)
                 )
               end
 
@@ -303,29 +419,6 @@ RSpec.describe KDomain::DomainModel::Load do
                   )
                 end
               end
-            end
-          end
-        end
-
-        context '.dictionary' do
-          subject { instance.data.dictionary }
-
-          it { is_expected.not_to be_nil }
-
-          context '.first' do
-            subject { instance.data.dictionary.items.first }
-
-            it do
-              is_expected.to have_attributes(
-                name: be_an(String),
-                type: be_an(String),
-                label: be_an(String),
-                segment: be_an(String),
-                models: be_an(Array),
-                model_count: be_an(Integer),
-                types: be_an(Array),
-                type_count: be_an(Integer)
-              )
             end
           end
         end

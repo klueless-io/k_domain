@@ -64,7 +64,7 @@ RSpec.describe KDomain::RailsCodeExtractor::ShimLoader do
     before do
       instance.register(:active_record, KDomain::Gem.resource('templates/active_record_shims.rb'))
       instance.register(:fake_module  , KDomain::Gem.resource('templates/fake_module_shims.rb'))
-      instance.register(:bad  , 'bad_shims.rb')
+      instance.register(:bad , 'bad_shims.rb')
     end
 
     context 'before call' do
@@ -85,6 +85,5 @@ RSpec.describe KDomain::RailsCodeExtractor::ShimLoader do
         end
       end
     end
-  
   end
 end

@@ -33,8 +33,9 @@ module KDomain
         @shims_loaded = true
       end
 
+      # rubocop:disable Security/Eval,Style/EvalWithLocation,Style/DocumentDynamicEvalDefinition,Metrics/AbcSize
       def load_retry(file, times)
-        return if times < 0
+        return if times.negative?
 
         load(file)
 
@@ -51,26 +52,7 @@ module KDomain
         end
         log.exception(e)
       end
-      
-      # def get_method_info(file)
-      #   # puts file
-      #   klass = case file
-      #           when 'clearbit_quota'
-      #             ClearbitQuota
-      #           when 'account_history_data'
-      #             AccountHistoryData
-      #           else
-      #             Module.const_get(file.classify)
-      #           end
-      
-      #   class_info = Peeky.api.build_class_info(klass.new)
-      
-      #   puts Peeky.api.render_class(:class_interface, class_info: class_info)
-      
-      #   # puts class_info
-      # rescue StandardError => e
-      #   log.exception(e)
-      # end
+      # rubocop:enable Security/Eval,Style/EvalWithLocation,Style/DocumentDynamicEvalDefinition,Metrics/AbcSize
     end
   end
 end
