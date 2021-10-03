@@ -8,7 +8,7 @@ module KDomain
       attribute :using                , Types::Nominal::String
       attribute :order?               , Types::Nominal::Hash
       attribute :where?               , Types::Nominal::Any.optional.default(nil)
-      attribute :unique? , Types::Nominal::Any.optional.default(nil)
+      attribute :unique?              , Types::Nominal::Any.optional.default(nil)
     end
   end
 end

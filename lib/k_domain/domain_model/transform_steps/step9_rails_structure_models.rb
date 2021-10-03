@@ -27,13 +27,33 @@ class Step9RailsStructureModels < KDomain::DomainModel::Step
     return @model unless  resource.exist
 
     @model[:behaviours] = extract_model_behavior(resource.file)
-      
+    @model[:functions] = extract_model_functions(resource.file)
+
     @model
   end
 
   def extract_model_behavior(file)
     extractor.extract(file)
     extractor.model
+  end
+
+  def extract_model_functions(file)
+    klass_name = File.basename(file, File.extname(file))
+
+    klass = case klass_name
+            when 'clearbit_quota'
+              ClearbitQuota
+            when 'account_history_data'
+              AccountHistoryData
+            else
+              Module.const_get(klass_name.classify)
+            end
+
+    class_info = Peeky.api.build_class_info(klass.new)
+
+    class_info.to_h
+  rescue StandardError => e
+    log.exception(e)
   end
 
   def extractor

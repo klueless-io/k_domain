@@ -2119,8 +2119,8 @@
         "name_plural": "samples",
         "dsl_file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/sample.rb",
         "source": {
-          "ruby": "# frozen_string_literal: true\nclass Sample < ActiveRecord::Base\n  extend RailsUpgrade\n\n  default_scope { where(deleted: false) }\n\n  scope :has_geo, -> { where.not(longitude: nil, latitude: nil) }\n\n  scope :has_address, lambda {\n    where.not(address: nil)\n  }\n\n  belongs_to :app_user\n\n  belongs_to :tenant, **belongs_to_required\n\n  belongs_to :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_one :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :tasks, as: :taskable\n\n  has_many :messages, class_name: 'CampaignMessage', dependent: :destroy\n  has_many :trackers, through: :messages\n  has_many :hits, through: :trackers\n  has_many :orders, inverse_of: :company\n\n  has_and_belongs_to_many :trackers, -> { uniq }\n  has_and_belongs_to_many :contact_lists, -> { uniq }, autosave: true\n\n  validate :ensure_valid_financial_year, on: :create\n  validate :name_must_be_unique, :name_must_not_be_in_global\n  validate :check_email_valid\n\n  validates :user, presence: { message: 'must exist' }\n  validates :tenant, presence: { message: 'must exist' } if rails4?\n  validates :first_name, presence: { message: 'First Name is required.' }, on: :create\n  validates :email, format: /\\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}\\z/i\n  validates :password, length: { minimum: 8, message: '8+ characters' }, unless: :skip_password_validation\n\n  # class methods\n  def self.class_method1\n  end\n\n  def self.class_method2(was, here)\n  end\n\n  def self.class_method3(key: 1, another_key: nil)\n  end\n\n  # public methods\n  def public_method1\n  end\n\n  def public_method2(was, here)\n  end\n\n  def public_method3(key: 1, another_key: nil)\n  end\n\n  private\n\n  # private methods\n  def some_private_method\n  end\n\n  def some_method(was, here)\n  end\n\n  def some_method(key: 1, another_key: nil)\n  end\nend\n\n# shops\n#\n# id                                       bigint\n# app_user_id                              integer\n# name                                     text\n# address                                  text\n# longitude                                float\n# latitude                                 float\n",
-          "public": "# frozen_string_literal: true\nclass Sample < ActiveRecord::Base\n  extend RailsUpgrade\n\n  default_scope { where(deleted: false) }\n\n  scope :has_geo, -> { where.not(longitude: nil, latitude: nil) }\n\n  scope :has_address, lambda {\n    where.not(address: nil)\n  }\n\n  belongs_to :app_user\n\n  belongs_to :tenant, **belongs_to_required\n\n  belongs_to :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_one :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :tasks, as: :taskable\n\n  has_many :messages, class_name: 'CampaignMessage', dependent: :destroy\n  has_many :trackers, through: :messages\n  has_many :hits, through: :trackers\n  has_many :orders, inverse_of: :company\n\n  has_and_belongs_to_many :trackers, -> { uniq }\n  has_and_belongs_to_many :contact_lists, -> { uniq }, autosave: true\n\n  validate :ensure_valid_financial_year, on: :create\n  validate :name_must_be_unique, :name_must_not_be_in_global\n  validate :check_email_valid\n\n  validates :user, presence: { message: 'must exist' }\n  validates :tenant, presence: { message: 'must exist' } if rails4?\n  validates :first_name, presence: { message: 'First Name is required.' }, on: :create\n  validates :email, format: /\\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}\\z/i\n  validates :password, length: { minimum: 8, message: '8+ characters' }, unless: :skip_password_validation\n\n  # class methods\n  def self.class_method1\n  end\n\n  def self.class_method2(was, here)\n  end\n\n  def self.class_method3(key: 1, another_key: nil)\n  end\n\n  # public methods\n  def public_method1\n  end\n\n  def public_method2(was, here)\n  end\n\n  def public_method3(key: 1, another_key: nil)\n  end\n\n  ",
+          "ruby": "# frozen_string_literal: true\nclass Sample < ActiveRecord::Base\n  extend RailsUpgrade\n\n  default_scope { where(deleted: false) }\n\n  scope :has_geo, -> { where.not(longitude: nil, latitude: nil) }\n\n  scope :has_address, lambda {\n    where.not(address: nil)\n  }\n\n  belongs_to :app_user\n\n  belongs_to :tenant, **belongs_to_required\n\n  belongs_to :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_one :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :tasks, as: :taskable\n\n  has_many :messages, class_name: 'CampaignMessage', dependent: :destroy\n  has_many :trackers, through: :messages\n  has_many :hits, through: :trackers\n  has_many :orders, inverse_of: :company\n\n  has_and_belongs_to_many :trackers, -> { uniq }\n  has_and_belongs_to_many :contact_lists, -> { uniq }, autosave: true\n\n  validate :ensure_valid_financial_year, on: :create\n  validate :name_must_be_unique, :name_must_not_be_in_global\n  validate :check_email_valid\n\n  validates :user, presence: { message: 'must exist' }\n  validates :tenant, presence: { message: 'must exist' } if rails4?\n  validates :first_name, presence: { message: 'First Name is required.' }, on: :create\n  validates :email, format: /\\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}\\z/i\n  validates :password, length: { minimum: 8, message: '8+ characters' }, unless: :skip_password_validation\n\n  attr_accessor :access1\n  attr_accessor :access2\n\n  attr_reader :reader3\n  attr_writer :write4, :write5, :write6\n\n  # class methods\n  def self.class_method1\n  end\n\n  def self.class_method2(was, here)\n  end\n\n  def self.class_method3(key: 1, another_key: nil)\n  end\n\n  # public methods\n  def public_method1\n  end\n\n  def public_method2(was, here)\n  end\n\n  def public_method3(key: 1, another_key: nil)\n  end\n\n  private\n\n  # private methods\n  def some_private_method\n  end\n\n  def some_method(was, here)\n  end\n\n  def some_method(key: 1, another_key: nil)\n  end\nend\n\n# shops\n#\n# id                                       bigint\n# app_user_id                              integer\n# name                                     text\n# address                                  text\n# longitude                                float\n# latitude                                 float\n",
+          "public": "# frozen_string_literal: true\nclass Sample < ActiveRecord::Base\n  extend RailsUpgrade\n\n  default_scope { where(deleted: false) }\n\n  scope :has_geo, -> { where.not(longitude: nil, latitude: nil) }\n\n  scope :has_address, lambda {\n    where.not(address: nil)\n  }\n\n  belongs_to :app_user\n\n  belongs_to :tenant, **belongs_to_required\n\n  belongs_to :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_one :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :tasks, as: :taskable\n\n  has_many :messages, class_name: 'CampaignMessage', dependent: :destroy\n  has_many :trackers, through: :messages\n  has_many :hits, through: :trackers\n  has_many :orders, inverse_of: :company\n\n  has_and_belongs_to_many :trackers, -> { uniq }\n  has_and_belongs_to_many :contact_lists, -> { uniq }, autosave: true\n\n  validate :ensure_valid_financial_year, on: :create\n  validate :name_must_be_unique, :name_must_not_be_in_global\n  validate :check_email_valid\n\n  validates :user, presence: { message: 'must exist' }\n  validates :tenant, presence: { message: 'must exist' } if rails4?\n  validates :first_name, presence: { message: 'First Name is required.' }, on: :create\n  validates :email, format: /\\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}\\z/i\n  validates :password, length: { minimum: 8, message: '8+ characters' }, unless: :skip_password_validation\n\n  attr_accessor :access1\n  attr_accessor :access2\n\n  attr_reader :reader3\n  attr_writer :write4, :write5, :write6\n\n  # class methods\n  def self.class_method1\n  end\n\n  def self.class_method2(was, here)\n  end\n\n  def self.class_method3(key: 1, another_key: nil)\n  end\n\n  # public methods\n  def public_method1\n  end\n\n  def public_method2(was, here)\n  end\n\n  def public_method3(key: 1, another_key: nil)\n  end\n\n  ",
           "private": "private\n\n  # private methods\n  def some_private_method\n  end\n\n  def some_method(was, here)\n  end\n\n  def some_method(key: 1, another_key: nil)\n  end\nend\n\n# shops\n#\n# id                                       bigint\n# app_user_id                              integer\n# name                                     text\n# address                                  text\n# longitude                                float\n# latitude                                 float\n",
           "all_methods": {
             "klass": [
@@ -3737,7 +3737,7 @@
         "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/sample.rb",
         "exist": true,
         "state": "has_ruby_model",
-        "code": "# frozen_string_literal: true\nclass Sample < ActiveRecord::Base\n  extend RailsUpgrade\n\n  default_scope { where(deleted: false) }\n\n  scope :has_geo, -> { where.not(longitude: nil, latitude: nil) }\n\n  scope :has_address, lambda {\n    where.not(address: nil)\n  }\n\n  belongs_to :app_user\n\n  belongs_to :tenant, **belongs_to_required\n\n  belongs_to :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_one :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :tasks, as: :taskable\n\n  has_many :messages, class_name: 'CampaignMessage', dependent: :destroy\n  has_many :trackers, through: :messages\n  has_many :hits, through: :trackers\n  has_many :orders, inverse_of: :company\n\n  has_and_belongs_to_many :trackers, -> { uniq }\n  has_and_belongs_to_many :contact_lists, -> { uniq }, autosave: true\n\n  validate :ensure_valid_financial_year, on: :create\n  validate :name_must_be_unique, :name_must_not_be_in_global\n  validate :check_email_valid\n\n  validates :user, presence: { message: 'must exist' }\n  validates :tenant, presence: { message: 'must exist' } if rails4?\n  validates :first_name, presence: { message: 'First Name is required.' }, on: :create\n  validates :email, format: /\\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}\\z/i\n  validates :password, length: { minimum: 8, message: '8+ characters' }, unless: :skip_password_validation\n\n  # class methods\n  def self.class_method1\n  end\n\n  def self.class_method2(was, here)\n  end\n\n  def self.class_method3(key: 1, another_key: nil)\n  end\n\n  # public methods\n  def public_method1\n  end\n\n  def public_method2(was, here)\n  end\n\n  def public_method3(key: 1, another_key: nil)\n  end\n\n  private\n\n  # private methods\n  def some_private_method\n  end\n\n  def some_method(was, here)\n  end\n\n  def some_method(key: 1, another_key: nil)\n  end\nend\n\n# shops\n#\n# id                                       bigint\n# app_user_id                              integer\n# name                                     text\n# address                                  text\n# longitude                                float\n# latitude                                 float\n",
+        "code": "# frozen_string_literal: true\nclass Sample < ActiveRecord::Base\n  extend RailsUpgrade\n\n  default_scope { where(deleted: false) }\n\n  scope :has_geo, -> { where.not(longitude: nil, latitude: nil) }\n\n  scope :has_address, lambda {\n    where.not(address: nil)\n  }\n\n  belongs_to :app_user\n\n  belongs_to :tenant, **belongs_to_required\n\n  belongs_to :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_one :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :tasks, as: :taskable\n\n  has_many :messages, class_name: 'CampaignMessage', dependent: :destroy\n  has_many :trackers, through: :messages\n  has_many :hits, through: :trackers\n  has_many :orders, inverse_of: :company\n\n  has_and_belongs_to_many :trackers, -> { uniq }\n  has_and_belongs_to_many :contact_lists, -> { uniq }, autosave: true\n\n  validate :ensure_valid_financial_year, on: :create\n  validate :name_must_be_unique, :name_must_not_be_in_global\n  validate :check_email_valid\n\n  validates :user, presence: { message: 'must exist' }\n  validates :tenant, presence: { message: 'must exist' } if rails4?\n  validates :first_name, presence: { message: 'First Name is required.' }, on: :create\n  validates :email, format: /\\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}\\z/i\n  validates :password, length: { minimum: 8, message: '8+ characters' }, unless: :skip_password_validation\n\n  attr_accessor :access1\n  attr_accessor :access2\n\n  attr_reader :reader3\n  attr_writer :write4, :write5, :write6\n\n  # class methods\n  def self.class_method1\n  end\n\n  def self.class_method2(was, here)\n  end\n\n  def self.class_method3(key: 1, another_key: nil)\n  end\n\n  # public methods\n  def public_method1\n  end\n\n  def public_method2(was, here)\n  end\n\n  def public_method3(key: 1, another_key: nil)\n  end\n\n  private\n\n  # private methods\n  def some_private_method\n  end\n\n  def some_method(was, here)\n  end\n\n  def some_method(key: 1, another_key: nil)\n  end\nend\n\n# shops\n#\n# id                                       bigint\n# app_user_id                              integer\n# name                                     text\n# address                                  text\n# longitude                                float\n# latitude                                 float\n",
         "behaviours": {
           "class_name": "Sample",
           "default_scope": {
@@ -3923,9 +3923,132 @@
                 "unless": "skip_password_validation"
               }
             }
+          ],
+          "attr_accessor": [
+            "access1",
+            "access2"
+          ],
+          "attr_reader": [
+            "reader3"
+          ],
+          "attr_writer": [
+            "write4",
+            "write5",
+            "write6"
           ]
         },
         "functions": {
+          "class_name": "Sample",
+          "module_name": "Sample",
+          "class_full_name": "Sample",
+          "attr_accessors": [
+
+          ],
+          "attr_readers": [
+
+          ],
+          "attr_writers": [
+
+          ],
+          "public_methods": [
+            {
+              "name": "public_method1",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "public_method2",
+              "paramaters": [
+                {
+                  "name": "was",
+                  "type": "param_required",
+                  "default_value": null
+                },
+                {
+                  "name": "here",
+                  "type": "param_required",
+                  "default_value": null
+                }
+              ]
+            },
+            {
+              "name": "public_method3",
+              "paramaters": [
+                {
+                  "name": "key",
+                  "type": "key_optional",
+                  "default_value": 1
+                },
+                {
+                  "name": "another_key",
+                  "type": "key_optional",
+                  "default_value": null
+                }
+              ]
+            }
+          ],
+          "class_methods": [
+            {
+              "name": "class_method1",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "class_method2",
+              "paramaters": [
+                {
+                  "name": "was",
+                  "type": "param_required",
+                  "default_value": null
+                },
+                {
+                  "name": "here",
+                  "type": "param_required",
+                  "default_value": null
+                }
+              ]
+            },
+            {
+              "name": "class_method3",
+              "paramaters": [
+                {
+                  "name": "key",
+                  "type": "key_optional",
+                  "default_value": null
+                },
+                {
+                  "name": "another_key",
+                  "type": "key_optional",
+                  "default_value": null
+                }
+              ]
+            }
+          ],
+          "private_methods": [
+            {
+              "name": "some_method",
+              "paramaters": [
+                {
+                  "name": "key",
+                  "type": "key_optional",
+                  "default_value": 1
+                },
+                {
+                  "name": "another_key",
+                  "type": "key_optional",
+                  "default_value": null
+                }
+              ]
+            },
+            {
+              "name": "some_private_method",
+              "paramaters": [
+
+              ]
+            }
+          ]
         }
       },
       {
@@ -3947,6 +4070,27 @@
           ]
         },
         "functions": {
+          "class_name": "AppUser",
+          "module_name": "AppUser",
+          "class_full_name": "AppUser",
+          "attr_accessors": [
+
+          ],
+          "attr_readers": [
+
+          ],
+          "attr_writers": [
+
+          ],
+          "public_methods": [
+
+          ],
+          "class_methods": [
+
+          ],
+          "private_methods": [
+
+          ]
         }
       },
       {
@@ -4058,6 +4202,27 @@
           ]
         },
         "functions": {
+          "class_name": "CustomerShop",
+          "module_name": "CustomerShop",
+          "class_full_name": "CustomerShop",
+          "attr_accessors": [
+
+          ],
+          "attr_readers": [
+
+          ],
+          "attr_writers": [
+
+          ],
+          "public_methods": [
+
+          ],
+          "class_methods": [
+
+          ],
+          "private_methods": [
+
+          ]
         }
       },
       {
@@ -4085,6 +4250,27 @@
           ]
         },
         "functions": {
+          "class_name": "FavouriteOrder",
+          "module_name": "FavouriteOrder",
+          "class_full_name": "FavouriteOrder",
+          "attr_accessors": [
+
+          ],
+          "attr_readers": [
+
+          ],
+          "attr_writers": [
+
+          ],
+          "public_methods": [
+
+          ],
+          "class_methods": [
+
+          ],
+          "private_methods": [
+
+          ]
         }
       },
       {
@@ -4106,6 +4292,27 @@
           ]
         },
         "functions": {
+          "class_name": "ItemVariation",
+          "module_name": "ItemVariation",
+          "class_full_name": "ItemVariation",
+          "attr_accessors": [
+
+          ],
+          "attr_readers": [
+
+          ],
+          "attr_writers": [
+
+          ],
+          "public_methods": [
+
+          ],
+          "class_methods": [
+
+          ],
+          "private_methods": [
+
+          ]
         }
       },
       {
@@ -4117,6 +4324,27 @@
         "code": "# frozen_string_literal: true\n\nclass Item < ActiveRecord::Base\nend\n\n# items\n#\n# id                                       bigint\n# title                                    text\n# group                                    text\n",
         "behaviours": null,
         "functions": {
+          "class_name": "Item",
+          "module_name": "Item",
+          "class_full_name": "Item",
+          "attr_accessors": [
+
+          ],
+          "attr_readers": [
+
+          ],
+          "attr_writers": [
+
+          ],
+          "public_methods": [
+
+          ],
+          "class_methods": [
+
+          ],
+          "private_methods": [
+
+          ]
         }
       },
       {
@@ -4138,6 +4366,27 @@
           ]
         },
         "functions": {
+          "class_name": "MenuCategory",
+          "module_name": "MenuCategory",
+          "class_full_name": "MenuCategory",
+          "attr_accessors": [
+
+          ],
+          "attr_readers": [
+
+          ],
+          "attr_writers": [
+
+          ],
+          "public_methods": [
+
+          ],
+          "class_methods": [
+
+          ],
+          "private_methods": [
+
+          ]
         }
       },
       {
@@ -4165,6 +4414,27 @@
           ]
         },
         "functions": {
+          "class_name": "MenuCategoryProduct",
+          "module_name": "MenuCategoryProduct",
+          "class_full_name": "MenuCategoryProduct",
+          "attr_accessors": [
+
+          ],
+          "attr_readers": [
+
+          ],
+          "attr_writers": [
+
+          ],
+          "public_methods": [
+
+          ],
+          "class_methods": [
+
+          ],
+          "private_methods": [
+
+          ]
         }
       },
       {
@@ -4192,6 +4462,27 @@
           ]
         },
         "functions": {
+          "class_name": "Order",
+          "module_name": "Order",
+          "class_full_name": "Order",
+          "attr_accessors": [
+
+          ],
+          "attr_readers": [
+
+          ],
+          "attr_writers": [
+
+          ],
+          "public_methods": [
+
+          ],
+          "class_methods": [
+
+          ],
+          "private_methods": [
+
+          ]
         }
       },
       {
@@ -4219,6 +4510,27 @@
           ]
         },
         "functions": {
+          "class_name": "ProductVariation",
+          "module_name": "ProductVariation",
+          "class_full_name": "ProductVariation",
+          "attr_accessors": [
+
+          ],
+          "attr_readers": [
+
+          ],
+          "attr_writers": [
+
+          ],
+          "public_methods": [
+
+          ],
+          "class_methods": [
+
+          ],
+          "private_methods": [
+
+          ]
         }
       },
       {
@@ -4240,6 +4552,27 @@
           ]
         },
         "functions": {
+          "class_name": "Product",
+          "module_name": "Product",
+          "class_full_name": "Product",
+          "attr_accessors": [
+
+          ],
+          "attr_readers": [
+
+          ],
+          "attr_writers": [
+
+          ],
+          "public_methods": [
+
+          ],
+          "class_methods": [
+
+          ],
+          "private_methods": [
+
+          ]
         }
       },
       {
@@ -4261,6 +4594,27 @@
           ]
         },
         "functions": {
+          "class_name": "Shop",
+          "module_name": "Shop",
+          "class_full_name": "Shop",
+          "attr_accessors": [
+
+          ],
+          "attr_readers": [
+
+          ],
+          "attr_writers": [
+
+          ],
+          "public_methods": [
+
+          ],
+          "class_methods": [
+
+          ],
+          "private_methods": [
+
+          ]
         }
       },
       {
@@ -4288,6 +4642,27 @@
           ]
         },
         "functions": {
+          "class_name": "Staff",
+          "module_name": "Staff",
+          "class_full_name": "Staff",
+          "attr_accessors": [
+
+          ],
+          "attr_readers": [
+
+          ],
+          "attr_writers": [
+
+          ],
+          "public_methods": [
+
+          ],
+          "class_methods": [
+
+          ],
+          "private_methods": [
+
+          ]
         }
       }
     ],
@@ -6804,7 +7179,7 @@
         "step": "step4_attach_erd_files_models",
         "location": "extract_options",
         "key": null,
-        "message": "undefined local variable or method `belongs_to_required' for #<Step4AttachErdFiles:0x00007fb86c1ccad8>"
+        "message": "undefined local variable or method `belongs_to_required' for #<Step4AttachErdFiles:0x00007fb6ea12dcb8>"
       }
     ]
   }
