@@ -10,7 +10,7 @@ RSpec.describe KDomain::RailsCodeExtractor::ExtractModel do
     result.register(:active_record, KDomain::Gem.resource('templates/active_record_shims.rb'))
     result
   end
-  
+
   describe '#initialize' do
     subject { instance }
 
@@ -29,7 +29,7 @@ RSpec.describe KDomain::RailsCodeExtractor::ExtractModel do
 
     context '.models' do
       subject { instance.models }
-    
+
       it { is_expected.to be_empty }
     end
   end
@@ -43,7 +43,7 @@ RSpec.describe KDomain::RailsCodeExtractor::ExtractModel do
 
     # Can only load sample once due and so all checks
     # are happening in this one it block
-    it "check values" do
+    it 'check values' do
       # expect(instance.models.length).to eq(13)
       expect(instance.models.length).to eq(1)
       expect(instance.model).not_to be_nil
@@ -75,30 +75,30 @@ RSpec.describe KDomain::RailsCodeExtractor::ExtractModel do
 
       expect(sample.belongs_to.first).to have_attributes(
         name: :app_user,
-        opts: nil_os,
+        opts: nil_os
       )
       expect(sample.has_one.first).to have_attributes(
         name: :user,
         opts: have_attributes(
-          class_name: "User", 
-          foreign_key: "id",
-          primary_key: "sales_user_id"
+          class_name: 'User',
+          foreign_key: 'id',
+          primary_key: 'sales_user_id'
         ),
         block: nil
       )
       expect(sample.has_many.first).to have_attributes(
         name: :user,
         opts: have_attributes(
-          class_name: "User", 
-          foreign_key: "id",
-          primary_key: "sales_user_id"
+          class_name: 'User',
+          foreign_key: 'id',
+          primary_key: 'sales_user_id'
         ),
         block: nil
       )
       expect(sample.has_and_belongs_to_many.first).to have_attributes(
         name: :trackers,
         opts: nil_os,
-        block: "-> { uniq }"
+        block: '-> { uniq }'
       )
       expect(sample.validate.first).to have_attributes(
         names: [:ensure_valid_financial_year],
