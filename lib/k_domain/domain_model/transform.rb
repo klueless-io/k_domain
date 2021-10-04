@@ -23,13 +23,12 @@ module KDomain
       # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
       def call
         valid = true
-        valid &&= step1
-        valid &&= step2
-        valid &&= step3
-        valid &&= step4
-        valid &&= step5
-        valid &&= step8
-        valid &&= step9
+        valid &&= Step1AttachDbSchema.run(domain_data, db_schema: db_schema, step_file: step_file('1-attach-db-schema'))
+        valid &&= Step2AttachModels.run(domain_data, erd_path: erd_path, step_file: step_file('2-attach-model'))
+        valid &&= Step3AttachColumns.run(domain_data, step_file: step_file('3-attach-columns'))
+        valid &&= Step5AttachDictionary.run(domain_data, erd_path: erd_path, step_file: step_file('5-attach-dictionary'))
+        valid &&= Step8RailsResourceModels.run(domain_data, erd_path: erd_path, step_file: step_file('8-rails-resource-models'))
+        valid &&= Step9RailsStructureModels.run(domain_data, erd_path: erd_path, step_file: step_file('9-rails-structure-models'))
 
         raise 'DomainModal transform failed' unless valid
 
@@ -39,49 +38,13 @@ module KDomain
       end
       # rubocop:enable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
 
-      def step1
-        Step1AttachDbSchema.run(domain_data, db_schema: db_schema)
-        write(step: '1-attach-db-schema')
+      def step_file(step_name)
+        target_step_file % { step: step_name }
       end
 
-      def step2
-        Step2AttachModels.run(domain_data, erd_path: erd_path)
-        write(step: '2-attach-model')
-      end
-
-      def step3
-        Step3AttachColumns.run(domain_data)
-        write(step: '3-attach-columns')
-      end
-
-      def step4
-        Step4AttachErdFiles.run(domain_data, erd_path: erd_path)
-        write(step: '4-attach-erd-files')
-      end
-
-      def step5
-        Step5AttachDictionary.run(domain_data, erd_path: erd_path)
-        write(step: '5-attach-dictionary')
-      end
-
-      def step8
-        Step8RailsResourceModels.run(domain_data, erd_path: erd_path)
-        write(step: '8-rails-resource-models')
-      end
-
-      def step9
-        Step9RailsStructureModels.run(domain_data, erd_path: erd_path)
-        write(step: '9-rails-structure-models')
-      end
-
-      def write(step: nil)
-        file = if step.nil?
-                 target_file
-               else
-                 format(target_step_file, step: step)
-               end
-        FileUtils.mkdir_p(File.dirname(file))
-        File.write(file, JSON.pretty_generate(domain_data))
+      def write
+        FileUtils.mkdir_p(File.dirname(target_file))
+        File.write(target_file, JSON.pretty_generate(domain_data))
       end
 
       # rubocop:disable Metrics/MethodLength
