@@ -61,15 +61,36 @@ module ActiveRecord
       add(:enum, opts)
     end
 
+    # def self.attr_accessor(*args)
+    #   args.each do |arg|
+    #     self.class_eval("def #{arg};@#{arg};end")
+    #     self.class_eval("def #{arg}=(val);@#{arg}=val;end")
+    #   end
+    # end
+    # def self.attr_reader(*args)
+    #   args.each do |arg|
+    #     self.class_eval("def #{arg};@#{arg};end")
+    #   end
+    # end
+    # def self.attr_writer(*args)
+    #   args.each do |arg|
+    #     self.class_eval("def #{arg};@#{arg};end")
+    #     self.class_eval("def #{arg}=(val);@#{arg}=val;end")
+    #   end
+    # end
+  
     def self.attr_accessor(*names)
+      super(*names)
       add(:attr_accessor, names)
     end
 
     def self.attr_reader(*names)
+      super(*names)
       add(:attr_reader, names)
     end
 
     def self.attr_writer(*names)
+      super(*names)
       add(:attr_writer, names)
     end
 

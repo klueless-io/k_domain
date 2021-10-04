@@ -2,6 +2,12 @@
 class Sample < ActiveRecord::Base
   extend RailsUpgrade
 
+  attr_accessor :access1
+  attr_accessor :access2
+
+  attr_reader :reader3
+  attr_writer :write4, :write5, :write6
+
   default_scope { where(deleted: false) }
 
   scope :has_geo, -> { where.not(longitude: nil, latitude: nil) }
@@ -40,12 +46,6 @@ class Sample < ActiveRecord::Base
   validates :email, format: /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}\z/i
   validates :password, length: { minimum: 8, message: '8+ characters' }, unless: :skip_password_validation
 
-  attr_accessor :access1
-  attr_accessor :access2
-
-  attr_reader :reader3
-  attr_writer :write4, :write5, :write6
-
   # class methods
   def self.class_method1
   end
@@ -75,7 +75,7 @@ class Sample < ActiveRecord::Base
   def some_method(was, here)
   end
 
-  def some_method(key: 1, another_key: nil)
+  def some_other_method(key: 1, another_key: nil)
   end
 end
 

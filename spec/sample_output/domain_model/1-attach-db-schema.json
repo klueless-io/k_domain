@@ -2,9 +2,6 @@
   "domain": {
     "models": [
 
-    ],
-    "erd_files": [
-
     ]
   },
   "rails_resource": {

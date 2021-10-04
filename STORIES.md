@@ -16,24 +16,53 @@ As a Developer, I can customize domain configuration, so that I can have opinion
 
 - Handle traits
 
+### Tasks next on list
+
+BUGs in domain_model load
+
+- spec/k_domain/domain_model/load_spec.rb:135
+- FIXED: module_name should be empty
+- FIXED: name mismatch (attr_accessor, attr_reader, attr_writer) in behaviours vs in (attr_accessors, attr_readers, attr_writers) functions
+- functions - (attr_accessors, attr_readers, attr_writers) are all empty
+
+External ruby process - ShimLoading and ExtractModel
+
+- You need a clear memory foot print for shim loading and model extraction, best to run these from inside a new ruby process
+
+Log Warning to Investigate Issues
+
+- FIXED: All the logged warnings in k_domain need to turn up in on the investigate issues register
+- Investigate needs a debug flag that when turned on, will write the issues to the console
+
+Print progress dot
+
+- Make this configurable
+- Decide what steps this should run for
+- Show step label via configuration
+
+## Stories and tasks
+
+### Stories - completed
+
 As a Developer, I can read native rails model data, so that I can leverage existing rails applications for ERD modeling
 
+- Proof of concept
 - Use Meta Programming and re-implement ActiveRecord::Base
 
-### Tasks next on list
+### Tasks - completed
 
 Refactor / Simply
 
-- Replace complex objects an with structs for ancillary data structures such as investigate
+- Replace complex objects with structs for ancillary data structures such as investigate
+
+Steps to support write methods on base class
+
+- Simplify lib/k_domain/domain_model/transform.rb
 
 User acceptance testing
 
 - Provide sample printers for each data structure to visually check data is loading
 - Point raw_db_schema loader towards a complex ERD and check how it performs
-
-## Stories and tasks
-
-### Tasks - completed
 
 Setup RubyGems and RubyDoc
 

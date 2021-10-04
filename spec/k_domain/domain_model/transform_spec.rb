@@ -52,7 +52,7 @@ RSpec.describe KDomain::DomainModel::Transform do
         it do
           is_expected.to include(
             models: be_empty,
-            erd_files: be_empty
+            # erd_files: be_empty # replace this with behaviours and functions
           )
         end
       end
