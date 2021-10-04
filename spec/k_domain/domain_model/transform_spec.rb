@@ -135,11 +135,11 @@ RSpec.describe KDomain::DomainModel::Transform do
       it { is_expected.not_to be_empty }
     end
 
-    context '.attach_erd_files' do
-      subject { instance.domain_data[:domain][:erd_files] }
+    # context '.attach_erd_files' do
+    #   subject { instance.domain_data[:domain][:erd_files] }
 
-      it { is_expected.not_to be_empty }
-    end
+    #   it { is_expected.not_to be_empty }
+    # end
 
     context '.rails_resource' do
       context '.models' do
