@@ -132,14 +132,14 @@ RSpec.describe KDomain::DomainModel::Load do
             it do
               is_expected.to have_attributes(
                 class_name: 'Sample',
-                module_name: 'Sample',
+                module_name: '',
                 class_full_name: 'Sample',
-                attr_accessor: have_attributes(length: 0),
-                attr_reader: have_attributes(length: 0),
-                attr_writer: have_attributes(length: 0),
+                attr_accessor: have_attributes(length: 2),
+                attr_reader: have_attributes(length: 1),
+                attr_writer: have_attributes(length: 3),
                 klass: have_attributes(length: 3),
                 instance_public: have_attributes(length: 3),
-                instance_private: have_attributes(length: 2)
+                instance_private: have_attributes(length: 3)
               )
             end
           end

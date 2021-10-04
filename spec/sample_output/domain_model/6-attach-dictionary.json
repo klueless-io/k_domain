@@ -2107,9 +2107,6 @@
           }
         ]
       }
-    ],
-    "erd_files": [
-
     ]
   },
   "rails_resource": {
@@ -2268,7 +2265,970 @@
   },
   "rails_structure": {
     "models": [
+      {
+        "model_name": "__EFMigrationsHistory",
+        "table_name": "__EFMigrationsHistory",
+        "file": "",
+        "exist": false,
+        "state": "model_not_found",
+        "code": "",
+        "behaviours": {
+        },
+        "functions": {
+        }
+      },
+      {
+        "model_name": "sample",
+        "table_name": "samples",
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/sample.rb",
+        "exist": true,
+        "state": "has_ruby_model",
+        "code": "# frozen_string_literal: true\nclass Sample < ActiveRecord::Base\n  extend RailsUpgrade\n\n  attr_accessor :access1\n  attr_accessor :access2\n\n  attr_reader :reader3\n  attr_writer :write4, :write5, :write6\n\n  default_scope { where(deleted: false) }\n\n  scope :has_geo, -> { where.not(longitude: nil, latitude: nil) }\n\n  scope :has_address, lambda {\n    where.not(address: nil)\n  }\n\n  belongs_to :app_user\n\n  belongs_to :tenant, **belongs_to_required\n\n  belongs_to :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_one :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :tasks, as: :taskable\n\n  has_many :messages, class_name: 'CampaignMessage', dependent: :destroy\n  has_many :trackers, through: :messages\n  has_many :hits, through: :trackers\n  has_many :orders, inverse_of: :company\n\n  has_and_belongs_to_many :trackers, -> { uniq }\n  has_and_belongs_to_many :contact_lists, -> { uniq }, autosave: true\n\n  validate :ensure_valid_financial_year, on: :create\n  validate :name_must_be_unique, :name_must_not_be_in_global\n  validate :check_email_valid\n\n  validates :user, presence: { message: 'must exist' }\n  validates :tenant, presence: { message: 'must exist' } if rails4?\n  validates :first_name, presence: { message: 'First Name is required.' }, on: :create\n  validates :email, format: /\\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}\\z/i\n  validates :password, length: { minimum: 8, message: '8+ characters' }, unless: :skip_password_validation\n\n  # class methods\n  def self.class_method1\n  end\n\n  def self.class_method2(was, here)\n  end\n\n  def self.class_method3(key: 1, another_key: nil)\n  end\n\n  # public methods\n  def public_method1\n  end\n\n  def public_method2(was, here)\n  end\n\n  def public_method3(key: 1, another_key: nil)\n  end\n\n  private\n\n  # private methods\n  def some_private_method\n  end\n\n  def some_method(was, here)\n  end\n\n  def some_other_method(key: 1, another_key: nil)\n  end\nend\n\n# shops\n#\n# id                                       bigint\n# app_user_id                              integer\n# name                                     text\n# address                                  text\n# longitude                                float\n# latitude                                 float\n",
+        "behaviours": {
+          "class_name": "Sample",
+          "attr_accessor": [
+            "access1",
+            "access2"
+          ],
+          "attr_reader": [
+            "reader3"
+          ],
+          "attr_writer": [
+            "write4",
+            "write5",
+            "write6"
+          ],
+          "default_scope": {
+            "block": "{ where(deleted: false) }"
+          },
+          "scopes": [
+            {
+              "name": "has_geo",
+              "opts": {
+              },
+              "block": "-> { where.not(longitude: nil, latitude: nil) }"
+            },
+            {
+              "name": "has_address",
+              "opts": {
+              },
+              "block": "lambda {\n    where.not(address: nil)\n  }"
+            }
+          ],
+          "belongs_to": [
+            {
+              "name": "app_user",
+              "opts": {
+              },
+              "block": null
+            },
+            {
+              "name": "tenant",
+              "opts": {
+              },
+              "block": null
+            },
+            {
+              "name": "user",
+              "opts": {
+                "class_name": "User",
+                "foreign_key": "id",
+                "primary_key": "sales_user_id"
+              },
+              "block": null
+            }
+          ],
+          "has_one": [
+            {
+              "name": "user",
+              "opts": {
+                "class_name": "User",
+                "foreign_key": "id",
+                "primary_key": "sales_user_id"
+              },
+              "block": null
+            }
+          ],
+          "has_many": [
+            {
+              "name": "user",
+              "opts": {
+                "class_name": "User",
+                "foreign_key": "id",
+                "primary_key": "sales_user_id"
+              },
+              "block": null
+            },
+            {
+              "name": "tasks",
+              "opts": {
+                "as": "taskable"
+              },
+              "block": null
+            },
+            {
+              "name": "messages",
+              "opts": {
+                "class_name": "CampaignMessage",
+                "dependent": "destroy"
+              },
+              "block": null
+            },
+            {
+              "name": "trackers",
+              "opts": {
+                "through": "messages"
+              },
+              "block": null
+            },
+            {
+              "name": "hits",
+              "opts": {
+                "through": "trackers"
+              },
+              "block": null
+            },
+            {
+              "name": "orders",
+              "opts": {
+                "inverse_of": "company"
+              },
+              "block": null
+            }
+          ],
+          "has_and_belongs_to_many": [
+            {
+              "name": "trackers",
+              "opts": {
+              },
+              "block": "-> { uniq }"
+            },
+            {
+              "name": "contact_lists",
+              "opts": {
+                "autosave": true
+              },
+              "block": "-> { uniq }, autosave: true"
+            }
+          ],
+          "validate": [
+            {
+              "names": [
+                "ensure_valid_financial_year"
+              ],
+              "opts": {
+                "on": "create"
+              },
+              "block": null
+            },
+            {
+              "names": [
+                "name_must_be_unique",
+                "name_must_not_be_in_global"
+              ],
+              "opts": {
+              },
+              "block": null
+            },
+            {
+              "names": [
+                "check_email_valid"
+              ],
+              "opts": {
+              },
+              "block": null
+            }
+          ],
+          "validates": [
+            {
+              "name": "user",
+              "opts": {
+                "presence": {
+                  "message": "must exist"
+                }
+              }
+            },
+            {
+              "name": "tenant",
+              "opts": {
+                "presence": {
+                  "message": "must exist"
+                }
+              }
+            },
+            {
+              "name": "first_name",
+              "opts": {
+                "presence": {
+                  "message": "First Name is required."
+                },
+                "on": "create"
+              }
+            },
+            {
+              "name": "email",
+              "opts": {
+                "format": "(?i-mx:\\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}\\z)"
+              }
+            },
+            {
+              "name": "password",
+              "opts": {
+                "length": {
+                  "minimum": 8,
+                  "message": "8+ characters"
+                },
+                "unless": "skip_password_validation"
+              }
+            }
+          ]
+        },
+        "functions": {
+          "class_name": "Sample",
+          "module_name": "",
+          "class_full_name": "Sample",
+          "attr_accessor": [
+            "access1",
+            "access2"
+          ],
+          "attr_reader": [
+            "reader3"
+          ],
+          "attr_writer": [
+            "write4",
+            "write5",
+            "write6"
+          ],
+          "klass": [
+            {
+              "name": "class_method1",
+              "paramaters": [
 
+              ]
+            },
+            {
+              "name": "class_method2",
+              "paramaters": [
+                {
+                  "name": "was",
+                  "type": "param_required",
+                  "default_value": null
+                },
+                {
+                  "name": "here",
+                  "type": "param_required",
+                  "default_value": null
+                }
+              ]
+            },
+            {
+              "name": "class_method3",
+              "paramaters": [
+                {
+                  "name": "key",
+                  "type": "key_optional",
+                  "default_value": null
+                },
+                {
+                  "name": "another_key",
+                  "type": "key_optional",
+                  "default_value": null
+                }
+              ]
+            }
+          ],
+          "instance_public": [
+            {
+              "name": "public_method1",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "public_method2",
+              "paramaters": [
+                {
+                  "name": "was",
+                  "type": "param_required",
+                  "default_value": null
+                },
+                {
+                  "name": "here",
+                  "type": "param_required",
+                  "default_value": null
+                }
+              ]
+            },
+            {
+              "name": "public_method3",
+              "paramaters": [
+                {
+                  "name": "key",
+                  "type": "key_optional",
+                  "default_value": 1
+                },
+                {
+                  "name": "another_key",
+                  "type": "key_optional",
+                  "default_value": null
+                }
+              ]
+            }
+          ],
+          "instance_private": [
+            {
+              "name": "some_method",
+              "paramaters": [
+                {
+                  "name": "was",
+                  "type": "param_required",
+                  "default_value": null
+                },
+                {
+                  "name": "here",
+                  "type": "param_required",
+                  "default_value": null
+                }
+              ]
+            },
+            {
+              "name": "some_other_method",
+              "paramaters": [
+                {
+                  "name": "key",
+                  "type": "key_optional",
+                  "default_value": 1
+                },
+                {
+                  "name": "another_key",
+                  "type": "key_optional",
+                  "default_value": null
+                }
+              ]
+            },
+            {
+              "name": "some_private_method",
+              "paramaters": [
+
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "model_name": "app_user",
+        "table_name": "app_users",
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/app_user.rb",
+        "exist": true,
+        "state": "has_ruby_model",
+        "code": "# frozen_string_literal: true\n\nclass AppUser < ActiveRecord::Base\n  belongs_to :asp_net_user\nend\n\n# app_users\n#\n# id                                       bigint\n# user_id                                  text\n# first_name                               text\n# last_name                                text\n# phone_number                             text\n",
+        "behaviours": {
+          "class_name": "AppUser",
+          "belongs_to": [
+            {
+              "name": "asp_net_user",
+              "opts": {
+              },
+              "block": null
+            }
+          ]
+        },
+        "functions": {
+          "class_name": "AppUser",
+          "module_name": "",
+          "class_full_name": "AppUser",
+          "attr_accessor": [
+
+          ],
+          "attr_reader": [
+
+          ],
+          "attr_writer": [
+
+          ],
+          "klass": [
+
+          ],
+          "instance_public": [
+
+          ],
+          "instance_private": [
+
+          ]
+        }
+      },
+      {
+        "model_name": "asp_net_role_claim",
+        "table_name": "asp_net_role_claims",
+        "file": "",
+        "exist": false,
+        "state": "model_not_found",
+        "code": "",
+        "behaviours": {
+        },
+        "functions": {
+        }
+      },
+      {
+        "model_name": "asp_net_role",
+        "table_name": "asp_net_roles",
+        "file": "",
+        "exist": false,
+        "state": "model_not_found",
+        "code": "",
+        "behaviours": {
+        },
+        "functions": {
+        }
+      },
+      {
+        "model_name": "asp_net_user_claim",
+        "table_name": "asp_net_user_claims",
+        "file": "",
+        "exist": false,
+        "state": "model_not_found",
+        "code": "",
+        "behaviours": {
+        },
+        "functions": {
+        }
+      },
+      {
+        "model_name": "asp_net_user_login",
+        "table_name": "asp_net_user_logins",
+        "file": "",
+        "exist": false,
+        "state": "model_not_found",
+        "code": "",
+        "behaviours": {
+        },
+        "functions": {
+        }
+      },
+      {
+        "model_name": "asp_net_user_role",
+        "table_name": "asp_net_user_roles",
+        "file": "",
+        "exist": false,
+        "state": "model_not_found",
+        "code": "",
+        "behaviours": {
+        },
+        "functions": {
+        }
+      },
+      {
+        "model_name": "asp_net_user_token",
+        "table_name": "asp_net_user_tokens",
+        "file": "",
+        "exist": false,
+        "state": "model_not_found",
+        "code": "",
+        "behaviours": {
+        },
+        "functions": {
+        }
+      },
+      {
+        "model_name": "asp_net_user",
+        "table_name": "asp_net_users",
+        "file": "",
+        "exist": false,
+        "state": "model_not_found",
+        "code": "",
+        "behaviours": {
+        },
+        "functions": {
+        }
+      },
+      {
+        "model_name": "customer_shop",
+        "table_name": "customer_shops",
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/customer_shop.rb",
+        "exist": true,
+        "state": "has_ruby_model",
+        "code": "# frozen_string_literal: true\n\nclass CustomerShop < ActiveRecord::Base\n  belongs_to :app_user\n  belongs_to :shop\nend\n\n# customer_shops\n#\n# id                                       bigint\n# status                                   integer\n# customer_id                              integer\n# shop_id                                  integer\n",
+        "behaviours": {
+          "class_name": "CustomerShop",
+          "belongs_to": [
+            {
+              "name": "app_user",
+              "opts": {
+              },
+              "block": null
+            },
+            {
+              "name": "shop",
+              "opts": {
+              },
+              "block": null
+            }
+          ]
+        },
+        "functions": {
+          "class_name": "CustomerShop",
+          "module_name": "",
+          "class_full_name": "CustomerShop",
+          "attr_accessor": [
+
+          ],
+          "attr_reader": [
+
+          ],
+          "attr_writer": [
+
+          ],
+          "klass": [
+
+          ],
+          "instance_public": [
+
+          ],
+          "instance_private": [
+
+          ]
+        }
+      },
+      {
+        "model_name": "favourite_order",
+        "table_name": "favourite_orders",
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/favourite_order.rb",
+        "exist": true,
+        "state": "has_ruby_model",
+        "code": "# frozen_string_literal: true\n\nclass FavouriteOrder < ActiveRecord::Base\n  belongs_to :app_user\n  belongs_to :order\nend\n\n# favourite_orders\n#\n# id                                       bigint\n# customer_id                              integer\n# order_id                                 integer\n",
+        "behaviours": {
+          "class_name": "FavouriteOrder",
+          "belongs_to": [
+            {
+              "name": "app_user",
+              "opts": {
+              },
+              "block": null
+            },
+            {
+              "name": "order",
+              "opts": {
+              },
+              "block": null
+            }
+          ]
+        },
+        "functions": {
+          "class_name": "FavouriteOrder",
+          "module_name": "",
+          "class_full_name": "FavouriteOrder",
+          "attr_accessor": [
+
+          ],
+          "attr_reader": [
+
+          ],
+          "attr_writer": [
+
+          ],
+          "klass": [
+
+          ],
+          "instance_public": [
+
+          ],
+          "instance_private": [
+
+          ]
+        }
+      },
+      {
+        "model_name": "item_variation",
+        "table_name": "item_variations",
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/item_variation.rb",
+        "exist": true,
+        "state": "has_ruby_model",
+        "code": "# frozen_string_literal: true\n\nclass ItemVariation < ActiveRecord::Base\n  belongs_to :item\nend\n\n# item_variations\n#\n# id                                       bigint\n# item_id                                  integer\n# name                                     text\n# default                                  boolean\n# qty                                      integer\n# qty_variation                            text\n",
+        "behaviours": {
+          "class_name": "ItemVariation",
+          "belongs_to": [
+            {
+              "name": "item",
+              "opts": {
+              },
+              "block": null
+            }
+          ]
+        },
+        "functions": {
+          "class_name": "ItemVariation",
+          "module_name": "",
+          "class_full_name": "ItemVariation",
+          "attr_accessor": [
+
+          ],
+          "attr_reader": [
+
+          ],
+          "attr_writer": [
+
+          ],
+          "klass": [
+
+          ],
+          "instance_public": [
+
+          ],
+          "instance_private": [
+
+          ]
+        }
+      },
+      {
+        "model_name": "item",
+        "table_name": "items",
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/item.rb",
+        "exist": true,
+        "state": "has_ruby_model",
+        "code": "# frozen_string_literal: true\n\nclass Item < ActiveRecord::Base\nend\n\n# items\n#\n# id                                       bigint\n# title                                    text\n# group                                    text\n",
+        "behaviours": null,
+        "functions": {
+          "class_name": "Item",
+          "module_name": "",
+          "class_full_name": "Item",
+          "attr_accessor": [
+
+          ],
+          "attr_reader": [
+
+          ],
+          "attr_writer": [
+
+          ],
+          "klass": [
+
+          ],
+          "instance_public": [
+
+          ],
+          "instance_private": [
+
+          ]
+        }
+      },
+      {
+        "model_name": "menu_category",
+        "table_name": "menu_categories",
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/menu_category.rb",
+        "exist": true,
+        "state": "has_ruby_model",
+        "code": "# frozen_string_literal: true\n\nclass MenuCategory < ActiveRecord::Base\n  belongs_to :shop\nend\n\n# menu_categories\n#\n# id                                       bigint\n# shop_id                                  integer\n# name                                     text\n# position                                 integer\n",
+        "behaviours": {
+          "class_name": "MenuCategory",
+          "belongs_to": [
+            {
+              "name": "shop",
+              "opts": {
+              },
+              "block": null
+            }
+          ]
+        },
+        "functions": {
+          "class_name": "MenuCategory",
+          "module_name": "",
+          "class_full_name": "MenuCategory",
+          "attr_accessor": [
+
+          ],
+          "attr_reader": [
+
+          ],
+          "attr_writer": [
+
+          ],
+          "klass": [
+
+          ],
+          "instance_public": [
+
+          ],
+          "instance_private": [
+
+          ]
+        }
+      },
+      {
+        "model_name": "menu_category_product",
+        "table_name": "menu_category_products",
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/menu_category_product.rb",
+        "exist": true,
+        "state": "has_ruby_model",
+        "code": "# frozen_string_literal: true\n\nclass MenuCategoryProduct < ActiveRecord::Base\n  belongs_to :menu_category\n  belongs_to :product\nend\n\n# menu_category_products\n#\n# id                                       bigint\n# menu_category_id                         integer\n# product_id                               integer\n# position                                 integer\n",
+        "behaviours": {
+          "class_name": "MenuCategoryProduct",
+          "belongs_to": [
+            {
+              "name": "menu_category",
+              "opts": {
+              },
+              "block": null
+            },
+            {
+              "name": "product",
+              "opts": {
+              },
+              "block": null
+            }
+          ]
+        },
+        "functions": {
+          "class_name": "MenuCategoryProduct",
+          "module_name": "",
+          "class_full_name": "MenuCategoryProduct",
+          "attr_accessor": [
+
+          ],
+          "attr_reader": [
+
+          ],
+          "attr_writer": [
+
+          ],
+          "klass": [
+
+          ],
+          "instance_public": [
+
+          ],
+          "instance_private": [
+
+          ]
+        }
+      },
+      {
+        "model_name": "order",
+        "table_name": "orders",
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/order.rb",
+        "exist": true,
+        "state": "has_ruby_model",
+        "code": "# frozen_string_literal: true\n\nclass Order < ActiveRecord::Base\n  belongs_to :app_user\n  belongs_to :shop\nend\n\n# orders\n#\n# id                                       bigint\n# customer_id                              integer\n# shop_id                                  integer\n# order_details                            jsonb\n# placed_at                                datetime\n# in_queue_at                              datetime\n# making_at                                datetime\n# made_at                                  datetime\n# cancelled_at                             datetime\n# collected_at                             datetime\n# fail_at                                  datetime\n# fail_reason                              text\n",
+        "behaviours": {
+          "class_name": "Order",
+          "belongs_to": [
+            {
+              "name": "app_user",
+              "opts": {
+              },
+              "block": null
+            },
+            {
+              "name": "shop",
+              "opts": {
+              },
+              "block": null
+            }
+          ]
+        },
+        "functions": {
+          "class_name": "Order",
+          "module_name": "",
+          "class_full_name": "Order",
+          "attr_accessor": [
+
+          ],
+          "attr_reader": [
+
+          ],
+          "attr_writer": [
+
+          ],
+          "klass": [
+
+          ],
+          "instance_public": [
+
+          ],
+          "instance_private": [
+
+          ]
+        }
+      },
+      {
+        "model_name": "product_variation",
+        "table_name": "product_variations",
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/product_variation.rb",
+        "exist": true,
+        "state": "has_ruby_model",
+        "code": "# frozen_string_literal: true\n\nclass ProductVariation < ActiveRecord::Base\n  belongs_to :product\n  belongs_to :item_variation\nend\n\n# product_variations\n#\n# id                                       bigint\n# product_id                               integer\n# item_variation_id                        integer\n# active                                   boolean\n# title                                    text\n# price_offset                             float\n",
+        "behaviours": {
+          "class_name": "ProductVariation",
+          "belongs_to": [
+            {
+              "name": "product",
+              "opts": {
+              },
+              "block": null
+            },
+            {
+              "name": "item_variation",
+              "opts": {
+              },
+              "block": null
+            }
+          ]
+        },
+        "functions": {
+          "class_name": "ProductVariation",
+          "module_name": "",
+          "class_full_name": "ProductVariation",
+          "attr_accessor": [
+
+          ],
+          "attr_reader": [
+
+          ],
+          "attr_writer": [
+
+          ],
+          "klass": [
+
+          ],
+          "instance_public": [
+
+          ],
+          "instance_private": [
+
+          ]
+        }
+      },
+      {
+        "model_name": "product",
+        "table_name": "products",
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/product.rb",
+        "exist": true,
+        "state": "has_ruby_model",
+        "code": "# frozen_string_literal: true\n\nclass Product < ActiveRecord::Base\n  belongs_to :shop\nend\n\n# products\n#\n# id                                       bigint\n# shop_id                                  integer\n# title                                    text\n# price                                    float\n",
+        "behaviours": {
+          "class_name": "Product",
+          "belongs_to": [
+            {
+              "name": "shop",
+              "opts": {
+              },
+              "block": null
+            }
+          ]
+        },
+        "functions": {
+          "class_name": "Product",
+          "module_name": "",
+          "class_full_name": "Product",
+          "attr_accessor": [
+
+          ],
+          "attr_reader": [
+
+          ],
+          "attr_writer": [
+
+          ],
+          "klass": [
+
+          ],
+          "instance_public": [
+
+          ],
+          "instance_private": [
+
+          ]
+        }
+      },
+      {
+        "model_name": "shop",
+        "table_name": "shops",
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/shop.rb",
+        "exist": true,
+        "state": "has_ruby_model",
+        "code": "# frozen_string_literal: true\n\nclass Shop < ActiveRecord::Base\n  belongs_to :app_user\nend\n\n# shops\n#\n# id                                       bigint\n# app_user_id                              integer\n# name                                     text\n# address                                  text\n# longitude                                float\n# latitude                                 float\n",
+        "behaviours": {
+          "class_name": "Shop",
+          "belongs_to": [
+            {
+              "name": "app_user",
+              "opts": {
+              },
+              "block": null
+            }
+          ]
+        },
+        "functions": {
+          "class_name": "Shop",
+          "module_name": "",
+          "class_full_name": "Shop",
+          "attr_accessor": [
+
+          ],
+          "attr_reader": [
+
+          ],
+          "attr_writer": [
+
+          ],
+          "klass": [
+
+          ],
+          "instance_public": [
+
+          ],
+          "instance_private": [
+
+          ]
+        }
+      },
+      {
+        "model_name": "staff",
+        "table_name": "staffs",
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/staff.rb",
+        "exist": true,
+        "state": "has_ruby_model",
+        "code": "# frozen_string_literal: true\n\nclass Staff < ActiveRecord::Base\n  belongs_to :shop\n  belongs_to :app_user\nend\n\n# staffs\n#\n# id                                       bigint\n# shop_id                                  integer\n# user_id                                  integer\n# type                                     text\n",
+        "behaviours": {
+          "class_name": "Staff",
+          "belongs_to": [
+            {
+              "name": "shop",
+              "opts": {
+              },
+              "block": null
+            },
+            {
+              "name": "app_user",
+              "opts": {
+              },
+              "block": null
+            }
+          ]
+        },
+        "functions": {
+          "class_name": "Staff",
+          "module_name": "",
+          "class_full_name": "Staff",
+          "attr_accessor": [
+
+          ],
+          "attr_reader": [
+
+          ],
+          "attr_writer": [
+
+          ],
+          "klass": [
+
+          ],
+          "instance_public": [
+
+          ],
+          "instance_private": [
+
+          ]
+        }
+      }
     ],
     "controllers": [
 
@@ -4778,6 +5738,18 @@
         "location": "lookup_foreign_table",
         "key": "item_variation_id",
         "message": "product_variations.item_variation_id => item_variations - Relationship not found in DB, so have inferred this relationship. You may want to check that this relation is correct"
+      },
+      {
+        "step": "step5_attach_dictionary",
+        "location": "process",
+        "key": "app_user,user_id,text",
+        "message": "app_user has a type mismatch for column name: user_id"
+      },
+      {
+        "step": "step5_attach_dictionary",
+        "location": "process",
+        "key": "asp_net_role,name,string",
+        "message": "asp_net_role has a type mismatch for column name: name"
       }
     ]
   }
