@@ -2107,9 +2107,6 @@
           }
         ]
       }
-    ],
-    "erd_files": [
-
     ]
   },
   "rails_resource": {
@@ -2286,9 +2283,21 @@
         "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/sample_input/models/sample.rb",
         "exist": true,
         "state": "has_ruby_model",
-        "code": "# frozen_string_literal: true\nclass Sample < ActiveRecord::Base\n  extend RailsUpgrade\n\n  default_scope { where(deleted: false) }\n\n  scope :has_geo, -> { where.not(longitude: nil, latitude: nil) }\n\n  scope :has_address, lambda {\n    where.not(address: nil)\n  }\n\n  belongs_to :app_user\n\n  belongs_to :tenant, **belongs_to_required\n\n  belongs_to :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_one :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :tasks, as: :taskable\n\n  has_many :messages, class_name: 'CampaignMessage', dependent: :destroy\n  has_many :trackers, through: :messages\n  has_many :hits, through: :trackers\n  has_many :orders, inverse_of: :company\n\n  has_and_belongs_to_many :trackers, -> { uniq }\n  has_and_belongs_to_many :contact_lists, -> { uniq }, autosave: true\n\n  validate :ensure_valid_financial_year, on: :create\n  validate :name_must_be_unique, :name_must_not_be_in_global\n  validate :check_email_valid\n\n  validates :user, presence: { message: 'must exist' }\n  validates :tenant, presence: { message: 'must exist' } if rails4?\n  validates :first_name, presence: { message: 'First Name is required.' }, on: :create\n  validates :email, format: /\\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}\\z/i\n  validates :password, length: { minimum: 8, message: '8+ characters' }, unless: :skip_password_validation\n\n  attr_accessor :access1\n  attr_accessor :access2\n\n  attr_reader :reader3\n  attr_writer :write4, :write5, :write6\n\n  # class methods\n  def self.class_method1\n  end\n\n  def self.class_method2(was, here)\n  end\n\n  def self.class_method3(key: 1, another_key: nil)\n  end\n\n  # public methods\n  def public_method1\n  end\n\n  def public_method2(was, here)\n  end\n\n  def public_method3(key: 1, another_key: nil)\n  end\n\n  private\n\n  # private methods\n  def some_private_method\n  end\n\n  def some_method(was, here)\n  end\n\n  def some_method(key: 1, another_key: nil)\n  end\nend\n\n# shops\n#\n# id                                       bigint\n# app_user_id                              integer\n# name                                     text\n# address                                  text\n# longitude                                float\n# latitude                                 float\n",
+        "code": "# frozen_string_literal: true\nclass Sample < ActiveRecord::Base\n  extend RailsUpgrade\n\n  attr_accessor :access1\n  attr_accessor :access2\n\n  attr_reader :reader3\n  attr_writer :write4, :write5, :write6\n\n  default_scope { where(deleted: false) }\n\n  scope :has_geo, -> { where.not(longitude: nil, latitude: nil) }\n\n  scope :has_address, lambda {\n    where.not(address: nil)\n  }\n\n  belongs_to :app_user\n\n  belongs_to :tenant, **belongs_to_required\n\n  belongs_to :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_one :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :tasks, as: :taskable\n\n  has_many :messages, class_name: 'CampaignMessage', dependent: :destroy\n  has_many :trackers, through: :messages\n  has_many :hits, through: :trackers\n  has_many :orders, inverse_of: :company\n\n  has_and_belongs_to_many :trackers, -> { uniq }\n  has_and_belongs_to_many :contact_lists, -> { uniq }, autosave: true\n\n  validate :ensure_valid_financial_year, on: :create\n  validate :name_must_be_unique, :name_must_not_be_in_global\n  validate :check_email_valid\n\n  validates :user, presence: { message: 'must exist' }\n  validates :tenant, presence: { message: 'must exist' } if rails4?\n  validates :first_name, presence: { message: 'First Name is required.' }, on: :create\n  validates :email, format: /\\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}\\z/i\n  validates :password, length: { minimum: 8, message: '8+ characters' }, unless: :skip_password_validation\n\n  # class methods\n  def self.class_method1\n  end\n\n  def self.class_method2(was, here)\n  end\n\n  def self.class_method3(key: 1, another_key: nil)\n  end\n\n  # public methods\n  def public_method1\n  end\n\n  def public_method2(was, here)\n  end\n\n  def public_method3(key: 1, another_key: nil)\n  end\n\n  private\n\n  # private methods\n  def some_private_method\n  end\n\n  def some_method(was, here)\n  end\n\n  def some_other_method(key: 1, another_key: nil)\n  end\nend\n\n# shops\n#\n# id                                       bigint\n# app_user_id                              integer\n# name                                     text\n# address                                  text\n# longitude                                float\n# latitude                                 float\n",
         "behaviours": {
           "class_name": "Sample",
+          "attr_accessor": [
+            "access1",
+            "access2"
+          ],
+          "attr_reader": [
+            "reader3"
+          ],
+          "attr_writer": [
+            "write4",
+            "write5",
+            "write6"
+          ],
           "default_scope": {
             "block": "{ where(deleted: false) }"
           },
@@ -2472,7 +2481,12 @@
                 "unless": "skip_password_validation"
               }
             }
-          ],
+          ]
+        },
+        "functions": {
+          "class_name": "Sample",
+          "module_name": "",
+          "class_full_name": "Sample",
           "attr_accessor": [
             "access1",
             "access2"
@@ -2484,20 +2498,6 @@
             "write4",
             "write5",
             "write6"
-          ]
-        },
-        "functions": {
-          "class_name": "Sample",
-          "module_name": "Sample",
-          "class_full_name": "Sample",
-          "attr_accessor": [
-
-          ],
-          "attr_reader": [
-
-          ],
-          "attr_writer": [
-
           ],
           "klass": [
             {
@@ -2580,6 +2580,21 @@
               "name": "some_method",
               "paramaters": [
                 {
+                  "name": "was",
+                  "type": "param_required",
+                  "default_value": null
+                },
+                {
+                  "name": "here",
+                  "type": "param_required",
+                  "default_value": null
+                }
+              ]
+            },
+            {
+              "name": "some_other_method",
+              "paramaters": [
+                {
                   "name": "key",
                   "type": "key_optional",
                   "default_value": 1
@@ -2620,7 +2635,7 @@
         },
         "functions": {
           "class_name": "AppUser",
-          "module_name": "AppUser",
+          "module_name": "",
           "class_full_name": "AppUser",
           "attr_accessor": [
 
@@ -2752,7 +2767,7 @@
         },
         "functions": {
           "class_name": "CustomerShop",
-          "module_name": "CustomerShop",
+          "module_name": "",
           "class_full_name": "CustomerShop",
           "attr_accessor": [
 
@@ -2800,7 +2815,7 @@
         },
         "functions": {
           "class_name": "FavouriteOrder",
-          "module_name": "FavouriteOrder",
+          "module_name": "",
           "class_full_name": "FavouriteOrder",
           "attr_accessor": [
 
@@ -2842,7 +2857,7 @@
         },
         "functions": {
           "class_name": "ItemVariation",
-          "module_name": "ItemVariation",
+          "module_name": "",
           "class_full_name": "ItemVariation",
           "attr_accessor": [
 
@@ -2874,7 +2889,7 @@
         "behaviours": null,
         "functions": {
           "class_name": "Item",
-          "module_name": "Item",
+          "module_name": "",
           "class_full_name": "Item",
           "attr_accessor": [
 
@@ -2916,7 +2931,7 @@
         },
         "functions": {
           "class_name": "MenuCategory",
-          "module_name": "MenuCategory",
+          "module_name": "",
           "class_full_name": "MenuCategory",
           "attr_accessor": [
 
@@ -2964,7 +2979,7 @@
         },
         "functions": {
           "class_name": "MenuCategoryProduct",
-          "module_name": "MenuCategoryProduct",
+          "module_name": "",
           "class_full_name": "MenuCategoryProduct",
           "attr_accessor": [
 
@@ -3012,7 +3027,7 @@
         },
         "functions": {
           "class_name": "Order",
-          "module_name": "Order",
+          "module_name": "",
           "class_full_name": "Order",
           "attr_accessor": [
 
@@ -3060,7 +3075,7 @@
         },
         "functions": {
           "class_name": "ProductVariation",
-          "module_name": "ProductVariation",
+          "module_name": "",
           "class_full_name": "ProductVariation",
           "attr_accessor": [
 
@@ -3102,7 +3117,7 @@
         },
         "functions": {
           "class_name": "Product",
-          "module_name": "Product",
+          "module_name": "",
           "class_full_name": "Product",
           "attr_accessor": [
 
@@ -3144,7 +3159,7 @@
         },
         "functions": {
           "class_name": "Shop",
-          "module_name": "Shop",
+          "module_name": "",
           "class_full_name": "Shop",
           "attr_accessor": [
 
@@ -3192,7 +3207,7 @@
         },
         "functions": {
           "class_name": "Staff",
-          "module_name": "Staff",
+          "module_name": "",
           "class_full_name": "Staff",
           "attr_accessor": [
 
@@ -5723,6 +5738,18 @@
         "location": "lookup_foreign_table",
         "key": "item_variation_id",
         "message": "product_variations.item_variation_id => item_variations - Relationship not found in DB, so have inferred this relationship. You may want to check that this relation is correct"
+      },
+      {
+        "step": "step5_attach_dictionary",
+        "location": "process",
+        "key": "app_user,user_id,text",
+        "message": "app_user has a type mismatch for column name: user_id"
+      },
+      {
+        "step": "step5_attach_dictionary",
+        "location": "process",
+        "key": "asp_net_role,name,string",
+        "message": "asp_net_role has a type mismatch for column name: name"
       }
     ]
   }

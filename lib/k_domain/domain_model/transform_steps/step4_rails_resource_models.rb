@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Locate rails model files
-class Step8RailsResourceModels < KDomain::DomainModel::Step
+class Step4RailsResourceModels < KDomain::DomainModel::Step
   attr_accessor :ruby_code
 
   def call

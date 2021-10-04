@@ -26,9 +26,9 @@ module KDomain
         valid &&= Step1AttachDbSchema.run(domain_data, db_schema: db_schema, step_file: step_file('1-attach-db-schema'))
         valid &&= Step2AttachModels.run(domain_data, erd_path: erd_path, step_file: step_file('2-attach-model'))
         valid &&= Step3AttachColumns.run(domain_data, step_file: step_file('3-attach-columns'))
-        valid &&= Step5AttachDictionary.run(domain_data, erd_path: erd_path, step_file: step_file('5-attach-dictionary'))
-        valid &&= Step8RailsResourceModels.run(domain_data, erd_path: erd_path, step_file: step_file('8-rails-resource-models'))
-        valid &&= Step9RailsStructureModels.run(domain_data, erd_path: erd_path, step_file: step_file('9-rails-structure-models'))
+        valid &&= Step4RailsResourceModels.run(domain_data, erd_path: erd_path, step_file: step_file('4-rails-resource-models'))
+        valid &&= Step5RailsModels.run(domain_data, erd_path: erd_path, step_file: step_file('5-rails-models'))
+        valid &&= Step6AttachDictionary.run(domain_data, erd_path: erd_path, step_file: step_file('6-attach-dictionary'))
 
         raise 'DomainModal transform failed' unless valid
 
@@ -53,7 +53,6 @@ module KDomain
         @domain_data ||= {
           domain: {
             models: [],
-            erd_files: []
           },
           rails_resource: {
             models: [],
