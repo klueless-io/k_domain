@@ -24,12 +24,18 @@ module KDomain
       def self.run(domain_data, **opts)
         step = new(domain_data, **opts)
         step.call
-        step
+        step.write(opts[:step_file])
+        step.valid?
       end
 
       def guard(message)
         log.error message
         @valid = false
+      end
+
+      def write(file)
+        FileUtils.mkdir_p(File.dirname(file))
+        File.write(file, JSON.pretty_generate(domain_data))
       end
 
       # Domain Model Accessor/Helpers

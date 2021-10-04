@@ -68,11 +68,11 @@ RSpec.describe KDomain::RailsCodeExtractor::ShimLoader do
     end
 
     context 'before call' do
-      it do
-        expect(defined?(ActiveRecord)).to be_falsey
-        expect(defined?(Rails)).to be_falsey
-        expect(defined?(ActsAsCommentable)).to be_falsey
-      end
+      # it do
+      #   expect(defined?(ActiveRecord)).to be_falsey
+      #   expect(defined?(Rails)).to be_falsey
+      #   expect(defined?(ActsAsCommentable)).to be_falsey
+      # end
 
       context 'after call' do
         before { instance.call }

@@ -53,7 +53,20 @@ module KDomain
         attribute :attr_writer?               , Types::Array.of(Types::Strict::String)
       end
 
+      class Method < Dry::Struct
+        attribute :name                       , Types::Strict::String
+      end
+
       class Functions < Dry::Struct
+        attribute :class_name?                , Types::Strict::String
+        attribute :module_name?               , Types::Strict::String
+        attribute :class_full_name?           , Types::Strict::String
+        attribute :attr_accessor?             , Types::Array.of(Types::Strict::String)
+        attribute :attr_reader?               , Types::Array.of(Types::Strict::String)
+        attribute :attr_writer?               , Types::Array.of(Types::Strict::String)
+        attribute :klass?                     , Types::Strict::Array.of(KDomain::Schemas::RailsStructure::Method)
+        attribute :instance_public?           , Types::Strict::Array.of(KDomain::Schemas::RailsStructure::Method)
+        attribute :instance_private?          , Types::Strict::Array.of(KDomain::Schemas::RailsStructure::Method)
       end
 
       class Model < Dry::Struct
