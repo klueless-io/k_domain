@@ -23,7 +23,7 @@ class LoadSchema
 
   # ----------------------------------------------------------------------
   # Inject start
-  # original file: spec/sample_input/raw_db_schema.rb
+  # original file: spec/example_domain/simple/input/schema.rb
   # ----------------------------------------------------------------------
   def load_schema
     # frozen_string_literal: true
@@ -264,7 +264,7 @@ class LoadSchema
   end
 
   # ----------------------------------------------------------------------
-  # original file: spec/sample_input/raw_db_schema.rb
+  # original file: spec/example_domain/simple/input/schema.rb
   # Inject end
   # ----------------------------------------------------------------------
 

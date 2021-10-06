@@ -37,7 +37,7 @@ RSpec.describe KDomain::RailsCodeExtractor::ExtractModel do
   describe '#extract' do
     before { instance.extract(file) }
 
-    let(:file) { 'spec/sample_input/models/sample.rb' }
+    let(:file) { 'spec/example_domain/simple/input/models/sample.rb' }
 
     # let(:files) { Dir['spec/sample_input/models/*.rb'] }
 

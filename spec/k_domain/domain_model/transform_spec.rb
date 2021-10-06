@@ -14,26 +14,26 @@ RSpec.describe KDomain::DomainModel::Transform do
     )
   end
 
-  let(:source_file)               { 'spec/sample_input/raw_db_schema.rb' }
-  let(:erd_path)                  { File.expand_path('spec/sample_input/models') }
+  let(:source_file)               { 'spec/example_domain/simple/input/schema.rb' }
+  let(:erd_path)                  { File.expand_path('spec/example_domain/simple/input/models') }
 
-  let(:target_file)               { 'spec/sample_output/domain_model/domain_model.json' }
-  let(:target_step_file)          { 'spec/sample_output/domain_model/%{step}.json' }
+  let(:target_file)               { 'spec/example_domain/simple/output/domain_model/domain_model.json' }
+  let(:target_step_file)          { 'spec/example_domain/simple/output/domain_model/%{step}.json' }
 
-  context 'complex erd' do
-    let(:raw_db_schema_file)      { '/Users/davidcruwys/dev/printspeak/printspeak-master/db/schema.rb' }
-    let(:raw_db_schema_json_file) { 'spec/sample_output/printspeak/schema.json' }
-    let(:erd_path)                { '/Users/davidcruwys/dev/printspeak/printspeak-master/app/models' }
+  # context 'complex erd' do
+  #   let(:raw_db_schema_file)      { '/Users/davidcruwys/dev/printspeak/printspeak-master/db/schema.rb' }
+  #   let(:raw_db_schema_json_file) { 'spec/example_domain/advanced/output/schema.json' }
+  #   let(:erd_path)                { '/Users/davidcruwys/dev/printspeak/printspeak-master/app/models' }
 
-    let(:source_file)             { target_file }
-    let(:target_file)             { 'spec/sample_output/printspeak/domain_model.json' }
-    let(:target_step_file)        { 'spec/sample_output/printspeak/%{step}.json' }
+  #   let(:source_file)             { target_file }
+  #   let(:target_file)             { 'spec/example_domain/advanced/output/domain_model.json' }
+  #   let(:target_step_file)        { 'spec/example_domain/advanced/output/%{step}.json' }
 
-    # fit {
-    #   db_transform
-    #   instance.call
-    # }
-  end
+  #   fit {
+  #     db_transform
+  #     instance.call
+  #   }
+  # end
 
   describe '#initialize' do
     context '.db_schema' do
@@ -51,7 +51,7 @@ RSpec.describe KDomain::DomainModel::Transform do
 
         it do
           is_expected.to include(
-            models: be_empty,
+            models: be_empty
             # erd_files: be_empty # replace this with behaviours and functions
           )
         end

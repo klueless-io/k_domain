@@ -6,8 +6,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - "_/**/*"
-    - "spec/sample_input/**/*"
-    - "spec/sample_output/**/*"
+    - "spec/example_domain/**/*"
     - "templates/**/*"
     - "lib/k_domain/schemas/domain/old/**/*"
     - "spec/k_domain/ruby_loader/**/*"
