@@ -1,3 +1,18 @@
+# JSON Schema
+
+The following schemas were created using the following processes.
+
+```
+quicktype -o json-schema/database.json -t database -l schema spec/sample_output/printspeak/schema.json
+quicktype -o json-schema/database.rb   -t database -l ruby   json-schema/database-altered.json
+spec/sample_output/printspeak/schema.json
+json-schema/database-altered.json
+```
+
+remove statistics
+remove (or move rails structure)
+drop erd_location
+
 # K Domain
 
 > K Domain builds complex domain schemas by combining the database schema with a rich entity relationship DSLs

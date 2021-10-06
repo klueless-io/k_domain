@@ -23,6 +23,7 @@ k_domain.yml
 /doc/
 /pkg/
 /spec/reports/
+/spec/domain_advanced/
 /tmp/
 !/tmp/.keep
 *.bundle

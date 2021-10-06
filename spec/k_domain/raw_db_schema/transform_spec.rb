@@ -2,9 +2,9 @@
 
 RSpec.describe KDomain::RawDbSchema::Transform do
   let(:instance)            { described_class.new(source_file) }
-  let(:source_file)         { 'spec/sample_input/raw_db_schema.rb' }
-  let(:schema_loader_file)  { 'spec/sample_output/raw_db_schema/schema_loader.rb' }
-  let(:target_json_file)    { 'spec/sample_output/raw_db_schema/schema.json' }
+  let(:source_file)         { 'spec/example_domain/simple/input/schema.rb' }
+  let(:schema_loader_file)  { 'spec/example_domain/simple/output/raw_db_schema/schema_loader.rb' }
+  let(:target_json_file)    { 'spec/example_domain/simple/output/raw_db_schema/schema.json' }
 
   describe '#initialize' do
     context '.source_file' do

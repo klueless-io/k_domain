@@ -20,7 +20,7 @@ module KDomain
         @erd_path         = erd_path
       end
 
-      # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
+      # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity
       def call
         valid = true
         valid &&= Step1AttachDbSchema.run(domain_data, db_schema: db_schema, step_file: step_file('1-attach-db-schema'))
@@ -36,10 +36,10 @@ module KDomain
 
         nil
       end
-      # rubocop:enable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
+      # rubocop:enable Metrics/AbcSize,Metrics/CyclomaticComplexity
 
       def step_file(step_name)
-        target_step_file % { step: step_name }
+        format(target_step_file, step: step_name)
       end
 
       def write
@@ -47,12 +47,11 @@ module KDomain
         File.write(target_file, JSON.pretty_generate(domain_data))
       end
 
-      # rubocop:disable Metrics/MethodLength
       def domain_data
         # The initial domain model structure is created here, but populated during the workflows.
         @domain_data ||= {
           domain: {
-            models: [],
+            models: []
           },
           rails_resource: {
             models: [],
@@ -76,8 +75,6 @@ module KDomain
           }
         }
       end
-
-      # rubocop:enable Metrics/MethodLength
     end
   end
 end
