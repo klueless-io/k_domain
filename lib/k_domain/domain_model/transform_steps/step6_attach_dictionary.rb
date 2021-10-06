@@ -28,9 +28,9 @@ class Step6AttachDictionary < KDomain::DomainModel::Step
 
       unless entry[:types].include?(column_type)
         investigate(step: :step5_attach_dictionary,
-          location: :process,
-          key: "#{model_name},#{column_name},#{column_type}",
-          message: "#{model_name} has a type mismatch for column name: #{column_name}")
+                    location: :process,
+                    key: "#{model_name},#{column_name},#{column_type}",
+                    message: "#{model_name} has a type mismatch for column name: #{column_name}")
 
         entry[:types] << column_type
         entry[:type_count] = entry[:type_count] + 1

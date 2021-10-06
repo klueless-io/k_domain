@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Locate rails model files
-class Step5RailsModels < KDomain::DomainModel::Step
+class Step5RailsStructureModels < KDomain::DomainModel::Step
   def call
     raise 'ERD path not supplied' unless opts[:erd_path]
 

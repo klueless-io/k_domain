@@ -47,8 +47,7 @@
         },
         {
           "name": "finalpaymentdate",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "financecharge",
@@ -114,8 +113,7 @@
         },
         {
           "name": "partialpaypaydate",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "partialpayrefnumber",
@@ -129,13 +127,11 @@
         },
         {
           "name": "paymentduedate",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "posteddate",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "recordtype",
@@ -198,13 +194,11 @@
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
@@ -267,6 +261,48 @@
           "using": "btree"
         },
         {
+          "name": "index_account_history_data_on_adjustment_id",
+          "fields": [
+            "adjustment_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_account_history_data_on_company_id",
+          "fields": [
+            "company_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_account_history_data_on_created_at",
+          "fields": [
+            "created_at"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_account_history_data_on_dirty",
+          "fields": [
+            "dirty"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_account_history_data_on_invoice_id",
+          "fields": [
+            "invoice_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_account_history_data_on_platform_id",
+          "fields": [
+            "platform_id"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_account_history_data_on_printsmith_id",
           "fields": [
             "printsmith_id"
@@ -277,6 +313,13 @@
           "name": "index_account_history_data_on_source_account_id",
           "fields": [
             "source_account_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_account_history_data_on_source_invoice_id",
+          "fields": [
+            "source_invoice_id"
           ],
           "using": "btree"
         },
@@ -299,6 +342,17 @@
           "using": "btree"
         },
         {
+          "name": "index_account_history_data_source_invoice_platform_id",
+          "fields": [
+            "tenant_id",
+            "source_invoice_id",
+            "platform_id",
+            "recordtype"
+          ],
+          "where": "((recordtype)::text = '1'::text)",
+          "using": "btree"
+        },
+        {
           "name": "index_account_history_data_tenant_source_account",
           "fields": [
             "source_account_id",
@@ -307,6 +361,34 @@
             "deleted"
           ],
           "where": "(deleted = false)",
+          "using": "btree"
+        },
+        {
+          "name": "index_account_history_data_tenant_source_account_platform_id",
+          "fields": [
+            "source_account_id",
+            "tenant_id",
+            "platform_id",
+            "deleted"
+          ],
+          "where": "(deleted = false)",
+          "using": "btree"
+        },
+        {
+          "name": "index_record_type",
+          "fields": [
+            "recordtype"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "tmp_backfill_index_account_history_data",
+          "fields": [
+            "id",
+            "platform_id",
+            "printsmith_id"
+          ],
+          "where": "(platform_id IS NULL)",
           "using": "btree"
         }
       ],
@@ -427,13 +509,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "contact_id",
@@ -536,6 +616,27 @@
       ],
       "indexes": [
         {
+          "name": "activities_created_at_idx",
+          "fields": [
+            "created_at"
+          ],
+          "order": {
+            "created_at": "desc"
+          },
+          "using": "btree"
+        },
+        {
+          "name": "activities_tenant_id_created_at_idx",
+          "fields": [
+            "tenant_id",
+            "created_at"
+          ],
+          "order": {
+            "created_at": "desc"
+          },
+          "using": "btree"
+        },
+        {
           "name": "activities_tenant_id_source_created_at_idx",
           "fields": [
             "tenant_id",
@@ -545,30 +646,6 @@
             "source_created_at": "desc"
           },
           "where": "((hide = false) AND (deleted = false))",
-          "using": "btree"
-        },
-        {
-          "name": "activity_test",
-          "fields": [
-            "tenant_id",
-            "source_created_at"
-          ],
-          "order": {
-            "source_created_at": "desc"
-          },
-          "where": "((estimate_id IS NOT NULL) AND (invoice_id IS NULL))",
-          "using": "btree"
-        },
-        {
-          "name": "activity_test2",
-          "fields": [
-            "tenant_id",
-            "source_created_at"
-          ],
-          "order": {
-            "source_created_at": "desc"
-          },
-          "where": "(invoice_id IS NOT NULL)",
           "using": "btree"
         },
         {
@@ -677,13 +754,6 @@
           "name": "index_activities_on_contact_id",
           "fields": [
             "contact_id"
-          ],
-          "using": "btree"
-        },
-        {
-          "name": "index_activities_on_deleted",
-          "fields": [
-            "deleted"
           ],
           "using": "btree"
         },
@@ -829,6 +899,14 @@
           },
           "where": "(invoice_id IS NOT NULL)",
           "using": "btree"
+        },
+        {
+          "name": "try_5",
+          "fields": [
+            "tenant_id",
+            "source_created_at"
+          ],
+          "using": "btree"
         }
       ],
       "rails_schema": {
@@ -906,13 +984,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "latitude",
@@ -935,23 +1011,40 @@
           "type": "integer"
         },
         {
-          "name": "external_id",
-          "type": "string"
-        },
-        {
           "name": "platform_id",
           "type": "string"
         },
         {
           "name": "platform_data",
           "type": "jsonb"
+        },
+        {
+          "name": "external_id",
+          "type": "string"
         }
       ],
       "indexes": [
         {
+          "name": "dirty_tenant_id",
+          "fields": [
+            "dirty",
+            "tenant_id",
+            "id"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_addresses_on_company_id",
           "fields": [
             "company_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_addresses_on_platform_id",
+          "fields": [
+            "platform_id",
+            "tenant_id"
           ],
           "using": "btree"
         },
@@ -966,10 +1059,9 @@
         {
           "name": "tmp_backfill_index_addresses",
           "fields": [
+            "id",
             "platform_id",
-            "printsmith_id",
-            "external_id",
-            "id"
+            "printsmith_id"
           ],
           "where": "(platform_id IS NULL)",
           "using": "btree"
@@ -1004,13 +1096,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "printsmith_id",
@@ -1055,13 +1145,11 @@
         },
         {
           "name": "posted_date",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "final_payment_date",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "voided",
@@ -1231,6 +1319,13 @@
           "using": "btree"
         },
         {
+          "name": "index_adjustments_on_accounting_month",
+          "fields": [
+            "accounting_month"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_adjustments_on_accounting_year",
           "fields": [
             "accounting_year"
@@ -1245,9 +1340,31 @@
           "using": "btree"
         },
         {
+          "name": "index_adjustments_on_final_payment_date",
+          "fields": [
+            "final_payment_date"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_adjustments_on_invoice_id",
+          "fields": [
+            "invoice_id"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_adjustments_on_posted_date",
           "fields": [
             "posted_date"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_adjustments_on_tenant_id_and_platform_id",
+          "fields": [
+            "tenant_id",
+            "platform_id"
           ],
           "using": "btree"
         },
@@ -1256,6 +1373,13 @@
           "fields": [
             "tenant_id",
             "printsmith_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_adjustments_on_voided",
+          "fields": [
+            "voided"
           ],
           "using": "btree"
         },
@@ -1276,6 +1400,16 @@
             "invoice_id",
             "id"
           ],
+          "using": "btree"
+        },
+        {
+          "name": "tmp_backfill_index_adjustments",
+          "fields": [
+            "id",
+            "platform_id",
+            "printsmith_id"
+          ],
+          "where": "(platform_id IS NULL)",
           "using": "btree"
         }
       ],
@@ -1663,13 +1797,11 @@
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
@@ -1788,13 +1920,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "month_date",
@@ -1829,13 +1959,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "comp_perc",
@@ -1883,18 +2011,298 @@
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         }
       ],
       "indexes": [
 
+      ],
+      "rails_schema": {
+        "primary_key": null,
+        "id": null,
+        "force": "cascade"
+      }
+    },
+    {
+      "name": "business_plan_equipments",
+      "primary_key": "id",
+      "primary_key_type": "bigint",
+      "columns": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "device",
+          "type": "string"
+        },
+        {
+          "name": "make",
+          "type": "string"
+        },
+        {
+          "name": "model",
+          "type": "string"
+        },
+        {
+          "name": "equip_type",
+          "type": "string"
+        },
+        {
+          "name": "cost",
+          "type": "decimal",
+          "precision": 19,
+          "scale": 2
+        },
+        {
+          "name": "purchase_date",
+          "type": "date"
+        },
+        {
+          "name": "purchase_reason",
+          "type": "text"
+        },
+        {
+          "name": "sales_plan",
+          "type": "boolean"
+        },
+        {
+          "name": "installation_plan",
+          "type": "boolean"
+        },
+        {
+          "name": "additional_details",
+          "type": "text"
+        },
+        {
+          "name": "serial_no",
+          "type": "string"
+        },
+        {
+          "name": "lease",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "existing",
+          "type": "boolean"
+        },
+        {
+          "name": "lease_expiry",
+          "type": "date"
+        },
+        {
+          "name": "user_id",
+          "type": "integer"
+        },
+        {
+          "name": "business_plan_id",
+          "type": "integer",
+          "null": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "index_business_plan_equipments_on_business_plan_id",
+          "fields": [
+            "business_plan_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_business_plan_equipments_on_user_id",
+          "fields": [
+            "user_id"
+          ],
+          "using": "btree"
+        }
+      ],
+      "rails_schema": {
+        "primary_key": null,
+        "id": null,
+        "force": "cascade"
+      }
+    },
+    {
+      "name": "business_plan_goal_items",
+      "primary_key": "id",
+      "primary_key_type": "bigint",
+      "columns": [
+        {
+          "name": "business_plan_id",
+          "type": "integer"
+        },
+        {
+          "name": "description",
+          "type": "text"
+        },
+        {
+          "name": "categories",
+          "type": "string"
+        },
+        {
+          "name": "cost",
+          "type": "decimal",
+          "precision": 19,
+          "scale": 2
+        },
+        {
+          "name": "start_date",
+          "type": "date"
+        },
+        {
+          "name": "complete_date",
+          "type": "date"
+        },
+        {
+          "name": "review_date",
+          "type": "date"
+        },
+        {
+          "name": "user_id",
+          "type": "integer"
+        },
+        {
+          "name": "tenant_id",
+          "type": "integer"
+        },
+        {
+          "name": "created_at",
+          "type": "datetime",
+          "null": false
+        },
+        {
+          "name": "updated_at",
+          "type": "datetime",
+          "null": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "index_business_plan_goal_items_on_business_plan_id",
+          "fields": [
+            "business_plan_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_business_plan_goal_items_on_tenant_id",
+          "fields": [
+            "tenant_id"
+          ],
+          "using": "btree"
+        }
+      ],
+      "rails_schema": {
+        "primary_key": null,
+        "id": null,
+        "force": "cascade"
+      }
+    },
+    {
+      "name": "business_plan_goals",
+      "primary_key": "id",
+      "primary_key_type": "bigint",
+      "columns": [
+        {
+          "name": "business_plan_kpi_id",
+          "type": "integer"
+        },
+        {
+          "name": "global",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "financial_year",
+          "type": "integer"
+        },
+        {
+          "name": "average",
+          "type": "decimal",
+          "precision": 19,
+          "scale": 2
+        },
+        {
+          "name": "industry_average",
+          "type": "decimal",
+          "precision": 19,
+          "scale": 2
+        },
+        {
+          "name": "business_plan_id",
+          "type": "integer"
+        },
+        {
+          "name": "tenant_id",
+          "type": "integer"
+        },
+        {
+          "name": "enterprise_id",
+          "type": "integer"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "index_business_plan_goals_on_business_plan_kpi_id",
+          "fields": [
+            "business_plan_kpi_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_business_plan_goals_on_enterprise_id",
+          "fields": [
+            "enterprise_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_business_plan_goals_on_tenant_id",
+          "fields": [
+            "tenant_id"
+          ],
+          "using": "btree"
+        }
+      ],
+      "rails_schema": {
+        "primary_key": null,
+        "id": null,
+        "force": "cascade"
+      }
+    },
+    {
+      "name": "business_plan_kpis",
+      "primary_key": "id",
+      "primary_key_type": "bigint",
+      "columns": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "enterprise_id",
+          "type": "integer"
+        },
+        {
+          "name": "is_cost",
+          "type": "boolean",
+          "default": true
+        }
+      ],
+      "indexes": [
+        {
+          "name": "index_business_plan_kpis_on_enterprise_id",
+          "fields": [
+            "enterprise_id"
+          ],
+          "using": "btree"
+        }
       ],
       "rails_schema": {
         "primary_key": null,
@@ -1977,6 +2385,88 @@
           "name": "index_business_plan_marketing_activities_on_tenant_id",
           "fields": [
             "tenant_id"
+          ],
+          "using": "btree"
+        }
+      ],
+      "rails_schema": {
+        "primary_key": null,
+        "id": null,
+        "force": "cascade"
+      }
+    },
+    {
+      "name": "business_plan_plan_categories",
+      "primary_key": "id",
+      "primary_key_type": "bigint",
+      "columns": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "enterprise_id",
+          "type": "integer"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "index_business_plan_plan_categories_on_enterprise_id",
+          "fields": [
+            "enterprise_id"
+          ],
+          "using": "btree"
+        }
+      ],
+      "rails_schema": {
+        "primary_key": null,
+        "id": null,
+        "force": "cascade"
+      }
+    },
+    {
+      "name": "business_plan_plan_items",
+      "primary_key": "id",
+      "primary_key_type": "bigint",
+      "columns": [
+        {
+          "name": "business_plan_id",
+          "type": "integer",
+          "null": false
+        },
+        {
+          "name": "business_plan_plan_category_id",
+          "type": "integer",
+          "null": false
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "comment",
+          "type": "text"
+        },
+        {
+          "name": "target_date",
+          "type": "date"
+        },
+        {
+          "name": "created_at",
+          "type": "datetime",
+          "null": false
+        },
+        {
+          "name": "updated_at",
+          "type": "datetime",
+          "null": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "index_business_plan_plan_items_on_business_plan_id",
+          "fields": [
+            "business_plan_id"
           ],
           "using": "btree"
         }
@@ -2102,6 +2592,21 @@
           "type": "jsonb",
           "default": {
           }
+        },
+        {
+          "name": "goal_forecast_gross",
+          "type": "integer",
+          "default": 70
+        },
+        {
+          "name": "goal_forecast_labor",
+          "type": "integer",
+          "default": 25
+        },
+        {
+          "name": "goal_forecast_comp",
+          "type": "integer",
+          "default": 10
         }
       ],
       "indexes": [
@@ -2318,14 +2823,7 @@
         }
       ],
       "indexes": [
-        {
-          "name": "index_campaign_calendar_entries_campaign_tenant",
-          "fields": [
-            "campaign_id",
-            "tenant_id"
-          ],
-          "using": "btree"
-        }
+
       ],
       "rails_schema": {
         "primary_key": null,
@@ -2457,13 +2955,11 @@
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
@@ -2670,13 +3166,11 @@
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
@@ -3047,13 +3541,11 @@
         },
         {
           "name": "lastcloseoutdate",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "laststartupdate",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "paidouts",
@@ -3069,19 +3561,16 @@
         },
         {
           "name": "transactiondate",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
@@ -3115,7 +3604,13 @@
         }
       ],
       "indexes": [
-
+        {
+          "name": "index_cash_drawers_on_platform_id",
+          "fields": [
+            "platform_id"
+          ],
+          "using": "btree"
+        }
       ],
       "rails_schema": {
         "primary_key": null,
@@ -3190,13 +3685,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "tenant_id",
@@ -3255,13 +3748,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "tenant_id",
@@ -3671,6 +4162,18 @@
           "type": "datetime"
         },
         {
+          "name": "is_lead",
+          "type": "boolean"
+        },
+        {
+          "name": "platform_id",
+          "type": "string"
+        },
+        {
+          "name": "platform_data",
+          "type": "jsonb"
+        },
+        {
           "name": "meta_data",
           "type": "jsonb",
           "default": {
@@ -3692,18 +4195,6 @@
           "name": "mbe_id",
           "type": "string",
           "default": ""
-        },
-        {
-          "name": "is_lead",
-          "type": "boolean"
-        },
-        {
-          "name": "platform_id",
-          "type": "string"
-        },
-        {
-          "name": "platform_data",
-          "type": "jsonb"
         },
         {
           "name": "mbe_privilege",
@@ -3799,6 +4290,15 @@
           "using": "btree"
         },
         {
+          "name": "companies_needs_lifetime_value_recalc",
+          "fields": [
+            "tenant_id",
+            "rolling_12_month_rank"
+          ],
+          "where": "((needs_lifetime_value_recalc = true) AND (deleted = false))",
+          "using": "btree"
+        },
+        {
           "name": "companies_refresh_index",
           "fields": [
             "tenant_id",
@@ -3815,6 +4315,13 @@
           ],
           "where": "(remote_account_update = true)",
           "using": "btree"
+        },
+        {
+          "name": "companies_sales_hash_idx",
+          "fields": [
+            "sales_hash"
+          ],
+          "using": "gin"
         },
         {
           "name": "companies_sales_rep_indexes",
@@ -3865,6 +4372,15 @@
           "using": "btree"
         },
         {
+          "name": "companies_tenant_id_platform_id_idx",
+          "fields": [
+            "tenant_id",
+            "platform_id"
+          ],
+          "unique": true,
+          "using": "btree"
+        },
+        {
           "name": "companies_tenant_id_printsmith_id_idx",
           "fields": [
             "tenant_id",
@@ -3911,20 +4427,6 @@
           "using": "btree"
         },
         {
-          "name": "index_companies_clearbit",
-          "fields": [
-            "has_clearbit_data",
-            "rolling_12_month_rank",
-            "rolling_12_month_sales",
-            "rolling_12_month_sales_ly",
-            "tenant_id",
-            "deleted",
-            "walk_in"
-          ],
-          "where": "((has_clearbit_data = false) AND (walk_in = false) AND (deleted = false))",
-          "using": "btree"
-        },
-        {
           "name": "index_companies_id_do_not_mail",
           "fields": [
             "id",
@@ -3952,6 +4454,13 @@
           "name": "index_companies_on_location_user_id",
           "fields": [
             "location_user_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_companies_on_needs_lifetime_value_recalc",
+          "fields": [
+            "needs_lifetime_value_recalc"
           ],
           "using": "btree"
         },
@@ -3992,6 +4501,20 @@
             "single_sale_only_at"
           ],
           "where": "((NOT deleted) AND (printsmith_id IS NOT NULL) AND (single_sale_only_at IS NOT NULL))",
+          "using": "btree"
+        },
+        {
+          "name": "index_companies_on_single_sale_only_sales_rep_location_platform",
+          "fields": [
+            "tenant_id",
+            "deleted",
+            "walk_in",
+            "location_user_id",
+            "source_salesrep_id",
+            "platform_id",
+            "single_sale_only_at"
+          ],
+          "where": "((NOT deleted) AND (platform_id IS NOT NULL) AND (single_sale_only_at IS NOT NULL))",
           "using": "btree"
         },
         {
@@ -4065,6 +4588,20 @@
           "using": "btree"
         },
         {
+          "name": "index_companies_on_single_sale_only_sales_rep_user_platform",
+          "fields": [
+            "tenant_id",
+            "deleted",
+            "walk_in",
+            "sales_rep_user_id",
+            "source_salesrep_id",
+            "platform_id",
+            "single_sale_only_at"
+          ],
+          "where": "((NOT deleted) AND (platform_id IS NOT NULL) AND (single_sale_only_at IS NOT NULL))",
+          "using": "btree"
+        },
+        {
           "name": "index_companies_on_tenant_address_ids",
           "fields": [
             "tenant_id",
@@ -4108,6 +4645,15 @@
             "rolling_12_month_rank"
           ],
           "where": "((NOT deleted) AND (NOT walk_in))",
+          "using": "btree"
+        },
+        {
+          "name": "index_companies_on_tenant_id_platform_id",
+          "fields": [
+            "tenant_id",
+            "platform_id",
+            "dirty"
+          ],
           "using": "btree"
         },
         {
@@ -4229,26 +4775,21 @@
           "using": "btree"
         },
         {
+          "name": "index_companies_tenant_platform_id",
+          "fields": [
+            "tenant_id",
+            "platform_id",
+            "id"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_companies_tenant_printsmith",
           "fields": [
             "tenant_id",
             "printsmith_id",
             "id"
           ],
-          "using": "btree"
-        },
-        {
-          "name": "index_company_sales",
-          "fields": [
-            "tenant_id",
-            "rolling_12_month_sales",
-            "deleted",
-            "source_shiptoaddress_id",
-            "sales_rep_user_id",
-            "source_salesrep_id",
-            "id"
-          ],
-          "where": "(NOT deleted)",
           "using": "btree"
         },
         {
@@ -4266,6 +4807,16 @@
           "using": "btree"
         },
         {
+          "name": "index_invoices_company_sales",
+          "fields": [
+            "tenant_id",
+            "rolling_12_month_sales",
+            "deleted"
+          ],
+          "where": "(NOT deleted)",
+          "using": "btree"
+        },
+        {
           "name": "index_search_companies",
           "fields": [
             "tenant_id",
@@ -4275,17 +4826,6 @@
             "id"
           ],
           "where": "(NOT deleted)",
-          "using": "btree"
-        },
-        {
-          "name": "tmp_backfill_index_companies",
-          "fields": [
-            "platform_id",
-            "printsmith_id",
-            "external_id",
-            "id"
-          ],
-          "where": "(platform_id IS NULL)",
           "using": "btree"
         },
         {
@@ -4410,33 +4950,27 @@
         },
         {
           "name": "first_estimate",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "first_invoice",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "last_estimate",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "last_invoice",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "count",
@@ -4669,13 +5203,11 @@
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
@@ -4804,13 +5336,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "dirty",
@@ -5157,10 +5687,6 @@
           "type": "datetime"
         },
         {
-          "name": "external_id",
-          "type": "string"
-        },
-        {
           "name": "old_prospect_status_id",
           "type": "integer"
         },
@@ -5177,8 +5703,8 @@
           "type": "datetime"
         },
         {
-          "name": "do_not_sms",
-          "type": "boolean"
+          "name": "external_id",
+          "type": "string"
         },
         {
           "name": "single_sale_only_at",
@@ -5221,6 +5747,10 @@
         {
           "name": "privacy_data",
           "type": "jsonb"
+        },
+        {
+          "name": "do_not_sms",
+          "type": "boolean"
         },
         {
           "name": "do_not_sms_reply",
@@ -5299,6 +5829,13 @@
           "using": "btree"
         },
         {
+          "name": "contacts_company_id_lower_lower1_idx",
+          "fields": [
+            "company_id"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "contacts_lead_type_id_idx",
           "fields": [
             "lead_type_id"
@@ -5332,18 +5869,19 @@
           "using": "btree"
         },
         {
-          "name": "contacts_tenant_id_latest_order_date_idx",
-          "fields": [
-            "tenant_id",
-            "latest_order_date"
-          ],
-          "using": "btree"
-        },
-        {
           "name": "contacts_tenant_id_lower_idx",
           "fields": [
             "tenant_id"
           ],
+          "using": "btree"
+        },
+        {
+          "name": "contacts_tenant_id_platform_id_idx",
+          "fields": [
+            "tenant_id",
+            "platform_id"
+          ],
+          "unique": true,
           "using": "btree"
         },
         {
@@ -5356,7 +5894,7 @@
           "using": "btree"
         },
         {
-          "name": "contacts_tenant_id_rolling_12_month_sales_idx1",
+          "name": "contacts_tenant_id_rolling_12_month_sales_idx",
           "fields": [
             "tenant_id",
             "rolling_12_month_sales"
@@ -5421,15 +5959,13 @@
           "using": "btree"
         },
         {
-          "name": "index_contacts_clearbit",
+          "name": "index_company_dirty_platform",
           "fields": [
-            "has_clearbit_data",
-            "rolling_12_month_sales",
-            "rolling_12_month_sales_ly",
             "tenant_id",
-            "temp"
+            "dirty",
+            "platform_id",
+            "company_id"
           ],
-          "where": "((has_clearbit_data = false) AND (temp = false))",
           "using": "btree"
         },
         {
@@ -5540,6 +6076,13 @@
           "using": "btree"
         },
         {
+          "name": "index_contacts_on_in_group",
+          "fields": [
+            "in_group"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_contacts_on_lead_type_id",
           "fields": [
             "lead_type_id"
@@ -5550,6 +6093,13 @@
           "name": "index_contacts_on_location_user_id",
           "fields": [
             "location_user_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_contacts_on_on_suppression_list",
+          "fields": [
+            "on_suppression_list"
           ],
           "using": "btree"
         },
@@ -5586,42 +6136,6 @@
           "fields": [
             "source_salesrep_id"
           ],
-          "using": "btree"
-        },
-        {
-          "name": "index_contacts_on_tenant_marketing",
-          "fields": [
-            "tenant_id",
-            "marketing_do_not_mail",
-            "marketing_unsubscribe",
-            "on_suppression_list",
-            "id"
-          ],
-          "where": "((marketing_do_not_mail = false) AND ((marketing_unsubscribe = true) OR (on_suppression_list = true)))",
-          "using": "btree"
-        },
-        {
-          "name": "index_contacts_privacy_acknowledgment",
-          "fields": [
-            "tenant_id"
-          ],
-          "where": "((privacy_data ->> 'acknowledgment'::text) IS NOT NULL)",
-          "using": "btree"
-        },
-        {
-          "name": "index_contacts_privacy_marketing_center",
-          "fields": [
-            "tenant_id"
-          ],
-          "where": "((privacy_data ->> 'marketing_center'::text) IS NOT NULL)",
-          "using": "btree"
-        },
-        {
-          "name": "index_contacts_privacy_marketing_corporate",
-          "fields": [
-            "tenant_id"
-          ],
-          "where": "((privacy_data ->> 'marketing_corporate'::text) IS NOT NULL)",
           "using": "btree"
         },
         {
@@ -5774,6 +6288,15 @@
           "using": "btree"
         },
         {
+          "name": "index_contacts_tenant_platform_id",
+          "fields": [
+            "tenant_id",
+            "platform_id",
+            "id"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_contacts_tenant_printsmith",
           "fields": [
             "tenant_id",
@@ -5816,14 +6339,6 @@
           "using": "btree"
         },
         {
-          "name": "index_contacts_with_rolling_12_month_sales",
-          "fields": [
-            "rolling_12_month_sales"
-          ],
-          "where": "(rolling_12_month_sales > (0)::numeric)",
-          "using": "btree"
-        },
-        {
           "name": "index_search_contacts",
           "fields": [
             "tenant_id",
@@ -5841,12 +6356,20 @@
         {
           "name": "tmp_backfill_index_contacts",
           "fields": [
+            "id",
             "platform_id",
-            "printsmith_id",
-            "external_id",
-            "id"
+            "printsmith_id"
           ],
           "where": "(platform_id IS NULL)",
+          "using": "btree"
+        },
+        {
+          "name": "tmp_backfill_index_contacts_source_salesrep_id",
+          "fields": [
+            "id",
+            "source_salesrep_id"
+          ],
+          "where": "((tmp_data ->> 'contacts_source_salesrep_id'::text) IS NULL)",
           "using": "btree"
         },
         {
@@ -5859,6 +6382,14 @@
             "rolling_12_month_sales": "desc"
           },
           "where": "(guessed_gender IS NULL)",
+          "using": "btree"
+        },
+        {
+          "name": "tmp_fix_4",
+          "fields": [
+            "tenant_id"
+          ],
+          "where": "((address_id IS NULL) AND (source_address_id IS NOT NULL))",
           "using": "btree"
         }
       ],
@@ -6016,13 +6547,11 @@
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         }
       ],
@@ -6280,13 +6809,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         }
       ],
       "indexes": [
@@ -6485,13 +7012,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "key",
@@ -6756,13 +7281,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "email_id",
@@ -6838,9 +7361,10 @@
           "using": "btree"
         },
         {
-          "name": "emails_message_id_idx",
+          "name": "emails_message_id_tenant_id_idx",
           "fields": [
-            "message_id"
+            "message_id",
+            "tenant_id"
           ],
           "using": "btree"
         },
@@ -7195,12 +7719,12 @@
           }
         },
         {
-          "name": "platform_type",
-          "type": "string"
-        },
-        {
           "name": "default_roboto_font",
           "type": "boolean"
+        },
+        {
+          "name": "platform_type",
+          "type": "string"
         },
         {
           "name": "agi_brand",
@@ -7240,6 +7764,10 @@
           "default": false
         },
         {
+          "name": "email_blacklist",
+          "type": "text"
+        },
+        {
           "name": "default_tenant_id",
           "type": "integer"
         },
@@ -7253,8 +7781,9 @@
           "array": true
         },
         {
-          "name": "email_blacklist",
-          "type": "text"
+          "name": "csv_col_sep",
+          "type": "string",
+          "default": ","
         },
         {
           "name": "api_base_url",
@@ -7301,11 +7830,6 @@
           "type": "string"
         },
         {
-          "name": "csv_col_sep",
-          "type": "string",
-          "default": ","
-        },
-        {
           "name": "platform_data",
           "type": "jsonb",
           "default": {
@@ -7346,21 +7870,21 @@
           "type": "string"
         },
         {
-          "name": "user_signature_template",
-          "type": "text"
-        },
-        {
-          "name": "proof_banner_id",
-          "type": "integer"
-        },
-        {
           "name": "marketing_banner",
           "type": "string"
+        },
+        {
+          "name": "user_signature_template",
+          "type": "text"
         },
         {
           "name": "docs_second",
           "type": "boolean",
           "default": false
+        },
+        {
+          "name": "proof_banner_id",
+          "type": "integer"
         },
         {
           "name": "default_blog",
@@ -7392,6 +7916,34 @@
           "precision": 19,
           "scale": 2,
           "default": 7.0
+        },
+        {
+          "name": "business_goal_categories",
+          "type": "string"
+        },
+        {
+          "name": "business_plan_intro",
+          "type": "text"
+        },
+        {
+          "name": "bs_equip_device",
+          "type": "string"
+        },
+        {
+          "name": "bs_equip_name",
+          "type": "string"
+        },
+        {
+          "name": "bs_equip_type",
+          "type": "string"
+        },
+        {
+          "name": "bs_equip_make",
+          "type": "string"
+        },
+        {
+          "name": "bs_equip_model",
+          "type": "string"
         }
       ],
       "indexes": [
@@ -7423,13 +7975,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "tenant_id",
@@ -7481,13 +8031,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "grand_total",
@@ -7511,8 +8059,7 @@
         },
         {
           "name": "deleted_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "on_pending_list",
@@ -7520,18 +8067,15 @@
         },
         {
           "name": "wanted_by",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "off_pending_date",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "reorder_date",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "salesrep_id",
@@ -7677,8 +8221,7 @@
         },
         {
           "name": "ordered_date",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "deleted",
@@ -7728,8 +8271,7 @@
         },
         {
           "name": "follow_up_date",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "follow_up_count",
@@ -7750,13 +8292,11 @@
         },
         {
           "name": "source_created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "source_updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "taken_by_id",
@@ -7928,9 +8468,20 @@
           "fields": [
             "tenant_id",
             "invoice_number",
-            "deleted",
-            "voided"
+            "deleted"
           ],
+          "using": "btree"
+        },
+        {
+          "name": "estimates_pdf_error_count_ordered_date_idx",
+          "fields": [
+            "pdf_error_count",
+            "ordered_date"
+          ],
+          "order": {
+            "ordered_date": "desc"
+          },
+          "where": "(needs_pdf = true)",
           "using": "btree"
         },
         {
@@ -7962,6 +8513,20 @@
             "created_at": "desc"
           },
           "where": "(associations_complete = false)",
+          "using": "btree"
+        },
+        {
+          "name": "estimates_tenant_id_created_at_needs_pdf_pdf_error_count_idx",
+          "fields": [
+            "tenant_id",
+            "created_at",
+            "needs_pdf",
+            "pdf_error_count"
+          ],
+          "order": {
+            "created_at": "desc"
+          },
+          "where": "(ordered_date > '2014-07-01 00:00:00'::timestamp without time zone)",
           "using": "btree"
         },
         {
@@ -8005,11 +8570,16 @@
           "using": "btree"
         },
         {
-          "name": "estimates_tenant_id_off_pending_date_idx",
+          "name": "estimates_tenant_id_pdf_error_count_ordered_date_idx",
           "fields": [
             "tenant_id",
-            "off_pending_date"
+            "pdf_error_count",
+            "ordered_date"
           ],
+          "order": {
+            "ordered_date": "desc"
+          },
+          "where": "((ordered_date > '2014-07-01 00:00:00'::timestamp without time zone) AND (needs_pdf = true))",
           "using": "btree"
         },
         {
@@ -8040,9 +8610,23 @@
           "using": "btree"
         },
         {
+          "name": "index_estimates_on_contact_group_id",
+          "fields": [
+            "contact_group_id"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_estimates_on_contact_id",
           "fields": [
             "contact_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_estimates_on_deleted_at",
+          "fields": [
+            "deleted_at"
           ],
           "using": "btree"
         },
@@ -8061,9 +8645,37 @@
           "using": "btree"
         },
         {
+          "name": "index_estimates_on_last_refreshed_at",
+          "fields": [
+            "last_refreshed_at"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_estimates_on_location_user_id",
           "fields": [
             "location_user_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_estimates_on_parent_contact_id",
+          "fields": [
+            "parent_contact_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_estimates_on_pdf_error_count",
+          "fields": [
+            "pdf_error_count"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_estimates_on_pdf_id",
+          "fields": [
+            "pdf_id"
           ],
           "using": "btree"
         },
@@ -8073,6 +8685,13 @@
             "tenant_id"
           ],
           "where": "(on_pending_list = true)",
+          "using": "btree"
+        },
+        {
+          "name": "index_estimates_on_platform_id",
+          "fields": [
+            "platform_id"
+          ],
           "using": "btree"
         },
         {
@@ -8104,6 +8723,27 @@
           "using": "btree"
         },
         {
+          "name": "index_estimates_on_source_created_at",
+          "fields": [
+            "source_created_at"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_estimates_on_source_updated_at",
+          "fields": [
+            "source_updated_at"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_estimates_on_taken_by_id",
+          "fields": [
+            "taken_by_id"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_estimates_on_taken_by_user_id",
           "fields": [
             "taken_by_user_id"
@@ -8116,6 +8756,13 @@
             "tenant_id",
             "source_taken_by",
             "source_created_at"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_estimates_on_workflow_status",
+          "fields": [
+            "workflow_status"
           ],
           "using": "btree"
         },
@@ -8146,17 +8793,6 @@
             "deleted"
           ],
           "where": "(remote_sales_rep_update = true)",
-          "using": "btree"
-        },
-        {
-          "name": "index_estimates_status",
-          "fields": [
-            "tenant_id",
-            "status",
-            "deleted",
-            "voided"
-          ],
-          "where": "((NOT deleted) AND (NOT voided))",
           "using": "btree"
         },
         {
@@ -8277,6 +8913,15 @@
           "using": "btree"
         },
         {
+          "name": "tmp_backfill_index_estimates_salesrep_id",
+          "fields": [
+            "id",
+            "salesrep_id"
+          ],
+          "where": "((tmp_data ->> 'estimates_salesrep_id'::text) IS NULL)",
+          "using": "btree"
+        },
+        {
           "name": "tmp_fix_9",
           "fields": [
             "tenant_id",
@@ -8331,13 +8976,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "last_created_id",
@@ -8642,13 +9285,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "default",
@@ -8864,13 +9505,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "tenant_id",
@@ -9216,6 +9855,15 @@
           ],
           "unique": true,
           "using": "btree"
+        },
+        {
+          "name": "tmp_backfill_index_inquiries_salesrep_id",
+          "fields": [
+            "id",
+            "salesrep_id"
+          ],
+          "where": "((tmp_data ->> 'inquiries_salesrep_id'::text) IS NULL)",
+          "using": "btree"
         }
       ],
       "rails_schema": {
@@ -9401,13 +10049,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         }
       ],
       "indexes": [
@@ -9463,18 +10109,15 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "deleted_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "completed",
@@ -9482,23 +10125,19 @@
         },
         {
           "name": "pickup_date",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "wanted_by",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "off_pending_date",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "reorder_date",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "salesrep_id",
@@ -9643,8 +10282,7 @@
         },
         {
           "name": "ordered_date",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "ready",
@@ -9686,13 +10324,11 @@
         },
         {
           "name": "source_created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "source_updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "pdf_id",
@@ -9847,6 +10483,14 @@
           "default": false
         },
         {
+          "name": "platform_id",
+          "type": "string"
+        },
+        {
+          "name": "platform_data",
+          "type": "jsonb"
+        },
+        {
           "name": "external_id",
           "type": "string"
         },
@@ -9863,14 +10507,6 @@
         {
           "name": "sale_id",
           "type": "integer"
-        },
-        {
-          "name": "platform_id",
-          "type": "string"
-        },
-        {
-          "name": "platform_data",
-          "type": "jsonb"
         },
         {
           "name": "invoice_type",
@@ -9894,33 +10530,35 @@
       ],
       "indexes": [
         {
+          "name": "aaa_1",
+          "fields": [
+            "tenant_id",
+            "location_user_id",
+            "pickup_date",
+            "total_cost"
+          ],
+          "where": "((deleted = false) AND ((voided = false) OR (voided IS NULL)))",
+          "using": "btree"
+        },
+        {
+          "name": "brett_july_1",
+          "fields": [
+            "tenant_id",
+            "sales_rep_user_id",
+            "created_at"
+          ],
+          "order": {
+            "created_at": "desc"
+          },
+          "where": "(salesrep_id IS NOT NULL)",
+          "using": "btree"
+        },
+        {
           "name": "corey_july_4",
           "fields": [
             "tenant_id"
           ],
           "where": "(company_id IS NOT NULL)",
-          "using": "btree"
-        },
-        {
-          "name": "index_deferred_sales",
-          "fields": [
-            "tenant_id",
-            "grand_total",
-            "pickup_date",
-            "voided"
-          ],
-          "where": "(((COALESCE((platform_data ->> 'deferred'::text), 'false'::text))::boolean = true) AND (deleted = false))",
-          "using": "btree"
-        },
-        {
-          "name": "index_invoiced_sales",
-          "fields": [
-            "tenant_id",
-            "grand_total",
-            "pickup_date",
-            "voided"
-          ],
-          "where": "(((COALESCE((platform_data ->> 'invoiced'::text), 'false'::text))::boolean = true) AND (deleted = false))",
           "using": "btree"
         },
         {
@@ -10090,21 +10728,10 @@
           "using": "btree"
         },
         {
-          "name": "index_invoices_on_pickup_date_tenant_sales_rep_taken_by",
+          "name": "index_invoices_on_platform_id",
           "fields": [
-            "pickup_date",
-            "tenant_id",
-            "voided",
-            "deleted",
-            "sales_rep_user_id",
-            "taken_by_user_id",
-            "location_user_id",
-            "grand_total",
-            "rounded_amount",
-            "accounting_month",
-            "accounting_year"
+            "platform_id"
           ],
-          "where": "((voided = false) AND (deleted = false))",
           "using": "btree"
         },
         {
@@ -10194,13 +10821,6 @@
           "using": "btree"
         },
         {
-          "name": "index_invoices_on_source_created_at",
-          "fields": [
-            "source_created_at"
-          ],
-          "using": "btree"
-        },
-        {
           "name": "index_invoices_on_tenant_id_and_company_id_and_grand_total",
           "fields": [
             "tenant_id",
@@ -10237,14 +10857,6 @@
             "deleted"
           ],
           "where": "((deleted = false) AND ((voided = false) OR (voided IS NULL)))",
-          "using": "btree"
-        },
-        {
-          "name": "index_invoices_platform_id",
-          "fields": [
-            "tenant_id",
-            "platform_id"
-          ],
           "using": "btree"
         },
         {
@@ -10287,26 +10899,6 @@
           "using": "btree"
         },
         {
-          "name": "index_invoices_source_invoice_platform_id",
-          "fields": [
-            "tenant_id",
-            "voided",
-            "deleted"
-          ],
-          "where": "(deleted = false)",
-          "using": "btree"
-        },
-        {
-          "name": "index_invoices_source_shipment_platform_id",
-          "fields": [
-            "tenant_id",
-            "voided",
-            "deleted"
-          ],
-          "where": "(deleted = false)",
-          "using": "btree"
-        },
-        {
           "name": "index_invoices_taken_by_pickup_date_cost",
           "fields": [
             "taken_by_user_id",
@@ -10324,6 +10916,21 @@
             "tenant_id",
             "id",
             "printsmith_id",
+            "pickup_date",
+            "deleted",
+            "voided",
+            "accounting_month",
+            "daily_accounting_month"
+          ],
+          "where": "((pickup_date > '2014-12-31 00:00:00'::timestamp without time zone) AND (deleted = false) AND ((voided = false) OR (voided IS NULL)) AND ((accounting_month IS NULL) OR (daily_accounting_month IS NULL)))",
+          "using": "btree"
+        },
+        {
+          "name": "index_invoices_tenant_accounting_platform_id",
+          "fields": [
+            "tenant_id",
+            "id",
+            "platform_id",
             "pickup_date",
             "deleted",
             "voided",
@@ -10424,15 +11031,14 @@
           "using": "btree"
         },
         {
-          "name": "index_invoices_tenant_platform_id",
+          "name": "index_invoices_tenant_platform_id_voided",
           "fields": [
             "tenant_id",
             "platform_id",
-            "deleted",
             "voided",
             "id"
           ],
-          "where": "(((voided = false) OR (voided IS NULL)) AND (deleted = false))",
+          "where": "((voided = false) OR (voided IS NULL))",
           "using": "btree"
         },
         {
@@ -10488,17 +11094,6 @@
           "using": "btree"
         },
         {
-          "name": "index_invoices_tenant_source_shipment_platform_id",
-          "fields": [
-            "id",
-            "tenant_id",
-            "deleted",
-            "voided"
-          ],
-          "where": "(((voided = false) OR (voided IS NULL)) AND (deleted = false))",
-          "using": "btree"
-        },
-        {
           "name": "index_invoices_tenant_stats",
           "fields": [
             "tenant_id",
@@ -10551,34 +11146,6 @@
           "using": "btree"
         },
         {
-          "name": "invoices_contact_id_ordered_date_idx",
-          "fields": [
-            "contact_id",
-            "ordered_date"
-          ],
-          "where": "((voided = false) AND (deleted = false) AND (ordered_date IS NOT NULL))",
-          "using": "btree"
-        },
-        {
-          "name": "invoices_contact_id_ordered_date_idx1",
-          "fields": [
-            "contact_id",
-            "ordered_date"
-          ],
-          "where": "((voided = false) AND (deleted = false) AND (ordered_date IS NOT NULL) AND (pickup_date IS NOT NULL))",
-          "using": "btree"
-        },
-        {
-          "name": "invoices_contact_id_pickup_date_grand_total_idx",
-          "fields": [
-            "contact_id",
-            "pickup_date",
-            "grand_total"
-          ],
-          "where": "((voided = false) AND (deleted = false) AND (ordered_date IS NOT NULL))",
-          "using": "btree"
-        },
-        {
           "name": "invoices_contact_id_pickup_date_idx",
           "fields": [
             "contact_id",
@@ -10587,32 +11154,11 @@
           "using": "btree"
         },
         {
-          "name": "invoices_contact_id_pickup_date_idx1",
-          "fields": [
-            "contact_id",
-            "pickup_date"
-          ],
-          "where": "((voided = false) AND (deleted = false) AND (ordered_date IS NOT NULL) AND (pickup_date IS NOT NULL))",
-          "using": "btree"
-        },
-        {
           "name": "invoices_dirty_skip_pdf_index",
           "fields": [
             "tenant_id"
           ],
           "where": "(dirty_skip_pdf = true)",
-          "using": "btree"
-        },
-        {
-          "name": "invoices_index",
-          "fields": [
-            "key",
-            "ordered_date",
-            "voided",
-            "deleted",
-            "needs_pdf",
-            "tenant_id"
-          ],
           "using": "btree"
         },
         {
@@ -10643,6 +11189,20 @@
           "using": "btree"
         },
         {
+          "name": "invoices_tenant_id_created_at_needs_pdf_pdf_error_count_idx",
+          "fields": [
+            "tenant_id",
+            "created_at",
+            "needs_pdf",
+            "pdf_error_count"
+          ],
+          "order": {
+            "created_at": "desc"
+          },
+          "where": "(ordered_date > '2014-07-01 00:00:00'::timestamp without time zone)",
+          "using": "btree"
+        },
+        {
           "name": "invoices_tenant_id_gin_name",
           "fields": [
             "tenant_id",
@@ -10651,7 +11211,7 @@
           "using": "gin"
         },
         {
-          "name": "invoices_tenant_id_idx1",
+          "name": "invoices_tenant_id_idx",
           "fields": [
             "tenant_id"
           ],
@@ -10664,6 +11224,19 @@
             "tenant_id",
             "invoice_number"
           ],
+          "using": "btree"
+        },
+        {
+          "name": "invoices_tenant_id_pdf_error_count_ordered_date_idx",
+          "fields": [
+            "tenant_id",
+            "pdf_error_count",
+            "ordered_date"
+          ],
+          "order": {
+            "ordered_date": "desc"
+          },
+          "where": "((ordered_date > '2014-07-01 00:00:00'::timestamp without time zone) AND (needs_pdf = true))",
           "using": "btree"
         },
         {
@@ -10681,19 +11254,19 @@
           "using": "btree"
         },
         {
-          "name": "invoices_tenant_id_printsmith_id_idx",
+          "name": "invoices_tenant_id_platform_id_idx",
           "fields": [
             "tenant_id",
-            "printsmith_id"
+            "platform_id"
           ],
           "where": "(dirty = true)",
           "using": "btree"
         },
         {
-          "name": "invoices_tenant_id_printsmith_id_idx1",
+          "name": "invoices_tenant_id_platform_id_idx1",
           "fields": [
             "tenant_id",
-            "printsmith_id"
+            "platform_id"
           ],
           "using": "btree"
         },
@@ -10740,6 +11313,15 @@
           "using": "btree"
         },
         {
+          "name": "invoices_unpaid_invoices_checker_platform_id",
+          "fields": [
+            "tenant_id",
+            "platform_id"
+          ],
+          "where": "((pickup_date IS NOT NULL) AND (amount_due > (0)::numeric) AND (deleted = false) AND ((voided IS NULL) OR (voided = false)))",
+          "using": "btree"
+        },
+        {
           "name": "invoices_web",
           "fields": [
             "web",
@@ -10751,23 +11333,34 @@
           "using": "btree"
         },
         {
+          "name": "lee_test5",
+          "fields": [
+            "tenant_id",
+            "contact_id",
+            "pickup_date",
+            "voided",
+            "deleted"
+          ],
+          "where": "((voided = false) AND (deleted = false) AND (pickup_date >= '2018-01-01 00:00:00'::timestamp without time zone))",
+          "using": "btree"
+        },
+        {
           "name": "tmp_backfill_index_invoices",
           "fields": [
+            "id",
             "platform_id",
-            "printsmith_id",
-            "external_id",
-            "id"
+            "printsmith_id"
           ],
           "where": "(platform_id IS NULL)",
           "using": "btree"
         },
         {
-          "name": "tmp_backfill_index_invoices_source_salesrep_id",
+          "name": "tmp_backfill_index_invoices_salesrep_id",
           "fields": [
             "id",
-            "source_salesrep_id"
+            "salesrep_id"
           ],
-          "where": "((tmp_data ->> 'invoices_source_salesrep_id'::text) IS NULL)",
+          "where": "((tmp_data ->> 'invoices_salesrep_id'::text) IS NULL)",
           "using": "btree"
         },
         {
@@ -10816,18 +11409,6 @@
           "name": "tmp_invoice_number",
           "fields": [
             "invoice_number"
-          ],
-          "using": "btree"
-        },
-        {
-          "name": "tmp_invoices_filter",
-          "fields": [
-            "tenant_id",
-            "reorder_date",
-            "pickup_date",
-            "amount_due",
-            "voided",
-            "deleted"
           ],
           "using": "btree"
         },
@@ -11074,13 +11655,11 @@
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
@@ -11529,18 +12108,12 @@
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
-        },
-        {
-          "name": "external_id",
-          "type": "string"
         },
         {
           "name": "platform_id",
@@ -11549,6 +12122,10 @@
         {
           "name": "platform_data",
           "type": "jsonb"
+        },
+        {
+          "name": "external_id",
+          "type": "string"
         }
       ],
       "indexes": [
@@ -11557,6 +12134,14 @@
           "fields": [
             "key",
             "external_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_pdfs_platform_id",
+          "fields": [
+            "key",
+            "platform_id"
           ],
           "using": "btree"
         },
@@ -11571,10 +12156,9 @@
         {
           "name": "tmp_backfill_index_pdfs",
           "fields": [
+            "id",
             "platform_id",
-            "printsmith_id",
-            "external_id",
-            "id"
+            "printsmith_id"
           ],
           "where": "(platform_id IS NULL)",
           "using": "btree"
@@ -11690,18 +12274,15 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "call_date",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "phone",
@@ -11847,13 +12428,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "dirty",
@@ -11908,6 +12487,16 @@
             "name"
           ],
           "where": "((NOT deleted) AND (printsmith_key IS NOT NULL))",
+          "using": "btree"
+        },
+        {
+          "name": "tmp_backfill_index_production_locations",
+          "fields": [
+            "id",
+            "platform_id",
+            "printsmith_id"
+          ],
+          "where": "(platform_id IS NULL)",
           "using": "btree"
         }
       ],
@@ -12274,7 +12863,13 @@
         }
       ],
       "indexes": [
-
+        {
+          "name": "index",
+          "fields": [
+            "option"
+          ],
+          "using": "btree"
+        }
       ],
       "rails_schema": {
         "primary_key": null,
@@ -12400,18 +12995,15 @@
         },
         {
           "name": "posted_date",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "source_created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "source_updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "total",
@@ -12452,13 +13044,11 @@
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
@@ -12471,6 +13061,21 @@
         }
       ],
       "indexes": [
+        {
+          "name": "deleted",
+          "fields": [
+            "deleted"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_sales_base_taxes_platform_id_tenant_id",
+          "fields": [
+            "platform_id",
+            "tenant_id"
+          ],
+          "using": "btree"
+        },
         {
           "name": "index_sales_base_taxes_tenant_id_taxability",
           "fields": [
@@ -12488,6 +13093,33 @@
           "fields": [
             "printsmith_id",
             "tenant_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "source_type",
+          "fields": [
+            "source_type"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "tmp_backfill_index_sales_base_taxes",
+          "fields": [
+            "id",
+            "platform_id",
+            "printsmith_id"
+          ],
+          "where": "(platform_id IS NULL)",
+          "using": "btree"
+        },
+        {
+          "name": "tmp_fix_2",
+          "fields": [
+            "source_sales_base_id",
+            "tenant_id",
+            "source_type",
+            "deleted"
           ],
           "using": "btree"
         }
@@ -12547,13 +13179,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "platform_id",
@@ -12630,13 +13260,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "dirty",
@@ -12700,6 +13328,15 @@
           "using": "btree"
         },
         {
+          "name": "index_sales_reps_on_location_platform_id",
+          "fields": [
+            "location_id",
+            "platform_id",
+            "deleted"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_sales_reps_on_location_printsmith_id",
           "fields": [
             "location_id",
@@ -12712,6 +13349,15 @@
           "name": "index_sales_reps_on_tenant_id",
           "fields": [
             "tenant_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_sales_reps_on_user_platform_id",
+          "fields": [
+            "user_id",
+            "platform_id",
+            "deleted"
           ],
           "using": "btree"
         },
@@ -12732,6 +13378,17 @@
             "location_id"
           ],
           "where": "(location_id IS NOT NULL)",
+          "using": "btree"
+        },
+        {
+          "name": "tmp_backfill_index_sales_reps",
+          "fields": [
+            "id",
+            "platform_id",
+            "printsmith_id",
+            "external_id"
+          ],
+          "where": "(platform_id IS NULL)",
           "using": "btree"
         }
       ],
@@ -12788,8 +13445,7 @@
         },
         {
           "name": "closeoutdate",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "composite",
@@ -12825,8 +13481,7 @@
         },
         {
           "name": "enddate",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "fmaccount",
@@ -13064,13 +13719,11 @@
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
@@ -13162,6 +13815,13 @@
       ],
       "indexes": [
         {
+          "name": "index_sales_summaries_on_accounting_day",
+          "fields": [
+            "accounting_day"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_sales_summaries_on_accounting_month",
           "fields": [
             "accounting_month"
@@ -13176,11 +13836,65 @@
           "using": "btree"
         },
         {
+          "name": "index_sales_summaries_on_accurate",
+          "fields": [
+            "accurate"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_sales_summaries_on_complete",
+          "fields": [
+            "complete"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_sales_summaries_on_daily_accounting_day",
+          "fields": [
+            "daily_accounting_day"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_sales_summaries_on_daily_accounting_month",
+          "fields": [
+            "daily_accounting_month"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_sales_summaries_on_daily_accounting_year",
+          "fields": [
+            "daily_accounting_year"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_sales_summaries_on_platform_id_and_tenant_id",
+          "fields": [
+            "platform_id",
+            "tenant_id"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_sales_summaries_on_printsmith_id_and_tenant_id",
           "fields": [
             "printsmith_id",
             "tenant_id"
           ],
+          "using": "btree"
+        },
+        {
+          "name": "index_sales_summaries_tenant_platform_id_not_deleted",
+          "fields": [
+            "tenant_id",
+            "platform_id",
+            "deleted",
+            "id"
+          ],
+          "where": "(deleted = false)",
           "using": "btree"
         },
         {
@@ -13214,6 +13928,32 @@
             "daily_accounting_day"
           ],
           "using": "btree"
+        },
+        {
+          "name": "test_index",
+          "fields": [
+            "monthly",
+            "daily",
+            "closeoutdate",
+            "printsmith_id",
+            "accounting_month",
+            "accounting_year",
+            "daily_accounting_day",
+            "daily_accounting_month",
+            "daily_accounting_year",
+            "isdeleted"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "tmp_backfill_index_sales_summaries",
+          "fields": [
+            "id",
+            "platform_id",
+            "printsmith_id"
+          ],
+          "where": "(platform_id IS NULL)",
+          "using": "btree"
         }
       ],
       "rails_schema": {
@@ -13246,13 +13986,11 @@
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
@@ -13317,6 +14055,34 @@
       ],
       "indexes": [
         {
+          "name": "index_sales_summary_pickups_on_account_history_item_id",
+          "fields": [
+            "account_history_item_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_sales_summary_pickups_on_dirty",
+          "fields": [
+            "dirty"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_sales_summary_pickups_on_printsmith_id",
+          "fields": [
+            "printsmith_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_sales_summary_pickups_on_sales_summary_id",
+          "fields": [
+            "sales_summary_id"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_sales_summary_pickups_on_source_account_history_item_id",
           "fields": [
             "source_account_history_item_id"
@@ -13327,6 +14093,13 @@
           "name": "index_sales_summary_pickups_on_source_sales_summary_id",
           "fields": [
             "source_sales_summary_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_sales_summary_pickups_on_tenant_id",
+          "fields": [
+            "tenant_id"
           ],
           "using": "btree"
         },
@@ -13342,11 +14115,21 @@
           "using": "btree"
         },
         {
-          "name": "sales_summary_pickups_tenant_id_printsmith_id_idx",
+          "name": "sales_summary_pickups_tenant_id_platform_id_idx",
           "fields": [
             "tenant_id",
+            "platform_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "tmp_backfill_index_sales_summary_pickups",
+          "fields": [
+            "id",
+            "platform_id",
             "printsmith_id"
           ],
+          "where": "(platform_id IS NULL)",
           "using": "btree"
         }
       ],
@@ -13786,17 +14569,6 @@
       ],
       "indexes": [
         {
-          "name": "index_shipments_contact_date",
-          "fields": [
-            "tenant_id",
-            "contact_id",
-            "shipment_date",
-            "deleted"
-          ],
-          "where": "(deleted = false)",
-          "using": "btree"
-        },
-        {
           "name": "index_shipments_contact_id_orders",
           "fields": [
             "contact_id",
@@ -13805,22 +14577,6 @@
             "id"
           ],
           "where": "((shipment_date IS NOT NULL) AND (NOT deleted))",
-          "using": "btree"
-        },
-        {
-          "name": "index_shipments_date_contact",
-          "fields": [
-            "shipment_date",
-            "contact_id"
-          ],
-          "using": "btree"
-        },
-        {
-          "name": "index_shipments_on_company_sales_rep",
-          "fields": [
-            "company_id",
-            "sales_rep_platform_id"
-          ],
           "using": "btree"
         },
         {
@@ -13903,47 +14659,6 @@
           "using": "btree"
         },
         {
-          "name": "index_shipments_status_date_total",
-          "fields": [
-            "tenant_id",
-            "status",
-            "shipment_date",
-            "deleted",
-            "grand_total"
-          ],
-          "where": "(((status)::text = ANY (ARRAY[('CREATED'::character varying)::text, ('DRAFT_WAYBILL'::character varying)::text, ('INVOICED'::character varying)::text])) AND (deleted = false))",
-          "using": "btree"
-        },
-        {
-          "name": "index_shipments_tenant_shipment_date_status",
-          "fields": [
-            "tenant_id",
-            "shipment_date",
-            "status"
-          ],
-          "where": "(deleted = false)",
-          "using": "btree"
-        },
-        {
-          "name": "index_shipmesssssnts_3",
-          "fields": [
-            "tenant_id",
-            "shipment_date",
-            "status"
-          ],
-          "where": "(deleted = false)",
-          "using": "btree"
-        },
-        {
-          "name": "shipments_company_id_shipment_date_idx",
-          "fields": [
-            "company_id",
-            "shipment_date"
-          ],
-          "where": "(NOT deleted)",
-          "using": "btree"
-        },
-        {
           "name": "shipments_status_index",
           "fields": [
             "tenant_id"
@@ -13979,15 +14694,6 @@
             "deleted"
           ],
           "where": "((shipment_date IS NOT NULL) AND (deleted = false))",
-          "using": "btree"
-        },
-        {
-          "name": "tmp_backfill_index_shipments_source_salesrep_id",
-          "fields": [
-            "id",
-            "source_salesrep_id"
-          ],
-          "where": "((tmp_data ->> 'shipments_source_salesrep_id'::text) IS NULL)",
           "using": "btree"
         }
       ],
@@ -14149,13 +14855,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "total",
@@ -14287,6 +14991,27 @@
       ],
       "indexes": [
         {
+          "name": "company_id",
+          "fields": [
+            "company_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "financial_year",
+          "fields": [
+            "financial_year"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_statistics_on_accounting_day",
+          "fields": [
+            "accounting_day"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_statistics_on_accounting_month",
           "fields": [
             "accounting_month"
@@ -14301,9 +15026,37 @@
           "using": "btree"
         },
         {
+          "name": "index_statistics_on_day",
+          "fields": [
+            "day"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_statistics_on_department_cash_sales",
+          "fields": [
+            "department_cash_sales"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_statistics_on_finance_charges",
+          "fields": [
+            "finance_charges"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_statistics_on_location_id",
           "fields": [
             "location_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_statistics_on_markups",
+          "fields": [
+            "markups"
           ],
           "using": "btree"
         },
@@ -14318,6 +15071,30 @@
           "name": "index_statistics_on_user_id",
           "fields": [
             "user_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "index_statistics_on_year",
+          "fields": [
+            "year"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "month_year",
+          "fields": [
+            "month",
+            "year",
+            "company_id"
+          ],
+          "using": "btree"
+        },
+        {
+          "name": "rank",
+          "fields": [
+            "id",
+            "rank"
           ],
           "using": "btree"
         },
@@ -14383,6 +15160,13 @@
             "id"
           ],
           "where": "(ignore = false)",
+          "using": "btree"
+        },
+        {
+          "name": "suppressed_addresses_tenant_id_idx",
+          "fields": [
+            "tenant_id"
+          ],
           "using": "btree"
         }
       ],
@@ -14706,13 +15490,11 @@
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
@@ -14731,14 +15513,6 @@
         {
           "name": "external_id",
           "type": "string"
-        },
-        {
-          "name": "platform_id",
-          "type": "string"
-        },
-        {
-          "name": "platform_data",
-          "type": "jsonb"
         }
       ],
       "indexes": [
@@ -14946,23 +15720,19 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "start_date",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "end_date",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "assigned_user_id",
@@ -15052,16 +15822,6 @@
           "using": "btree"
         },
         {
-          "name": "index_tasks_on_notify",
-          "fields": [
-            "notify_due_email_sent",
-            "notify_due",
-            "notify_date"
-          ],
-          "where": "((notify_due_email_sent = false) AND (notify_due = true))",
-          "using": "btree"
-        },
-        {
           "name": "index_tasks_on_position",
           "fields": [
             "position"
@@ -15129,13 +15889,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "printsmith_database",
@@ -15177,8 +15935,7 @@
         },
         {
           "name": "last_connection_failure_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "connection_status",
@@ -15528,13 +16285,13 @@
           "type": "string"
         },
         {
+          "name": "banner_id",
+          "type": "integer"
+        },
+        {
           "name": "enforce_old_printsmith_api",
           "type": "boolean",
           "default": false
-        },
-        {
-          "name": "banner_id",
-          "type": "integer"
         },
         {
           "name": "holiday_last_day",
@@ -15682,13 +16439,13 @@
           "type": "string"
         },
         {
+          "name": "job_titles",
+          "type": "string"
+        },
+        {
           "name": "show_sales",
           "type": "boolean",
           "default": false
-        },
-        {
-          "name": "job_titles",
-          "type": "string"
         },
         {
           "name": "budget_lock",
@@ -15755,6 +16512,19 @@
           "type": "integer"
         },
         {
+          "name": "show_lead_types",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "use_new_lead",
+          "type": "boolean"
+        },
+        {
+          "name": "default_lead_type_id",
+          "type": "integer"
+        },
+        {
           "name": "mbe_refresh_token",
           "type": "string"
         },
@@ -15801,19 +16571,6 @@
         {
           "name": "source_updated_at",
           "type": "datetime"
-        },
-        {
-          "name": "show_lead_types",
-          "type": "boolean",
-          "default": false
-        },
-        {
-          "name": "use_new_lead",
-          "type": "boolean"
-        },
-        {
-          "name": "default_lead_type_id",
-          "type": "integer"
         },
         {
           "name": "mbe_api_base_url",
@@ -15885,6 +16642,13 @@
       ],
       "indexes": [
         {
+          "name": "index_tenants_on_beta_tester",
+          "fields": [
+            "beta_tester"
+          ],
+          "using": "btree"
+        },
+        {
           "name": "index_tenants_on_enterprise_id",
           "fields": [
             "enterprise_id"
@@ -15931,18 +16695,15 @@
         },
         {
           "name": "expires_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "sync_token",
@@ -16007,13 +16768,11 @@
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
@@ -16080,13 +16839,11 @@
         {
           "name": "created_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         },
         {
           "name": "updated_at",
           "type": "datetime",
-          "precision": 6,
           "null": false
         }
       ],
@@ -16217,13 +16974,11 @@
         },
         {
           "name": "reset_password_sent_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "remember_created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "sign_in_count",
@@ -16232,13 +16987,11 @@
         },
         {
           "name": "current_sign_in_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "last_sign_in_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "current_sign_in_ip",
@@ -16252,13 +17005,11 @@
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "updated_at",
-          "type": "datetime",
-          "precision": 6
+          "type": "datetime"
         },
         {
           "name": "username",
@@ -16747,12 +17498,52 @@
   ],
   "foreign_keys": [
     {
+      "left": "business_plan_equipments",
+      "right": "business_plans"
+    },
+    {
+      "left": "business_plan_equipments",
+      "right": "users"
+    },
+    {
+      "left": "business_plan_goal_items",
+      "right": "business_plans"
+    },
+    {
+      "left": "business_plan_goal_items",
+      "right": "tenants"
+    },
+    {
+      "left": "business_plan_goals",
+      "right": "business_plan_kpis"
+    },
+    {
+      "left": "business_plan_goals",
+      "right": "enterprises"
+    },
+    {
+      "left": "business_plan_goals",
+      "right": "tenants"
+    },
+    {
+      "left": "business_plan_kpis",
+      "right": "enterprises"
+    },
+    {
       "left": "business_plan_marketing_activities",
       "right": "enterprises"
     },
     {
       "left": "business_plan_marketing_activities",
       "right": "tenants"
+    },
+    {
+      "left": "business_plan_plan_categories",
+      "right": "enterprises"
+    },
+    {
+      "left": "business_plan_plan_items",
+      "right": "business_plans"
     },
     {
       "left": "business_plan_sales_investments",
@@ -16873,11 +17664,43 @@
   ],
   "indexes": [
     {
+      "name": "aaa_1",
+      "fields": [
+        "tenant_id",
+        "location_user_id",
+        "pickup_date",
+        "total_cost"
+      ],
+      "where": "((deleted = false) AND ((voided = false) OR (voided IS NULL)))",
+      "using": "btree"
+    },
+    {
       "name": "account_history_data_tenant_id_source_invoice_id_idx",
       "fields": [
         "tenant_id",
         "source_invoice_id"
       ],
+      "using": "btree"
+    },
+    {
+      "name": "activities_created_at_idx",
+      "fields": [
+        "created_at"
+      ],
+      "order": {
+        "created_at": "desc"
+      },
+      "using": "btree"
+    },
+    {
+      "name": "activities_tenant_id_created_at_idx",
+      "fields": [
+        "tenant_id",
+        "created_at"
+      ],
+      "order": {
+        "created_at": "desc"
+      },
       "using": "btree"
     },
     {
@@ -16890,30 +17713,6 @@
         "source_created_at": "desc"
       },
       "where": "((hide = false) AND (deleted = false))",
-      "using": "btree"
-    },
-    {
-      "name": "activity_test",
-      "fields": [
-        "tenant_id",
-        "source_created_at"
-      ],
-      "order": {
-        "source_created_at": "desc"
-      },
-      "where": "((estimate_id IS NOT NULL) AND (invoice_id IS NULL))",
-      "using": "btree"
-    },
-    {
-      "name": "activity_test2",
-      "fields": [
-        "tenant_id",
-        "source_created_at"
-      ],
-      "order": {
-        "source_created_at": "desc"
-      },
-      "where": "(invoice_id IS NOT NULL)",
       "using": "btree"
     },
     {
@@ -16961,6 +17760,19 @@
       "using": "btree"
     },
     {
+      "name": "brett_july_1",
+      "fields": [
+        "tenant_id",
+        "sales_rep_user_id",
+        "created_at"
+      ],
+      "order": {
+        "created_at": "desc"
+      },
+      "where": "(salesrep_id IS NOT NULL)",
+      "using": "btree"
+    },
+    {
       "name": "calendar_entries_calendar_id_entry_ident_key",
       "fields": [
         "calendar_id",
@@ -16987,6 +17799,15 @@
       "using": "btree"
     },
     {
+      "name": "companies_needs_lifetime_value_recalc",
+      "fields": [
+        "tenant_id",
+        "rolling_12_month_rank"
+      ],
+      "where": "((needs_lifetime_value_recalc = true) AND (deleted = false))",
+      "using": "btree"
+    },
+    {
       "name": "companies_refresh_index",
       "fields": [
         "tenant_id",
@@ -17003,6 +17824,13 @@
       ],
       "where": "(remote_account_update = true)",
       "using": "btree"
+    },
+    {
+      "name": "companies_sales_hash_idx",
+      "fields": [
+        "sales_hash"
+      ],
+      "using": "gin"
     },
     {
       "name": "companies_sales_rep_indexes",
@@ -17053,6 +17881,15 @@
       "using": "btree"
     },
     {
+      "name": "companies_tenant_id_platform_id_idx",
+      "fields": [
+        "tenant_id",
+        "platform_id"
+      ],
+      "unique": true,
+      "using": "btree"
+    },
+    {
       "name": "companies_tenant_id_printsmith_id_idx",
       "fields": [
         "tenant_id",
@@ -17089,6 +17926,13 @@
       "using": "btree"
     },
     {
+      "name": "company_id",
+      "fields": [
+        "company_id"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "contact_sales_rep_platform_tagger",
       "fields": [
         "tenant_id"
@@ -17110,6 +17954,13 @@
         "associations_complete"
       ],
       "where": "(associations_complete = false)",
+      "using": "btree"
+    },
+    {
+      "name": "contacts_company_id_lower_lower1_idx",
+      "fields": [
+        "company_id"
+      ],
       "using": "btree"
     },
     {
@@ -17146,18 +17997,19 @@
       "using": "btree"
     },
     {
-      "name": "contacts_tenant_id_latest_order_date_idx",
-      "fields": [
-        "tenant_id",
-        "latest_order_date"
-      ],
-      "using": "btree"
-    },
-    {
       "name": "contacts_tenant_id_lower_idx",
       "fields": [
         "tenant_id"
       ],
+      "using": "btree"
+    },
+    {
+      "name": "contacts_tenant_id_platform_id_idx",
+      "fields": [
+        "tenant_id",
+        "platform_id"
+      ],
+      "unique": true,
       "using": "btree"
     },
     {
@@ -17170,7 +18022,7 @@
       "using": "btree"
     },
     {
-      "name": "contacts_tenant_id_rolling_12_month_sales_idx1",
+      "name": "contacts_tenant_id_rolling_12_month_sales_idx",
       "fields": [
         "tenant_id",
         "rolling_12_month_sales"
@@ -17259,6 +18111,22 @@
       "using": "btree"
     },
     {
+      "name": "deleted",
+      "fields": [
+        "deleted"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "dirty_tenant_id",
+      "fields": [
+        "dirty",
+        "tenant_id",
+        "id"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "emails_created_at_idx",
       "fields": [
         "created_at"
@@ -17267,9 +18135,10 @@
       "using": "btree"
     },
     {
-      "name": "emails_message_id_idx",
+      "name": "emails_message_id_tenant_id_idx",
       "fields": [
-        "message_id"
+        "message_id",
+        "tenant_id"
       ],
       "using": "btree"
     },
@@ -17304,9 +18173,20 @@
       "fields": [
         "tenant_id",
         "invoice_number",
-        "deleted",
-        "voided"
+        "deleted"
       ],
+      "using": "btree"
+    },
+    {
+      "name": "estimates_pdf_error_count_ordered_date_idx",
+      "fields": [
+        "pdf_error_count",
+        "ordered_date"
+      ],
+      "order": {
+        "ordered_date": "desc"
+      },
+      "where": "(needs_pdf = true)",
       "using": "btree"
     },
     {
@@ -17338,6 +18218,20 @@
         "created_at": "desc"
       },
       "where": "(associations_complete = false)",
+      "using": "btree"
+    },
+    {
+      "name": "estimates_tenant_id_created_at_needs_pdf_pdf_error_count_idx",
+      "fields": [
+        "tenant_id",
+        "created_at",
+        "needs_pdf",
+        "pdf_error_count"
+      ],
+      "order": {
+        "created_at": "desc"
+      },
+      "where": "(ordered_date > '2014-07-01 00:00:00'::timestamp without time zone)",
       "using": "btree"
     },
     {
@@ -17381,11 +18275,16 @@
       "using": "btree"
     },
     {
-      "name": "estimates_tenant_id_off_pending_date_idx",
+      "name": "estimates_tenant_id_pdf_error_count_ordered_date_idx",
       "fields": [
         "tenant_id",
-        "off_pending_date"
+        "pdf_error_count",
+        "ordered_date"
       ],
+      "order": {
+        "ordered_date": "desc"
+      },
+      "where": "((ordered_date > '2014-07-01 00:00:00'::timestamp without time zone) AND (needs_pdf = true))",
       "using": "btree"
     },
     {
@@ -17406,6 +18305,62 @@
       "using": "btree"
     },
     {
+      "name": "financial_year",
+      "fields": [
+        "financial_year"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index",
+      "fields": [
+        "option"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_account_history_data_on_adjustment_id",
+      "fields": [
+        "adjustment_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_account_history_data_on_company_id",
+      "fields": [
+        "company_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_account_history_data_on_created_at",
+      "fields": [
+        "created_at"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_account_history_data_on_dirty",
+      "fields": [
+        "dirty"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_account_history_data_on_invoice_id",
+      "fields": [
+        "invoice_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_account_history_data_on_platform_id",
+      "fields": [
+        "platform_id"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_account_history_data_on_printsmith_id",
       "fields": [
         "printsmith_id"
@@ -17416,6 +18371,13 @@
       "name": "index_account_history_data_on_source_account_id",
       "fields": [
         "source_account_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_account_history_data_on_source_invoice_id",
+      "fields": [
+        "source_invoice_id"
       ],
       "using": "btree"
     },
@@ -17438,11 +18400,33 @@
       "using": "btree"
     },
     {
+      "name": "index_account_history_data_source_invoice_platform_id",
+      "fields": [
+        "tenant_id",
+        "source_invoice_id",
+        "platform_id",
+        "recordtype"
+      ],
+      "where": "((recordtype)::text = '1'::text)",
+      "using": "btree"
+    },
+    {
       "name": "index_account_history_data_tenant_source_account",
       "fields": [
         "source_account_id",
         "tenant_id",
         "printsmith_id",
+        "deleted"
+      ],
+      "where": "(deleted = false)",
+      "using": "btree"
+    },
+    {
+      "name": "index_account_history_data_tenant_source_account_platform_id",
+      "fields": [
+        "source_account_id",
+        "tenant_id",
+        "platform_id",
         "deleted"
       ],
       "where": "(deleted = false)",
@@ -17589,13 +18573,6 @@
       "name": "index_activities_on_contact_id",
       "fields": [
         "contact_id"
-      ],
-      "using": "btree"
-    },
-    {
-      "name": "index_activities_on_deleted",
-      "fields": [
-        "deleted"
       ],
       "using": "btree"
     },
@@ -17750,6 +18727,14 @@
       "using": "btree"
     },
     {
+      "name": "index_addresses_on_platform_id",
+      "fields": [
+        "platform_id",
+        "tenant_id"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_adjustments_accounting_month_year",
       "fields": [
         "tenant_id",
@@ -17797,6 +18782,13 @@
       "using": "btree"
     },
     {
+      "name": "index_adjustments_on_accounting_month",
+      "fields": [
+        "accounting_month"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_adjustments_on_accounting_year",
       "fields": [
         "accounting_year"
@@ -17811,9 +18803,31 @@
       "using": "btree"
     },
     {
+      "name": "index_adjustments_on_final_payment_date",
+      "fields": [
+        "final_payment_date"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_adjustments_on_invoice_id",
+      "fields": [
+        "invoice_id"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_adjustments_on_posted_date",
       "fields": [
         "posted_date"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_adjustments_on_tenant_id_and_platform_id",
+      "fields": [
+        "tenant_id",
+        "platform_id"
       ],
       "using": "btree"
     },
@@ -17822,6 +18836,13 @@
       "fields": [
         "tenant_id",
         "printsmith_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_adjustments_on_voided",
+      "fields": [
+        "voided"
       ],
       "using": "btree"
     },
@@ -17900,6 +18921,62 @@
       "using": "btree"
     },
     {
+      "name": "index_business_plan_equipments_on_business_plan_id",
+      "fields": [
+        "business_plan_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_business_plan_equipments_on_user_id",
+      "fields": [
+        "user_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_business_plan_goal_items_on_business_plan_id",
+      "fields": [
+        "business_plan_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_business_plan_goal_items_on_tenant_id",
+      "fields": [
+        "tenant_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_business_plan_goals_on_business_plan_kpi_id",
+      "fields": [
+        "business_plan_kpi_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_business_plan_goals_on_enterprise_id",
+      "fields": [
+        "enterprise_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_business_plan_goals_on_tenant_id",
+      "fields": [
+        "tenant_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_business_plan_kpis_on_enterprise_id",
+      "fields": [
+        "enterprise_id"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_business_plan_marketing_activities_on_enterprise_id",
       "fields": [
         "enterprise_id"
@@ -17910,6 +18987,20 @@
       "name": "index_business_plan_marketing_activities_on_tenant_id",
       "fields": [
         "tenant_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_business_plan_plan_categories_on_enterprise_id",
+      "fields": [
+        "enterprise_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_business_plan_plan_items_on_business_plan_id",
+      "fields": [
+        "business_plan_id"
       ],
       "using": "btree"
     },
@@ -17967,14 +19058,6 @@
         "user_ids"
       ],
       "using": "gin"
-    },
-    {
-      "name": "index_campaign_calendar_entries_campaign_tenant",
-      "fields": [
-        "campaign_id",
-        "tenant_id"
-      ],
-      "using": "btree"
     },
     {
       "name": "index_campaign_exclusions_on_campaign_id",
@@ -18178,6 +19261,13 @@
       "using": "btree"
     },
     {
+      "name": "index_cash_drawers_on_platform_id",
+      "fields": [
+        "platform_id"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_comments_on_commentable_id",
       "fields": [
         "commentable_id"
@@ -18203,20 +19293,6 @@
       "fields": [
         "user_id"
       ],
-      "using": "btree"
-    },
-    {
-      "name": "index_companies_clearbit",
-      "fields": [
-        "has_clearbit_data",
-        "rolling_12_month_rank",
-        "rolling_12_month_sales",
-        "rolling_12_month_sales_ly",
-        "tenant_id",
-        "deleted",
-        "walk_in"
-      ],
-      "where": "((has_clearbit_data = false) AND (walk_in = false) AND (deleted = false))",
       "using": "btree"
     },
     {
@@ -18247,6 +19323,13 @@
       "name": "index_companies_on_location_user_id",
       "fields": [
         "location_user_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_companies_on_needs_lifetime_value_recalc",
+      "fields": [
+        "needs_lifetime_value_recalc"
       ],
       "using": "btree"
     },
@@ -18287,6 +19370,20 @@
         "single_sale_only_at"
       ],
       "where": "((NOT deleted) AND (printsmith_id IS NOT NULL) AND (single_sale_only_at IS NOT NULL))",
+      "using": "btree"
+    },
+    {
+      "name": "index_companies_on_single_sale_only_sales_rep_location_platform",
+      "fields": [
+        "tenant_id",
+        "deleted",
+        "walk_in",
+        "location_user_id",
+        "source_salesrep_id",
+        "platform_id",
+        "single_sale_only_at"
+      ],
+      "where": "((NOT deleted) AND (platform_id IS NOT NULL) AND (single_sale_only_at IS NOT NULL))",
       "using": "btree"
     },
     {
@@ -18360,6 +19457,20 @@
       "using": "btree"
     },
     {
+      "name": "index_companies_on_single_sale_only_sales_rep_user_platform",
+      "fields": [
+        "tenant_id",
+        "deleted",
+        "walk_in",
+        "sales_rep_user_id",
+        "source_salesrep_id",
+        "platform_id",
+        "single_sale_only_at"
+      ],
+      "where": "((NOT deleted) AND (platform_id IS NOT NULL) AND (single_sale_only_at IS NOT NULL))",
+      "using": "btree"
+    },
+    {
       "name": "index_companies_on_tenant_address_ids",
       "fields": [
         "tenant_id",
@@ -18403,6 +19514,15 @@
         "rolling_12_month_rank"
       ],
       "where": "((NOT deleted) AND (NOT walk_in))",
+      "using": "btree"
+    },
+    {
+      "name": "index_companies_on_tenant_id_platform_id",
+      "fields": [
+        "tenant_id",
+        "platform_id",
+        "dirty"
+      ],
       "using": "btree"
     },
     {
@@ -18524,6 +19644,15 @@
       "using": "btree"
     },
     {
+      "name": "index_companies_tenant_platform_id",
+      "fields": [
+        "tenant_id",
+        "platform_id",
+        "id"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_companies_tenant_printsmith",
       "fields": [
         "tenant_id",
@@ -18538,6 +19667,16 @@
         "tenant_id",
         "dirty",
         "printsmith_id",
+        "company_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_company_dirty_platform",
+      "fields": [
+        "tenant_id",
+        "dirty",
+        "platform_id",
         "company_id"
       ],
       "using": "btree"
@@ -18565,20 +19704,6 @@
         "company_id"
       ],
       "unique": true,
-      "using": "btree"
-    },
-    {
-      "name": "index_company_sales",
-      "fields": [
-        "tenant_id",
-        "rolling_12_month_sales",
-        "deleted",
-        "source_shiptoaddress_id",
-        "sales_rep_user_id",
-        "source_salesrep_id",
-        "id"
-      ],
-      "where": "(NOT deleted)",
       "using": "btree"
     },
     {
@@ -18642,18 +19767,6 @@
       "fields": [
         "enterprise_id"
       ],
-      "using": "btree"
-    },
-    {
-      "name": "index_contacts_clearbit",
-      "fields": [
-        "has_clearbit_data",
-        "rolling_12_month_sales",
-        "rolling_12_month_sales_ly",
-        "tenant_id",
-        "temp"
-      ],
-      "where": "((has_clearbit_data = false) AND (temp = false))",
       "using": "btree"
     },
     {
@@ -18764,6 +19877,13 @@
       "using": "btree"
     },
     {
+      "name": "index_contacts_on_in_group",
+      "fields": [
+        "in_group"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_contacts_on_lead_type_id",
       "fields": [
         "lead_type_id"
@@ -18774,6 +19894,13 @@
       "name": "index_contacts_on_location_user_id",
       "fields": [
         "location_user_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_contacts_on_on_suppression_list",
+      "fields": [
+        "on_suppression_list"
       ],
       "using": "btree"
     },
@@ -18810,42 +19937,6 @@
       "fields": [
         "source_salesrep_id"
       ],
-      "using": "btree"
-    },
-    {
-      "name": "index_contacts_on_tenant_marketing",
-      "fields": [
-        "tenant_id",
-        "marketing_do_not_mail",
-        "marketing_unsubscribe",
-        "on_suppression_list",
-        "id"
-      ],
-      "where": "((marketing_do_not_mail = false) AND ((marketing_unsubscribe = true) OR (on_suppression_list = true)))",
-      "using": "btree"
-    },
-    {
-      "name": "index_contacts_privacy_acknowledgment",
-      "fields": [
-        "tenant_id"
-      ],
-      "where": "((privacy_data ->> 'acknowledgment'::text) IS NOT NULL)",
-      "using": "btree"
-    },
-    {
-      "name": "index_contacts_privacy_marketing_center",
-      "fields": [
-        "tenant_id"
-      ],
-      "where": "((privacy_data ->> 'marketing_center'::text) IS NOT NULL)",
-      "using": "btree"
-    },
-    {
-      "name": "index_contacts_privacy_marketing_corporate",
-      "fields": [
-        "tenant_id"
-      ],
-      "where": "((privacy_data ->> 'marketing_corporate'::text) IS NOT NULL)",
       "using": "btree"
     },
     {
@@ -18998,6 +20089,15 @@
       "using": "btree"
     },
     {
+      "name": "index_contacts_tenant_platform_id",
+      "fields": [
+        "tenant_id",
+        "platform_id",
+        "id"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_contacts_tenant_printsmith",
       "fields": [
         "tenant_id",
@@ -19040,14 +20140,6 @@
       "using": "btree"
     },
     {
-      "name": "index_contacts_with_rolling_12_month_sales",
-      "fields": [
-        "rolling_12_month_sales"
-      ],
-      "where": "(rolling_12_month_sales > (0)::numeric)",
-      "using": "btree"
-    },
-    {
       "name": "index_countries_enterprises",
       "fields": [
         "country_id",
@@ -19060,17 +20152,6 @@
       "fields": [
         "country_id"
       ],
-      "using": "btree"
-    },
-    {
-      "name": "index_deferred_sales",
-      "fields": [
-        "tenant_id",
-        "grand_total",
-        "pickup_date",
-        "voided"
-      ],
-      "where": "(((COALESCE((platform_data ->> 'deferred'::text), 'false'::text))::boolean = true) AND (deleted = false))",
       "using": "btree"
     },
     {
@@ -19282,9 +20363,23 @@
       "using": "btree"
     },
     {
+      "name": "index_estimates_on_contact_group_id",
+      "fields": [
+        "contact_group_id"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_estimates_on_contact_id",
       "fields": [
         "contact_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_estimates_on_deleted_at",
+      "fields": [
+        "deleted_at"
       ],
       "using": "btree"
     },
@@ -19303,9 +20398,37 @@
       "using": "btree"
     },
     {
+      "name": "index_estimates_on_last_refreshed_at",
+      "fields": [
+        "last_refreshed_at"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_estimates_on_location_user_id",
       "fields": [
         "location_user_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_estimates_on_parent_contact_id",
+      "fields": [
+        "parent_contact_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_estimates_on_pdf_error_count",
+      "fields": [
+        "pdf_error_count"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_estimates_on_pdf_id",
+      "fields": [
+        "pdf_id"
       ],
       "using": "btree"
     },
@@ -19315,6 +20438,13 @@
         "tenant_id"
       ],
       "where": "(on_pending_list = true)",
+      "using": "btree"
+    },
+    {
+      "name": "index_estimates_on_platform_id",
+      "fields": [
+        "platform_id"
+      ],
       "using": "btree"
     },
     {
@@ -19346,6 +20476,27 @@
       "using": "btree"
     },
     {
+      "name": "index_estimates_on_source_created_at",
+      "fields": [
+        "source_created_at"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_estimates_on_source_updated_at",
+      "fields": [
+        "source_updated_at"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_estimates_on_taken_by_id",
+      "fields": [
+        "taken_by_id"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_estimates_on_taken_by_user_id",
       "fields": [
         "taken_by_user_id"
@@ -19358,6 +20509,13 @@
         "tenant_id",
         "source_taken_by",
         "source_created_at"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_estimates_on_workflow_status",
+      "fields": [
+        "workflow_status"
       ],
       "using": "btree"
     },
@@ -19388,17 +20546,6 @@
         "deleted"
       ],
       "where": "(remote_sales_rep_update = true)",
-      "using": "btree"
-    },
-    {
-      "name": "index_estimates_status",
-      "fields": [
-        "tenant_id",
-        "status",
-        "deleted",
-        "voided"
-      ],
-      "where": "((NOT deleted) AND (NOT voided))",
       "using": "btree"
     },
     {
@@ -19689,17 +20836,6 @@
       "using": "btree"
     },
     {
-      "name": "index_invoiced_sales",
-      "fields": [
-        "tenant_id",
-        "grand_total",
-        "pickup_date",
-        "voided"
-      ],
-      "where": "(((COALESCE((platform_data ->> 'invoiced'::text), 'false'::text))::boolean = true) AND (deleted = false))",
-      "using": "btree"
-    },
-    {
       "name": "index_invoices_accounting_month_year",
       "fields": [
         "tenant_id",
@@ -19724,6 +20860,16 @@
         "id"
       ],
       "where": "((on_pending_list = true) AND (deleted = false) AND ((voided = false) OR (voided IS NULL)))",
+      "using": "btree"
+    },
+    {
+      "name": "index_invoices_company_sales",
+      "fields": [
+        "tenant_id",
+        "rolling_12_month_sales",
+        "deleted"
+      ],
+      "where": "(NOT deleted)",
       "using": "btree"
     },
     {
@@ -19866,21 +21012,10 @@
       "using": "btree"
     },
     {
-      "name": "index_invoices_on_pickup_date_tenant_sales_rep_taken_by",
+      "name": "index_invoices_on_platform_id",
       "fields": [
-        "pickup_date",
-        "tenant_id",
-        "voided",
-        "deleted",
-        "sales_rep_user_id",
-        "taken_by_user_id",
-        "location_user_id",
-        "grand_total",
-        "rounded_amount",
-        "accounting_month",
-        "accounting_year"
+        "platform_id"
       ],
-      "where": "((voided = false) AND (deleted = false))",
       "using": "btree"
     },
     {
@@ -19970,13 +21105,6 @@
       "using": "btree"
     },
     {
-      "name": "index_invoices_on_source_created_at",
-      "fields": [
-        "source_created_at"
-      ],
-      "using": "btree"
-    },
-    {
       "name": "index_invoices_on_tenant_id_and_company_id_and_grand_total",
       "fields": [
         "tenant_id",
@@ -20013,14 +21141,6 @@
         "deleted"
       ],
       "where": "((deleted = false) AND ((voided = false) OR (voided IS NULL)))",
-      "using": "btree"
-    },
-    {
-      "name": "index_invoices_platform_id",
-      "fields": [
-        "tenant_id",
-        "platform_id"
-      ],
       "using": "btree"
     },
     {
@@ -20063,26 +21183,6 @@
       "using": "btree"
     },
     {
-      "name": "index_invoices_source_invoice_platform_id",
-      "fields": [
-        "tenant_id",
-        "voided",
-        "deleted"
-      ],
-      "where": "(deleted = false)",
-      "using": "btree"
-    },
-    {
-      "name": "index_invoices_source_shipment_platform_id",
-      "fields": [
-        "tenant_id",
-        "voided",
-        "deleted"
-      ],
-      "where": "(deleted = false)",
-      "using": "btree"
-    },
-    {
       "name": "index_invoices_taken_by_pickup_date_cost",
       "fields": [
         "taken_by_user_id",
@@ -20100,6 +21200,21 @@
         "tenant_id",
         "id",
         "printsmith_id",
+        "pickup_date",
+        "deleted",
+        "voided",
+        "accounting_month",
+        "daily_accounting_month"
+      ],
+      "where": "((pickup_date > '2014-12-31 00:00:00'::timestamp without time zone) AND (deleted = false) AND ((voided = false) OR (voided IS NULL)) AND ((accounting_month IS NULL) OR (daily_accounting_month IS NULL)))",
+      "using": "btree"
+    },
+    {
+      "name": "index_invoices_tenant_accounting_platform_id",
+      "fields": [
+        "tenant_id",
+        "id",
+        "platform_id",
         "pickup_date",
         "deleted",
         "voided",
@@ -20200,15 +21315,14 @@
       "using": "btree"
     },
     {
-      "name": "index_invoices_tenant_platform_id",
+      "name": "index_invoices_tenant_platform_id_voided",
       "fields": [
         "tenant_id",
         "platform_id",
-        "deleted",
         "voided",
         "id"
       ],
-      "where": "(((voided = false) OR (voided IS NULL)) AND (deleted = false))",
+      "where": "((voided = false) OR (voided IS NULL))",
       "using": "btree"
     },
     {
@@ -20261,17 +21375,6 @@
       "order": {
         "created_at": "desc"
       },
-      "using": "btree"
-    },
-    {
-      "name": "index_invoices_tenant_source_shipment_platform_id",
-      "fields": [
-        "id",
-        "tenant_id",
-        "deleted",
-        "voided"
-      ],
-      "where": "(((voided = false) OR (voided IS NULL)) AND (deleted = false))",
       "using": "btree"
     },
     {
@@ -20335,6 +21438,14 @@
       "fields": [
         "key",
         "external_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_pdfs_platform_id",
+      "fields": [
+        "key",
+        "platform_id"
       ],
       "using": "btree"
     },
@@ -20416,6 +21527,13 @@
       "using": "btree"
     },
     {
+      "name": "index_record_type",
+      "fields": [
+        "recordtype"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_report_rows_on_report_id",
       "fields": [
         "report_id"
@@ -20444,6 +21562,14 @@
       "using": "btree"
     },
     {
+      "name": "index_sales_base_taxes_platform_id_tenant_id",
+      "fields": [
+        "platform_id",
+        "tenant_id"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_sales_base_taxes_tenant_id_taxability",
       "fields": [
         "tenant_id",
@@ -20463,6 +21589,15 @@
       "using": "btree"
     },
     {
+      "name": "index_sales_reps_on_location_platform_id",
+      "fields": [
+        "location_id",
+        "platform_id",
+        "deleted"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_sales_reps_on_location_printsmith_id",
       "fields": [
         "location_id",
@@ -20475,6 +21610,15 @@
       "name": "index_sales_reps_on_tenant_id",
       "fields": [
         "tenant_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_sales_reps_on_user_platform_id",
+      "fields": [
+        "user_id",
+        "platform_id",
+        "deleted"
       ],
       "using": "btree"
     },
@@ -20498,6 +21642,13 @@
       "using": "btree"
     },
     {
+      "name": "index_sales_summaries_on_accounting_day",
+      "fields": [
+        "accounting_day"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_sales_summaries_on_accounting_month",
       "fields": [
         "accounting_month"
@@ -20512,11 +21663,65 @@
       "using": "btree"
     },
     {
+      "name": "index_sales_summaries_on_accurate",
+      "fields": [
+        "accurate"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_sales_summaries_on_complete",
+      "fields": [
+        "complete"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_sales_summaries_on_daily_accounting_day",
+      "fields": [
+        "daily_accounting_day"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_sales_summaries_on_daily_accounting_month",
+      "fields": [
+        "daily_accounting_month"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_sales_summaries_on_daily_accounting_year",
+      "fields": [
+        "daily_accounting_year"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_sales_summaries_on_platform_id_and_tenant_id",
+      "fields": [
+        "platform_id",
+        "tenant_id"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_sales_summaries_on_printsmith_id_and_tenant_id",
       "fields": [
         "printsmith_id",
         "tenant_id"
       ],
+      "using": "btree"
+    },
+    {
+      "name": "index_sales_summaries_tenant_platform_id_not_deleted",
+      "fields": [
+        "tenant_id",
+        "platform_id",
+        "deleted",
+        "id"
+      ],
+      "where": "(deleted = false)",
       "using": "btree"
     },
     {
@@ -20531,6 +21736,34 @@
       "using": "btree"
     },
     {
+      "name": "index_sales_summary_pickups_on_account_history_item_id",
+      "fields": [
+        "account_history_item_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_sales_summary_pickups_on_dirty",
+      "fields": [
+        "dirty"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_sales_summary_pickups_on_printsmith_id",
+      "fields": [
+        "printsmith_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_sales_summary_pickups_on_sales_summary_id",
+      "fields": [
+        "sales_summary_id"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_sales_summary_pickups_on_source_account_history_item_id",
       "fields": [
         "source_account_history_item_id"
@@ -20541,6 +21774,13 @@
       "name": "index_sales_summary_pickups_on_source_sales_summary_id",
       "fields": [
         "source_sales_summary_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_sales_summary_pickups_on_tenant_id",
+      "fields": [
+        "tenant_id"
       ],
       "using": "btree"
     },
@@ -20638,17 +21878,6 @@
       "using": "btree"
     },
     {
-      "name": "index_shipments_contact_date",
-      "fields": [
-        "tenant_id",
-        "contact_id",
-        "shipment_date",
-        "deleted"
-      ],
-      "where": "(deleted = false)",
-      "using": "btree"
-    },
-    {
       "name": "index_shipments_contact_id_orders",
       "fields": [
         "contact_id",
@@ -20657,22 +21886,6 @@
         "id"
       ],
       "where": "((shipment_date IS NOT NULL) AND (NOT deleted))",
-      "using": "btree"
-    },
-    {
-      "name": "index_shipments_date_contact",
-      "fields": [
-        "shipment_date",
-        "contact_id"
-      ],
-      "using": "btree"
-    },
-    {
-      "name": "index_shipments_on_company_sales_rep",
-      "fields": [
-        "company_id",
-        "sales_rep_platform_id"
-      ],
       "using": "btree"
     },
     {
@@ -20755,41 +21968,16 @@
       "using": "btree"
     },
     {
-      "name": "index_shipments_status_date_total",
-      "fields": [
-        "tenant_id",
-        "status",
-        "shipment_date",
-        "deleted",
-        "grand_total"
-      ],
-      "where": "(((status)::text = ANY (ARRAY[('CREATED'::character varying)::text, ('DRAFT_WAYBILL'::character varying)::text, ('INVOICED'::character varying)::text])) AND (deleted = false))",
-      "using": "btree"
-    },
-    {
-      "name": "index_shipments_tenant_shipment_date_status",
-      "fields": [
-        "tenant_id",
-        "shipment_date",
-        "status"
-      ],
-      "where": "(deleted = false)",
-      "using": "btree"
-    },
-    {
-      "name": "index_shipmesssssnts_3",
-      "fields": [
-        "tenant_id",
-        "shipment_date",
-        "status"
-      ],
-      "where": "(deleted = false)",
-      "using": "btree"
-    },
-    {
       "name": "index_sms_templates_on_tenant_id",
       "fields": [
         "tenant_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_statistics_on_accounting_day",
+      "fields": [
+        "accounting_day"
       ],
       "using": "btree"
     },
@@ -20808,9 +21996,37 @@
       "using": "btree"
     },
     {
+      "name": "index_statistics_on_day",
+      "fields": [
+        "day"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_statistics_on_department_cash_sales",
+      "fields": [
+        "department_cash_sales"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_statistics_on_finance_charges",
+      "fields": [
+        "finance_charges"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "index_statistics_on_location_id",
       "fields": [
         "location_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_statistics_on_markups",
+      "fields": [
+        "markups"
       ],
       "using": "btree"
     },
@@ -20825,6 +22041,13 @@
       "name": "index_statistics_on_user_id",
       "fields": [
         "user_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_statistics_on_year",
+      "fields": [
+        "year"
       ],
       "using": "btree"
     },
@@ -20978,16 +22201,6 @@
       "using": "btree"
     },
     {
-      "name": "index_tasks_on_notify",
-      "fields": [
-        "notify_due_email_sent",
-        "notify_due",
-        "notify_date"
-      ],
-      "where": "((notify_due_email_sent = false) AND (notify_due = true))",
-      "using": "btree"
-    },
-    {
       "name": "index_tasks_on_position",
       "fields": [
         "position"
@@ -21013,6 +22226,13 @@
       "name": "index_tasks_on_user_id",
       "fields": [
         "user_id"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "index_tenants_on_beta_tester",
+      "fields": [
+        "beta_tester"
       ],
       "using": "btree"
     },
@@ -21171,34 +22391,6 @@
       "using": "btree"
     },
     {
-      "name": "invoices_contact_id_ordered_date_idx",
-      "fields": [
-        "contact_id",
-        "ordered_date"
-      ],
-      "where": "((voided = false) AND (deleted = false) AND (ordered_date IS NOT NULL))",
-      "using": "btree"
-    },
-    {
-      "name": "invoices_contact_id_ordered_date_idx1",
-      "fields": [
-        "contact_id",
-        "ordered_date"
-      ],
-      "where": "((voided = false) AND (deleted = false) AND (ordered_date IS NOT NULL) AND (pickup_date IS NOT NULL))",
-      "using": "btree"
-    },
-    {
-      "name": "invoices_contact_id_pickup_date_grand_total_idx",
-      "fields": [
-        "contact_id",
-        "pickup_date",
-        "grand_total"
-      ],
-      "where": "((voided = false) AND (deleted = false) AND (ordered_date IS NOT NULL))",
-      "using": "btree"
-    },
-    {
       "name": "invoices_contact_id_pickup_date_idx",
       "fields": [
         "contact_id",
@@ -21207,32 +22399,11 @@
       "using": "btree"
     },
     {
-      "name": "invoices_contact_id_pickup_date_idx1",
-      "fields": [
-        "contact_id",
-        "pickup_date"
-      ],
-      "where": "((voided = false) AND (deleted = false) AND (ordered_date IS NOT NULL) AND (pickup_date IS NOT NULL))",
-      "using": "btree"
-    },
-    {
       "name": "invoices_dirty_skip_pdf_index",
       "fields": [
         "tenant_id"
       ],
       "where": "(dirty_skip_pdf = true)",
-      "using": "btree"
-    },
-    {
-      "name": "invoices_index",
-      "fields": [
-        "key",
-        "ordered_date",
-        "voided",
-        "deleted",
-        "needs_pdf",
-        "tenant_id"
-      ],
       "using": "btree"
     },
     {
@@ -21263,6 +22434,20 @@
       "using": "btree"
     },
     {
+      "name": "invoices_tenant_id_created_at_needs_pdf_pdf_error_count_idx",
+      "fields": [
+        "tenant_id",
+        "created_at",
+        "needs_pdf",
+        "pdf_error_count"
+      ],
+      "order": {
+        "created_at": "desc"
+      },
+      "where": "(ordered_date > '2014-07-01 00:00:00'::timestamp without time zone)",
+      "using": "btree"
+    },
+    {
       "name": "invoices_tenant_id_gin_name",
       "fields": [
         "tenant_id",
@@ -21271,7 +22456,7 @@
       "using": "gin"
     },
     {
-      "name": "invoices_tenant_id_idx1",
+      "name": "invoices_tenant_id_idx",
       "fields": [
         "tenant_id"
       ],
@@ -21284,6 +22469,19 @@
         "tenant_id",
         "invoice_number"
       ],
+      "using": "btree"
+    },
+    {
+      "name": "invoices_tenant_id_pdf_error_count_ordered_date_idx",
+      "fields": [
+        "tenant_id",
+        "pdf_error_count",
+        "ordered_date"
+      ],
+      "order": {
+        "ordered_date": "desc"
+      },
+      "where": "((ordered_date > '2014-07-01 00:00:00'::timestamp without time zone) AND (needs_pdf = true))",
       "using": "btree"
     },
     {
@@ -21301,19 +22499,19 @@
       "using": "btree"
     },
     {
-      "name": "invoices_tenant_id_printsmith_id_idx",
+      "name": "invoices_tenant_id_platform_id_idx",
       "fields": [
         "tenant_id",
-        "printsmith_id"
+        "platform_id"
       ],
       "where": "(dirty = true)",
       "using": "btree"
     },
     {
-      "name": "invoices_tenant_id_printsmith_id_idx1",
+      "name": "invoices_tenant_id_platform_id_idx1",
       "fields": [
         "tenant_id",
-        "printsmith_id"
+        "platform_id"
       ],
       "using": "btree"
     },
@@ -21360,6 +22558,15 @@
       "using": "btree"
     },
     {
+      "name": "invoices_unpaid_invoices_checker_platform_id",
+      "fields": [
+        "tenant_id",
+        "platform_id"
+      ],
+      "where": "((pickup_date IS NOT NULL) AND (amount_due > (0)::numeric) AND (deleted = false) AND ((voided IS NULL) OR (voided = false)))",
+      "using": "btree"
+    },
+    {
       "name": "invoices_web",
       "fields": [
         "web",
@@ -21368,6 +22575,27 @@
         "deleted"
       ],
       "where": "((web = true) AND (deleted = false) AND (voided = false))",
+      "using": "btree"
+    },
+    {
+      "name": "lee_test5",
+      "fields": [
+        "tenant_id",
+        "contact_id",
+        "pickup_date",
+        "voided",
+        "deleted"
+      ],
+      "where": "((voided = false) AND (deleted = false) AND (pickup_date >= '2018-01-01 00:00:00'::timestamp without time zone))",
+      "using": "btree"
+    },
+    {
+      "name": "month_year",
+      "fields": [
+        "month",
+        "year",
+        "company_id"
+      ],
       "using": "btree"
     },
     {
@@ -21394,6 +22622,14 @@
         "tenant_id"
       ],
       "unique": true,
+      "using": "btree"
+    },
+    {
+      "name": "rank",
+      "fields": [
+        "id",
+        "rank"
+      ],
       "using": "btree"
     },
     {
@@ -21436,20 +22672,11 @@
       "using": "btree"
     },
     {
-      "name": "sales_summary_pickups_tenant_id_printsmith_id_idx",
+      "name": "sales_summary_pickups_tenant_id_platform_id_idx",
       "fields": [
         "tenant_id",
-        "printsmith_id"
+        "platform_id"
       ],
-      "using": "btree"
-    },
-    {
-      "name": "shipments_company_id_shipment_date_idx",
-      "fields": [
-        "company_id",
-        "shipment_date"
-      ],
-      "where": "(NOT deleted)",
       "using": "btree"
     },
     {
@@ -21491,6 +22718,13 @@
       "using": "btree"
     },
     {
+      "name": "source_type",
+      "fields": [
+        "source_type"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "statistics_date_tenant_id_idx",
       "fields": [
         "date",
@@ -21505,6 +22739,13 @@
         "accounting_year",
         "accounting_month",
         "statistic_for"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "suppressed_addresses_tenant_id_idx",
+      "fields": [
+        "tenant_id"
       ],
       "using": "btree"
     },
@@ -21526,23 +22767,47 @@
       "using": "btree"
     },
     {
-      "name": "tmp_backfill_index_addresses",
+      "name": "test_index",
       "fields": [
-        "platform_id",
+        "monthly",
+        "daily",
+        "closeoutdate",
         "printsmith_id",
-        "external_id",
-        "id"
+        "accounting_month",
+        "accounting_year",
+        "daily_accounting_day",
+        "daily_accounting_month",
+        "daily_accounting_year",
+        "isdeleted"
+      ],
+      "using": "btree"
+    },
+    {
+      "name": "tmp_backfill_index_account_history_data",
+      "fields": [
+        "id",
+        "platform_id",
+        "printsmith_id"
       ],
       "where": "(platform_id IS NULL)",
       "using": "btree"
     },
     {
-      "name": "tmp_backfill_index_companies",
+      "name": "tmp_backfill_index_addresses",
       "fields": [
+        "id",
         "platform_id",
-        "printsmith_id",
-        "external_id",
-        "id"
+        "printsmith_id"
+      ],
+      "where": "(platform_id IS NULL)",
+      "using": "btree"
+    },
+    {
+      "name": "tmp_backfill_index_adjustments",
+      "fields": [
+        "id",
+        "platform_id",
+        "printsmith_id"
       ],
       "where": "(platform_id IS NULL)",
       "using": "btree"
@@ -21559,52 +22824,118 @@
     {
       "name": "tmp_backfill_index_contacts",
       "fields": [
+        "id",
         "platform_id",
-        "printsmith_id",
-        "external_id",
-        "id"
+        "printsmith_id"
       ],
       "where": "(platform_id IS NULL)",
+      "using": "btree"
+    },
+    {
+      "name": "tmp_backfill_index_contacts_source_salesrep_id",
+      "fields": [
+        "id",
+        "source_salesrep_id"
+      ],
+      "where": "((tmp_data ->> 'contacts_source_salesrep_id'::text) IS NULL)",
+      "using": "btree"
+    },
+    {
+      "name": "tmp_backfill_index_estimates_salesrep_id",
+      "fields": [
+        "id",
+        "salesrep_id"
+      ],
+      "where": "((tmp_data ->> 'estimates_salesrep_id'::text) IS NULL)",
+      "using": "btree"
+    },
+    {
+      "name": "tmp_backfill_index_inquiries_salesrep_id",
+      "fields": [
+        "id",
+        "salesrep_id"
+      ],
+      "where": "((tmp_data ->> 'inquiries_salesrep_id'::text) IS NULL)",
       "using": "btree"
     },
     {
       "name": "tmp_backfill_index_invoices",
       "fields": [
+        "id",
         "platform_id",
-        "printsmith_id",
-        "external_id",
-        "id"
+        "printsmith_id"
       ],
       "where": "(platform_id IS NULL)",
       "using": "btree"
     },
     {
-      "name": "tmp_backfill_index_invoices_source_salesrep_id",
+      "name": "tmp_backfill_index_invoices_salesrep_id",
       "fields": [
         "id",
-        "source_salesrep_id"
+        "salesrep_id"
       ],
-      "where": "((tmp_data ->> 'invoices_source_salesrep_id'::text) IS NULL)",
+      "where": "((tmp_data ->> 'invoices_salesrep_id'::text) IS NULL)",
       "using": "btree"
     },
     {
       "name": "tmp_backfill_index_pdfs",
       "fields": [
+        "id",
         "platform_id",
-        "printsmith_id",
-        "external_id",
-        "id"
+        "printsmith_id"
       ],
       "where": "(platform_id IS NULL)",
       "using": "btree"
     },
     {
-      "name": "tmp_backfill_index_shipments_source_salesrep_id",
+      "name": "tmp_backfill_index_production_locations",
       "fields": [
         "id",
-        "source_salesrep_id"
+        "platform_id",
+        "printsmith_id"
       ],
-      "where": "((tmp_data ->> 'shipments_source_salesrep_id'::text) IS NULL)",
+      "where": "(platform_id IS NULL)",
+      "using": "btree"
+    },
+    {
+      "name": "tmp_backfill_index_sales_base_taxes",
+      "fields": [
+        "id",
+        "platform_id",
+        "printsmith_id"
+      ],
+      "where": "(platform_id IS NULL)",
+      "using": "btree"
+    },
+    {
+      "name": "tmp_backfill_index_sales_reps",
+      "fields": [
+        "id",
+        "platform_id",
+        "printsmith_id",
+        "external_id"
+      ],
+      "where": "(platform_id IS NULL)",
+      "using": "btree"
+    },
+    {
+      "name": "tmp_backfill_index_sales_summaries",
+      "fields": [
+        "id",
+        "platform_id",
+        "printsmith_id"
+      ],
+      "where": "(platform_id IS NULL)",
+      "using": "btree"
+    },
+    {
+      "name": "tmp_backfill_index_sales_summary_pickups",
+      "fields": [
+        "id",
+        "platform_id",
+        "printsmith_id"
+      ],
+      "where": "(platform_id IS NULL)",
       "using": "btree"
     },
     {
@@ -21638,6 +22969,16 @@
       "using": "btree"
     },
     {
+      "name": "tmp_fix_2",
+      "fields": [
+        "source_sales_base_id",
+        "tenant_id",
+        "source_type",
+        "deleted"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "tmp_fix_3",
       "fields": [
         "tenant_id",
@@ -21646,6 +22987,14 @@
         "id",
         "created_at"
       ],
+      "using": "btree"
+    },
+    {
+      "name": "tmp_fix_4",
+      "fields": [
+        "tenant_id"
+      ],
+      "where": "((address_id IS NULL) AND (source_address_id IS NOT NULL))",
       "using": "btree"
     },
     {
@@ -21689,18 +23038,6 @@
       "using": "btree"
     },
     {
-      "name": "tmp_invoices_filter",
-      "fields": [
-        "tenant_id",
-        "reorder_date",
-        "pickup_date",
-        "amount_due",
-        "voided",
-        "deleted"
-      ],
-      "using": "btree"
-    },
-    {
       "name": "tmp_sales_rep_1",
       "fields": [
         "sales_rep_user_id",
@@ -21719,6 +23056,14 @@
       "using": "btree"
     },
     {
+      "name": "try_5",
+      "fields": [
+        "tenant_id",
+        "source_created_at"
+      ],
+      "using": "btree"
+    },
+    {
       "name": "unpaid_invoices_idx",
       "fields": [
         "tenant_id"
@@ -21729,13 +23074,14 @@
   ],
   "meta": {
     "rails": 4,
-    "database": {
+    "db_info": {
       "type": "postgres",
       "version": null,
       "extensions": [
         "plpgsql",
         "btree_gin",
         "hstore",
+        "intarray",
         "pg_stat_statements",
         "pg_trgm"
       ]
@@ -21864,17 +23210,6 @@
       {
         "type": "columns",
         "category": null,
-        "key": "name,type,precision,null",
-        "keys": [
-          "name",
-          "type",
-          "precision",
-          "null"
-        ]
-      },
-      {
-        "type": "columns",
-        "category": null,
         "key": "name,type,precision,scale",
         "keys": [
           "name",
@@ -21961,8 +23296,8 @@
         "keys": [
           "name",
           "type",
-          "precision",
           "null",
+          "precision",
           "default",
           "array"
         ]
@@ -22005,17 +23340,6 @@
           "name",
           "type",
           "precision"
-        ]
-      },
-      {
-        "type": "fields",
-        "category": "datetime",
-        "key": "name,type,precision,null",
-        "keys": [
-          "name",
-          "type",
-          "precision",
-          "null"
         ]
       },
       {
