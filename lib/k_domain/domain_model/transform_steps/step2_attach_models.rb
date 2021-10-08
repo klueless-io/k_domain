@@ -5,7 +5,7 @@
 class Step2AttachModels < KDomain::DomainModel::Step
   # Map database schema to domain model
   def call
-    raise 'ERD path not supplied' if opts[:erd_path].nil?
+    raise 'Rails model path not supplied' if opts[:model_path].nil?
 
     # Schema is re-shaped into a format designed for domain modeling
     domain[:models] = database_tables.map { |table| model(table) }
@@ -36,8 +36,8 @@ class Step2AttachModels < KDomain::DomainModel::Step
 
   # Location of source code
   def location(table_name, model_name)
-    file_normal = File.join(opts[:erd_path], "#{model_name}.rb")
-    file_custom = File.join(opts[:erd_path], "#{table_name}.rb")
+    file_normal = File.join(opts[:model_path], "#{model_name}.rb")
+    file_custom = File.join(opts[:model_path], "#{table_name}.rb")
     file_exist  = true
     state = []
 

@@ -8,6 +8,9 @@
     "models": [
 
     ],
+    "routes": [
+
+    ],
     "controllers": [
 
     ]
@@ -1255,6 +1258,9 @@
         "unique": true,
         "using": "btree"
       }
+    ],
+    "views": [
+
     ],
     "meta": {
       "rails": 4,

@@ -4,8 +4,8 @@
 module KDomain
   module Schemas
     class DomainModel < Dry::Struct
-      attribute :domain           , KDomain::DomainModel::Domain
-      attribute :database         , KDomain::Database::Schema
+      attribute :domain           , KDomain::Schemas::Domain
+      attribute :database         , KDomain::Schemas::Database
       attribute :dictionary       , KDomain::Schemas::Dictionary
       attribute :rails_resource   , KDomain::Schemas::RailsResource
       attribute :rails_structure  , KDomain::Schemas::RailsStructure

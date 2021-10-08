@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Attach data dictionary
-class Step6AttachDictionary < KDomain::DomainModel::Step
+class Step7AttachDictionary < KDomain::DomainModel::Step
   attr_reader :dictionary
 
   def call

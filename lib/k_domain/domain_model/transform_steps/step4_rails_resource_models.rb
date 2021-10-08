@@ -5,7 +5,7 @@ class Step4RailsResourceModels < KDomain::DomainModel::Step
   attr_accessor :ruby_code
 
   def call
-    raise 'ERD path not supplied' if opts[:erd_path].nil?
+    raise 'Model path not supplied' if opts[:model_path].nil?
 
     self.rails_resource_models = domain_models.map do |model|
       locate_rails_model(model[:name], model[:table_name])
@@ -15,8 +15,8 @@ class Step4RailsResourceModels < KDomain::DomainModel::Step
   private
 
   def locate_rails_model(model_name, table_name)
-    file_normal = File.join(opts[:erd_path], "#{model_name}.rb")
-    file_custom = File.join(opts[:erd_path], "#{table_name}.rb")
+    file_normal = File.join(opts[:model_path], "#{model_name}.rb")
+    file_custom = File.join(opts[:model_path], "#{table_name}.rb")
     file_exist  = true
     state = []
 

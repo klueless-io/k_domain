@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 # Locate rails model files
-class Step5RailsStructureModels < KDomain::DomainModel::Step
+class Step6RailsStructureModels < KDomain::DomainModel::Step
   def call
-    raise 'ERD path not supplied' unless opts[:erd_path]
+    raise 'Rails model path not supplied' unless opts[:model_path]
 
     self.rails_structure_models = rails_resource_models.map do |resource|
       process_resource(OpenStruct.new(resource))

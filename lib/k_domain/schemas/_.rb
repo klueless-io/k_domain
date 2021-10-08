@@ -9,8 +9,8 @@ end
 require_relative 'rails_resource'
 require_relative 'rails_structure'
 require_relative 'investigate'
-require_relative 'database/_'
+require_relative 'database'
 require_relative 'dictionary'
-require_relative 'domain/_'
+require_relative 'domain'
 
 require_relative './domain_model'

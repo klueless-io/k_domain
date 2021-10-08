@@ -9,6 +9,7 @@ class LoadSchema
       tables: [],
       foreign_keys: [],
       indexes: [],
+      views: [],
       meta: {
         rails: @rails_version,
         db_info: {
@@ -365,6 +366,11 @@ class LoadSchema
     add_index(name, fields, **opts)
   end
 
+  def create_view(name, **opts)
+    row = { name: name, **opts }
+    schema[:views] << row
+    add_unique_keys(row.keys, type: :views)
+  end
 
   def add_foreign_key(left_table, right_table, **opts)
     # puts "add_foreign_key(#{left_table}, #{right_table})"

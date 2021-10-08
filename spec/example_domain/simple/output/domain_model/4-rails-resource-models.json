@@ -2259,6 +2259,9 @@
         "state": "has_ruby_model"
       }
     ],
+    "routes": [
+
+    ],
     "controllers": [
 
     ]
@@ -3506,6 +3509,9 @@
         "unique": true,
         "using": "btree"
       }
+    ],
+    "views": [
+
     ],
     "meta": {
       "rails": 4,
