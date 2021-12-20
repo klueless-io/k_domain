@@ -17,10 +17,10 @@ module KDomain
           attribute :array                , Types::Strict::Bool.optional.default(nil)     #  null
     
           # Calculated value
-          attribute :structure_type       , Types::Coercible::Symbol                      #
-          attribute :foreign_key          , Types::Strict::Bool.optional.default(nil)     #
-          attribute :foreign_table        , Types::Strict::String                         #
-          attribute :foreign_table_plural , Types::Strict::String                         #
+          # attribute :structure_type       , Types::Coercible::Symbol                      #
+          # attribute :foreign_key          , Types::Strict::Bool.optional.default(nil)     #
+          # attribute :foreign_table        , Types::Strict::String                         #
+          # attribute :foreign_table_plural , Types::Strict::String                         #
     
           # def data_column
           #   @columns_data ||= structure_type?(:data)
@@ -55,19 +55,12 @@ module KDomain
           attribute :exist              , Types::Strict::Bool
         end
       
-        class ErdLocation < Dry::Struct
-          attribute :file               , Types::Strict::String
-          attribute :exist              , Types::Strict::Bool
-          attribute :state              , Types::Strict::Array
-        end
-      
         attribute :name                 , Types::Strict::String
         attribute :name_plural          , Types::Strict::String
         attribute :table_name           , Types::Strict::String
         # Model type - :entity, :basic_user, :admin_user, possibly: m2m, agg_root
         attribute :type                 , Types::Strict::Symbol.optional.default(:entity)
         attribute :pk                   , KDomain::Schemas::Domain::Model::Pk
-        attribute :erd_location         , KDomain::Schemas::Domain::Model::ErdLocation
         attribute :columns              , Types::Strict::Array.of(KDomain::Schemas::Domain::Model::Column)
       
         def ruby?

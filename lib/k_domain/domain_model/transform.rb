@@ -27,13 +27,14 @@ module KDomain
       # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity
       def call
         valid = true
-        valid &&= Step1AttachDbSchema.run(domain_data, db_schema: db_schema, step_file: step_file('1-attach-db-schema'))
-        valid &&= Step2AttachModels.run(domain_data, model_path: model_path, step_file: step_file('2-attach-model'))
-        valid &&= Step3AttachColumns.run(domain_data, step_file: step_file('3-attach-columns'))
-        valid &&= Step4RailsResourceModels.run(domain_data, model_path: model_path, step_file: step_file('4-rails-resource-models'))
-        valid &&= Step5RailsResourceRoutes.run(domain_data, route_path: route_path, controller_path: controller_path, step_file: step_file('5-rails-resource-routes'))
-        valid &&= Step6RailsStructureModels.run(domain_data, model_path: model_path, step_file: step_file('6-rails-structure-models'))
-        valid &&= Step7AttachDictionary.run(domain_data, step_file: step_file('7-attach-dictionary'))
+        valid &&= Step1DbSchema.run(domain_data, db_schema: db_schema, step_file: step_file('01-db-schema'))
+        valid &&= Step2DomainModels.run(domain_data, model_path: model_path, step_file: step_file('02-domain-model'))
+        valid &&= Step4RailsResourceModels.run(domain_data, model_path: model_path, step_file: step_file('04-rails-resource-models'))
+        valid &&= Step5RailsResourceRoutes.run(domain_data, route_path: route_path, controller_path: controller_path, step_file: step_file('05-rails-resource-routes'))
+        valid &&= Step6RailsStructureModels.run(domain_data, model_path: model_path, step_file: step_file('06-rails-structure-models'))
+        valid &&= Step7RailsStructureControllers.run(domain_data, controller_path: controller_path, step_file: step_file('07-rails-structure-controllers'))
+        valid &&= Step8DomainColumns.run(domain_data, step_file: step_file('08-domain-columns'))
+        valid &&= Step20Dictionary.run(domain_data, step_file: step_file('20-dictionary'))
 
         raise 'DomainModal transform failed' unless valid
 
@@ -61,7 +62,6 @@ module KDomain
           rails_resource: {
             models: [],
             routes: [],
-            controllers: []
           },
           rails_structure: {
             models: [],
@@ -74,6 +74,7 @@ module KDomain
             tables: [],
             indexes: [],
             foreign_keys: [],
+            views: [],
             meta: {}
           },
           investigate: {

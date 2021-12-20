@@ -23,7 +23,13 @@ module KDomain
         attribute :where?               , Types::Nominal::Any.optional.default(nil)
         attribute :unique?              , Types::Nominal::Any.optional.default(nil)
       end
-  
+
+      class View < Dry::Struct
+        attribute :name                 , Types::Strict::String
+        attribute :materialized         , Types::Strict::Bool
+        attribute :sql_definition       , Types::Nominal::String
+      end
+
       class Table < Dry::Struct
         class RailsSchema < Dry::Struct
           attribute :primary_key          , Types::Nominal::Any.optional.default(nil)
@@ -73,6 +79,7 @@ module KDomain
       attribute :tables               , Types::Strict::Array.of(KDomain::Schemas::Database::Table)
       attribute :foreign_keys?        , Types::Strict::Array.of(KDomain::Schemas::Database::ForeignKey)
       attribute :indexes?             , Types::Strict::Array.of(KDomain::Schemas::Database::Index)
+      attribute :views?               , Types::Strict::Array.of(KDomain::Schemas::Database::View)
       attribute :meta                 , KDomain::Schemas::Database::Meta
     end
   end

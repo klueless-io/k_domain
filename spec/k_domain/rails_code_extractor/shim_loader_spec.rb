@@ -48,12 +48,12 @@ RSpec.describe KDomain::RailsCodeExtractor::ShimLoader do
       context '.shim_files' do
         subject { instance.shim_files }
 
-        context 'file: :fake_module_shims' do
-          let(:name) { :fake_module }
-          let(:file) { KDomain::Gem.resource('templates/fake_module_shims.rb') }
+        context 'file: :custom_module_shims' do
+          let(:name) { :custom_module }
+          let(:file) { KDomain::Gem.resource('templates/custom_module_shims.rb') }
 
           it do
-            is_expected.to include({ name: :fake_module, file: end_with('templates/fake_module_shims.rb'), exist: true })
+            is_expected.to include({ name: :custom_module, file: end_with('templates/custom_module_shims.rb'), exist: true })
           end
         end
       end
@@ -63,26 +63,18 @@ RSpec.describe KDomain::RailsCodeExtractor::ShimLoader do
   describe '#call' do
     before do
       instance.register(:active_record, KDomain::Gem.resource('templates/active_record_shims.rb'))
-      instance.register(:fake_module  , KDomain::Gem.resource('templates/fake_module_shims.rb'))
+      instance.register(:custom_module  , KDomain::Gem.resource('templates/custom_module_shims.rb'))
       instance.register(:bad , 'bad_shims.rb')
     end
 
-    context 'before call' do
-      # it do
-      #   expect(defined?(ActiveRecord)).to be_falsey
-      #   expect(defined?(Rails)).to be_falsey
-      #   expect(defined?(ActsAsCommentable)).to be_falsey
-      # end
+    context 'after call' do
+      before { instance.call }
 
-      context 'after call' do
-        before { instance.call }
-
-        it do
-          expect(defined?(ActiveRecord)).to be_truthy
-          expect(defined?(ActiveRecord::Base)).to be_truthy
-          expect(defined?(Rails)).to be_truthy
-          expect(defined?(ActsAsCommentable)).to be_truthy
-        end
+      it do
+        expect(defined?(ActiveRecord)).to be_truthy
+        expect(defined?(ActiveRecord::Base)).to be_truthy
+        expect(defined?(Rails)).to be_truthy
+        expect(defined?(ActsAsCommentable)).to be_truthy
       end
     end
   end

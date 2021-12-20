@@ -26,13 +26,13 @@ RSpec.describe KDomain::DomainModel::Transform do
     let(:target_file)             { 'spec/example_domain/advanced/output/domain_model.json' }
     let(:target_step_file)        { 'spec/example_domain/advanced/output/%{step}.json' }
 
-    fit {
+    it {
       db_transform
       instance.call
     }
   end
 
-  describe '#initialize' do
+  fdescribe '#initialize' do
     context '.db_schema' do
       subject { instance.db_schema }
 
@@ -62,6 +62,7 @@ RSpec.describe KDomain::DomainModel::Transform do
             tables: be_empty,
             indexes: be_empty,
             foreign_keys: be_empty,
+            views: be_empty,
             meta: be_empty
           )
         end
@@ -73,8 +74,7 @@ RSpec.describe KDomain::DomainModel::Transform do
         it do
           is_expected.to include(
             models: be_empty,
-            routes: be_empty,
-            controllers: be_empty
+            routes: be_empty
           )
         end
       end
@@ -107,7 +107,7 @@ RSpec.describe KDomain::DomainModel::Transform do
   describe '#call' do
     before { instance.call }
 
-    context '.attach_database' do
+    context '.database' do
       subject { instance.domain_data[:database] }
 
       it do
@@ -117,27 +117,24 @@ RSpec.describe KDomain::DomainModel::Transform do
           foreign_keys: be_empty,
           meta: be_empty
         )
+        # The basic sample does not include any views
+        # views: be_empty,
       end
     end
 
-    context '.attach_models' do
-      subject { instance.domain_data[:domain][:models] }
-
-      it { is_expected.not_to be_empty }
-      # fit { puts JSON.pretty_generate(subject) }
+    context '.domain' do
+      context '.models' do
+        subject { instance.domain_data[:domain][:models] }
+  
+        it { is_expected.not_to be_empty }
+      end
+  
+      context '.columns' do
+        subject { instance.domain_data[:domain][:models].first[:columns] }
+  
+        it { is_expected.not_to be_empty }
+      end
     end
-
-    context '.attach_columns' do
-      subject { instance.domain_data[:domain][:models].first[:columns] }
-
-      it { is_expected.not_to be_empty }
-    end
-
-    # context '.attach_erd_files' do
-    #   subject { instance.domain_data[:domain][:erd_files] }
-
-    #   it { is_expected.not_to be_empty }
-    # end
 
     context '.rails_resource' do
       context '.models' do
@@ -149,11 +146,6 @@ RSpec.describe KDomain::DomainModel::Transform do
         subject { instance.domain_data[:rails_resource][:routes] }
 
         it { is_expected.not_to be_empty }
-      end
-      context '.controllers' do
-        subject { instance.domain_data[:rails_resource][:controllers] }
-
-        it { is_expected.to be_empty }
       end
     end
 

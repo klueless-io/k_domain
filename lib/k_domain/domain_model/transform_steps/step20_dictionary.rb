@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Attach data dictionary
-class Step7AttachDictionary < KDomain::DomainModel::Step
+#  data dictionary
+class Step20Dictionary < KDomain::DomainModel::Step
   attr_reader :dictionary
 
   def call
@@ -27,7 +27,7 @@ class Step7AttachDictionary < KDomain::DomainModel::Step
       entry[:model_count] = entry[:model_count] + 1
 
       unless entry[:types].include?(column_type)
-        investigate(step: :step5_attach_dictionary,
+        investigate(step: :step5_dictionary,
                     location: :process,
                     key: "#{model_name},#{column_name},#{column_type}",
                     message: "#{model_name} has a type mismatch for column name: #{column_name}")

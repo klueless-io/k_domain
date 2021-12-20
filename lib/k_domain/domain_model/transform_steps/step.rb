@@ -91,12 +91,20 @@ module KDomain
         rails_structure[:models]
       end
 
+      def find_rails_structure_models(model_name)
+        rails_structure_models.find { |model| model[:model_name] == model_name }
+      end
+
       def rails_structure_models=(value)
         rails_structure[:models] = value
       end
 
       def rails_structure_controllers
         rails_structure[:controllers]
+      end
+
+      def rails_structure_controllers=(value)
+        rails_structure[:controllers] = value
       end
 
       # Database Accessor/Helpers

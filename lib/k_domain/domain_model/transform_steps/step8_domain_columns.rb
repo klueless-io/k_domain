@@ -1,65 +1,34 @@
 # frozen_string_literal: true
 
-# Attach columns to models
-class Step3AttachColumns < KDomain::DomainModel::Step
-  attr_accessor :table
+#  columns to models
+class Step8DomainColumns < KDomain::DomainModel::Step
+  attr_reader :domain_model
+  attr_reader :domain_column
+  attr_reader :rails_model
   attr_reader :column_name
   attr_reader :column_symbol
 
   def call
-    build_columns
+    enrich_columns
   end
 
-  def build_columns
+  def enrich_columns
+    # .select {|m| m[:name] == 'app_user'}
     domain_models.each do |model|
-      @table = find_table_for_model(model)
-      columns = columns(table[:columns])
-      columns = insert_primary_key(model, columns)
-      model[:columns] = columns
+      @domain_model = model
+      # this will be nil if there is no rails model code
+      @rails_model = find_rails_structure_models(domain_model[:name])
+
+      # log.warn domain_model[:name]
+      domain_model[:columns].each do |column|
+        @domain_column = column
+        @column_name = column[:name]
+        @column_symbol = column[:name].to_sym
+
+        attach_foreign_key
+        column[:structure_type] = structure_type
+      end
     end
-  end
-
-  def column_data(name)
-    @column_name   = name
-    @column_symbol = name.to_sym
-    {
-      name: name,
-      name_plural: name.pluralize,
-      type: nil,
-      precision: nil,
-      scale: nil,
-      default: nil,
-      null: nil,
-      limit: nil,
-      array: nil
-    }
-  end
-
-  def columns(db_columns)
-    db_columns.map do |db_column|
-      column = column_data(db_column[:name]).merge(
-        type: check_type(db_column[:type]),
-        precision: db_column[:precision],
-        scale: db_column[:scale],
-        default: db_column[:default],
-        null: db_column[:null],
-        limit: db_column[:limit],
-        array: db_column[:array]
-      )
-
-      expand_column(column)
-    end
-  end
-
-  def insert_primary_key(model, columns)
-    return columns unless model[:pk][:exist]
-
-    column = column_data('id').merge(
-      type: check_type(model[:pk][:type])
-    )
-
-    columns.unshift(expand_column(column))
-    columns
   end
 
   def expand_column(column)
@@ -76,22 +45,6 @@ class Step3AttachColumns < KDomain::DomainModel::Step
                  })
   end
 
-  def check_type(type)
-    type = type.to_sym if type.is_a?(String)
-
-    return type if %i[string integer bigint bigserial boolean float decimal datetime date hstore text jsonb].include?(type)
-
-    if type.nil?
-      guard('nil type detected for db_column[:type]')
-
-      return :string
-    end
-
-    guard("new type detected for db_column[:type] - #{type}")
-
-    camel.parse(type.to_s).downcase
-  end
-
   def lookup_foreign_table(column_name)
     foreign_table = find_foreign_table(table[:name], column_name)
 
@@ -104,7 +57,7 @@ class Step3AttachColumns < KDomain::DomainModel::Step
       table_name_plural = table_name.pluralize
 
       if table_name_exist?(table_name_plural.to_s)
-        investigate(step: :step3_attach_columns,
+        investigate(step: :step8_columns,
                     location: :lookup_foreign_table,
                     key: column_name,
                     message: "#{@table[:name]}.#{column_name} => #{table_name_plural} - Relationship not found in DB, so have inferred this relationship. You may want to check that this relation is correct")
@@ -112,7 +65,7 @@ class Step3AttachColumns < KDomain::DomainModel::Step
         return table_name
       end
 
-      investigate(step: :step3_attach_columns,
+      investigate(step: :step8_columns,
                   location: :lookup_foreign_table,
                   key: column_name,
                   message: "#{@table[:name]}.#{column_name} => #{table_name_plural} - Table not found for a column that looks like foreign_key")
@@ -121,11 +74,26 @@ class Step3AttachColumns < KDomain::DomainModel::Step
     nil
   end
 
+  def attach_foreign_key
+    return if rails_model.nil? || rails_model[:behaviours].nil? || rails_model[:behaviours][:belongs_to].nil?
+
+    foreign = rails_model[:behaviours][:belongs_to].find { |belong| belong[:opts][:foreign_key].to_sym == domain_column[:name].to_sym}
+
+    return unless foreign
+
+    binding.pry
+    # NEED TO PRE-LOAD the table, table_plural and model
+    domain_column[:foreign_table] = 'xxx1'
+    domain_column[:foreign_table_plural] = 'xxx3'
+    domain_column[:foreign_model] = 'xxx2'
+  end
+
   # Need some configurable data dictionary where by
   # _token can be setup on a project by project basis
-  def structure_type(is_foreign)
-    return :foreign_key         if is_foreign
-    return :primary_key         if column_symbol == :id
+  def structure_type
+    return :primary_key           if domain_model[:pk][:name] == column_name
+    return :foreign_key           if domain_column[:foreign_table]
+
     return :timestamp           if column_symbol == :created_at || column_symbol == :updated_at
     return :timestamp           if column_symbol == :created_at || column_symbol == :updated_at
     return :deleted_at          if column_symbol == :deleted_at

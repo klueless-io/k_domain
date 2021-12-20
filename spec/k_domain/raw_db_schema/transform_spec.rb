@@ -9,7 +9,7 @@ RSpec.describe KDomain::RawDbSchema::Transform do
     include_examples :domain_advanced_settings
     include_examples :transform_db_schema
 
-    fit {
+    it {
       db_transform
     }
   end

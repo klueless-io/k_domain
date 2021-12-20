@@ -1,13 +1,9 @@
 module ActiveRecord
-  def self.current_class
-    @current_class ||= nil
-  end
-
-  def self.current_class=(value)
-    @current_class = value
-  end
+  extend RubyCodeExtractor::AttachClassInfo
 
   class Base
+    extend RubyCodeExtractor::BehaviourAccessors
+
     def self.singleton_class
       Class.new do
         def send(*_p, **_o); end
@@ -15,42 +11,22 @@ module ActiveRecord
     end
 
     def self.class_info
-      return ActiveRecord.current_class if ActiveRecord.current_class
+      return ActiveRecord.class_info if ActiveRecord.class_info
 
-      ActiveRecord.current_class = {
+      ActiveRecord.class_info = {
         class_name: name
       }
     end
 
-    def self.set(key, value)
-      class_info[key] = class_info[key] || {}
-      class_info[key] = value
-    end
+    # -------------------------
+    # Intercept methods
+    # -------------------------
 
-    def self.add(key, value)
-      class_info[key] = class_info[key] || []
-      if value.is_a?(Array)
-        class_info[key] = class_info[key] + value
-      else
-        class_info[key] << value
-      end
-    end
+    def self.clear_active_connections!; end
 
-    def self.custom_set(key, value = {})
-      class_info[:custom] = {} unless class_info[:custom]
-      class_info[:custom][key] = class_info[:custom][key] || {}
-      class_info[:custom][key] = value
-    end
-
-    def self.custom_add(key, value)
-      class_info[:custom] = {} unless class_info[:custom]
-      class_info[:custom][key] = class_info[:custom][key] || []
-      if value.is_a?(Array)
-        class_info[:custom][key] = class_info[:custom][key] + value
-      else
-        class_info[:custom][key] << value
-      end
-    end
+    # -------------------------
+    # Behaviour storage methods
+    # -------------------------
 
     # examples:
     # enum status: { active: 0, archived: 1 }
@@ -133,11 +109,15 @@ module ActiveRecord
     def self.belongs_to(name, on_the_lamb = nil, **opts)
       lamb_source = lambda_source(on_the_lamb, "belongs_to :#{name},")
 
-      add(:belongs_to, {
-            name: name,
-            opts: opts,
-            block: lamb_source
-          })
+      value = {
+        name: name,
+        opts: opts,
+        block: lamb_source
+      }
+
+      value[:opts][:foreign_key] = "#{name}_id" unless value[:opts][:foreign_key]
+
+      add(:belongs_to, value)
     end
 
     def self.has_many(name, on_the_lamb = nil, **opts)

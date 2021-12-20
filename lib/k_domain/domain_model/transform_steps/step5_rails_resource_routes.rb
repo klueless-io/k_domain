@@ -24,7 +24,7 @@ class Step5RailsResourceRoutes < KDomain::DomainModel::Step
   def map_route(route, controller_path)
     return route.merge({ file: '', exist: false}) if controller_path.nil?
 
-    controller_file = File.join(controller_path, "#{route[:controller]}_controller.rb")
+    controller_file = File.join(controller_path, route[:controller_file])
 
     route.merge(
     {

@@ -5,15 +5,18 @@ class Step6RailsStructureModels < KDomain::DomainModel::Step
   def call
     raise 'Rails model path not supplied' unless opts[:model_path]
 
-    self.rails_structure_models = rails_resource_models.map do |resource|
+    # THIS IS NOT WORKING YET
+    self.rails_structure_models = rails_resource_models.take(5).map do |resource|
       process_resource(OpenStruct.new(resource))
     end
+
+    attach_behavior_and_functions
   end
 
   private
 
   def process_resource(resource)
-    @model = {
+    {
       model_name: resource.model_name,
       table_name: resource.table_name,
       file: resource.file,
@@ -24,37 +27,48 @@ class Step6RailsStructureModels < KDomain::DomainModel::Step
       functions: {}
     }
 
-    return @model unless  resource.exist
+    # return @model unless  resource.exist
 
-    @model[:behaviours] = extract_model_behavior(resource.file)
-    @model[:functions] = extract_model_functions(resource.file)
+    # @model[:behaviours] = extract_behavior(resource.file)
+    # @model[:functions] = extract_functions(resource.file)
 
-    @model
+    # @model
   end
 
-  def extract_model_behavior(file)
+  def attach_behavior_and_functions
+    rails_structure_models.select { |model| model[:exist] }.each do |model|
+      model[:behaviours] = extract_behavior(model[:file])
+      klass_name = model[:behaviours][:class_name]
+      model[:functions] = extract_functions(klass_name)
+    end
+  end
+
+  def extract_behavior(file)
     extractor.extract(file)
     extractor.model
   end
 
-  def extract_model_functions(file)
-    klass_name = File.basename(file, File.extname(file))
+  def extract_functions(klass_name)
+    klass = klass_type(klass_name)
 
-    klass = case klass_name
-            when 'clearbit_quota'
-              ClearbitQuota
-            when 'account_history_data'
-              AccountHistoryData
-            else
-              Module.const_get(klass_name.classify)
-            end
+    return {} if klass.nil?
 
-    class_info = Peeky.api.build_class_info(klass.new)
-
-    class_info.to_h
+    Peeky.api.build_class_info(klass.new).to_h
   rescue StandardError => e
     log.exception(e)
   end
+
+  def klass_type(klass_name)
+    return Module.const_get(klass_name.classify)
+  rescue NameError
+    puts ''
+    puts klass_name
+    puts klass_name.classify
+    puts klass_name.pluralize
+    puts 'Trying the pluralized version: '
+    return Module.const_get(klass_name.pluralize)
+  end
+
 
   def extractor
     @extractor ||= KDomain::RailsCodeExtractor::ExtractModel.new(shim_loader)
@@ -64,8 +78,16 @@ class Step6RailsStructureModels < KDomain::DomainModel::Step
     return opts[:shim_loader] if !opts[:shim_loader].nil? && opts[:shim_loader].is_a?(KDomain::RailsCodeExtractor::ShimLoader)
 
     shim_loader = KDomain::RailsCodeExtractor::ShimLoader.new
-    shim_loader.register(:fake_module  , KDomain::Gem.resource('templates/fake_module_shims.rb'))
-    shim_loader.register(:active_record, KDomain::Gem.resource('templates/active_record_shims.rb'))
+    # Shims to attach generic class_info writers
+    shim_loader.register(:attach_class_info           , KDomain::Gem.resource('templates/ruby_code_extractor/attach_class_info.rb'))
+    shim_loader.register(:behaviour_accessors         , KDomain::Gem.resource('templates/ruby_code_extractor/behaviour_accessors.rb'))
+
+    # Shims to support standard active_record DSL methods
+    shim_loader.register(:active_record               , KDomain::Gem.resource('templates/rails/active_record.rb'))
+
+    # Shims to support application specific [module, class, method] implementations for suppression and exception avoidance
+    # shim_loader.register(:app_active_record         , KDomain::Gem.resource('templates/advanced/active_record.rb'))
+    shim_loader.register(:app_model_interceptors      , KDomain::Gem.resource('templates/advanced/model_interceptors.rb'))
     shim_loader
   end
 end

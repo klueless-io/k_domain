@@ -11,7 +11,7 @@ module KDomain
       include KLog::Logging
 
       attr_reader :source_file
-      attr_reader :template_file
+      attr_accessor :template_file
       attr_reader :schema_loader
 
       def initialize(source_file)
@@ -55,6 +55,13 @@ module KDomain
         if schema_loader.nil?
           puts '.call method has not been executed'
           return
+        end
+
+        if true # schema_old (printspeak original)
+          json_file =  "spec/example_domain/advanced/output/schema_old.json"
+
+          alter_schema = schema[:tables]
+          schema = alter_schema
         end
 
         FileUtils.mkdir_p(File.dirname(json_file))

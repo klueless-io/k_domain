@@ -2,12 +2,13 @@
 
 module KDomain
   module DomainModel
-    class Step1AttachDbSchema < KDomain::DomainModel::Step
+    class Step1DbSchema < KDomain::DomainModel::Step
       # Map database schema to domain model
       def call
         raise 'Schema not supplied' if opts[:db_schema].nil?
 
         self.database = opts[:db_schema].clone
+        self.database[:tables] = self.database[:tables] # .slice(156, 1)
 
         guard('tables are missing')               if database[:tables].nil?
         guard('indexes are missing')              if database[:indexes].nil?

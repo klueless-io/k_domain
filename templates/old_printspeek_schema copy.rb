@@ -1,40 +1,37 @@
-class LoadSchema
-  attr_reader :schema
+# Store the raw schema for the tables that are used in the original PrintSpeak database
+class SchemaPrintspeak
+  def self.instance
+    @instance ||= SchemaPrintspeak.new
+  end
 
-  # XMEN
+  attr_accessor :tables
+
   def initialize
-    @unique_keys = {}
+    @tables = []
     @current_table = nil
-    @rails_version = 4
-    @schema = {
-      tables: [],
-      foreign_keys: [],
-      indexes: [],
-      views: [],
-      meta: {
-        rails: @rails_version,
-        db_info: {
-          type: 'postgres',
-          version: nil,         # TODO
-          extensions: []
-        },
-        unique_keys: []
-      }
-    }
+    load_tables
+  end
+  private
+
+  def add_table(table)
+    @tables.push(table)
+    @current_table = table
+  end
+
+  def add_index(_table_name, columns, **opts)
+    @current_table[:indexes] = [] if @current_table[:indexes].nil?
+
+    @current_table[:indexes].push({columns: columns}.merge(opts))
   end
 
   # ----------------------------------------------------------------------
   # Inject start
   # original file: {{source_file}}
   # ----------------------------------------------------------------------
-  def load_schema
+  def load_tables
 {{rails_schema}}
   end
 
-  # ----------------------------------------------------------------------
-  # original file: {{source_file}}
-  # Inject end
-  # ----------------------------------------------------------------------
 
   def write_json(file)
     schema[:meta][:rails] = @rails_version
@@ -230,4 +227,5 @@ class LoadSchema
     schema[:meta][:unique_keys].concat(unique_keys_per_group)
     schema[:meta][:unique_keys].sort! { |a,b| ([a[:type], a[:category],a[:key]] <=> [b[:type], b[:category],b[:key]]) }
   end
+
 end

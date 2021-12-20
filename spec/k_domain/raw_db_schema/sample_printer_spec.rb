@@ -3,7 +3,7 @@
 RSpec.describe 'KDomain::RawDbSchema::SamplePrinter' do
   include KLog::Logging
 
-  include_examples :simple_domain_settings
+  include_examples :domain_simple_settings
   include_examples :load_db_schema
 
   context 'print tables' do

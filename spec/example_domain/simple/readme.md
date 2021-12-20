@@ -8,7 +8,6 @@ These models have cardinality representations including `1-1`, `1-many` and `man
 
 ## Create Routes Input File
 
-Put a binding.pry at the end of routes.rb
 Run rails
 
 ```bash

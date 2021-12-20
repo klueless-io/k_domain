@@ -1,25 +1,24 @@
 # frozen_string_literal: true
 
-# Takes a Rails Model and extracts DSL behaviours and custom functions (instance, class and private methods)
+# Takes a Rails controller and extracts DSL behaviours and custom functions (instance, class and private methods)
 module KDomain
   module RailsCodeExtractor
-    class ExtractModel
+    class ExtractController
       include KLog::Logging
 
       attr_reader :shims_loaded
-      attr_reader :models
-      attr_reader :model
+      attr_reader :controller
 
       def initialize(load_shim)
         @load_shim = load_shim
         @shims_loaded = false
-        @models = []
       end
 
       def extract(file)
         load_shims unless shims_loaded
 
-        ActiveRecord.class_info = nil
+        ActionController.class_info = nil
+        # KDomain::RailsCodeExtractor.reset
 
         load_retry(file, 10, nil)
       rescue StandardError => e
@@ -37,20 +36,11 @@ module KDomain
       def load_retry(file, times, last_error)
         return if times.negative?
 
+        # puts file
         load(file)
 
-        @model = ActiveRecord.class_info
-
-        if @model.nil?
-          # puts ''
-          # puts file
-          # puts 'class probably has no DSL methods'
-          @model = {
-            class_name: File.basename(file, File.extname(file)).classify
-          }
-        end
-
-        @models << @model
+        @controller = ActionController::Base::class_info
+        # @controller = KDomain::RailsCodeExtractor.class_info
 
         # get_method_info(File.base_name(file))
       rescue StandardError => e
