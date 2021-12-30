@@ -24,6 +24,7 @@ module KDomain
         # log.kv 'template_file', template_file
         # log.kv 'source_file?', File.exist?(source_file)
         # log.kv 'template_file?', File.exist?(template_file)
+
         log.error "Template not found: #{template_file}" unless File.exist?(template_file)
 
         content = File.read(source_file)
@@ -55,13 +56,6 @@ module KDomain
         if schema_loader.nil?
           puts '.call method has not been executed'
           return
-        end
-
-        if true # schema_old (printspeak original)
-          json_file =  "spec/example_domain/advanced/output/schema_old.json"
-
-          alter_schema = schema[:tables]
-          schema = alter_schema
         end
 
         FileUtils.mkdir_p(File.dirname(json_file))

@@ -37,33 +37,35 @@ RSpec.describe KDomain::RailsCodeExtractor::ShimLoader do
 
         context 'file: :active_record_shim' do
           let(:name) { :active_record }
-          let(:file) { KDomain::Gem.resource('templates/active_record_shims.rb') }
+          let(:file) { KDomain::Gem.resource('templates/rails/active_record.rb') }
 
           it do
-            is_expected.to include({ name: :active_record, file: end_with('templates/active_record_shims.rb'), exist: true })
+            is_expected.to include({ name: :active_record, file: end_with('templates/rails/active_record.rb'), exist: true })
           end
         end
       end
 
-      context '.shim_files' do
-        subject { instance.shim_files }
+      # context '.shim_files' do
+      #   subject { instance.shim_files }
 
-        context 'file: :custom_module_shims' do
-          let(:name) { :custom_module }
-          let(:file) { KDomain::Gem.resource('templates/custom_module_shims.rb') }
+      #   context 'file: :custom_module_shims' do
+      #     let(:name) { :custom_module }
+      #     let(:file) { KDomain::Gem.resource('templates/custom_module_shims.rb') }
 
-          it do
-            is_expected.to include({ name: :custom_module, file: end_with('templates/custom_module_shims.rb'), exist: true })
-          end
-        end
-      end
+      #     it do
+      #       is_expected.to include({ name: :custom_module, file: end_with('templates/custom_module_shims.rb'), exist: true })
+      #     end
+      #   end
+      # end
     end
   end
 
   describe '#call' do
     before do
-      instance.register(:active_record, KDomain::Gem.resource('templates/active_record_shims.rb'))
-      instance.register(:custom_module  , KDomain::Gem.resource('templates/custom_module_shims.rb'))
+      instance.register(:active_record, KDomain::Gem.resource('templates/ruby_code_extractor/attach_class_info.rb'))
+      instance.register(:active_record, KDomain::Gem.resource('templates/ruby_code_extractor/behaviour_accessors.rb'))
+      instance.register(:active_record, KDomain::Gem.resource('templates/rails/active_record.rb'))
+      instance.register(:active_record, KDomain::Gem.resource('templates/custom/model_interceptors.rb'))
       instance.register(:bad , 'bad_shims.rb')
     end
 

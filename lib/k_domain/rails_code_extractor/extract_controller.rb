@@ -39,7 +39,7 @@ module KDomain
         # puts file
         load(file)
 
-        @controller = ActionController::Base::class_info
+        @controller = ActionController::Base.class_info
         # @controller = KDomain::RailsCodeExtractor.class_info
 
         # get_method_info(File.base_name(file))
@@ -51,7 +51,7 @@ module KDomain
           eval("module #{e.name}; end")
           return load_retry(file, times - 1, e)
         end
-        log.exception(e, short: true, method_info: method(__callee__))
+        log.exception(e, style: :short, method_info: method(__callee__))
       end
       # rubocop:enable Security/Eval,Style/EvalWithLocation,Style/DocumentDynamicEvalDefinition,Metrics/AbcSize
     end

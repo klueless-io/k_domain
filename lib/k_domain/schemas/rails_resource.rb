@@ -7,7 +7,7 @@ module KDomain
     module Types
       include Dry.Types()
 
-      Verb      = Strict::String.enum("", "GET", "PATCH", "POST", "PUT", "DELETE")
+      Verb      = Strict::String.enum('', 'GET', 'PATCH', 'POST', 'PUT', 'DELETE')
     end
 
     class Route < Dry::Struct

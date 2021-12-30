@@ -6,8 +6,10 @@ RSpec.describe KDomain::RailsCodeExtractor::ExtractModel do
   let(:instance) { described_class.new(shim_loader) }
   let(:shim_loader) do
     result = KDomain::RailsCodeExtractor::ShimLoader.new
-    result.register(:custom_module  , KDomain::Gem.resource('templates/custom_module_shims.rb'))
-    result.register(:active_record, KDomain::Gem.resource('templates/active_record_shims.rb'))
+    result.register(:active_record, KDomain::Gem.resource('templates/ruby_code_extractor/attach_class_info.rb'))
+    result.register(:active_record, KDomain::Gem.resource('templates/ruby_code_extractor/behaviour_accessors.rb'))
+    result.register(:active_record, KDomain::Gem.resource('templates/rails/active_record.rb'))
+    result.register(:active_record, KDomain::Gem.resource('templates/custom/model_interceptors.rb'))
     result
   end
 

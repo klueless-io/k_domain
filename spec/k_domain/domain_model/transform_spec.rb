@@ -13,10 +13,28 @@ RSpec.describe KDomain::DomainModel::Transform do
       target_step_file: target_step_file,
       model_path: model_path,
       controller_path: controller_path,
-      route_path: route_path
+      route_path: route_path,
+      shim_loader: shim_loader
     )
   end
-  
+
+  let(:shim_loader) do
+    shim_loader = KDomain::RailsCodeExtractor::ShimLoader.new
+    # Shims to attach generic class_info writers
+    shim_loader.register(:attach_class_info           , KDomain::Gem.resource('templates/ruby_code_extractor/attach_class_info.rb'))
+    shim_loader.register(:behaviour_accessors         , KDomain::Gem.resource('templates/ruby_code_extractor/behaviour_accessors.rb'))
+
+    # Shims to support standard active_record DSL methods
+    shim_loader.register(:active_record               , KDomain::Gem.resource('templates/rails/active_record.rb'))
+    shim_loader.register(:action_controller           , KDomain::Gem.resource('templates/rails/action_controller.rb'))
+
+    # Shims to support application specific [module, class, method] implementations for suppression and exception avoidance
+    # shim_loader.register(:app_active_record         , KDomain::Gem.resource('templates/custom/active_record.rb'))
+    shim_loader.register(:app_model_interceptors      , KDomain::Gem.resource('templates/custom/model_interceptors.rb'))
+    shim_loader.register(:app_model_interceptors      , KDomain::Gem.resource('templates/custom/controller_interceptors.rb'))
+    shim_loader
+  end
+
   let(:target_file)               { 'spec/example_domain/simple/output/domain_model/domain_model.json' }
   let(:target_step_file)          { 'spec/example_domain/simple/output/domain_model/%{step}.json' }
 
@@ -26,13 +44,13 @@ RSpec.describe KDomain::DomainModel::Transform do
     let(:target_file)             { 'spec/example_domain/advanced/output/domain_model.json' }
     let(:target_step_file)        { 'spec/example_domain/advanced/output/%{step}.json' }
 
-    it {
+    xit do
       db_transform
       instance.call
-    }
+    end
   end
 
-  fdescribe '#initialize' do
+  describe '#initialize' do
     context '.db_schema' do
       subject { instance.db_schema }
 
@@ -125,13 +143,13 @@ RSpec.describe KDomain::DomainModel::Transform do
     context '.domain' do
       context '.models' do
         subject { instance.domain_data[:domain][:models] }
-  
+
         it { is_expected.not_to be_empty }
       end
-  
+
       context '.columns' do
         subject { instance.domain_data[:domain][:models].first[:columns] }
-  
+
         it { is_expected.not_to be_empty }
       end
     end
@@ -158,7 +176,7 @@ RSpec.describe KDomain::DomainModel::Transform do
       context '.controllers' do
         subject { instance.domain_data[:rails_structure][:controllers] }
 
-        it { is_expected.to be_empty }
+        it { is_expected.not_to be_empty }
       end
     end
 

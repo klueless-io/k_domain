@@ -20,9 +20,13 @@ module KDomain
 
       # Model Behaviours
       class Scope                 < KDomain::Schemas::RailsStructure::NameOptsType; end
+
       class BelongsTo             < KDomain::Schemas::RailsStructure::NameOptsType; end
+
       class HasOne                < KDomain::Schemas::RailsStructure::NameOptsType; end
+
       class HasMany               < KDomain::Schemas::RailsStructure::NameOptsType; end
+
       class HasAndBelongsToMany   < KDomain::Schemas::RailsStructure::NameOptsType; end
 
       class Validate < Dry::Struct
@@ -78,23 +82,35 @@ module KDomain
 
       # Controller Behaviours
       class AfterAction                           < KDomain::Schemas::RailsStructure::NameOptsType; end
+
       class AroundAction                          < KDomain::Schemas::RailsStructure::NameOptsType; end
+
       class BeforeAction                          < KDomain::Schemas::RailsStructure::NameOptsType; end
+
+      # rubocop:disable Naming/ClassAndModuleCamelCase
       class Prepend_beforeAction                  < KDomain::Schemas::RailsStructure::NameOptsType; end
+
       class Skip_beforeAction                     < KDomain::Schemas::RailsStructure::NameOptsType; end
+      # rubocop:enable Naming/ClassAndModuleCamelCase
+
       class BeforeFilter                          < KDomain::Schemas::RailsStructure::NameOptsType; end
+
       class SkipBeforeFilter                      < KDomain::Schemas::RailsStructure::NameOptsType; end
+
       class Layout                                < KDomain::Schemas::RailsStructure::NameOptsType; end
 
       class HttpBasicAuthenticateWith             < KDomain::Schemas::RailsStructure::OptsType; end
+
       class ProtectFromForgery                    < KDomain::Schemas::RailsStructure::OptsType; end
 
       class RescueFrom < Dry::Struct
         attribute :type                           , Types::Strict::String
       end
+
       class HelperMethod < Dry::Struct
         attribute :names                          , Types::Strict::Array.of(Types::Strict::String)
       end
+
       class Helper < Dry::Struct
         attribute :name                           , Types::Strict::String
       end

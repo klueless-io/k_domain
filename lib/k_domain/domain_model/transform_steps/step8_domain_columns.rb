@@ -77,11 +77,10 @@ class Step8DomainColumns < KDomain::DomainModel::Step
   def attach_foreign_key
     return if rails_model.nil? || rails_model[:behaviours].nil? || rails_model[:behaviours][:belongs_to].nil?
 
-    foreign = rails_model[:behaviours][:belongs_to].find { |belong| belong[:opts][:foreign_key].to_sym == domain_column[:name].to_sym}
+    foreign = rails_model[:behaviours][:belongs_to].find { |belong| belong[:opts][:foreign_key].to_sym == domain_column[:name].to_sym }
 
     return unless foreign
 
-    binding.pry
     # NEED TO PRE-LOAD the table, table_plural and model
     domain_column[:foreign_table] = 'xxx1'
     domain_column[:foreign_table_plural] = 'xxx3'
@@ -91,8 +90,8 @@ class Step8DomainColumns < KDomain::DomainModel::Step
   # Need some configurable data dictionary where by
   # _token can be setup on a project by project basis
   def structure_type
-    return :primary_key           if domain_model[:pk][:name] == column_name
-    return :foreign_key           if domain_column[:foreign_table]
+    return :primary_key         if domain_model[:pk][:name] == column_name
+    return :foreign_key         if domain_column[:foreign_table]
 
     return :timestamp           if column_symbol == :created_at || column_symbol == :updated_at
     return :timestamp           if column_symbol == :created_at || column_symbol == :updated_at

@@ -7,7 +7,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
 
   # let(:load_domain_model_file) { 'spec/example_domain/simple/output/domain_model/domain_model.json' }
   let(:load_domain_model_file) { 'spec/example_domain/advanced/output/domain_model.json' }
-  
+
   let(:root_graph) do
     {
       investigate: { skip: true },
@@ -55,7 +55,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
               :type,
               { pk:               { display_method: ->(row) { row.pk.name                            } } },
               { pk_type:          { display_method: ->(row) { row.pk.type                            } } },
-              { pk_exist:         { display_method: ->(row) { row.pk.exist                           } } },
+              { pk_exist:         { display_method: ->(row) { row.pk.exist                           } } }
               # TODO: :main_key,
               # TODO: { traits:           { display_method: -> (row) { row.traits.join(',')                   } } },
               # { column_count:     { display_method: ->(row) { show_length(row.columns)               } } },
@@ -161,7 +161,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
                 :controller_exist,
                 { verbs: { width: 40, display_method: ->(row) { row.verbs.join(', ') } } },
                 :duplicate_verb,
-                { file: { width: 250, display_method: ->(row) { row.file[row.file.index('app/controllers') + 'app/controllers'.length..-1] } } },
+                { file: { width: 250, display_method: ->(row) { row.file[row.file.index('app/controllers') + 'app/controllers'.length..-1] } } }
               ]
             },
             controllers: { skip: true }
@@ -197,7 +197,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
                 { state: { width: 40 } },
                 { code: { display_method: ->(row) { !row.code.empty? } } },
                 { class_name: { display_method: ->(row) { row.behaviours.class_name } } }
-            ]
+              ]
             },
             controllers: { skip: true }
           }
@@ -235,7 +235,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
                 { attr_accessor:            { display_method: ->(row) { show_length(row.behaviours.attr_accessor)           } } },
                 { attr_reader:              { display_method: ->(row) { show_length(row.behaviours.attr_reader)             } } },
                 { attr_writer:              { display_method: ->(row) { show_length(row.behaviours.attr_writer)             } } }
-            ]
+              ]
             },
             controllers: { skip: true }
           }
@@ -269,8 +269,8 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
                 { attr_writer:      { display_method: ->(row) { show_length(row.functions.attr_writer)        } } },
                 { klass:            { display_method: ->(row) { show_length(row.functions.klass)              } } },
                 { instance_public:  { display_method: ->(row) { show_length(row.functions.instance_public)    } } },
-                { instance_private: { display_method: ->(row) { show_length(row.functions.instance_private)   } } },
-            ]
+                { instance_private: { display_method: ->(row) { show_length(row.functions.instance_private)   } } }
+              ]
             },
             controllers: { skip: true }
           }
@@ -293,13 +293,13 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
               # pry_at: [:before_array],
               take: 5,
               title: 'Resource path - Rails Controllers',
-              columns: [
-                :name,
-                :path,
-                :namespace,
-                :file,
-                :exist
-            ]
+              columns: %i[
+                name
+                path
+                namespace
+                file
+                exist
+              ]
             },
             models: { skip: true }
           }
@@ -324,21 +324,21 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
               take: 5,
               columns: [
                 :name,
-                { layout:                       { display_method: ->(row) { show_exist(row.behaviours.layout&.opts)                 } } },
-                { after_action:                 { display_method: ->(row) { show_length( row.behaviours.after_action)               } } },
-                { around_action:                { display_method: ->(row) { show_length( row.behaviours.around_action)              } } },
-                { before_action:                { display_method: ->(row) { show_length( row.behaviours.before_action)              } } },
-                { prepend_before_action:        { display_method: ->(row) { show_length( row.behaviours.prepend_before_action)      } } },
-                { skip_before_action:           { display_method: ->(row) { show_length( row.behaviours.skip_before_action)         } } },
-                { before_filter:                { display_method: ->(row) { show_length( row.behaviours.before_filter)              } } },
-                { skip_before_filter:           { display_method: ->(row) { show_length( row.behaviours.skip_before_filter)         } } },
+                { layout:                       { display_method: ->(row) { show_exist(row.behaviours.layout&.opts) } } },
+                { after_action:                 { display_method: ->(row) { show_length(row.behaviours.after_action)               } } },
+                { around_action:                { display_method: ->(row) { show_length(row.behaviours.around_action)              } } },
+                { before_action:                { display_method: ->(row) { show_length(row.behaviours.before_action)              } } },
+                { prepend_before_action:        { display_method: ->(row) { show_length(row.behaviours.prepend_before_action)      } } },
+                { skip_before_action:           { display_method: ->(row) { show_length(row.behaviours.skip_before_action)         } } },
+                { before_filter:                { display_method: ->(row) { show_length(row.behaviours.before_filter)              } } },
+                { skip_before_filter:           { display_method: ->(row) { show_length(row.behaviours.skip_before_filter)         } } },
                 { http_basic_authenticate_with: { display_method: ->(row) { show_exist(row.behaviours.http_basic_authenticate_with) } } },
                 { http_basic_authenticate_with: { display_method: ->(row) { show_exist(row.behaviours.http_basic_authenticate_with) } } },
-                { rescue_from:                  { display_method: ->(row) { show_length( row.behaviours.rescue_from)                } } },
-                { helper_method:                { display_method: ->(row) { show_length( row.behaviours.helper_method)              } } },
-                { helper:                       { display_method: ->(row) { show_length( row.behaviours.helper)                     } } },
+                { rescue_from:                  { display_method: ->(row) { show_length(row.behaviours.rescue_from)                } } },
+                { helper_method:                { display_method: ->(row) { show_length(row.behaviours.helper_method)              } } },
+                { helper:                       { display_method: ->(row) { show_length(row.behaviours.helper)                     } } },
                 { layouts:                      { width: 150, display_method: ->(row) { row.behaviours.layout&.opts&.key?(:only) ? row.behaviours.layout.opts[:only].join(', ') : '' } } }
-            ]
+              ]
             },
             models: { skip: true }
           }
@@ -371,8 +371,8 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
                 { attr_writer:      { display_method: ->(row) { show_length(row.functions.attr_writer)        } } },
                 { klass:            { display_method: ->(row) { show_length(row.functions.klass)              } } },
                 { instance_public:  { display_method: ->(row) { show_length(row.functions.instance_public)    } } },
-                { instance_private: { display_method: ->(row) { show_length(row.functions.instance_private)   } } },
-            ]
+                { instance_private: { display_method: ->(row) { show_length(row.functions.instance_private)   } } }
+              ]
             },
             models: { skip: true }
           }
@@ -398,7 +398,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
               columns: [
                 :file,
                 # { class_name:       { display_method: ->(row) { row.functions.class_name                      } } },
-                { class_full_name:  { display_method: ->(row) { row.functions.class_full_name                 } } },
+                { class_full_name: { display_method: ->(row) { row.functions.class_full_name } } },
                 'actions.route_name',
                 'actions.action',
                 'actions.uri_path',

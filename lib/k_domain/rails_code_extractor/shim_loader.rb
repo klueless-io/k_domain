@@ -18,6 +18,7 @@ module KDomain
       end
 
       def call
+        # puts shim_files.map { |sf| sf[:file] }
         shim_files.select { |sf| sf[:exist] }.each { |sf| require sf[:file] }
       end
 
