@@ -21,8 +21,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "ProductVersion",
@@ -33,8 +32,7 @@
             "default": null,
             "null": false,
             "limit": 32,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -58,11 +56,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "deleted",
@@ -73,8 +67,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "app_user_id",
@@ -85,11 +78,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "foreign_key"
+            "array": null
           },
           {
             "name": "sales_user_id",
@@ -100,8 +89,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "longitude",
@@ -112,8 +100,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "latitude",
@@ -124,8 +111,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "name",
@@ -136,8 +122,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "address",
@@ -148,8 +133,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "shop_id",
@@ -160,8 +144,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "user_id",
@@ -172,8 +155,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "type",
@@ -184,8 +166,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -209,8 +190,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "user_id",
@@ -221,11 +201,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "foreign_key"
+            "array": null
           },
           {
             "name": "first_name",
@@ -236,8 +212,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "last_name",
@@ -248,8 +223,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "phone_number",
@@ -260,8 +234,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -285,8 +258,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "role_id",
@@ -297,8 +269,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "claim_type",
@@ -309,8 +280,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "claim_value",
@@ -321,8 +291,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -346,8 +315,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "name",
@@ -358,8 +326,7 @@
             "default": null,
             "null": null,
             "limit": 256,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "normalized_name",
@@ -370,8 +337,7 @@
             "default": null,
             "null": null,
             "limit": 256,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "concurrency_stamp",
@@ -382,8 +348,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -407,8 +372,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "user_id",
@@ -419,8 +383,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "claim_type",
@@ -431,8 +394,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "claim_value",
@@ -443,8 +405,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -468,8 +429,7 @@
             "default": null,
             "null": false,
             "limit": 128,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "provider_key",
@@ -480,8 +440,7 @@
             "default": null,
             "null": false,
             "limit": 128,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "provider_display_name",
@@ -492,8 +451,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "user_id",
@@ -504,8 +462,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -529,8 +486,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "role_id",
@@ -541,8 +497,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -566,8 +521,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "login_provider",
@@ -578,8 +532,7 @@
             "default": null,
             "null": false,
             "limit": 128,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "name",
@@ -590,8 +543,7 @@
             "default": null,
             "null": false,
             "limit": 128,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "value",
@@ -602,8 +554,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -627,8 +578,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "user_name",
@@ -639,8 +589,7 @@
             "default": null,
             "null": null,
             "limit": 256,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "normalized_user_name",
@@ -651,8 +600,7 @@
             "default": null,
             "null": null,
             "limit": 256,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "email",
@@ -663,8 +611,7 @@
             "default": null,
             "null": null,
             "limit": 256,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "normalized_email",
@@ -675,8 +622,7 @@
             "default": null,
             "null": null,
             "limit": 256,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "email_confirmed",
@@ -687,8 +633,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "password_hash",
@@ -699,8 +644,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "security_stamp",
@@ -711,8 +655,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "concurrency_stamp",
@@ -723,8 +666,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "phone_number",
@@ -735,8 +677,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "phone_number_confirmed",
@@ -747,8 +688,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "two_factor_enabled",
@@ -759,8 +699,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "lockout_end",
@@ -771,8 +710,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "lockout_enabled",
@@ -783,8 +721,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "access_failed_count",
@@ -795,8 +732,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -820,8 +756,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "status",
@@ -832,8 +767,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "customer_id",
@@ -844,11 +778,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "foreign_key"
+            "array": null
           },
           {
             "name": "shop_id",
@@ -859,11 +789,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "foreign_key"
+            "array": null
           }
         ]
       },
@@ -887,8 +813,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "customer_id",
@@ -899,8 +824,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "order_id",
@@ -911,11 +835,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "foreign_key"
+            "array": null
           }
         ]
       },
@@ -939,8 +859,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "item_id",
@@ -951,11 +870,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "foreign_key"
+            "array": null
           },
           {
             "name": "name",
@@ -966,8 +881,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "default",
@@ -978,8 +892,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "qty",
@@ -990,8 +903,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "qty_variation",
@@ -1002,8 +914,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -1027,8 +938,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "title",
@@ -1039,8 +949,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "group",
@@ -1051,8 +960,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -1076,8 +984,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "shop_id",
@@ -1088,11 +995,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "foreign_key"
+            "array": null
           },
           {
             "name": "name",
@@ -1103,8 +1006,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "position",
@@ -1115,8 +1017,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -1140,8 +1041,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "menu_category_id",
@@ -1152,11 +1052,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "foreign_key"
+            "array": null
           },
           {
             "name": "product_id",
@@ -1167,11 +1063,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "foreign_key"
+            "array": null
           },
           {
             "name": "position",
@@ -1182,8 +1074,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -1207,8 +1098,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "customer_id",
@@ -1219,8 +1109,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "shop_id",
@@ -1231,11 +1120,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "foreign_key"
+            "array": null
           },
           {
             "name": "order_details",
@@ -1246,8 +1131,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "placed_at",
@@ -1258,8 +1142,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "in_queue_at",
@@ -1270,8 +1153,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "making_at",
@@ -1282,8 +1164,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "made_at",
@@ -1294,8 +1175,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "cancelled_at",
@@ -1306,8 +1186,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "collected_at",
@@ -1318,8 +1197,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "fail_at",
@@ -1330,8 +1208,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "fail_reason",
@@ -1342,8 +1219,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -1367,8 +1243,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "product_id",
@@ -1379,11 +1254,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "foreign_key"
+            "array": null
           },
           {
             "name": "item_variation_id",
@@ -1394,11 +1265,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "foreign_key"
+            "array": null
           },
           {
             "name": "active",
@@ -1409,8 +1276,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "title",
@@ -1421,8 +1287,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "price_offset",
@@ -1433,8 +1298,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -1458,8 +1322,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "shop_id",
@@ -1470,11 +1333,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "foreign_key"
+            "array": null
           },
           {
             "name": "title",
@@ -1485,8 +1344,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "price",
@@ -1497,8 +1355,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -1522,8 +1379,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "app_user_id",
@@ -1534,11 +1390,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "foreign_key"
+            "array": null
           },
           {
             "name": "name",
@@ -1549,8 +1401,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "address",
@@ -1561,8 +1412,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "longitude",
@@ -1573,8 +1423,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "latitude",
@@ -1585,8 +1434,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       },
@@ -1610,8 +1458,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "primary_key"
+            "array": null
           },
           {
             "name": "shop_id",
@@ -1622,11 +1469,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
-            "structure_type": "foreign_key"
+            "array": null
           },
           {
             "name": "user_id",
@@ -1637,8 +1480,7 @@
             "default": null,
             "null": false,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           },
           {
             "name": "type",
@@ -1649,8 +1491,7 @@
             "default": null,
             "null": null,
             "limit": null,
-            "array": null,
-            "structure_type": "data"
+            "array": null
           }
         ]
       }
@@ -3255,912 +3096,7 @@
   },
   "dictionary": {
     "items": [
-      {
-        "name": "id",
-        "type": "bigint",
-        "label": "Id",
-        "segment": "data",
-        "models": [
-          "__EFMigrationsHistory",
-          "sample",
-          "app_user",
-          "asp_net_role_claim",
-          "asp_net_role",
-          "asp_net_user_claim",
-          "asp_net_user",
-          "customer_shop",
-          "favourite_order",
-          "item_variation",
-          "item",
-          "menu_category",
-          "menu_category_product",
-          "order",
-          "product_variation",
-          "product",
-          "shop",
-          "staff"
-        ],
-        "model_count": 18,
-        "types": [
-          "bigint"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "ProductVersion",
-        "type": "string",
-        "label": "Product Version",
-        "segment": "data",
-        "models": [
-          "__EFMigrationsHistory"
-        ],
-        "model_count": 1,
-        "types": [
-          "string"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "deleted",
-        "type": "boolean",
-        "label": "Deleted",
-        "segment": "data",
-        "models": [
-          "sample"
-        ],
-        "model_count": 1,
-        "types": [
-          "boolean"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "app_user_id",
-        "type": "integer",
-        "label": "App User",
-        "segment": "id",
-        "models": [
-          "sample",
-          "shop"
-        ],
-        "model_count": 2,
-        "types": [
-          "integer"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "sales_user_id",
-        "type": "integer",
-        "label": "Sales User",
-        "segment": "id",
-        "models": [
-          "sample"
-        ],
-        "model_count": 1,
-        "types": [
-          "integer"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "longitude",
-        "type": "float",
-        "label": "Longitude",
-        "segment": "data",
-        "models": [
-          "sample",
-          "shop"
-        ],
-        "model_count": 2,
-        "types": [
-          "float"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "latitude",
-        "type": "float",
-        "label": "Latitude",
-        "segment": "data",
-        "models": [
-          "sample",
-          "shop"
-        ],
-        "model_count": 2,
-        "types": [
-          "float"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "name",
-        "type": "text",
-        "label": "Name",
-        "segment": "data",
-        "models": [
-          "sample",
-          "asp_net_role",
-          "asp_net_user_token",
-          "item_variation",
-          "menu_category",
-          "shop"
-        ],
-        "model_count": 6,
-        "types": [
-          "text",
-          "string"
-        ],
-        "type_count": 2
-      },
-      {
-        "name": "address",
-        "type": "text",
-        "label": "Address",
-        "segment": "data",
-        "models": [
-          "sample",
-          "shop"
-        ],
-        "model_count": 2,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "shop_id",
-        "type": "integer",
-        "label": "Shop",
-        "segment": "id",
-        "models": [
-          "sample",
-          "customer_shop",
-          "menu_category",
-          "order",
-          "product",
-          "staff"
-        ],
-        "model_count": 6,
-        "types": [
-          "integer"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "user_id",
-        "type": "integer",
-        "label": "User",
-        "segment": "id",
-        "models": [
-          "sample",
-          "app_user",
-          "asp_net_user_claim",
-          "asp_net_user_login",
-          "asp_net_user_role",
-          "asp_net_user_token",
-          "staff"
-        ],
-        "model_count": 7,
-        "types": [
-          "integer",
-          "text"
-        ],
-        "type_count": 2
-      },
-      {
-        "name": "type",
-        "type": "text",
-        "label": "Type",
-        "segment": "data",
-        "models": [
-          "sample",
-          "staff"
-        ],
-        "model_count": 2,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "first_name",
-        "type": "text",
-        "label": "First Name",
-        "segment": "data",
-        "models": [
-          "app_user"
-        ],
-        "model_count": 1,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "last_name",
-        "type": "text",
-        "label": "Last Name",
-        "segment": "data",
-        "models": [
-          "app_user"
-        ],
-        "model_count": 1,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "phone_number",
-        "type": "text",
-        "label": "Phone Number",
-        "segment": "data",
-        "models": [
-          "app_user",
-          "asp_net_user"
-        ],
-        "model_count": 2,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "role_id",
-        "type": "text",
-        "label": "Role",
-        "segment": "id_variant",
-        "models": [
-          "asp_net_role_claim",
-          "asp_net_user_role"
-        ],
-        "model_count": 2,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "claim_type",
-        "type": "text",
-        "label": "Claim Type",
-        "segment": "data",
-        "models": [
-          "asp_net_role_claim",
-          "asp_net_user_claim"
-        ],
-        "model_count": 2,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "claim_value",
-        "type": "text",
-        "label": "Claim Value",
-        "segment": "data",
-        "models": [
-          "asp_net_role_claim",
-          "asp_net_user_claim"
-        ],
-        "model_count": 2,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "normalized_name",
-        "type": "string",
-        "label": "Normalized Name",
-        "segment": "data",
-        "models": [
-          "asp_net_role"
-        ],
-        "model_count": 1,
-        "types": [
-          "string"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "concurrency_stamp",
-        "type": "text",
-        "label": "Concurrency Stamp",
-        "segment": "data",
-        "models": [
-          "asp_net_role",
-          "asp_net_user"
-        ],
-        "model_count": 2,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "login_provider",
-        "type": "string",
-        "label": "Login Provider",
-        "segment": "data",
-        "models": [
-          "asp_net_user_login",
-          "asp_net_user_token"
-        ],
-        "model_count": 2,
-        "types": [
-          "string"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "provider_key",
-        "type": "string",
-        "label": "Provider Key",
-        "segment": "data",
-        "models": [
-          "asp_net_user_login"
-        ],
-        "model_count": 1,
-        "types": [
-          "string"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "provider_display_name",
-        "type": "text",
-        "label": "Provider Display Name",
-        "segment": "data",
-        "models": [
-          "asp_net_user_login"
-        ],
-        "model_count": 1,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "value",
-        "type": "text",
-        "label": "Value",
-        "segment": "data",
-        "models": [
-          "asp_net_user_token"
-        ],
-        "model_count": 1,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "user_name",
-        "type": "string",
-        "label": "User Name",
-        "segment": "data",
-        "models": [
-          "asp_net_user"
-        ],
-        "model_count": 1,
-        "types": [
-          "string"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "normalized_user_name",
-        "type": "string",
-        "label": "Normalized User Name",
-        "segment": "data",
-        "models": [
-          "asp_net_user"
-        ],
-        "model_count": 1,
-        "types": [
-          "string"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "email",
-        "type": "string",
-        "label": "Email",
-        "segment": "data",
-        "models": [
-          "asp_net_user"
-        ],
-        "model_count": 1,
-        "types": [
-          "string"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "normalized_email",
-        "type": "string",
-        "label": "Normalized Email",
-        "segment": "data",
-        "models": [
-          "asp_net_user"
-        ],
-        "model_count": 1,
-        "types": [
-          "string"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "email_confirmed",
-        "type": "boolean",
-        "label": "Email Confirmed",
-        "segment": "data",
-        "models": [
-          "asp_net_user"
-        ],
-        "model_count": 1,
-        "types": [
-          "boolean"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "password_hash",
-        "type": "text",
-        "label": "Password Hash",
-        "segment": "data",
-        "models": [
-          "asp_net_user"
-        ],
-        "model_count": 1,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "security_stamp",
-        "type": "text",
-        "label": "Security Stamp",
-        "segment": "data",
-        "models": [
-          "asp_net_user"
-        ],
-        "model_count": 1,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "phone_number_confirmed",
-        "type": "boolean",
-        "label": "Phone Number Confirmed",
-        "segment": "data",
-        "models": [
-          "asp_net_user"
-        ],
-        "model_count": 1,
-        "types": [
-          "boolean"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "two_factor_enabled",
-        "type": "boolean",
-        "label": "Two Factor Enabled",
-        "segment": "data",
-        "models": [
-          "asp_net_user"
-        ],
-        "model_count": 1,
-        "types": [
-          "boolean"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "lockout_end",
-        "type": "datetime",
-        "label": "Lockout End",
-        "segment": "data",
-        "models": [
-          "asp_net_user"
-        ],
-        "model_count": 1,
-        "types": [
-          "datetime"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "lockout_enabled",
-        "type": "boolean",
-        "label": "Lockout Enabled",
-        "segment": "data",
-        "models": [
-          "asp_net_user"
-        ],
-        "model_count": 1,
-        "types": [
-          "boolean"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "access_failed_count",
-        "type": "integer",
-        "label": "Access Failed Count",
-        "segment": "data",
-        "models": [
-          "asp_net_user"
-        ],
-        "model_count": 1,
-        "types": [
-          "integer"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "status",
-        "type": "integer",
-        "label": "Status",
-        "segment": "data",
-        "models": [
-          "customer_shop"
-        ],
-        "model_count": 1,
-        "types": [
-          "integer"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "customer_id",
-        "type": "integer",
-        "label": "Customer",
-        "segment": "id",
-        "models": [
-          "customer_shop",
-          "favourite_order",
-          "order"
-        ],
-        "model_count": 3,
-        "types": [
-          "integer"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "order_id",
-        "type": "integer",
-        "label": "Order",
-        "segment": "id",
-        "models": [
-          "favourite_order"
-        ],
-        "model_count": 1,
-        "types": [
-          "integer"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "item_id",
-        "type": "integer",
-        "label": "Item",
-        "segment": "id",
-        "models": [
-          "item_variation"
-        ],
-        "model_count": 1,
-        "types": [
-          "integer"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "default",
-        "type": "boolean",
-        "label": "Default",
-        "segment": "data",
-        "models": [
-          "item_variation"
-        ],
-        "model_count": 1,
-        "types": [
-          "boolean"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "qty",
-        "type": "integer",
-        "label": "Qty",
-        "segment": "data",
-        "models": [
-          "item_variation"
-        ],
-        "model_count": 1,
-        "types": [
-          "integer"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "qty_variation",
-        "type": "text",
-        "label": "Qty Variation",
-        "segment": "data",
-        "models": [
-          "item_variation"
-        ],
-        "model_count": 1,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "title",
-        "type": "text",
-        "label": "Title",
-        "segment": "data",
-        "models": [
-          "item",
-          "product_variation",
-          "product"
-        ],
-        "model_count": 3,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "group",
-        "type": "text",
-        "label": "Group",
-        "segment": "data",
-        "models": [
-          "item"
-        ],
-        "model_count": 1,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "position",
-        "type": "integer",
-        "label": "Position",
-        "segment": "data",
-        "models": [
-          "menu_category",
-          "menu_category_product"
-        ],
-        "model_count": 2,
-        "types": [
-          "integer"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "menu_category_id",
-        "type": "integer",
-        "label": "Menu Category",
-        "segment": "id",
-        "models": [
-          "menu_category_product"
-        ],
-        "model_count": 1,
-        "types": [
-          "integer"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "product_id",
-        "type": "integer",
-        "label": "Product",
-        "segment": "id",
-        "models": [
-          "menu_category_product",
-          "product_variation"
-        ],
-        "model_count": 2,
-        "types": [
-          "integer"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "order_details",
-        "type": "jsonb",
-        "label": "Order Details",
-        "segment": "data",
-        "models": [
-          "order"
-        ],
-        "model_count": 1,
-        "types": [
-          "jsonb"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "placed_at",
-        "type": "datetime",
-        "label": "Placed At",
-        "segment": "data",
-        "models": [
-          "order"
-        ],
-        "model_count": 1,
-        "types": [
-          "datetime"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "in_queue_at",
-        "type": "datetime",
-        "label": "In Queue At",
-        "segment": "data",
-        "models": [
-          "order"
-        ],
-        "model_count": 1,
-        "types": [
-          "datetime"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "making_at",
-        "type": "datetime",
-        "label": "Making At",
-        "segment": "data",
-        "models": [
-          "order"
-        ],
-        "model_count": 1,
-        "types": [
-          "datetime"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "made_at",
-        "type": "datetime",
-        "label": "Made At",
-        "segment": "data",
-        "models": [
-          "order"
-        ],
-        "model_count": 1,
-        "types": [
-          "datetime"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "cancelled_at",
-        "type": "datetime",
-        "label": "Cancelled At",
-        "segment": "data",
-        "models": [
-          "order"
-        ],
-        "model_count": 1,
-        "types": [
-          "datetime"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "collected_at",
-        "type": "datetime",
-        "label": "Collected At",
-        "segment": "data",
-        "models": [
-          "order"
-        ],
-        "model_count": 1,
-        "types": [
-          "datetime"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "fail_at",
-        "type": "datetime",
-        "label": "Fail At",
-        "segment": "data",
-        "models": [
-          "order"
-        ],
-        "model_count": 1,
-        "types": [
-          "datetime"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "fail_reason",
-        "type": "text",
-        "label": "Fail Reason",
-        "segment": "data",
-        "models": [
-          "order"
-        ],
-        "model_count": 1,
-        "types": [
-          "text"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "item_variation_id",
-        "type": "integer",
-        "label": "Item Variation",
-        "segment": "id",
-        "models": [
-          "product_variation"
-        ],
-        "model_count": 1,
-        "types": [
-          "integer"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "active",
-        "type": "boolean",
-        "label": "Active",
-        "segment": "data",
-        "models": [
-          "product_variation"
-        ],
-        "model_count": 1,
-        "types": [
-          "boolean"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "price_offset",
-        "type": "float",
-        "label": "Price Offset",
-        "segment": "data",
-        "models": [
-          "product_variation"
-        ],
-        "model_count": 1,
-        "types": [
-          "float"
-        ],
-        "type_count": 1
-      },
-      {
-        "name": "price",
-        "type": "float",
-        "label": "Price",
-        "segment": "data",
-        "models": [
-          "product"
-        ],
-        "model_count": 1,
-        "types": [
-          "float"
-        ],
-        "type_count": 1
-      }
+
     ]
   },
   "database": {
@@ -5707,18 +4643,7 @@
   },
   "investigate": {
     "issues": [
-      {
-        "step": "step5_dictionary",
-        "location": "process",
-        "key": "app_user,user_id,text",
-        "message": "app_user has a type mismatch for column name: user_id"
-      },
-      {
-        "step": "step5_dictionary",
-        "location": "process",
-        "key": "asp_net_role,name,string",
-        "message": "asp_net_role has a type mismatch for column name: name"
-      }
+
     ]
   }
 }

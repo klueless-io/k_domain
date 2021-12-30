@@ -43,6 +43,7 @@ module Bookmarkable; end
 module Categorizable; end
 module PgSearch; end
 module Excludable; end
+module JsonbStore; end
 
 module ActionView
   module Helpers

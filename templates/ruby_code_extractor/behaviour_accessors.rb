@@ -1,4 +1,10 @@
 module RubyCodeExtractor
+  # When you intercept a method call, you can persist the captured paramaters
+  # into a Hash, the Hash Key should be the method name and the value should
+  # be a Hash with captured values.
+  #
+  # Use set/add for standard Rails DSL methods
+  # Use custom_set/custom_add for non standard or 3rd party GEM methods
   module BehaviourAccessors
     def set(key, value)
       class_info[key] = class_info[key] || {}

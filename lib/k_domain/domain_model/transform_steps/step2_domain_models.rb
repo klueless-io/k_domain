@@ -18,6 +18,7 @@ class Step2DomainModels < KDomain::DomainModel::Step
       name_plural: table_name, # need to check if this is correct as I know it is wrong for account_history_datum
       table_name: table_name,
       pk: primary_key(table),
+      file: nil
     }
 
     attach_columns(model)
@@ -94,29 +95,29 @@ class Step2DomainModels < KDomain::DomainModel::Step
     }
   end
 
-  # Location of source code
-  def location(table_name, model_name)
-    file_normal = File.join(opts[:model_path], "#{model_name}.rb")
-    file_custom = File.join(opts[:model_path], "#{table_name}.rb")
-    file_exist  = true
-    state = []
+  # # Location of source code
+  # def location(table_name, model_name)
+  #   file_normal = File.join(opts[:model_path], "#{model_name}.rb")
+  #   file_custom = File.join(opts[:model_path], "#{table_name}.rb")
+  #   file_exist  = true
+  #   state = []
 
-    if File.exist?(file_normal)
-      file = file_normal
-      state.push(:has_ruby_model)
-    elsif File.exist?(file_custom)
-      file = file_custom
-      state.push(:has_ruby_model)
-      state.push(:nonconventional_name)
-    else
-      file = ''
-      file_exist = false
-    end
+  #   if File.exist?(file_normal)
+  #     file = file_normal
+  #     state.push(:has_ruby_model)
+  #   elsif File.exist?(file_custom)
+  #     file = file_custom
+  #     state.push(:has_ruby_model)
+  #     state.push(:nonconventional_name)
+  #   else
+  #     file = ''
+  #     file_exist = false
+  #   end
 
-    {
-      file: file,
-      exist: file_exist,
-      state: state
-    }
-  end
+  #   {
+  #     file: file,
+  #     exist: file_exist,
+  #     state: state
+  #   }
+  # end
 end

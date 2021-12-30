@@ -36,7 +36,7 @@ module KDomain
           attribute :id                   , Types::Nominal::Any.optional.default(nil)
           attribute :force                , Types::Nominal::Any.optional.default(nil)
         end
-  
+
         class Column < Dry::Struct
           attribute :name                 , Types::Strict::String
           attribute :type                 , Types::Strict::String
@@ -47,7 +47,7 @@ module KDomain
           attribute :null?                , Types::Strict::Bool.optional.default(nil)
           attribute :limit?               , Types::Strict::Integer.optional.default(nil)
         end
-  
+
         attribute :name                   , Types::Strict::String
         attribute :primary_key            , Types::Strict::String.optional.default(nil)
         attribute :primary_key_type       , Types::Strict::String.optional.default(nil)
@@ -56,7 +56,7 @@ module KDomain
         attribute :indexes                , Types::Strict::Array.of(KDomain::Schemas::Database::Index)
         attribute :rails_schema           , KDomain::Schemas::Database::Table::RailsSchema
       end
-  
+
       class DbInfo < Dry::Struct
         attribute :type                 , Types::Strict::String
         attribute :version              , Types::Nominal::Any.optional.default(nil)

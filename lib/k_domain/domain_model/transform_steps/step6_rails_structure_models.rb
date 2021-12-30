@@ -6,7 +6,7 @@ class Step6RailsStructureModels < KDomain::DomainModel::Step
     raise 'Rails model path not supplied' unless opts[:model_path]
 
     # THIS IS NOT WORKING YET
-    self.rails_structure_models = rails_resource_models.take(5).map do |resource|
+    self.rails_structure_models = rails_resource_models.map do |resource|
       process_resource(OpenStruct.new(resource))
     end
 
@@ -59,16 +59,15 @@ class Step6RailsStructureModels < KDomain::DomainModel::Step
   end
 
   def klass_type(klass_name)
-    return Module.const_get(klass_name.classify)
+    Module.const_get(klass_name.classify)
   rescue NameError
     puts ''
     puts klass_name
     puts klass_name.classify
     puts klass_name.pluralize
     puts 'Trying the pluralized version: '
-    return Module.const_get(klass_name.pluralize)
+    Module.const_get(klass_name.pluralize)
   end
-
 
   def extractor
     @extractor ||= KDomain::RailsCodeExtractor::ExtractModel.new(shim_loader)
@@ -86,8 +85,6 @@ class Step6RailsStructureModels < KDomain::DomainModel::Step
     shim_loader.register(:active_record               , KDomain::Gem.resource('templates/rails/active_record.rb'))
 
     # Shims to support application specific [module, class, method] implementations for suppression and exception avoidance
-    # shim_loader.register(:app_active_record         , KDomain::Gem.resource('templates/advanced/active_record.rb'))
-    shim_loader.register(:app_model_interceptors      , KDomain::Gem.resource('templates/advanced/model_interceptors.rb'))
     shim_loader
   end
 end

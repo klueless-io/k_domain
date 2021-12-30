@@ -34,7 +34,6 @@ class Step7RailsStructureControllers < KDomain::DomainModel::Step
   end
 
   def new_controller(route)
-    
     controllers[route[:controller_file]] = {
       name: route[:controller_name],
       path: route[:controller_path],
@@ -60,6 +59,11 @@ class Step7RailsStructureControllers < KDomain::DomainModel::Step
 
   def attach_behavior_and_functions
     rails_structure_controllers.select { |controller| controller[:exist] }.each do |controller|
+      unless File.exist?(controller[:full_file])
+        log.error 'Controller apparently exists but no file found, this means that you need re-run rake routes'
+        puts controller[:full_file]
+        next
+      end
       controller[:behaviours] = extract_behavior(controller[:full_file])
       klass_name = controller[:behaviours][:class_name]
       controller[:functions] = extract_functions(klass_name)
@@ -67,6 +71,7 @@ class Step7RailsStructureControllers < KDomain::DomainModel::Step
   end
 
   def extract_behavior(file)
+    # puts file
     extractor.extract(file)
     extractor.controller
   end
@@ -87,8 +92,8 @@ class Step7RailsStructureControllers < KDomain::DomainModel::Step
     shim_loader.register(:action_controller           , KDomain::Gem.resource('templates/rails/action_controller.rb'))
 
     # Shims to support application specific [module, class, method] implementations for suppression and exception avoidance
-    shim_loader.register(:app_action_controller       , KDomain::Gem.resource('templates/advanced/action_controller.rb'))
-    shim_loader.register(:app_controller_interceptors , KDomain::Gem.resource('templates/advanced/controller_interceptors.rb'))
+    # shim_loader.register(:app_action_controller       , KDomain::Gem.resource('templates/advanced/action_controller.rb'))
+    # shim_loader.register(:app_controller_interceptors , KDomain::Gem.resource('templates/advanced/controller_interceptors.rb'))
     shim_loader
   end
 

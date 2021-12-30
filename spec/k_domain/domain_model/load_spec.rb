@@ -149,7 +149,7 @@ RSpec.describe KDomain::DomainModel::Load do
         context '.controllers.first' do
           subject { instance.data.rails_structure.controllers.first }
 
-          it { is_expected.to be_nil }
+          it { is_expected.not_to be_nil }
         end
       end
 
@@ -246,7 +246,7 @@ RSpec.describe KDomain::DomainModel::Load do
                     default: be_nil,
                     null: be_nil,
                     limit: be_nil,
-                    array: be_nil,
+                    array: be_nil
                     # structure_type: be_a(Symbol),
                     # foreign_key: eq(false),
                     # foreign_table: be_a(String),
