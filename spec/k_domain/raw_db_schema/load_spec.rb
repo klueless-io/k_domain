@@ -3,12 +3,16 @@
 RSpec.describe KDomain::RawDbSchema::Load do
   let(:instance) { described_class.new(source_file) }
 
+  let(:db_schema_ruby_file)       { 'spec/example_domain/simple/input/schema.rb' }
+  let(:db_schema_json_file)       { 'spec/example_domain/simple/output/raw_db_schema/schema.json' }
+  let(:schema_loader_file)        { 'spec/example_domain/simple/output/raw_db_schema/schema_loader.rb' }
+
   context 'with existing db_schema.json' do
     include_examples :transform_db_schema
 
     before { db_transform }
 
-    let(:source_file) { raw_db_schema_json_file }
+    let(:source_file) { db_schema_json_file }
 
     describe '#initialize' do
       context '.source_file' do

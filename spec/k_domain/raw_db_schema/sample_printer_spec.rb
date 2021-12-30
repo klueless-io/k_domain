@@ -3,15 +3,13 @@
 RSpec.describe 'KDomain::RawDbSchema::SamplePrinter' do
   include KLog::Logging
 
+  include_examples :domain_simple_settings
   include_examples :load_db_schema
-
-  # let(:load_db_schema_file) { 'spec/sample_output/raw_db_schema/schema.json' }
 
   context 'print tables' do
     let(:graph) do
       {
         tables: {
-          # heading: 'Database Tables',
           take: 4,
           columns: [
             :name,
@@ -64,7 +62,6 @@ RSpec.describe 'KDomain::RawDbSchema::SamplePrinter' do
         tables: { skip: true },
         foreign_keys: { skip: true },
         indexes: {
-          # heading: "PostgreSQL - All indexes",
           take: 4,
           columns: [
             :name,

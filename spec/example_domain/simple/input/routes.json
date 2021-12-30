@@ -1,0 +1,125 @@
+{
+  "routes": [
+    {
+      "name": "root",
+      "controller_name": "home",
+      "controller_path": "home",
+      "controller_namespace": "",
+      "controller_file": "home_controller.rb",
+      "controller_exist": true,
+      "action": "index",
+      "uri_path": "/",
+      "mime_match": "",
+      "verbs": [
+        "GET"
+      ],
+      "duplicate_verb": false
+    },
+    {
+      "name": "admin_tenants",
+      "controller_name": "tenants",
+      "controller_path": "admin/tenants",
+      "controller_namespace": "admin",
+      "controller_file": "admin/tenants_controller.rb",
+      "controller_exist": true,
+      "action": "index",
+      "uri_path": "/admin/tenants",
+      "mime_match": "(.:format)",
+      "verbs": [
+        "GET"
+      ],
+      "duplicate_verb": false
+    },
+    {
+      "name": "",
+      "controller_name": "tenants",
+      "controller_path": "admin/tenants",
+      "controller_namespace": "admin",
+      "controller_file": "admin/tenants_controller.rb",
+      "controller_exist": true,
+      "action": "create",
+      "uri_path": "/admin/tenants",
+      "mime_match": "(.:format)",
+      "verbs": [
+        "POST"
+      ],
+      "duplicate_verb": false
+    },
+    {
+      "name": "new_admin_tenant",
+      "controller_name": "tenants",
+      "controller_path": "admin/tenants",
+      "controller_namespace": "admin",
+      "controller_file": "admin/tenants_controller.rb",
+      "controller_exist": true,
+      "action": "new",
+      "uri_path": "/admin/tenants/new",
+      "mime_match": "(.:format)",
+      "verbs": [
+        "GET"
+      ],
+      "duplicate_verb": false
+    },
+    {
+      "name": "edit_admin_tenant",
+      "controller_name": "tenants",
+      "controller_path": "admin/tenants",
+      "controller_namespace": "admin",
+      "controller_file": "admin/tenants_controller.rb",
+      "controller_exist": true,
+      "action": "edit",
+      "uri_path": "/admin/tenants/:id/edit",
+      "mime_match": "(.:format)",
+      "verbs": [
+        "GET"
+      ],
+      "duplicate_verb": false
+    },
+    {
+      "name": "admin_tenant",
+      "controller_name": "tenants",
+      "controller_path": "admin/tenants",
+      "controller_namespace": "admin",
+      "controller_file": "admin/tenants_controller.rb",
+      "controller_exist": true,
+      "action": "show",
+      "uri_path": "/admin/tenants/:id",
+      "mime_match": "(.:format)",
+      "verbs": [
+        "GET"
+      ],
+      "duplicate_verb": false
+    },
+    {
+      "name": "",
+      "controller_name": "tenants",
+      "controller_path": "admin/tenants",
+      "controller_namespace": "admin",
+      "controller_file": "admin/tenants_controller.rb",
+      "controller_exist": true,
+      "action": "update",
+      "uri_path": "/admin/tenants/:id",
+      "mime_match": "(.:format)",
+      "verbs": [
+        "PATCH",
+        "PUT"
+      ],
+      "duplicate_verb": false
+    },
+    {
+      "name": "",
+      "controller_name": "tenants",
+      "controller_path": "admin/tenants",
+      "controller_namespace": "admin",
+      "controller_file": "admin/tenants_controller.rb",
+      "controller_exist": true,
+      "action": "destroy",
+      "uri_path": "/admin/tenants/:id",
+      "mime_match": "(.:format)",
+      "verbs": [
+        "DELETE"
+      ],
+      "duplicate_verb": false
+    }
+  ]
+}

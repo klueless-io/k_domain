@@ -4,6 +4,7 @@ RSpec.describe KDomain::DomainModel::Load do
   let(:instance) { described_class.new(source_file) }
 
   let(:source_file) { 'spec/example_domain/simple/output/domain_model/domain_model.json' }
+  # let(:source_file) { '/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/advanced/output/domain_model.json' }
 
   describe '#initialize' do
     context '.source_file' do
@@ -81,7 +82,7 @@ RSpec.describe KDomain::DomainModel::Load do
               exist: eq(false),
               state: be_a(String),
               code: be_a(String),
-              behaviours: be_a(KDomain::Schemas::RailsStructure::Behaviours),
+              behaviours: be_a(KDomain::Schemas::RailsStructure::ModelBehaviours),
               functions: be_a(KDomain::Schemas::RailsStructure::Functions)
             )
           end
@@ -100,7 +101,7 @@ RSpec.describe KDomain::DomainModel::Load do
               exist: eq(true),
               state: be_a(String),
               code: be_a(String),
-              behaviours: be_a(KDomain::Schemas::RailsStructure::Behaviours),
+              behaviours: be_a(KDomain::Schemas::RailsStructure::ModelBehaviours),
               functions: be_a(KDomain::Schemas::RailsStructure::Functions)
             )
           end
@@ -148,7 +149,7 @@ RSpec.describe KDomain::DomainModel::Load do
         context '.controllers.first' do
           subject { instance.data.rails_structure.controllers.first }
 
-          it { is_expected.to be_nil }
+          it { is_expected.not_to be_nil }
         end
       end
 
@@ -223,11 +224,6 @@ RSpec.describe KDomain::DomainModel::Load do
                   type: be_a(String),
                   exist: eq(true)
                 ),
-                erd_location: have_attributes(
-                  file: be_a(String),
-                  exist: eq(false),
-                  state: be_a(Array)
-                ),
                 columns: be_a(Array)
               )
             end
@@ -250,11 +246,11 @@ RSpec.describe KDomain::DomainModel::Load do
                     default: be_nil,
                     null: be_nil,
                     limit: be_nil,
-                    array: be_nil,
-                    structure_type: be_a(Symbol),
-                    foreign_key: eq(false),
-                    foreign_table: be_a(String),
-                    foreign_table_plural: be_a(String)
+                    array: be_nil
+                    # structure_type: be_a(Symbol),
+                    # foreign_key: eq(false),
+                    # foreign_table: be_a(String),
+                    # foreign_table_plural: be_a(String)
                   )
                 end
               end

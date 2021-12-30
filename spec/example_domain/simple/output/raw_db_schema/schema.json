@@ -1229,6 +1229,9 @@
       "using": "btree"
     }
   ],
+  "views": [
+
+  ],
   "meta": {
     "rails": 4,
     "db_info": {

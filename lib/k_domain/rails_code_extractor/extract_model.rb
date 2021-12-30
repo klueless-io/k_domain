@@ -19,9 +19,9 @@ module KDomain
       def extract(file)
         load_shims unless shims_loaded
 
-        ActiveRecord.current_class = nil
+        ActiveRecord.class_info = nil
 
-        load_retry(file, 10)
+        load_retry(file, 10, nil)
       rescue StandardError => e
         log.exception(e)
       end
@@ -34,23 +34,34 @@ module KDomain
       end
 
       # rubocop:disable Security/Eval,Style/EvalWithLocation,Style/DocumentDynamicEvalDefinition,Metrics/AbcSize
-      def load_retry(file, times)
+      def load_retry(file, times, last_error)
         return if times.negative?
 
         load(file)
 
-        @model = ActiveRecord.current_class
+        @model = ActiveRecord.class_info
+
+        if @model.nil?
+          # puts ''
+          # puts file
+          # puts 'class probably has no DSL methods'
+          @model = {
+            class_name: File.basename(file, File.extname(file)).classify
+          }
+        end
+
         @models << @model
 
         # get_method_info(File.base_name(file))
       rescue StandardError => e
-        puts e.message
-        if e.is_a?(NameError)
+        log.kv 'times', times
+        # puts e.message
+        if e.is_a?(NameError) && e.message != last_error&.message
           log.kv('add module', e.name)
           eval("module #{e.name}; end")
-          return load_retry(path, times - 1)
+          return load_retry(file, times - 1, e)
         end
-        log.exception(e)
+        log.exception(e, style: :short, method_info: method(__callee__))
       end
       # rubocop:enable Security/Eval,Style/EvalWithLocation,Style/DocumentDynamicEvalDefinition,Metrics/AbcSize
     end

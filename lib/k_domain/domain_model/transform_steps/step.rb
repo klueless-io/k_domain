@@ -33,6 +33,10 @@ module KDomain
         @valid = false
       end
 
+      def warning(message)
+        log.warn message
+      end
+
       def write(file)
         FileUtils.mkdir_p(File.dirname(file))
         File.write(file, JSON.pretty_generate(domain_data))
@@ -64,6 +68,14 @@ module KDomain
         rails_resource[:models] = value
       end
 
+      def rails_resource_routes
+        rails_resource[:routes]
+      end
+
+      def rails_resource_routes=(value)
+        rails_resource[:routes] = value
+      end
+
       def rails_resource_controllers
         rails_resource[:controllers]
       end
@@ -79,12 +91,20 @@ module KDomain
         rails_structure[:models]
       end
 
+      def find_rails_structure_models(model_name)
+        rails_structure_models.find { |model| model[:model_name] == model_name }
+      end
+
       def rails_structure_models=(value)
         rails_structure[:models] = value
       end
 
       def rails_structure_controllers
         rails_structure[:controllers]
+      end
+
+      def rails_structure_controllers=(value)
+        rails_structure[:controllers] = value
       end
 
       # Database Accessor/Helpers

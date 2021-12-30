@@ -11,24 +11,34 @@ module KDomain
       attr_reader :db_schema
       attr_reader :target_step_file
       attr_reader :target_file
-      attr_reader :erd_path
+      attr_reader :model_path
+      attr_reader :controller_path
+      attr_reader :route_path
+      attr_reader :shim_loader
 
-      def initialize(db_schema: , target_file: , target_step_file: , erd_path:)
+      # rubocop:disable Metrics/ParameterLists
+      def initialize(db_schema: , target_file: , target_step_file: , model_path:, route_path:, controller_path:, shim_loader: nil)
         @db_schema        = db_schema
         @target_step_file = target_step_file
         @target_file      = target_file
-        @erd_path         = erd_path
+        @model_path       = model_path
+        @controller_path  = controller_path
+        @route_path       = route_path
+        @shim_loader      = shim_loader
       end
+      # rubocop:enable Metrics/ParameterLists
 
-      # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity
+      # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
       def call
         valid = true
-        valid &&= Step1AttachDbSchema.run(domain_data, db_schema: db_schema, step_file: step_file('1-attach-db-schema'))
-        valid &&= Step2AttachModels.run(domain_data, erd_path: erd_path, step_file: step_file('2-attach-model'))
-        valid &&= Step3AttachColumns.run(domain_data, step_file: step_file('3-attach-columns'))
-        valid &&= Step4RailsResourceModels.run(domain_data, erd_path: erd_path, step_file: step_file('4-rails-resource-models'))
-        valid &&= Step5RailsStructureModels.run(domain_data, erd_path: erd_path, step_file: step_file('5-rails-structure-models'))
-        valid &&= Step6AttachDictionary.run(domain_data, erd_path: erd_path, step_file: step_file('6-attach-dictionary'))
+        valid &&= Step1DbSchema.run(domain_data, db_schema: db_schema, step_file: step_file('01-db-schema'))
+        valid &&= Step2DomainModels.run(domain_data, model_path: model_path, step_file: step_file('02-domain-model'))
+        valid &&= Step4RailsResourceModels.run(domain_data, model_path: model_path, step_file: step_file('04-rails-resource-models'))
+        valid &&= Step5RailsResourceRoutes.run(domain_data, route_path: route_path, controller_path: controller_path, step_file: step_file('05-rails-resource-routes'))
+        valid &&= Step6RailsStructureModels.run(domain_data, model_path: model_path, step_file: step_file('06-rails-structure-models'), shim_loader: shim_loader)
+        valid &&= Step7RailsStructureControllers.run(domain_data, controller_path: controller_path, step_file: step_file('07-rails-structure-controllers'), shim_loader: shim_loader)
+        valid &&= Step8DomainColumns.run(domain_data, step_file: step_file('08-domain-columns'))
+        valid &&= Step20Dictionary.run(domain_data, step_file: step_file('20-dictionary'))
 
         raise 'DomainModal transform failed' unless valid
 
@@ -36,7 +46,7 @@ module KDomain
 
         nil
       end
-      # rubocop:enable Metrics/AbcSize,Metrics/CyclomaticComplexity
+      # rubocop:enable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
 
       def step_file(step_name)
         format(target_step_file, step: step_name)
@@ -47,6 +57,7 @@ module KDomain
         File.write(target_file, JSON.pretty_generate(domain_data))
       end
 
+      # rubocop:disable Metrics/MethodLength
       def domain_data
         # The initial domain model structure is created here, but populated during the workflows.
         @domain_data ||= {
@@ -55,7 +66,7 @@ module KDomain
           },
           rails_resource: {
             models: [],
-            controllers: []
+            routes: []
           },
           rails_structure: {
             models: [],
@@ -68,6 +79,7 @@ module KDomain
             tables: [],
             indexes: [],
             foreign_keys: [],
+            views: [],
             meta: {}
           },
           investigate: {
@@ -75,6 +87,7 @@ module KDomain
           }
         }
       end
+      # rubocop:enable Metrics/MethodLength
     end
   end
 end

@@ -1,16 +1,24 @@
 # frozen_string_literal: true
 
 RSpec.describe KDomain::RawDbSchema::Transform do
-  let(:instance)            { described_class.new(source_file) }
-  let(:source_file)         { 'spec/example_domain/simple/input/schema.rb' }
-  let(:schema_loader_file)  { 'spec/example_domain/simple/output/raw_db_schema/schema_loader.rb' }
-  let(:target_json_file)    { 'spec/example_domain/simple/output/raw_db_schema/schema.json' }
+  include_examples :domain_simple_settings
+
+  let(:instance) { described_class.new(db_schema_ruby_file) }
+
+  context 'with advanced schema' do
+    include_examples :domain_advanced_settings
+    include_examples :transform_db_schema
+
+    it {
+      db_transform
+    }
+  end
 
   describe '#initialize' do
     context '.source_file' do
       subject { instance.source_file }
 
-      it { is_expected.to eq(source_file) }
+      it { is_expected.to eq(db_schema_ruby_file) }
     end
     context '.template_file' do
       subject { instance.template_file }
@@ -45,11 +53,11 @@ RSpec.describe KDomain::RawDbSchema::Transform do
   end
 
   describe '#write_json' do
-    subject { File.exist?(target_json_file) }
+    subject { File.exist?(db_schema_json_file) }
 
     before do
       instance.call
-      instance.write_json(target_json_file)
+      instance.write_json(db_schema_json_file)
     end
 
     it { is_expected.to be_truthy }

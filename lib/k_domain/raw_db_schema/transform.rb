@@ -11,7 +11,7 @@ module KDomain
       include KLog::Logging
 
       attr_reader :source_file
-      attr_reader :template_file
+      attr_accessor :template_file
       attr_reader :schema_loader
 
       def initialize(source_file)
@@ -24,6 +24,7 @@ module KDomain
         # log.kv 'template_file', template_file
         # log.kv 'source_file?', File.exist?(source_file)
         # log.kv 'template_file?', File.exist?(template_file)
+
         log.error "Template not found: #{template_file}" unless File.exist?(template_file)
 
         content = File.read(source_file)
