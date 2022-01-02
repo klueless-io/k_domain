@@ -3,7 +3,12 @@
 RSpec.describe KDomain::RawDbSchema::Transform do
   include_examples :domain_simple_settings
 
-  let(:instance) { described_class.new(db_schema_ruby_file) }
+  def os(attributes)
+    OpenStruct.new(attributes)
+  end
+
+  let(:instance) { described_class.new(db_schema_ruby_file, transform_filter) }
+  let(:transform_filter) { os(active: 0, table: os(offset: 0, limit: 10)) }
 
   context 'with advanced schema' do
     include_examples :domain_advanced_settings
@@ -74,6 +79,32 @@ RSpec.describe KDomain::RawDbSchema::Transform do
       before { instance.call }
 
       it { is_expected.not_to be_empty }
+
+      describe '#filtered' do
+        subject { instance.schema[:tables].map { |table| table[:name] } }
+
+        context 'when all tables' do
+          it { is_expected.to have_attributes(length: 21) }
+        end
+
+        context 'when inactive, offset: 0, limit: 1' do
+          let(:transform_filter) { os(active: 0, table: os(offset: 0, limit: 1)) }
+
+          it { is_expected.to have_attributes(length: 21) }
+        end
+
+        context 'when active, offset: 0, limit: 1' do
+          let(:transform_filter) { os(active: 1, table: os(offset: 0, limit: 1)) }
+
+          it { is_expected.to eq(%w[__EFMigrationsHistory]) }
+        end
+
+        context 'when active, offset: 1, limit: 2' do
+          let(:transform_filter) { os(active: 1, table: os(offset: 1, limit: 2)) }
+
+          it { is_expected.to eq(%w[samples app_users]) }
+        end
+      end
     end
   end
 end

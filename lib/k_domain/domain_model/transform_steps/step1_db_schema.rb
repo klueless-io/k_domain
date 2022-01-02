@@ -8,7 +8,7 @@ module KDomain
         raise 'Schema not supplied' if opts[:db_schema].nil?
 
         self.database = opts[:db_schema].clone
-        database[:tables] = database[:tables] # .slice(156, 1)
+        database[:tables] = database[:tables] # .take(10) # .slice(156, 1)
 
         guard('tables are missing')               if database[:tables].nil?
         guard('indexes are missing')              if database[:indexes].nil?

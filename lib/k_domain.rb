@@ -5,6 +5,7 @@ require 'dry-struct'
 require 'k_log'
 require 'peeky'
 require 'k_domain/version'
+require 'k_domain/config/_'
 require 'k_domain/schemas/_'
 require 'k_domain/raw_db_schema/transform'
 require 'k_domain/raw_db_schema/load'
@@ -19,6 +20,8 @@ require 'k_domain/rails_code_extractor/_'
 # end
 
 module KDomain
+  extend KDomain::Config
+
   # raise KDomain::Error, 'Sample message'
   class Error < StandardError; end
 

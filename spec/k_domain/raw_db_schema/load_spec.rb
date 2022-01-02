@@ -3,6 +3,12 @@
 RSpec.describe KDomain::RawDbSchema::Load do
   let(:instance) { described_class.new(source_file) }
 
+  def os(attributes)
+    OpenStruct.new(attributes)
+  end
+
+  let(:transform_filter) { os(active: 0, table: os(offset: 0, limit: 10)) }
+
   let(:db_schema_ruby_file)       { 'spec/example_domain/simple/input/schema.rb' }
   let(:db_schema_json_file)       { 'spec/example_domain/simple/output/raw_db_schema/schema.json' }
   let(:schema_loader_file)        { 'spec/example_domain/simple/output/raw_db_schema/schema_loader.rb' }
