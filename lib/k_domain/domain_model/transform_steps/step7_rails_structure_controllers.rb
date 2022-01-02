@@ -66,7 +66,7 @@ class Step7RailsStructureControllers < KDomain::DomainModel::Step
       end
       controller[:behaviours] = extract_behavior(controller[:full_file])
       klass_name = controller[:behaviours][:class_name]
-      controller[:functions] = extract_functions(klass_name)
+      controller[:functions] = extract_functions(klass_name, controller[:full_file])
     end
   end
 
@@ -97,13 +97,15 @@ class Step7RailsStructureControllers < KDomain::DomainModel::Step
     shim_loader
   end
 
-  def extract_functions(klass_name)
+  def extract_functions(klass_name, controller_file)
     klass = Module.const_get(klass_name.classify)
 
     class_info = Peeky.api.build_class_info(klass.new)
 
     class_info.to_h
   rescue StandardError => e
-    log.exception(e)
+    log.kv 'controller_file', controller_file
+    log.exception(e, style: :short)
+    {}
   end
 end

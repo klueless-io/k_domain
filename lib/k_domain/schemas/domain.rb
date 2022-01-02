@@ -33,19 +33,19 @@ module KDomain
           def db_type
             return @db_type if defined? @db_type
 
-            @db_type = DB_TYPE[type] || '******'
+            @db_type = KDomain::Schemas::DB_TYPE[type] || '******'
           end
 
           def ruby_type
             return @ruby_type if defined? @ruby_type
 
-            @ruby_type = RUBY_TYPE[type] || '******'
+            @ruby_type = KDomain::Schemas::RUBY_TYPE[type] || '******'
           end
 
           def csharp_type
             return @csharp_type if defined? @csharp_type
 
-            @csharp_type = CSHARP_TYPE[type] || '******'
+            @csharp_type = KDomain::Schemas::CSHARP_TYPE[type] || '******'
           end
         end
 
@@ -72,13 +72,17 @@ module KDomain
           pk.exist
         end
 
+        def config
+          @config ||= KDomain.configuration.find_model(name.to_sym)
+        end
+
         # If filled in, the model has a main field that is useful for rendering and may be used for unique constraint, may also be called display_name
         def main_key
-          @main_key ||= MainKey.lookup(name, columns_data)
+          @main_key ||= config.main_key || KDomain.configuration.fallback_key(columns_data)
         end
 
         def traits
-          @traits ||= Traits.lookup(name)
+          config.traits
         end
 
         # def where()
