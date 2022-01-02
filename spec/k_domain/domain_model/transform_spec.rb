@@ -4,9 +4,15 @@ RSpec.describe KDomain::DomainModel::Transform do
   include_examples :domain_simple_settings
   include_examples :transform_db_schema
 
-  let(:db_schema)                 { db_transform }
+  def os(attributes)
+    OpenStruct.new(attributes)
+  end
 
-  let(:instance)                  do
+  let(:transform_filter) { os(active: 0, table: os(offset: 0, limit: 10)) }
+
+  let(:db_schema) { db_transform }
+
+  let(:instance) do
     described_class.new(
       db_schema: db_schema,
       target_file: target_file,

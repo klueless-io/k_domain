@@ -10,7 +10,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "",
         "columns": [
           {
             "name": "id",
@@ -47,7 +47,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/sample.rb",
         "columns": [
           {
             "name": "id",
@@ -198,7 +198,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/app_user.rb",
         "columns": [
           {
             "name": "id",
@@ -274,7 +274,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "",
         "columns": [
           {
             "name": "id",
@@ -335,7 +335,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "",
         "columns": [
           {
             "name": "id",
@@ -396,7 +396,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "",
         "columns": [
           {
             "name": "id",
@@ -457,7 +457,7 @@
           "type": null,
           "exist": false
         },
-        "file": null,
+        "file": "",
         "columns": [
           {
             "name": "login_provider",
@@ -518,7 +518,7 @@
           "type": null,
           "exist": false
         },
-        "file": null,
+        "file": "",
         "columns": [
           {
             "name": "user_id",
@@ -555,7 +555,7 @@
           "type": null,
           "exist": false
         },
-        "file": null,
+        "file": "",
         "columns": [
           {
             "name": "user_id",
@@ -616,7 +616,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "",
         "columns": [
           {
             "name": "id",
@@ -809,7 +809,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/customer_shop.rb",
         "columns": [
           {
             "name": "id",
@@ -876,7 +876,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/favourite_order.rb",
         "columns": [
           {
             "name": "id",
@@ -928,7 +928,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/item_variation.rb",
         "columns": [
           {
             "name": "id",
@@ -1016,7 +1016,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/item.rb",
         "columns": [
           {
             "name": "id",
@@ -1065,7 +1065,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/menu_category.rb",
         "columns": [
           {
             "name": "id",
@@ -1129,7 +1129,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/menu_category_product.rb",
         "columns": [
           {
             "name": "id",
@@ -1196,7 +1196,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/order.rb",
         "columns": [
           {
             "name": "id",
@@ -1356,7 +1356,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/product_variation.rb",
         "columns": [
           {
             "name": "id",
@@ -1447,7 +1447,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/product.rb",
         "columns": [
           {
             "name": "id",
@@ -1511,7 +1511,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/shop.rb",
         "columns": [
           {
             "name": "id",
@@ -1599,7 +1599,7 @@
           "type": "bigint",
           "exist": true
         },
-        "file": null,
+        "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/staff.rb",
         "columns": [
           {
             "name": "id",

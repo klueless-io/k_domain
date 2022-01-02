@@ -18,7 +18,7 @@ class Step2DomainModels < KDomain::DomainModel::Step
       name_plural: table_name, # need to check if this is correct as I know it is wrong for account_history_datum
       table_name: table_name,
       pk: primary_key(table),
-      file: nil
+      file: nil                # will be set in step8_domain_columns
     }
 
     attach_columns(model)

@@ -15,9 +15,8 @@ class Step8DomainColumns < KDomain::DomainModel::Step
   def enrich_columns
     # .select {|m| m[:name] == 'app_user'}
     domain_models.each do |model|
-      @domain_model = model
+      @domain_model = enrich_model(model)
       # this will be nil if there is no rails model code
-      @rails_model = find_rails_structure_models(domain_model[:name])
 
       # log.warn domain_model[:name]
       domain_model[:columns].each do |column|
@@ -29,6 +28,16 @@ class Step8DomainColumns < KDomain::DomainModel::Step
         column[:structure_type] = structure_type
       end
     end
+  end
+
+  def enrich_model(model)
+    @rails_model = find_rails_structure_models(model[:name])
+
+    model[:file] = @rails_model[:file]
+
+    log.error "Rails model not found for: #{model[:name]}" unless @rails_model
+
+    model
   end
 
   def expand_column(column)

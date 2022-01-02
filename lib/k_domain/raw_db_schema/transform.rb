@@ -7,16 +7,29 @@
 # builds the hash
 module KDomain
   module RawDbSchema
+    # class TransformFilter
+    #   attr_accessor :take
+    #   def initialize(take: :all)
+    #     @take = take
+    #   end
+    # end
+
     class Transform
       include KLog::Logging
 
       attr_reader :source_file
       attr_accessor :template_file
       attr_reader :schema_loader
+      attr_reader :filter
 
-      def initialize(source_file)
+      # @param [String] source_file Rails Schema file
+      # @param [OpenStruct] filter Settings for filtering data before transformation, this is useful during debugging
+      # examples
+      #   filter = os(run: 1, tables: os(offset: 10, limit: 10))
+      def initialize(source_file, filter)
         @source_file = source_file
         @template_file = KDomain::Gem.resource('templates/load_schema.rb')
+        @filter = filter
       end
 
       def call
@@ -73,11 +86,20 @@ module KDomain
 
         loader = LoadSchema.new
         loader.load_schema
-        loader.schema
+
+        apply_filter(loader.schema)
       rescue StandardError => e
         log.exception(e)
       end
       # rubocop:enable Security/Eval
+
+      def apply_filter(schema)
+        return schema unless filter.active == 1
+
+        schema[:tables] = schema[:tables].slice(filter.table.offset, filter.table.limit) || [] if filter.table.offset.is_a?(Integer) && filter.table.limit.is_a?(Integer)
+
+        schema
+      end
     end
   end
 end

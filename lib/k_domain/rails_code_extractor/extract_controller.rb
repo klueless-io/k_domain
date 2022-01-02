@@ -48,9 +48,11 @@ module KDomain
         # puts e.message
         if e.is_a?(NameError) && e.message != last_error&.message
           log.kv('add module', e.name)
+          log.kv 'file', file
           eval("module #{e.name}; end")
           return load_retry(file, times - 1, e)
         end
+        log.kv 'file', file
         log.exception(e, style: :short, method_info: method(__callee__))
       end
       # rubocop:enable Security/Eval,Style/EvalWithLocation,Style/DocumentDynamicEvalDefinition,Metrics/AbcSize
