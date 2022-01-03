@@ -9,6 +9,7 @@ class Step8DomainColumns < KDomain::DomainModel::Step
   attr_reader :column_symbol
 
   def call
+    @debug = true
     enrich_columns
   end
 
@@ -24,13 +25,13 @@ class Step8DomainColumns < KDomain::DomainModel::Step
         @column_name = column[:name]
         @column_symbol = column[:name].to_sym
 
-        attach_foreign_key
         column[:structure_type] = structure_type
       end
     end
   end
 
   def enrich_model(model)
+    # NOTE: THIS MAY GET MOVED TO DomainModel::Load#enrichment
     @rails_model = find_rails_structure_models(model[:name])
 
     model[:file] = @rails_model[:file]
@@ -40,67 +41,11 @@ class Step8DomainColumns < KDomain::DomainModel::Step
     model
   end
 
-  def expand_column(column)
-    foreign_table = lookup_foreign_table(column_name)
-    is_foreign = !foreign_table.nil?
-    # is_foreign = foreign_key?(column_name)
-    structure_type = structure_type(is_foreign)
-
-    column.merge({
-                   structure_type: structure_type,
-                   foreign_key: is_foreign,
-                   foreign_table: (foreign_table || '').singularize,
-                   foreign_table_plural: (foreign_table || '').pluralize
-                 })
-  end
-
-  def lookup_foreign_table(column_name)
-    foreign_table = find_foreign_table(table[:name], column_name)
-
-    return foreign_table if foreign_table
-
-    cn = column_name.to_s
-
-    if cn.ends_with?('_id')
-      table_name = column_name[0..-4]
-      table_name_plural = table_name.pluralize
-
-      if table_name_exist?(table_name_plural.to_s)
-        investigate(step: :step8_columns,
-                    location: :lookup_foreign_table,
-                    key: column_name,
-                    message: "#{@table[:name]}.#{column_name} => #{table_name_plural} - Relationship not found in DB, so have inferred this relationship. You may want to check that this relation is correct")
-
-        return table_name
-      end
-
-      investigate(step: :step8_columns,
-                  location: :lookup_foreign_table,
-                  key: column_name,
-                  message: "#{@table[:name]}.#{column_name} => #{table_name_plural} - Table not found for a column that looks like foreign_key")
-    end
-
-    nil
-  end
-
-  def attach_foreign_key
-    return if rails_model.nil? || rails_model[:behaviours].nil? || rails_model[:behaviours][:belongs_to].nil?
-
-    foreign = rails_model[:behaviours][:belongs_to].find { |belong| belong[:opts][:foreign_key].to_sym == domain_column[:name].to_sym }
-
-    return unless foreign
-
-    # NEED TO PRE-LOAD the table, table_plural and model
-    domain_column[:foreign_table] = 'xxx1'
-    domain_column[:foreign_table_plural] = 'xxx3'
-    domain_column[:foreign_model] = 'xxx2'
-  end
-
   # Need some configurable data dictionary where by
   # _token can be setup on a project by project basis
   def structure_type
     return :primary_key         if domain_model[:pk][:name] == column_name
-    return :foreign_key         if domain_column[:foreign_table]
+    return :foreign_key         if foreign_relationship?
 
     return :timestamp           if column_symbol == :created_at || column_symbol == :updated_at
     return :timestamp           if column_symbol == :created_at || column_symbol == :updated_at
@@ -110,4 +55,45 @@ class Step8DomainColumns < KDomain::DomainModel::Step
 
     :data
   end
+
+  def foreign_relationship?
+    return false if rails_model.nil? || rails_model[:behaviours].nil? || rails_model[:behaviours][:belongs_to].nil?
+
+    column_name = domain_column[:name].to_sym
+    rails_model[:behaviours][:belongs_to].any? { |belong| belong[:opts][:foreign_key].to_sym == column_name }
+  end
+
+  # def attach_relationships
+  #   domain_column[:relationships] = []
+  #   return if rails_model.nil? || rails_model[:behaviours].nil? || rails_model[:behaviours][:belongs_to].nil?
+
+  #   column_name = domain_column[:name].to_sym
+
+  #   attach_column_relationships(column_name)
+  # end
+
+  # def select_belongs_to(column_name)
+  #   rails_model[:behaviours][:belongs_to].select { |belong| belong[:opts][:foreign_key].to_sym == column_name.to_sym }
+  # end
+
+  # # this just maps basic relationship information,
+  # # to go deeper you really need to use the Rails Model Behaviours
+  # def attach_column_relationships(column_name)
+  #   select_belongs_to(column_name).each do |belongs_to|
+  #     domain_column[:relationships] << map_belongs_to(belongs_to)
+  #   end
+  # end
+
+  # def map_belongs_to(belongs_to)
+  #   @domain_column[:structure_type] = :foreign_key
+  #   # result = {
+  #   #   type: :belongs_to,
+  #   #   name: belongs_to[:name],
+  #   #   foreign_key: belongs_to.dig(:opts, :foreign_key) || @domain_column[:name],
+  #   # }
+
+  #   # result[:primary_key] = belongs_to.dig(:opts, :primary_key) if belongs_to.dig(:opts, :primary_key)
+  #   # result[:class_name] = belongs_to.dig(:opts, :class_name) if belongs_to.dig(:opts, :class_name)
+  #   result
+  # end
 end

@@ -13,5 +13,6 @@ require_relative 'database'
 require_relative 'dictionary'
 require_relative 'domain_types'
 require_relative 'domain'
+require_relative 'domain_model'
 
-require_relative './domain_model'
+# require_relative './domain_model'
