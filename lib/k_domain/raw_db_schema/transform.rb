@@ -93,6 +93,7 @@ module KDomain
       end
       # rubocop:enable Security/Eval
 
+      # rubocop:disable Metrics/AbcSize
       def apply_filter(schema)
         return schema unless filter.active == 1
 
@@ -100,6 +101,7 @@ module KDomain
 
         schema
       end
+      # rubocop:enable Metrics/AbcSize
     end
   end
 end

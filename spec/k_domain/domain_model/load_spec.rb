@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe KDomain::DomainModel::Load do
+  include KLog::Logging
+
   let(:instance) { described_class.new(source_file) }
 
   let(:source_file) { 'spec/example_domain/simple/output/domain_model/domain_model.json' }
@@ -292,6 +294,31 @@ RSpec.describe KDomain::DomainModel::Load do
                 end
               end
             end
+          end
+        end
+      end
+
+      context '.domain (enrich with rails_model)' do
+        # enrichment occurs directly after load and could be tested in the .domain context above
+        # it is included here to show the separation of ideas
+        # subject { instance.data.domain }
+        context '.model#sample' do
+          subject { sample }
+
+          let(:sample) { instance.data.domain.models.find { |m| m.name == 'sample' } }
+
+          it { is_expected.not_to be_nil }
+
+          context '.rails_model' do
+            subject { sample.rails_model }
+
+            it { is_expected.not_to be_nil }
+          end
+
+          context '.columns_foreign' do
+            subject { sample.columns_foreign }
+
+            it { is_expected.to have_attributes(length: 2) }
           end
         end
       end

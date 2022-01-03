@@ -51,6 +51,16 @@ module KDomain
         attribute :attr_accessor?             , Types::Array.of(Types::Strict::String)
         attribute :attr_reader?               , Types::Array.of(Types::Strict::String)
         attribute :attr_writer?               , Types::Array.of(Types::Strict::String)
+
+        # Not sure if I need to do a behaviours by column names
+        # def belongs_to_by(foreign_key: )
+        # end
+        # def has_one_by(foreign_key: )
+        # end
+        # def has_many_by(foreign_key: )
+        # end
+        # def has_and_belongs_to_many_to_by(foreign_key: )
+        # end
       end
 
       class Method < Dry::Struct

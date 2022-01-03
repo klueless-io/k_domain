@@ -17,18 +17,7 @@ module KDomain
           attribute :array                , Types::Strict::Bool.optional.default(nil)     #  null
 
           # Calculated value
-          attribute :structure_type       , Types::Coercible::Symbol #
-          # attribute :foreign_key          , Types::Strict::Bool.optional.default(nil)     #
-          # attribute :foreign_table        , Types::Strict::String                         #
-          # attribute :foreign_table_plural , Types::Strict::String                         #
-
-          # def data_column
-          #   @columns_data ||= structure_type?(:data)
-          # end
-
-          # def structure_type?(*structure_types)
-          #   structure_types.include?(column.structure_type)
-          # end
+          attribute :structure_type       , Types::Coercible::Symbol
 
           def db_type
             return @db_type if defined? @db_type
@@ -64,6 +53,9 @@ module KDomain
         attribute :columns              , Types::Strict::Array.of(KDomain::Schemas::Domain::Model::Column)
         attribute :file                 , Types::Strict::String.optional.default(nil)
 
+        # Link <KDomain::Schemas::RailsStructure::Model> to the domain model
+        attr_accessor :rails_model
+
         def ruby?
           file && File.exist?(file)
         end
@@ -72,6 +64,7 @@ module KDomain
           pk.exist
         end
 
+        # Custom model configurations such as main_key and traits
         def config
           @config ||= KDomain.configuration.find_model(name.to_sym)
         end
@@ -85,25 +78,9 @@ module KDomain
           config.traits
         end
 
-        # def where()
-        # end
-
-        # def columns_where()
-        # end
-
-        # Column filters
-
         def columns_data
           @columns_data ||= columns_for_structure_types(:data)
         end
-
-        # def columns_data_optional
-        #   @columns_data_optional ||= columns_for_structure_types(:data).select { |c| true }
-        # end
-
-        # def columns_data_required
-        #   @columns_data_required ||= columns_for_structure_types(:data).select { |c| false }
-        # end
 
         def columns_primary
           @columns_primary ||= columns_for_structure_types(:primary_key)
@@ -152,7 +129,6 @@ module KDomain
       end
 
       attribute :models , Types::Strict::Array.of(KDomain::Schemas::Domain::Model)
-      # attribute :erd_files            , Types::Strict::Array.of(KDomain::DomainModel::ErdFile)
     end
   end
 end
