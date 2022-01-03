@@ -20,11 +20,11 @@ class Sample < ActiveRecord::Base
 
   belongs_to :tenant, **belongs_to_required
 
-  belongs_to :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'
+  belongs_to :user, class_name: 'User', foreign_key: 'sales_user_id', primary_key: 'id'
 
-  has_one :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'
+  has_one :user, class_name: 'User', foreign_key: 'sales_user_id', primary_key: 'id'
 
-  has_many :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'
+  has_many :user, class_name: 'User', foreign_key: 'sales_user_id', primary_key: 'id'
 
   has_many :tasks, as: :taskable
 

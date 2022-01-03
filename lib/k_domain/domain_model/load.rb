@@ -23,6 +23,8 @@ module KDomain
         @raw_data = KUtil.data.json_parse(json, as: :hash_symbolized)
 
         @data = KDomain::Schemas::DomainModel.new(@raw_data)
+
+        enrichment
       end
 
       def to_h
@@ -30,6 +32,26 @@ module KDomain
 
         @raw_data
       end
+
+      private
+
+      def enrichment
+        attach_rails_model_to_domain_model
+      end
+
+      def attach_rails_model_to_domain_model
+        @data.domain.models.each do |domain_model|
+          domain_model.rails_model = @data.rails_structure.find_model(domain_model.name)
+
+          if domain_model.rails_model
+            attach_rails_behaviours_to_domain_model_columns(domain_model)
+          else
+            log.error("Rails Model not found for #{domain_model.name}") unless domain_model.rails_model
+          end
+        end
+      end
+
+      def attach_rails_behaviours_to_domain_model_columns(domain_model); end
     end
   end
 end

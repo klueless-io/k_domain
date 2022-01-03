@@ -59,9 +59,6 @@
             "null": null,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "primary_key"
           },
           {
@@ -86,9 +83,6 @@
             "null": false,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "foreign_key"
           },
           {
@@ -101,7 +95,7 @@
             "null": false,
             "limit": null,
             "array": null,
-            "structure_type": "data"
+            "structure_type": "foreign_key"
           },
           {
             "name": "longitude",
@@ -222,9 +216,6 @@
             "null": null,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "foreign_key"
           },
           {
@@ -845,9 +836,6 @@
             "null": false,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "foreign_key"
           },
           {
@@ -860,9 +848,6 @@
             "null": false,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "foreign_key"
           }
         ]
@@ -912,9 +897,6 @@
             "null": null,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "foreign_key"
           }
         ]
@@ -952,9 +934,6 @@
             "null": false,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "foreign_key"
           },
           {
@@ -1089,9 +1068,6 @@
             "null": false,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "foreign_key"
           },
           {
@@ -1153,9 +1129,6 @@
             "null": false,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "foreign_key"
           },
           {
@@ -1168,9 +1141,6 @@
             "null": false,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "foreign_key"
           },
           {
@@ -1232,9 +1202,6 @@
             "null": false,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "foreign_key"
           },
           {
@@ -1380,9 +1347,6 @@
             "null": false,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "foreign_key"
           },
           {
@@ -1395,9 +1359,6 @@
             "null": false,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "foreign_key"
           },
           {
@@ -1471,9 +1432,6 @@
             "null": false,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "foreign_key"
           },
           {
@@ -1535,9 +1493,6 @@
             "null": false,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "foreign_key"
           },
           {
@@ -1623,9 +1578,6 @@
             "null": false,
             "limit": null,
             "array": null,
-            "foreign_table": "xxx1",
-            "foreign_table_plural": "xxx3",
-            "foreign_model": "xxx2",
             "structure_type": "foreign_key"
           },
           {
@@ -1966,7 +1918,7 @@
         "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/sample.rb",
         "exist": true,
         "state": "has_ruby_model",
-        "code": "# frozen_string_literal: true\nclass Sample < ActiveRecord::Base\n  extend RailsUpgrade\n\n  attr_accessor :access1\n  attr_accessor :access2\n\n  attr_reader :reader3\n  attr_writer :write4, :write5, :write6\n\n  default_scope { where(deleted: false) }\n\n  scope :has_geo, -> { where.not(longitude: nil, latitude: nil) }\n\n  scope :has_address, lambda {\n    where.not(address: nil)\n  }\n\n  belongs_to :app_user\n\n  belongs_to :tenant, **belongs_to_required\n\n  belongs_to :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_one :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :user, class_name: 'User', foreign_key: 'id', primary_key: 'sales_user_id'\n\n  has_many :tasks, as: :taskable\n\n  has_many :messages, class_name: 'CampaignMessage', dependent: :destroy\n  has_many :trackers, through: :messages\n  has_many :hits, through: :trackers\n  has_many :orders, inverse_of: :company\n\n  has_and_belongs_to_many :trackers, -> { uniq }\n  has_and_belongs_to_many :contact_lists, -> { uniq }, autosave: true\n\n  validate :ensure_valid_financial_year, on: :create\n  validate :name_must_be_unique, :name_must_not_be_in_global\n  validate :check_email_valid\n\n  validates :user, presence: { message: 'must exist' }\n  validates :tenant, presence: { message: 'must exist' } if rails4?\n  validates :first_name, presence: { message: 'First Name is required.' }, on: :create\n  validates :email, format: /\\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}\\z/i\n  validates :password, length: { minimum: 8, message: '8+ characters' }, unless: :skip_password_validation\n\n  # class methods\n  def self.class_method1\n  end\n\n  def self.class_method2(was, here)\n  end\n\n  def self.class_method3(key: 1, another_key: nil)\n  end\n\n  # public methods\n  def public_method1\n  end\n\n  def public_method2(was, here)\n  end\n\n  def public_method3(key: 1, another_key: nil)\n  end\n\n  private\n\n  # private methods\n  def some_private_method\n  end\n\n  def some_method(was, here)\n  end\n\n  def some_other_method(key: 1, another_key: nil)\n  end\nend\n\n# shops\n#\n# id                                       bigint\n# app_user_id                              integer\n# name                                     text\n# address                                  text\n# longitude                                float\n# latitude                                 float\n",
+        "code": "# frozen_string_literal: true\nclass Sample < ActiveRecord::Base\n  extend RailsUpgrade\n\n  attr_accessor :access1\n  attr_accessor :access2\n\n  attr_reader :reader3\n  attr_writer :write4, :write5, :write6\n\n  default_scope { where(deleted: false) }\n\n  scope :has_geo, -> { where.not(longitude: nil, latitude: nil) }\n\n  scope :has_address, lambda {\n    where.not(address: nil)\n  }\n\n  belongs_to :app_user\n\n  belongs_to :tenant, **belongs_to_required\n\n  belongs_to :user, class_name: 'User', foreign_key: 'sales_user_id', primary_key: 'id'\n\n  has_one :user, class_name: 'User', foreign_key: 'sales_user_id', primary_key: 'id'\n\n  has_many :user, class_name: 'User', foreign_key: 'sales_user_id', primary_key: 'id'\n\n  has_many :tasks, as: :taskable\n\n  has_many :messages, class_name: 'CampaignMessage', dependent: :destroy\n  has_many :trackers, through: :messages\n  has_many :hits, through: :trackers\n  has_many :orders, inverse_of: :company\n\n  has_and_belongs_to_many :trackers, -> { uniq }\n  has_and_belongs_to_many :contact_lists, -> { uniq }, autosave: true\n\n  validate :ensure_valid_financial_year, on: :create\n  validate :name_must_be_unique, :name_must_not_be_in_global\n  validate :check_email_valid\n\n  validates :user, presence: { message: 'must exist' }\n  validates :tenant, presence: { message: 'must exist' } if rails4?\n  validates :first_name, presence: { message: 'First Name is required.' }, on: :create\n  validates :email, format: /\\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}\\z/i\n  validates :password, length: { minimum: 8, message: '8+ characters' }, unless: :skip_password_validation\n\n  # class methods\n  def self.class_method1\n  end\n\n  def self.class_method2(was, here)\n  end\n\n  def self.class_method3(key: 1, another_key: nil)\n  end\n\n  # public methods\n  def public_method1\n  end\n\n  def public_method2(was, here)\n  end\n\n  def public_method3(key: 1, another_key: nil)\n  end\n\n  private\n\n  # private methods\n  def some_private_method\n  end\n\n  def some_method(was, here)\n  end\n\n  def some_other_method(key: 1, another_key: nil)\n  end\nend\n\n# shops\n#\n# id                                       bigint\n# app_user_id                              integer\n# name                                     text\n# address                                  text\n# longitude                                float\n# latitude                                 float\n",
         "behaviours": {
           "class_name": "Sample",
           "attr_accessor": [
@@ -2017,8 +1969,8 @@
               "name": "user",
               "opts": {
                 "class_name": "User",
-                "foreign_key": "id",
-                "primary_key": "sales_user_id"
+                "foreign_key": "sales_user_id",
+                "primary_key": "id"
               },
               "block": null
             }
@@ -2028,8 +1980,8 @@
               "name": "user",
               "opts": {
                 "class_name": "User",
-                "foreign_key": "id",
-                "primary_key": "sales_user_id"
+                "foreign_key": "sales_user_id",
+                "primary_key": "id"
               },
               "block": null
             }
@@ -2039,8 +1991,8 @@
               "name": "user",
               "opts": {
                 "class_name": "User",
-                "foreign_key": "id",
-                "primary_key": "sales_user_id"
+                "foreign_key": "sales_user_id",
+                "primary_key": "id"
               },
               "block": null
             },
