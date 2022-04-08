@@ -46,8 +46,8 @@ class Step8DomainColumns < KDomain::DomainModel::Step
   def structure_type
     return :primary_key         if domain_model[:pk][:name] == column_name
     return :foreign_key         if foreign_relationship?
+    return :foreign_type        if column_symbol == :context_type || column_symbol == :element_type
 
-    return :timestamp           if column_symbol == :created_at || column_symbol == :updated_at
     return :timestamp           if column_symbol == :created_at || column_symbol == :updated_at
     return :deleted_at          if column_symbol == :deleted_at
     return :encrypted_password  if column_symbol == :encrypted_password

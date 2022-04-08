@@ -312,7 +312,7 @@ RSpec.describe KDomain::DomainModel::Load do
           context '.rails_model' do
             subject { sample.rails_model }
 
-            it { is_expected.not_to be_nil }
+            fit { is_expected.not_to be_nil }
           end
 
           context '.columns_foreign' do
