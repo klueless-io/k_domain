@@ -44,14 +44,33 @@ module KDomain
           domain_model.rails_model = @data.rails_structure.find_model(domain_model.name)
 
           if domain_model.rails_model
-            attach_rails_behaviours_to_domain_model_columns(domain_model)
+            attach_column_relations(domain_model)
           else
             log.error("Rails Model not found for #{domain_model.name}") unless domain_model.rails_model
           end
         end
       end
 
-      def attach_rails_behaviours_to_domain_model_columns(domain_model); end
+      def attach_column_relations(domain_model)
+        domain_model.columns.each do |column|
+          column.relationships = []
+          add_column_relations(domain_model.rails_model, column, :belongs_to)
+          add_column_relations(domain_model.rails_model, column, :has_one)
+          add_column_relations(domain_model.rails_model, column, :has_many)
+          add_column_relations(domain_model.rails_model, column, :has_and_belongs_to_many)
+        end
+      end
+
+      def add_column_relations(rails_model, column, relation_type)
+        relations = rails_model.behaviours.send(relation_type)
+
+        return if relations.nil?
+
+        relations = relations.map { |relation| { relation_type: relation_type }.merge(relation.to_h) }
+        relations.select { |relation| column[:name] == relation.dig(:opts, :foreign_key) }.each do |relation|
+          column.relationships << KDomain::Schemas::Domain::Model::Relationship.new(relation)
+        end
+      end
     end
   end
 end

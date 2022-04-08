@@ -15,10 +15,10 @@ Handlebars::Helpers.configure do |config|
 end
 
 def builder
-  @builder ||= KBuilder::BaseBuilder.init(KBuilder.configuration(CONFIG_KEY))
+  @builder ||= KBuilder::BaseBuilder.init(KConfig.configuration(CONFIG_KEY))
 end
 
-KBuilder.configure(CONFIG_KEY) do |config|
+KConfig.configure(CONFIG_KEY) do |config|
   global_template = File.expand_path('~/dev/kgems/k_templates/templates')
   config.target_folders.add(:app, File.expand_path('../', Dir.pwd))
   config.target_folders.add(:lib_config, :app, 'lib/k_domain/config')
@@ -26,7 +26,7 @@ KBuilder.configure(CONFIG_KEY) do |config|
   config.template_folders.add(:app_template, File.expand_path('.templates', Dir.pwd))
 end
 
-KBuilder.configuration(CONFIG_KEY).debug
+KConfig.configuration(CONFIG_KEY).debug
 
 area = KManager.add_area(CONFIG_KEY)
 resource_manager = area.resource_manager
@@ -37,4 +37,4 @@ resource_manager
   .glob('generators/**/*.rb')
 resource_manager.add_resources
 
-KManager.fire_actions(:load_content, :register_document, :load_document)
+KManager.boot
