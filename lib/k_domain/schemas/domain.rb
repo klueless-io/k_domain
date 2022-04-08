@@ -5,6 +5,14 @@ module KDomain
   module Schemas
     class Domain < Dry::Struct
       class Model < Dry::Struct
+        class Relationship < KDomain::Schemas::RailsStructure::NameOptsType
+          attribute :relation_type , Types::Coercible::Symbol
+
+          def to_s
+            "#{relation_type}: :#{name} fk: #{opts[:foreign_key]}"
+          end
+        end
+
         class Column < Dry::Struct
           attribute :name                 , Types::Strict::String                         #  "source_account_id"
           attribute :name_plural          , Types::Strict::String                         #  "source_account_ids"
@@ -18,6 +26,9 @@ module KDomain
 
           # Calculated value
           attribute :structure_type       , Types::Coercible::Symbol
+
+          # Any column may have a bunch of related models using various relationship types (belong_to, has_one, has_many etc...)
+          attr_accessor :relationships
 
           def db_type
             return @db_type if defined? @db_type
@@ -90,6 +101,10 @@ module KDomain
           @columns_foreign ||= columns_for_structure_types(:foreign_key)
         end
 
+        def columns_foreign_type
+          @columns_foreign_type ||= columns_for_structure_types(:foreign_type)
+        end
+
         def columns_timestamp
           @columns_data_timestamp ||= columns_for_structure_types(:timestamp)
         end
@@ -99,7 +114,7 @@ module KDomain
         end
 
         def columns_virtual
-          @columns_virtual ||= columns_for_structure_types(:timestamp, :deleted_at)
+          @columns_virtual ||= columns_for_structure_types(:foreign_type, :timestamp, :deleted_at)
         end
 
         def columns_data_foreign
@@ -113,12 +128,12 @@ module KDomain
         alias rows_fields_and_pk columns_data_primary
 
         def columns_data_virtual
-          @columns_data_virtual ||= columns_for_structure_types(:data, :timestamp, :deleted_at)
+          @columns_data_virtual ||= columns_for_structure_types(:data, :foreign_type, :timestamp, :deleted_at)
         end
         alias rows_fields_and_virtual columns_data_virtual
 
         def columns_data_foreign_virtual
-          @columns_data_foreign_virtual ||= columns_for_structure_types(:data, :foreign_key, :timestamp, :deleted_at)
+          @columns_data_foreign_virtual ||= columns_for_structure_types(:data, :foreign_key, :foreign_type, :timestamp, :deleted_at)
         end
 
         private

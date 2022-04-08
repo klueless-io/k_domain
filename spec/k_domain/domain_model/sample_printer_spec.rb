@@ -55,24 +55,24 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
               :type,
               { pk:               { display_method: ->(row) { row.pk.name                            } } },
               { pk_type:          { display_method: ->(row) { row.pk.type                            } } },
-              { pk_exist:         { display_method: ->(row) { row.pk.exist                           } } }
+              { pk_exist:         { display_method: ->(row) { row.pk.exist                           } } },
               # TODO: :main_key,
               # TODO: { traits:           { display_method: -> (row) { row.traits.join(',')                   } } },
-              # { column_count:     { display_method: ->(row) { show_length(row.columns)               } } },
-              # { for_data:         { display_method: ->(row) { show_length(row.columns_data)          } } },
-              # { for_primary:      { display_method: ->(row) { show_length(row.columns_primary)       } } },
-              # { for_foreign:      { display_method: ->(row) { show_length(row.columns_foreign)       } } },
-              # { for_timestamp:    { display_method: ->(row) { show_length(row.columns_timestamp)     } } },
-              # { for_deleted_at:   { display_method: ->(row) { show_length(row.columns_deleted_at)    } } },
-              # { for_virtual:      { display_method: ->(row) { show_length(row.columns_virtual)       } } },
-              # { for_data_foreign: { display_method: ->(row) { show_length(row.columns_data_foreign)  } } }
+              { column_count:     { display_method: ->(row) { show_length(row.columns)               } } },
+              { for_data:         { display_method: ->(row) { show_length(row.columns_data)          } } },
+              { for_primary:      { display_method: ->(row) { show_length(row.columns_primary)       } } },
+              { for_foreign:      { display_method: ->(row) { show_length(row.columns_foreign)       } } },
+              { for_timestamp:    { display_method: ->(row) { show_length(row.columns_timestamp)     } } },
+              { for_deleted_at:   { display_method: ->(row) { show_length(row.columns_deleted_at)    } } },
+              { for_virtual:      { display_method: ->(row) { show_length(row.columns_virtual)       } } },
+              { for_data_foreign: { display_method: ->(row) { show_length(row.columns_data_foreign)  } } }
             ]
           }
         }
       }
     end
 
-    it do
+    fit do
       log.structure(load_domain_model, title: 'Models', line_width: 200, show_array_count: true, graph: root_graph.merge(graph))
     end
   end
@@ -112,6 +112,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
   #   end
   # end
 
+  # TODO: DONE as model_list using rails_resource_models
   context 'print rails_resource' do
     context 'models' do
       let(:graph) do
