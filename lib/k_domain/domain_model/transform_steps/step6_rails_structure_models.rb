@@ -37,6 +37,7 @@ class Step6RailsStructureModels < KDomain::DomainModel::Step
 
   def attach_behavior_and_functions
     rails_structure_models.select { |model| model[:exist] }.each do |model|
+      # puts "model: #{model[:model_name]}"
       model[:behaviours] = extract_behavior(model[:file])
       klass_name = model[:behaviours][:class_name]
       model[:functions] = extract_functions(klass_name)

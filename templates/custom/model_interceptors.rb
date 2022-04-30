@@ -43,15 +43,31 @@ module Bookmarkable; end
 module Categorizable; end
 module PgSearch; end
 module Excludable; end
-module JsonbStore; end
+module JsonbStore
+  def self.included(klass)
+    klass.extend(ClassMethods)
+  end
 
+  module ClassMethods
+    def jsonb_store(*_p, **_o); end
+  end
+end
 module ActionView
   module Helpers
     module NumberHelper
     end
   end
 end
-
+module PrintSpeak
+  class Application
+    def self.google_oath_secret_key
+      'ABC'
+    end
+  end
+end
+class RegionConfig < ActiveRecord::Base
+  def self.require_value(*_p, **_o, &block); end
+end
 module RailsUpgrade
   def rails4?
     true

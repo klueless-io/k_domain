@@ -20,7 +20,8 @@ RSpec.describe KDomain::DomainModel::Transform do
       model_path: model_path,
       controller_path: controller_path,
       route_path: route_path,
-      shim_loader: shim_loader
+      model_shim_loader: model_shim_loader,
+      controller_shim_loader: controller_shim_loader
     )
   end
 
@@ -33,10 +34,15 @@ RSpec.describe KDomain::DomainModel::Transform do
     # Shims to support standard active_record DSL methods
     shim_loader.register(:active_record               , KDomain::Gem.resource('templates/rails/active_record.rb'))
     shim_loader.register(:action_controller           , KDomain::Gem.resource('templates/rails/action_controller.rb'))
+    shim_loader
+  end
 
-    # Shims to support application specific [module, class, method] implementations for suppression and exception avoidance
-    # shim_loader.register(:app_active_record         , KDomain::Gem.resource('templates/custom/active_record.rb'))
+  let(:model_shim_loader) do
     shim_loader.register(:app_model_interceptors      , KDomain::Gem.resource('templates/custom/model_interceptors.rb'))
+    shim_loader
+  end
+
+  let(:controller_shim_loader) do
     shim_loader.register(:app_model_interceptors      , KDomain::Gem.resource('templates/custom/controller_interceptors.rb'))
     shim_loader
   end

@@ -72,7 +72,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
       }
     end
 
-    fit do
+    it do
       log.structure(load_domain_model, title: 'Models', line_width: 200, show_array_count: true, graph: root_graph.merge(graph))
     end
   end

@@ -64,6 +64,7 @@ module KDomain
         end
         log.kv 'file', file
         log.exception(e, style: :short, method_info: method(__callee__))
+        binding.pry
       end
       # rubocop:enable Security/Eval,Style/EvalWithLocation,Style/DocumentDynamicEvalDefinition,Metrics/AbcSize
     end
