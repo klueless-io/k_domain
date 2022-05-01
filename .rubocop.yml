@@ -117,4 +117,7 @@ Style/Documentation:
 
 Layout/SpaceBeforeComma:
   Enabled: false
+
+Gemspec/RequireMFA:
+  Enabled: false
 # My Preferences - End

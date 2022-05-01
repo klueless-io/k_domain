@@ -25,7 +25,6 @@ Gem::Specification.new do |spec|
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/klueless-io/k_domain'
   spec.metadata['changelog_uri'] = 'https://github.com/klueless-io/k_domain/commits/master'
-  spec.metadata['rubygems_mfa_required'] = 'false'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the RubyGem files that have been added into git.
