@@ -10,6 +10,7 @@ AllCops:
     - "templates/**/*"
     - "lib/k_domain/schemas/domain/old/**/*"
     - "spec/k_domain/ruby_loader/**/*"
+    - "hooks/**/*"
 
 Metrics/PerceivedComplexity:
   Exclude:
