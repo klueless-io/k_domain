@@ -28,7 +28,9 @@ jobs:
       run: |
         gem install bundler -v 2.2.5
         bundle install
+    - name: Run rubocop
+      run: |
+        bundle exec rubocop -v
+        bundle exec rubocop
     - name: Run tests
       run: bundle exec rspec --tag ~skip_on_gha
-    - name: Run rubocop
-      run: bundle exec rubocop
