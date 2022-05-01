@@ -68,8 +68,6 @@ Metrics/MethodLength:
 
 Layout/LineLength:
   Max: 200
-  # Ignores annotate output
-  IgnoredPatterns: ['\A# \*\*']
   IgnoreCopDirectives: true
   Exclude:
     - "lib/k_domain/domain_model/transform_steps/*.rb"
