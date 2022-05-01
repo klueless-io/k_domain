@@ -38,12 +38,12 @@ RSpec.describe KDomain::DomainModel::Transform do
   end
 
   let(:model_shim_loader) do
-    shim_loader.register(:app_model_interceptors      , KDomain::Gem.resource('templates/custom/model_interceptors.rb'))
+    shim_loader.register(:app_model_interceptors , KDomain::Gem.resource('templates/custom/model_interceptors.rb'))
     shim_loader
   end
 
   let(:controller_shim_loader) do
-    shim_loader.register(:app_model_interceptors      , KDomain::Gem.resource('templates/custom/controller_interceptors.rb'))
+    shim_loader.register(:app_model_interceptors , KDomain::Gem.resource('templates/custom/controller_interceptors.rb'))
     shim_loader
   end
 
