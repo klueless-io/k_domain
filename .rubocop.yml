@@ -115,6 +115,9 @@ Style/FormatStringToken:
 Style/Documentation:
   Enabled: false
 
+Style/OpenStructUse:
+  Enabled: false
+
 Layout/SpaceBeforeComma:
   Enabled: false
 
