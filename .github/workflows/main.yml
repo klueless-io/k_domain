@@ -8,6 +8,9 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  GHA: true
+
 jobs:
   test:
 
@@ -26,6 +29,6 @@ jobs:
         gem install bundler -v 2.2.5
         bundle install
     - name: Run tests
-      run: bundle exec rspec
+      run: bundle exec rspec[,,--tag ~skip_on_gha]
     - name: Run rubocop
       run: bundle exec rubocop

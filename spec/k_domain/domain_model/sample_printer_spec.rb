@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
+RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter', :skip_on_gha do
   include KLog::Logging
 
   include_examples :load_domain_model
