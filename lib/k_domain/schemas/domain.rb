@@ -53,6 +53,10 @@ module KDomain
           attribute :name               , Types::Strict::String.optional.default(nil)
           attribute :type               , Types::Strict::String.optional.default(nil)
           attribute :exist              , Types::Strict::Bool
+
+          def exist?
+            exist
+          end
         end
 
         attribute :name                 , Types::Strict::String
@@ -97,7 +101,7 @@ module KDomain
           @columns_primary ||= columns_for_structure_types(:primary_key)
         end
 
-        def columns_foreign
+        def columns_foreign_key
           @columns_foreign ||= columns_for_structure_types(:foreign_key)
         end
 

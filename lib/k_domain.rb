@@ -13,6 +13,7 @@ require 'k_domain/domain_model/transform'
 require 'k_domain/domain_model/transform_steps/_'
 require 'k_domain/domain_model/load'
 require 'k_domain/rails_code_extractor/_'
+require 'k_domain/queries/_'
 
 # # This is useful if you want to initialize structures via Hash
 # class SymbolizeStruct < Dry::Struct

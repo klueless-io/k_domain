@@ -8,9 +8,6 @@ on:
   pull_request:
     branches: [ master ]
 
-env:
-  GHA: true
-
 jobs:
   test:
 

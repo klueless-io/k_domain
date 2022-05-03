@@ -315,8 +315,8 @@ RSpec.describe KDomain::DomainModel::Load do
             it { is_expected.not_to be_nil }
           end
 
-          context '.columns_foreign' do
-            subject { sample.columns_foreign }
+          context '.columns_foreign_key' do
+            subject { sample.columns_foreign_key }
 
             it { is_expected.to have_attributes(length: 2) }
           end
