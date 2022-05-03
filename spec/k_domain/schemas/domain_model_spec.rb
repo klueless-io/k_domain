@@ -3,64 +3,26 @@
 RSpec.describe KDomain::Queries::DomainModelQuery do
   include KLog::Logging
 
-  shared_examples :log_structure do |filters = {}|
-    let(:query) { instance.query(**filters) }
-    let(:graph) do
-      {
-        models: {
-          title: 'Models',
-          take: 20,
-          columns: [
-            :name,
-            :name_plural,
-            :table_name,
-            :type,
-            { pk:               { display_method: ->(row) { row.pk.name                            } } },
-            { pk_type:          { display_method: ->(row) { row.pk.type                            } } },
-            { pk_exist:         { display_method: ->(row) { row.pk.exist                           } } },
-            { column_count:     { display_method: ->(row) { show_length(row.columns)               } } },
-            { for_data:         { display_method: ->(row) { show_length(row.columns_data)          } } },
-            { for_primary:      { display_method: ->(row) { show_length(row.columns_primary)       } } },
-            { for_fk:           { display_method: ->(row) { show_length(row.columns_foreign_key)   } } },
-            { for_poly_fy:      { display_method: ->(row) { show_length(row.columns_foreign_type)  } } },
-            { for_timestamp:    { display_method: ->(row) { show_length(row.columns_timestamp)     } } },
-            { for_deleted_at:   { display_method: ->(row) { show_length(row.columns_deleted_at)    } } },
-            { for_virtual:      { display_method: ->(row) { show_length(row.columns_virtual)       } } },
-            { for_data_foreign: { display_method: ->(row) { show_length(row.columns_data_foreign)  } } },
-            { column_names:     { width: 150, display_method: ->(row) { row.columns.take(12).map(&:name).join(', ') } } }
-          ]
-        }
-      }
-    end
+  include_examples :load_domain_model
 
-    it do
-      log.structure({ models: query },
-                    title: 'Models',
-                    line_width: 200,
-                    show_array_count: true, graph: graph)
+  let(:instance) { described_class.new(load_domain_model) }
+
+  describe '#initialize' do
+    context '.domain_model' do
+      subject { instance.domain_model }
+
+      it { is_expected.not_to be_nil }
     end
   end
 
   context 'when using simple DOM' do
-    include_examples :load_domain_model
-
-    let(:instance) { described_class.new(load_domain_model) }
-
-    describe '#initialize' do
-      context '.domain_model' do
-        subject { instance.domain_model }
-
-        it { is_expected.not_to be_nil }
-      end
-    end
+    let(:filters) { {} }
 
     describe '#all' do
       it { expect(instance.all.count).to eq 21 }
     end
 
     describe '#query' do
-      let(:filters) { {} }
-
       context 'when filter for models with associated ruby file' do
         let(:filters) { { ruby: true } }
 
@@ -88,17 +50,48 @@ RSpec.describe KDomain::Queries::DomainModelQuery do
   end
 
   context 'when using advanced DOM', :skip_on_gha do
-    before(:context) do
-      # load the json model once
-      loader = KDomain::DomainModel::Load.new('spec/example_domain/advanced/output/domain_model.json')
-      loader.call
-      @data = loader.data
+    shared_examples :log_structure do |filters = {}|
+      let(:query) { instance.query(**filters) }
+      let(:graph) do
+        {
+          models: {
+            title: 'Models',
+            take: 20,
+            columns: [
+              :name,
+              :name_plural,
+              :table_name,
+              :type,
+              { pk:               { display_method: ->(row) { row.pk.name                            } } },
+              { pk_type:          { display_method: ->(row) { row.pk.type                            } } },
+              { pk_exist:         { display_method: ->(row) { row.pk.exist                           } } },
+              { column_count:     { display_method: ->(row) { show_length(row.columns)               } } },
+              { for_data:         { display_method: ->(row) { show_length(row.columns_data)          } } },
+              { for_primary:      { display_method: ->(row) { show_length(row.columns_primary)       } } },
+              { for_fk:           { display_method: ->(row) { show_length(row.columns_foreign_key)   } } },
+              { for_poly_fy:      { display_method: ->(row) { show_length(row.columns_foreign_type)  } } },
+              { for_timestamp:    { display_method: ->(row) { show_length(row.columns_timestamp)     } } },
+              { for_deleted_at:   { display_method: ->(row) { show_length(row.columns_deleted_at)    } } },
+              { for_virtual:      { display_method: ->(row) { show_length(row.columns_virtual)       } } },
+              { for_data_foreign: { display_method: ->(row) { show_length(row.columns_data_foreign)  } } },
+              { column_names:     { width: 150, display_method: ->(row) { row.columns.take(12).map(&:name).join(', ') } } }
+            ]
+          }
+        }
+      end
+
+      it do
+        log.structure({ models: query },
+                      title: 'Models',
+                      line_width: 200,
+                      show_array_count: true, graph: graph)
+      end
     end
 
-    let(:instance) { described_class.new(@data) }
-    let(:query) { instance.query(**filters) }
+    let(:load_domain_model_file) { 'spec/example_domain/advanced/output/domain_model.json' }
 
-    let(:log_structure) { log.structure({ models: query }, title: 'Models', line_width: 200, show_array_count: true, graph: graph) }
+    let(:data) { { models: query } }
+    let(:log_structure) { log.structure(data, title: 'Models', line_width: 200, show_array_count: true, graph: graph) }
 
     describe '#all' do
       let(:query) { instance.all }
@@ -122,6 +115,8 @@ RSpec.describe KDomain::Queries::DomainModelQuery do
     #   virtual column filters (token, encrypted_password, etc)
 
     describe '#query' do
+      let(:query) { instance.query(**filters) }
+
       context 'when model has associated ruby file' do
         it_behaves_like :log_structure, { ruby: true }
       end
