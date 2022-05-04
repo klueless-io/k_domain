@@ -23,7 +23,7 @@ module KDomain
         @raw_data = KUtil.data.json_parse(json, as: :hash_symbolized)
 
         # This line is slow on big datasets
-        @data = KDomain::Schemas::DomainModel.new(@raw_data)
+        @data = KDomain::Schemas::AllData.new(@raw_data)
 
         # This line is also slow on big datasets
         enrichment
