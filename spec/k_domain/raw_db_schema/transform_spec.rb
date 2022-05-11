@@ -10,7 +10,7 @@ RSpec.describe KDomain::RawDbSchema::Transform do
   let(:instance) { described_class.new(db_schema_ruby_file, transform_filter) }
   let(:transform_filter) { os(active: 0, table: os(offset: 0, limit: 10)) }
 
-  context 'with advanced schema' do
+  context 'with advanced schema', :skip_on_gha do
     include_examples :domain_advanced_settings
     include_examples :transform_db_schema
 

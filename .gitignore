@@ -31,6 +31,7 @@ k_domain.yml
 *.o
 *.a
 mkmf.log
+.vscode
 
 # Ruby Version
 .ruby-version

@@ -25,7 +25,7 @@ group :development, :test do
 end
 
 # If local dependency
-if ENV['KLUE_LOCAL_GEMS']&.to_s&.downcase == 'true'
+if ENV.fetch('KLUE_LOCAL_GEMS', 'false').downcase == 'true'
   group :development, :test do
     puts 'Using Local GEMs'
     gem 'k_log'                   , path: '../k_log'

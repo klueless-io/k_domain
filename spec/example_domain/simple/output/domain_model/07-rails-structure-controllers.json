@@ -2778,151 +2778,6 @@
     ],
     "controllers": [
       {
-        "name": "home",
-        "path": "home",
-        "namespace": "",
-        "file": "home_controller.rb",
-        "exist": true,
-        "full_file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/controllers/home_controller.rb",
-        "behaviours": {
-          "class_name": "HomeController",
-          "layout": {
-            "name": false,
-            "opts": {
-              "only": [
-                "result",
-                "current",
-                "result_mbe",
-                "current_mbe",
-                "ajax_test_example_ajax_call",
-                "ytd",
-                "ytd_mbe",
-                "ytd_orders",
-                "ytd_estimates",
-                "ytd_shipments"
-              ]
-            }
-          }
-        },
-        "functions": {
-          "class_name": "HomeController",
-          "module_name": "",
-          "class_full_name": "HomeController",
-          "attr_accessor": [
-
-          ],
-          "attr_reader": [
-
-          ],
-          "attr_writer": [
-
-          ],
-          "klass": [
-
-          ],
-          "instance_public": [
-            {
-              "name": "current",
-              "paramaters": [
-
-              ]
-            },
-            {
-              "name": "current_mbe",
-              "paramaters": [
-
-              ]
-            },
-            {
-              "name": "eula",
-              "paramaters": [
-
-              ]
-            },
-            {
-              "name": "get_estimates_target_and_max_value",
-              "paramaters": [
-
-              ]
-            },
-            {
-              "name": "index",
-              "paramaters": [
-
-              ]
-            },
-            {
-              "name": "process_quoter_data",
-              "paramaters": [
-
-              ]
-            },
-            {
-              "name": "result",
-              "paramaters": [
-
-              ]
-            },
-            {
-              "name": "result_mbe",
-              "paramaters": [
-
-              ]
-            },
-            {
-              "name": "rolling_12_month_win_ratio",
-              "paramaters": [
-
-              ]
-            },
-            {
-              "name": "ytd",
-              "paramaters": [
-
-              ]
-            },
-            {
-              "name": "ytd_estimates",
-              "paramaters": [
-
-              ]
-            },
-            {
-              "name": "ytd_mbe",
-              "paramaters": [
-
-              ]
-            },
-            {
-              "name": "ytd_orders",
-              "paramaters": [
-
-              ]
-            },
-            {
-              "name": "ytd_shipments",
-              "paramaters": [
-
-              ]
-            }
-          ],
-          "instance_private": [
-
-          ]
-        },
-        "actions": [
-          {
-            "route_name": "root",
-            "action": "index",
-            "uri_path": "/",
-            "mime_match": "",
-            "verbs": [
-              "GET"
-            ]
-          }
-        ]
-      },
-      {
         "name": "tenants",
         "path": "admin/tenants",
         "namespace": "admin",
@@ -3088,6 +2943,151 @@
             "mime_match": "(.:format)",
             "verbs": [
               "DELETE"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "home",
+        "path": "home",
+        "namespace": "",
+        "file": "home_controller.rb",
+        "exist": true,
+        "full_file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/controllers/home_controller.rb",
+        "behaviours": {
+          "class_name": "HomeController",
+          "layout": {
+            "name": false,
+            "opts": {
+              "only": [
+                "result",
+                "current",
+                "result_mbe",
+                "current_mbe",
+                "ajax_test_example_ajax_call",
+                "ytd",
+                "ytd_mbe",
+                "ytd_orders",
+                "ytd_estimates",
+                "ytd_shipments"
+              ]
+            }
+          }
+        },
+        "functions": {
+          "class_name": "HomeController",
+          "module_name": "",
+          "class_full_name": "HomeController",
+          "attr_accessor": [
+
+          ],
+          "attr_reader": [
+
+          ],
+          "attr_writer": [
+
+          ],
+          "klass": [
+
+          ],
+          "instance_public": [
+            {
+              "name": "current",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "current_mbe",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "eula",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "get_estimates_target_and_max_value",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "index",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "process_quoter_data",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "result",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "result_mbe",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "rolling_12_month_win_ratio",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "ytd",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "ytd_estimates",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "ytd_mbe",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "ytd_orders",
+              "paramaters": [
+
+              ]
+            },
+            {
+              "name": "ytd_shipments",
+              "paramaters": [
+
+              ]
+            }
+          ],
+          "instance_private": [
+
+          ]
+        },
+        "actions": [
+          {
+            "route_name": "root",
+            "action": "index",
+            "uri_path": "/",
+            "mime_match": "",
+            "verbs": [
+              "GET"
             ]
           }
         ]

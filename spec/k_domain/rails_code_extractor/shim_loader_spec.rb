@@ -73,10 +73,10 @@ RSpec.describe KDomain::RailsCodeExtractor::ShimLoader do
       before { instance.call }
 
       it do
-        expect(defined?(ActiveRecord)).to be_truthy
-        expect(defined?(ActiveRecord::Base)).to be_truthy
-        expect(defined?(Rails)).to be_truthy
-        expect(defined?(ActsAsCommentable)).to be_truthy
+        expect(defined?(ActiveRecord)).to eq('constant')
+        expect(defined?(ActiveRecord::Base)).to eq('constant')
+        expect(defined?(Rails)).to eq('constant')
+        expect(defined?(ActsAsCommentable)).to eq('constant')
       end
     end
   end

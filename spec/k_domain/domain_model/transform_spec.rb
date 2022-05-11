@@ -15,12 +15,13 @@ RSpec.describe KDomain::DomainModel::Transform do
   let(:instance) do
     described_class.new(
       db_schema: db_schema,
-      target_file: target_file,
-      target_step_file: target_step_file,
+      target_file: domain_model_file,
+      target_step_file: domain_model_step,
       model_path: model_path,
       controller_path: controller_path,
       route_path: route_path,
-      shim_loader: shim_loader
+      model_shim_loader: model_shim_loader,
+      controller_shim_loader: controller_shim_loader
     )
   end
 
@@ -33,24 +34,23 @@ RSpec.describe KDomain::DomainModel::Transform do
     # Shims to support standard active_record DSL methods
     shim_loader.register(:active_record               , KDomain::Gem.resource('templates/rails/active_record.rb'))
     shim_loader.register(:action_controller           , KDomain::Gem.resource('templates/rails/action_controller.rb'))
-
-    # Shims to support application specific [module, class, method] implementations for suppression and exception avoidance
-    # shim_loader.register(:app_active_record         , KDomain::Gem.resource('templates/custom/active_record.rb'))
-    shim_loader.register(:app_model_interceptors      , KDomain::Gem.resource('templates/custom/model_interceptors.rb'))
-    shim_loader.register(:app_model_interceptors      , KDomain::Gem.resource('templates/custom/controller_interceptors.rb'))
     shim_loader
   end
 
-  let(:target_file)               { 'spec/example_domain/simple/output/domain_model/domain_model.json' }
-  let(:target_step_file)          { 'spec/example_domain/simple/output/domain_model/%{step}.json' }
+  let(:model_shim_loader) do
+    shim_loader.register(:app_model_interceptors , KDomain::Gem.resource('templates/custom/model_interceptors.rb'))
+    shim_loader
+  end
+
+  let(:controller_shim_loader) do
+    shim_loader.register(:app_model_interceptors , KDomain::Gem.resource('templates/custom/controller_interceptors.rb'))
+    shim_loader
+  end
 
   context 'advanced domain' do
     include_examples :domain_advanced_settings
 
-    let(:target_file)             { 'spec/example_domain/advanced/output/domain_model.json' }
-    let(:target_step_file)        { 'spec/example_domain/advanced/output/%{step}.json' }
-
-    xit do
+    it do
       db_transform
       instance.call
     end

@@ -58,7 +58,10 @@ class Step7RailsStructureControllers < KDomain::DomainModel::Step
   end
 
   def attach_behavior_and_functions
+    rails_structure_controllers.sort_by! { |controller| controller[:full_file] }
+
     rails_structure_controllers.select { |controller| controller[:exist] }.each do |controller|
+      # puts "controller: #{controller[:full_file]}"
       unless File.exist?(controller[:full_file])
         log.error 'Controller apparently exists but no file found, this means that you need re-run rake routes'
         puts controller[:full_file]

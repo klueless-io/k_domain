@@ -4,6 +4,8 @@ module ActiveRecord
   class Base
     extend RubyCodeExtractor::BehaviourAccessors
 
+    def self.require(*_p, **_o); end
+
     def self.singleton_class
       Class.new do
         def send(*_p, **_o); end

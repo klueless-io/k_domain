@@ -1,6 +1,6 @@
 # require: rubocop-rake
 AllCops:
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.7
   DisplayCopNames: true
   ExtraDetails: true
   NewCops: enable
@@ -10,6 +10,7 @@ AllCops:
     - "templates/**/*"
     - "lib/k_domain/schemas/domain/old/**/*"
     - "spec/k_domain/ruby_loader/**/*"
+    - "hooks/**/*"
 
 Metrics/PerceivedComplexity:
   Exclude:
@@ -68,8 +69,6 @@ Metrics/MethodLength:
 
 Layout/LineLength:
   Max: 200
-  # Ignores annotate output
-  IgnoredPatterns: ['\A# \*\*']
   IgnoreCopDirectives: true
   Exclude:
     - "lib/k_domain/domain_model/transform_steps/*.rb"
@@ -116,6 +115,12 @@ Style/FormatStringToken:
 Style/Documentation:
   Enabled: false
 
+Style/OpenStructUse:
+  Enabled: false
+
 Layout/SpaceBeforeComma:
+  Enabled: false
+
+Gemspec/RequireMFA:
   Enabled: false
 # My Preferences - End

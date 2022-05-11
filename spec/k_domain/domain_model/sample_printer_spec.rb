@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
-RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
+RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter', :skip_on_gha do
   include KLog::Logging
 
+  include_examples :domain_simple_settings
+  # include_examples :domain_advanced_settings
   include_examples :load_domain_model
-
-  # let(:load_domain_model_file) { 'spec/example_domain/simple/output/domain_model/domain_model.json' }
-  let(:load_domain_model_file) { 'spec/example_domain/advanced/output/domain_model.json' }
 
   let(:root_graph) do
     {
@@ -20,7 +19,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
     }
   end
 
-  # let(:load_domain_model_file) { 'spec/sample_output/printspeak/domain_model.json' }
+  # let(:load_domain_model_file) { 'spec/sample_output/printspeak/main_dataset.json' }
 
   def show_length(array)
     return '' if array.nil?
@@ -61,7 +60,8 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
               { column_count:     { display_method: ->(row) { show_length(row.columns)               } } },
               { for_data:         { display_method: ->(row) { show_length(row.columns_data)          } } },
               { for_primary:      { display_method: ->(row) { show_length(row.columns_primary)       } } },
-              { for_foreign:      { display_method: ->(row) { show_length(row.columns_foreign)       } } },
+              { for_fk:           { display_method: ->(row) { show_length(row.columns_foreign_key)   } } },
+              { for_poly_fy:      { display_method: ->(row) { show_length(row.columns_foreign_type)  } } },
               { for_timestamp:    { display_method: ->(row) { show_length(row.columns_timestamp)     } } },
               { for_deleted_at:   { display_method: ->(row) { show_length(row.columns_deleted_at)    } } },
               { for_virtual:      { display_method: ->(row) { show_length(row.columns_virtual)       } } },
@@ -72,7 +72,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
       }
     end
 
-    fit do
+    it do
       log.structure(load_domain_model, title: 'Models', line_width: 200, show_array_count: true, graph: root_graph.merge(graph))
     end
   end
@@ -162,7 +162,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
                 :controller_exist,
                 { verbs: { width: 40, display_method: ->(row) { row.verbs.join(', ') } } },
                 :duplicate_verb,
-                { file: { width: 250, display_method: ->(row) { row.file[row.file.index('app/controllers') + 'app/controllers'.length..-1] } } }
+                { file: { width: 250, display_method: ->(row) { row.file[row.file.index('controllers') + 'controllers'.length..] } } }
               ]
             },
             controllers: { skip: true }
@@ -176,7 +176,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
                       line_width: 200, show_array_count: true,
                       graph: root_graph.merge(graph))
 
-        puts Dir.pwd
+        # puts Dir.pwd
       end
     end
   end
@@ -193,7 +193,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter' do
               columns: [
                 :model_name,
                 :table_name,
-                { file: { width: 50, display_method: ->(row) { row.file[-40..-1] || row.file } } },
+                { file: { width: 50, display_method: ->(row) { row.file[-40..] || row.file } } },
                 :exist,
                 { state: { width: 40 } },
                 { code: { display_method: ->(row) { !row.code.empty? } } },

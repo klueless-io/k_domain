@@ -12,7 +12,9 @@ require 'k_domain/raw_db_schema/load'
 require 'k_domain/domain_model/transform'
 require 'k_domain/domain_model/transform_steps/_'
 require 'k_domain/domain_model/load'
+require 'k_domain/domain_model/build_rich_models'
 require 'k_domain/rails_code_extractor/_'
+require 'k_domain/queries/_'
 
 # # This is useful if you want to initialize structures via Hash
 # class SymbolizeStruct < Dry::Struct
@@ -38,7 +40,7 @@ module KDomain
   # Your code goes here...
 end
 
-if ENV['KLUE_DEBUG']&.to_s&.downcase == 'true'
+if ENV.fetch('KLUE_DEBUG', 'false').downcase == 'true'
   namespace = 'KDomain::Version'
   file_path = $LOADED_FEATURES.find { |f| f.include?('k_domain/version') }
   version = KDomain::VERSION.ljust(9)

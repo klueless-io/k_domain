@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-# DomainModel holds the entire domain model including database and ancillary information
+# MainDataset holds the entire domain model including database and ancillary information
 module KDomain
   module Schemas
-    class DomainModel < Dry::Struct
+    class MainDataset < Dry::Struct
       attribute :domain           , KDomain::Schemas::Domain
       attribute :database         , KDomain::Schemas::Database
       attribute :dictionary       , KDomain::Schemas::Dictionary

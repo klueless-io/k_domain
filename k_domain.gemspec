@@ -3,7 +3,7 @@
 require_relative 'lib/k_domain/version'
 
 Gem::Specification.new do |spec|
-  spec.required_ruby_version  = '>= 2.5'
+  spec.required_ruby_version  = '>= 2.7'
   spec.name                   = 'k_domain'
   spec.version                = KDomain::VERSION
   spec.authors                = ['David Cruwys']

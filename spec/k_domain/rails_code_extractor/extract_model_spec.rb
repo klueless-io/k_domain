@@ -83,8 +83,8 @@ RSpec.describe KDomain::RailsCodeExtractor::ExtractModel do
         name: :user,
         opts: have_attributes(
           class_name: 'User',
-          foreign_key: 'id',
-          primary_key: 'sales_user_id'
+          foreign_key: 'sales_user_id',
+          primary_key: 'id'
         ),
         block: nil
       )
@@ -92,8 +92,8 @@ RSpec.describe KDomain::RailsCodeExtractor::ExtractModel do
         name: :user,
         opts: have_attributes(
           class_name: 'User',
-          foreign_key: 'id',
-          primary_key: 'sales_user_id'
+          foreign_key: 'sales_user_id',
+          primary_key: 'id'
         ),
         block: nil
       )

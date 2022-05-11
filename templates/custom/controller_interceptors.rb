@@ -10,18 +10,14 @@ class Rails
     )
   end
 end
-class RegionConfig
-  def self.require_value(*_p, **_o, &block); end
-end
-
 class ApplicationController < ActionController::Base
+  def self.require(*_p, **_o); end
 end
 
 module Admin
   class BaseController < ActionController::Base
   end
 end
-
 module Api
   module V1
     class BaseController < ActionController::Base
@@ -38,12 +34,18 @@ module Portal
   class BaseController < ApplicationController
   end
 end
-
 module ActiveRecord
   class RecordNotFound
   end
 end
-
+class RegionConfig < ActiveRecord::Base
+  def self.require_value(*_p, **_o, &block)
+    return 'ABC'
+  end
+  def self.get_value
+    return 'ABC'
+  end
+end
 module Aws
   class Credentials
     def initialize(*_p, **_o, &block); end
