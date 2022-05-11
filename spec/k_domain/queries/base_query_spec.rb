@@ -3,6 +3,7 @@
 RSpec.describe KDomain::Queries::BaseQuery do
   include KLog::Logging
 
+  include_examples :domain_simple_settings
   include_examples :load_domain_model
 
   let(:instance) { described_class.new(load_domain_model) }
@@ -20,6 +21,6 @@ RSpec.describe KDomain::Queries::BaseQuery do
   # end
 
   # context 'when using advanced DOM', :skip_on_gha do
-  #   let(:load_domain_model_file) { 'spec/example_domain/advanced/output/domain_model.json' }
+  #   include_examples :domain_advanced_settings
   # end
 end

@@ -15,8 +15,8 @@ RSpec.describe KDomain::DomainModel::Transform do
   let(:instance) do
     described_class.new(
       db_schema: db_schema,
-      target_file: target_file,
-      target_step_file: target_step_file,
+      target_file: domain_model_file,
+      target_step_file: domain_model_step,
       model_path: model_path,
       controller_path: controller_path,
       route_path: route_path,
@@ -47,16 +47,10 @@ RSpec.describe KDomain::DomainModel::Transform do
     shim_loader
   end
 
-  let(:target_file)               { 'spec/example_domain/simple/output/domain_model/domain_model.json' }
-  let(:target_step_file)          { 'spec/example_domain/simple/output/domain_model/%{step}.json' }
-
   context 'advanced domain' do
     include_examples :domain_advanced_settings
 
-    let(:target_file)             { 'spec/example_domain/advanced/output/domain_model.json' }
-    let(:target_step_file)        { 'spec/example_domain/advanced/output/%{step}.json' }
-
-    xit do
+    it do
       db_transform
       instance.call
     end

@@ -42,6 +42,7 @@ RSpec.describe KDomain::Queries::DomainModelQuery do
   end
 
   context 'when using simple DOM' do
+    include_examples :domain_simple_settings
     include_examples :load_domain_model
 
     let(:instance) { described_class.new(load_domain_model) }
@@ -88,14 +89,10 @@ RSpec.describe KDomain::Queries::DomainModelQuery do
   end
 
   context 'when using advanced DOM', :skip_on_gha do
-    before(:context) do
-      # load the json model once
-      loader = KDomain::DomainModel::Load.new('spec/example_domain/advanced/output/domain_model.json')
-      loader.call
-      @data = loader.data
-    end
+    include_examples :domain_simple_settings
+    include_examples :load_domain_model
 
-    let(:instance) { described_class.new(@data) }
+    let(:instance) { described_class.new(load_domain_model) }
     let(:query) { instance.query(**filters) }
 
     let(:log_structure) { log.structure({ models: query }, title: 'Models', line_width: 200, show_array_count: true, graph: graph) }
