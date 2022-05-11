@@ -39,7 +39,12 @@ module ActiveRecord
   end
 end
 class RegionConfig < ActiveRecord::Base
-  def self.require_value(*_p, **_o, &block); end
+  def self.require_value(*_p, **_o, &block)
+    return 'ABC'
+  end
+  def self.get_value
+    return 'ABC'
+  end
 end
 module Aws
   class Credentials

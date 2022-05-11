@@ -3,10 +3,9 @@
 RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter', :skip_on_gha do
   include KLog::Logging
 
+  include_examples :domain_simple_settings
+  # include_examples :domain_advanced_settings
   include_examples :load_domain_model
-
-  let(:load_domain_model_file) { 'spec/example_domain/simple/output/domain_model/domain_model.json' }
-  # let(:load_domain_model_file) { 'spec/example_domain/advanced/output/domain_model.json' }
 
   let(:root_graph) do
     {
@@ -20,7 +19,7 @@ RSpec.describe 'KDomain::DomainModelSchema::SamplePrinter', :skip_on_gha do
     }
   end
 
-  # let(:load_domain_model_file) { 'spec/sample_output/printspeak/domain_model.json' }
+  # let(:load_domain_model_file) { 'spec/sample_output/printspeak/main_dataset.json' }
 
   def show_length(array)
     return '' if array.nil?

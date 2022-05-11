@@ -5,8 +5,8 @@ RSpec.describe KDomain::DomainModel::Load do
 
   let(:instance) { described_class.new(source_file) }
 
-  let(:source_file) { 'spec/example_domain/simple/output/domain_model/domain_model.json' }
-  # let(:source_file) { '/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/advanced/output/domain_model.json' }
+  let(:source_file) { 'spec/example_domain/simple/output/domain_model/main_dataset.json' }
+  # let(:source_file) { '/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/advanced/output/main_dataset.json' }
 
   describe '#initialize' do
     context '.source_file' do

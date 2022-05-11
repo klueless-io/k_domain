@@ -18,7 +18,10 @@ module KDomain
       end
 
       def call
-        shim_files.select { |sf| sf[:exist] }.each { |sf| require sf[:file] }
+        shim_files.select { |sf| sf[:exist] }.each do |sf|
+          require sf[:file]
+        end
+        nil
       end
 
       def register(name, file)
