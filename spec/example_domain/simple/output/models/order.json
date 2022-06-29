@@ -1,0 +1,1554 @@
+{
+  "name": "order",
+  "name_plural": "orders",
+  "table_name": "orders",
+  "type": "entity",
+  "pk": {
+    "name": "id",
+    "type": "bigint",
+    "exist": true
+  },
+  "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/order.rb",
+  "exist": true,
+  "create_update_timestamp": false,
+  "main_key": null,
+  "traits": [
+    "trait1",
+    "trait2",
+    "trait3"
+  ],
+  "column_names": {
+    "all": [
+      "id",
+      "customer_id",
+      "shop_id",
+      "order_details",
+      "placed_at",
+      "in_queue_at",
+      "making_at",
+      "made_at",
+      "cancelled_at",
+      "collected_at",
+      "fail_at",
+      "fail_reason"
+    ],
+    "data": [
+      "customer_id",
+      "order_details",
+      "placed_at",
+      "in_queue_at",
+      "making_at",
+      "made_at",
+      "cancelled_at",
+      "collected_at",
+      "fail_at",
+      "fail_reason"
+    ],
+    "primary": [
+      "id"
+    ],
+    "foreign_key": [
+      "shop_id"
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      "customer_id",
+      "shop_id",
+      "order_details",
+      "placed_at",
+      "in_queue_at",
+      "making_at",
+      "made_at",
+      "cancelled_at",
+      "collected_at",
+      "fail_at",
+      "fail_reason"
+    ],
+    "data_primary": [
+      "id",
+      "customer_id",
+      "order_details",
+      "placed_at",
+      "in_queue_at",
+      "making_at",
+      "made_at",
+      "cancelled_at",
+      "collected_at",
+      "fail_at",
+      "fail_reason"
+    ],
+    "data_virtual": [
+      "customer_id",
+      "order_details",
+      "placed_at",
+      "in_queue_at",
+      "making_at",
+      "made_at",
+      "cancelled_at",
+      "collected_at",
+      "fail_at",
+      "fail_reason"
+    ],
+    "data_foreign_virtual": [
+      "customer_id",
+      "shop_id",
+      "order_details",
+      "placed_at",
+      "in_queue_at",
+      "making_at",
+      "made_at",
+      "cancelled_at",
+      "collected_at",
+      "fail_at",
+      "fail_reason"
+    ]
+  },
+  "columns": {
+    "all": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "primary_key",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "customer_id",
+        "name_plural": "customer_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "shop_id",
+        "name_plural": "shop_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :shop fk: shop_id"
+        ]
+      },
+      {
+        "name": "order_details",
+        "name_plural": "order_details",
+        "type": "jsonb",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "jsonb",
+        "ruby_type": "Hash",
+        "csharp_type": "object",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "placed_at",
+        "name_plural": "placed_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "in_queue_at",
+        "name_plural": "in_queue_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "making_at",
+        "name_plural": "making_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "made_at",
+        "name_plural": "made_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "cancelled_at",
+        "name_plural": "cancelled_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "collected_at",
+        "name_plural": "collected_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "fail_at",
+        "name_plural": "fail_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "fail_reason",
+        "name_plural": "fail_reasons",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data": [
+      {
+        "name": "customer_id",
+        "name_plural": "customer_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "order_details",
+        "name_plural": "order_details",
+        "type": "jsonb",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "jsonb",
+        "ruby_type": "Hash",
+        "csharp_type": "object",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "placed_at",
+        "name_plural": "placed_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "in_queue_at",
+        "name_plural": "in_queue_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "making_at",
+        "name_plural": "making_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "made_at",
+        "name_plural": "made_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "cancelled_at",
+        "name_plural": "cancelled_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "collected_at",
+        "name_plural": "collected_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "fail_at",
+        "name_plural": "fail_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "fail_reason",
+        "name_plural": "fail_reasons",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "primary": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "primary_key",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "foreign_key": [
+      {
+        "name": "shop_id",
+        "name_plural": "shop_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :shop fk: shop_id"
+        ]
+      }
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      {
+        "name": "customer_id",
+        "name_plural": "customer_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "shop_id",
+        "name_plural": "shop_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :shop fk: shop_id"
+        ]
+      },
+      {
+        "name": "order_details",
+        "name_plural": "order_details",
+        "type": "jsonb",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "jsonb",
+        "ruby_type": "Hash",
+        "csharp_type": "object",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "placed_at",
+        "name_plural": "placed_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "in_queue_at",
+        "name_plural": "in_queue_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "making_at",
+        "name_plural": "making_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "made_at",
+        "name_plural": "made_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "cancelled_at",
+        "name_plural": "cancelled_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "collected_at",
+        "name_plural": "collected_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "fail_at",
+        "name_plural": "fail_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "fail_reason",
+        "name_plural": "fail_reasons",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_primary": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "primary_key",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "customer_id",
+        "name_plural": "customer_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "order_details",
+        "name_plural": "order_details",
+        "type": "jsonb",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "jsonb",
+        "ruby_type": "Hash",
+        "csharp_type": "object",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "placed_at",
+        "name_plural": "placed_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "in_queue_at",
+        "name_plural": "in_queue_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "making_at",
+        "name_plural": "making_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "made_at",
+        "name_plural": "made_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "cancelled_at",
+        "name_plural": "cancelled_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "collected_at",
+        "name_plural": "collected_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "fail_at",
+        "name_plural": "fail_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "fail_reason",
+        "name_plural": "fail_reasons",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_virtual": [
+      {
+        "name": "customer_id",
+        "name_plural": "customer_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "order_details",
+        "name_plural": "order_details",
+        "type": "jsonb",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "jsonb",
+        "ruby_type": "Hash",
+        "csharp_type": "object",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "placed_at",
+        "name_plural": "placed_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "in_queue_at",
+        "name_plural": "in_queue_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "making_at",
+        "name_plural": "making_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "made_at",
+        "name_plural": "made_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "cancelled_at",
+        "name_plural": "cancelled_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "collected_at",
+        "name_plural": "collected_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "fail_at",
+        "name_plural": "fail_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "fail_reason",
+        "name_plural": "fail_reasons",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_foreign_virtual": [
+      {
+        "name": "customer_id",
+        "name_plural": "customer_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "shop_id",
+        "name_plural": "shop_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :shop fk: shop_id"
+        ]
+      },
+      {
+        "name": "order_details",
+        "name_plural": "order_details",
+        "type": "jsonb",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "jsonb",
+        "ruby_type": "Hash",
+        "csharp_type": "object",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "placed_at",
+        "name_plural": "placed_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "in_queue_at",
+        "name_plural": "in_queue_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "making_at",
+        "name_plural": "making_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "made_at",
+        "name_plural": "made_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "cancelled_at",
+        "name_plural": "cancelled_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "collected_at",
+        "name_plural": "collected_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "fail_at",
+        "name_plural": "fail_ats",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "fail_reason",
+        "name_plural": "fail_reasons",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ]
+  }
+}

@@ -50,10 +50,10 @@ RSpec.describe KDomain::DomainModel::Transform do
   context 'advanced domain' do
     include_examples :domain_advanced_settings
 
-    it do
-      db_transform
-      instance.call
-    end
+    # fit do
+    #   db_transform
+    #   instance.call
+    # end
   end
 
   describe '#initialize' do
