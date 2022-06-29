@@ -1,0 +1,762 @@
+{
+  "name": "shop",
+  "name_plural": "shops",
+  "table_name": "shops",
+  "type": "entity",
+  "pk": {
+    "name": "id",
+    "type": "bigint",
+    "exist": true
+  },
+  "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/shop.rb",
+  "exist": true,
+  "create_update_timestamp": false,
+  "main_key": null,
+  "traits": [
+    "trait1",
+    "trait2",
+    "trait3"
+  ],
+  "column_names": {
+    "all": [
+      "id",
+      "app_user_id",
+      "name",
+      "address",
+      "longitude",
+      "latitude"
+    ],
+    "data": [
+      "name",
+      "address",
+      "longitude",
+      "latitude"
+    ],
+    "primary": [
+      "id"
+    ],
+    "foreign_key": [
+      "app_user_id"
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      "app_user_id",
+      "name",
+      "address",
+      "longitude",
+      "latitude"
+    ],
+    "data_primary": [
+      "id",
+      "name",
+      "address",
+      "longitude",
+      "latitude"
+    ],
+    "data_virtual": [
+      "name",
+      "address",
+      "longitude",
+      "latitude"
+    ],
+    "data_foreign_virtual": [
+      "app_user_id",
+      "name",
+      "address",
+      "longitude",
+      "latitude"
+    ]
+  },
+  "columns": {
+    "all": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "primary_key",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "app_user_id",
+        "name_plural": "app_user_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :app_user fk: app_user_id"
+        ]
+      },
+      {
+        "name": "name",
+        "name_plural": "names",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "address",
+        "name_plural": "addresses",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "longitude",
+        "name_plural": "longitudes",
+        "type": "float",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "float",
+        "ruby_type": "Float",
+        "csharp_type": "double",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "latitude",
+        "name_plural": "latitudes",
+        "type": "float",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "float",
+        "ruby_type": "Float",
+        "csharp_type": "double",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data": [
+      {
+        "name": "name",
+        "name_plural": "names",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "address",
+        "name_plural": "addresses",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "longitude",
+        "name_plural": "longitudes",
+        "type": "float",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "float",
+        "ruby_type": "Float",
+        "csharp_type": "double",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "latitude",
+        "name_plural": "latitudes",
+        "type": "float",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "float",
+        "ruby_type": "Float",
+        "csharp_type": "double",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "primary": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "primary_key",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "foreign_key": [
+      {
+        "name": "app_user_id",
+        "name_plural": "app_user_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :app_user fk: app_user_id"
+        ]
+      }
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      {
+        "name": "app_user_id",
+        "name_plural": "app_user_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :app_user fk: app_user_id"
+        ]
+      },
+      {
+        "name": "name",
+        "name_plural": "names",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "address",
+        "name_plural": "addresses",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "longitude",
+        "name_plural": "longitudes",
+        "type": "float",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "float",
+        "ruby_type": "Float",
+        "csharp_type": "double",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "latitude",
+        "name_plural": "latitudes",
+        "type": "float",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "float",
+        "ruby_type": "Float",
+        "csharp_type": "double",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_primary": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "primary_key",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "name",
+        "name_plural": "names",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "address",
+        "name_plural": "addresses",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "longitude",
+        "name_plural": "longitudes",
+        "type": "float",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "float",
+        "ruby_type": "Float",
+        "csharp_type": "double",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "latitude",
+        "name_plural": "latitudes",
+        "type": "float",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "float",
+        "ruby_type": "Float",
+        "csharp_type": "double",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_virtual": [
+      {
+        "name": "name",
+        "name_plural": "names",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "address",
+        "name_plural": "addresses",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "longitude",
+        "name_plural": "longitudes",
+        "type": "float",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "float",
+        "ruby_type": "Float",
+        "csharp_type": "double",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "latitude",
+        "name_plural": "latitudes",
+        "type": "float",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "float",
+        "ruby_type": "Float",
+        "csharp_type": "double",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_foreign_virtual": [
+      {
+        "name": "app_user_id",
+        "name_plural": "app_user_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :app_user fk: app_user_id"
+        ]
+      },
+      {
+        "name": "name",
+        "name_plural": "names",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "address",
+        "name_plural": "addresses",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "longitude",
+        "name_plural": "longitudes",
+        "type": "float",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "float",
+        "ruby_type": "Float",
+        "csharp_type": "double",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "latitude",
+        "name_plural": "latitudes",
+        "type": "float",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "float",
+        "ruby_type": "Float",
+        "csharp_type": "double",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ]
+  }
+}

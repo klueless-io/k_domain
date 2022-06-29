@@ -1,0 +1,348 @@
+{
+  "name": "__EFMigrationsHistory",
+  "name_plural": "__EFMigrationsHistory",
+  "table_name": "__EFMigrationsHistory",
+  "type": "entity",
+  "pk": {
+    "name": "MigrationId",
+    "type": "bigint",
+    "exist": true
+  },
+  "file": "",
+  "exist": false,
+  "create_update_timestamp": false,
+  "main_key": null,
+  "traits": [
+    "trait1",
+    "trait2",
+    "trait3"
+  ],
+  "column_names": {
+    "all": [
+      "id",
+      "ProductVersion"
+    ],
+    "data": [
+      "id",
+      "ProductVersion"
+    ],
+    "primary": [
+
+    ],
+    "foreign_key": [
+
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      "id",
+      "ProductVersion"
+    ],
+    "data_primary": [
+      "id",
+      "ProductVersion"
+    ],
+    "data_virtual": [
+      "id",
+      "ProductVersion"
+    ],
+    "data_foreign_virtual": [
+      "id",
+      "ProductVersion"
+    ]
+  },
+  "columns": {
+    "all": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "ProductVersion",
+        "name_plural": "ProductVersions",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 32,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "ProductVersion",
+        "name_plural": "ProductVersions",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 32,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "primary": [
+
+    ],
+    "foreign_key": [
+
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "ProductVersion",
+        "name_plural": "ProductVersions",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 32,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_primary": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "ProductVersion",
+        "name_plural": "ProductVersions",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 32,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_virtual": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "ProductVersion",
+        "name_plural": "ProductVersions",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 32,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_foreign_virtual": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "ProductVersion",
+        "name_plural": "ProductVersions",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 32,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ]
+  }
+}

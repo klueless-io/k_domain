@@ -1,0 +1,612 @@
+{
+  "name": "asp_net_user_login",
+  "name_plural": "asp_net_user_logins",
+  "table_name": "asp_net_user_logins",
+  "type": "entity",
+  "pk": {
+    "name": null,
+    "type": null,
+    "exist": false
+  },
+  "file": "",
+  "exist": false,
+  "create_update_timestamp": false,
+  "main_key": null,
+  "traits": [
+    "trait1",
+    "trait2",
+    "trait3"
+  ],
+  "column_names": {
+    "all": [
+      "login_provider",
+      "provider_key",
+      "provider_display_name",
+      "user_id"
+    ],
+    "data": [
+      "login_provider",
+      "provider_key",
+      "provider_display_name",
+      "user_id"
+    ],
+    "primary": [
+
+    ],
+    "foreign_key": [
+
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      "login_provider",
+      "provider_key",
+      "provider_display_name",
+      "user_id"
+    ],
+    "data_primary": [
+      "login_provider",
+      "provider_key",
+      "provider_display_name",
+      "user_id"
+    ],
+    "data_virtual": [
+      "login_provider",
+      "provider_key",
+      "provider_display_name",
+      "user_id"
+    ],
+    "data_foreign_virtual": [
+      "login_provider",
+      "provider_key",
+      "provider_display_name",
+      "user_id"
+    ]
+  },
+  "columns": {
+    "all": [
+      {
+        "name": "login_provider",
+        "name_plural": "login_providers",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 128,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "provider_key",
+        "name_plural": "provider_keys",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 128,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "provider_display_name",
+        "name_plural": "provider_display_names",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "user_id",
+        "name_plural": "user_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data": [
+      {
+        "name": "login_provider",
+        "name_plural": "login_providers",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 128,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "provider_key",
+        "name_plural": "provider_keys",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 128,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "provider_display_name",
+        "name_plural": "provider_display_names",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "user_id",
+        "name_plural": "user_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "primary": [
+
+    ],
+    "foreign_key": [
+
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      {
+        "name": "login_provider",
+        "name_plural": "login_providers",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 128,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "provider_key",
+        "name_plural": "provider_keys",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 128,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "provider_display_name",
+        "name_plural": "provider_display_names",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "user_id",
+        "name_plural": "user_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_primary": [
+      {
+        "name": "login_provider",
+        "name_plural": "login_providers",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 128,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "provider_key",
+        "name_plural": "provider_keys",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 128,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "provider_display_name",
+        "name_plural": "provider_display_names",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "user_id",
+        "name_plural": "user_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_virtual": [
+      {
+        "name": "login_provider",
+        "name_plural": "login_providers",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 128,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "provider_key",
+        "name_plural": "provider_keys",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 128,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "provider_display_name",
+        "name_plural": "provider_display_names",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "user_id",
+        "name_plural": "user_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_foreign_virtual": [
+      {
+        "name": "login_provider",
+        "name_plural": "login_providers",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 128,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "provider_key",
+        "name_plural": "provider_keys",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": 128,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "provider_display_name",
+        "name_plural": "provider_display_names",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "user_id",
+        "name_plural": "user_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ]
+  }
+}

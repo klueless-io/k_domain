@@ -1,0 +1,454 @@
+{
+  "name": "customer_shop",
+  "name_plural": "customer_shops",
+  "table_name": "customer_shops",
+  "type": "entity",
+  "pk": {
+    "name": "id",
+    "type": "bigint",
+    "exist": true
+  },
+  "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/customer_shop.rb",
+  "exist": true,
+  "create_update_timestamp": false,
+  "main_key": null,
+  "traits": [
+    "trait1",
+    "trait2",
+    "trait3"
+  ],
+  "column_names": {
+    "all": [
+      "id",
+      "status",
+      "customer_id",
+      "shop_id"
+    ],
+    "data": [
+      "status"
+    ],
+    "primary": [
+      "id"
+    ],
+    "foreign_key": [
+      "customer_id",
+      "shop_id"
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      "status",
+      "customer_id",
+      "shop_id"
+    ],
+    "data_primary": [
+      "id",
+      "status"
+    ],
+    "data_virtual": [
+      "status"
+    ],
+    "data_foreign_virtual": [
+      "status",
+      "customer_id",
+      "shop_id"
+    ]
+  },
+  "columns": {
+    "all": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "primary_key",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "status",
+        "name_plural": "statuses",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "customer_id",
+        "name_plural": "customer_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :customer fk: customer_id"
+        ]
+      },
+      {
+        "name": "shop_id",
+        "name_plural": "shop_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :shop fk: shop_id"
+        ]
+      }
+    ],
+    "data": [
+      {
+        "name": "status",
+        "name_plural": "statuses",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "primary": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "primary_key",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "foreign_key": [
+      {
+        "name": "customer_id",
+        "name_plural": "customer_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :customer fk: customer_id"
+        ]
+      },
+      {
+        "name": "shop_id",
+        "name_plural": "shop_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :shop fk: shop_id"
+        ]
+      }
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      {
+        "name": "status",
+        "name_plural": "statuses",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "customer_id",
+        "name_plural": "customer_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :customer fk: customer_id"
+        ]
+      },
+      {
+        "name": "shop_id",
+        "name_plural": "shop_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :shop fk: shop_id"
+        ]
+      }
+    ],
+    "data_primary": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "primary_key",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "status",
+        "name_plural": "statuses",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_virtual": [
+      {
+        "name": "status",
+        "name_plural": "statuses",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_foreign_virtual": [
+      {
+        "name": "status",
+        "name_plural": "statuses",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "customer_id",
+        "name_plural": "customer_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :customer fk: customer_id"
+        ]
+      },
+      {
+        "name": "shop_id",
+        "name_plural": "shop_ids",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "foreign_key",
+        "relationships": [
+          "belongs_to: :shop fk: shop_id"
+        ]
+      }
+    ]
+  }
+}
