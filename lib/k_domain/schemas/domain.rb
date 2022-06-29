@@ -47,6 +47,41 @@ module KDomain
 
             @csharp_type = KDomain::Schemas::CSHARP_TYPE[type] || '******'
           end
+
+          def to_h
+            {
+              name: name,
+              name_plural: name_plural,
+              type: type,
+              precision: precision,
+              scale: scale,
+              default: default,
+              default_as_code: value_as_code(default),
+              null: null,
+              null_as_code: value_as_code(null), # handlebars does not like null property name
+              limit: limit,
+              array: array,
+              array_as_code: value_as_code(array),
+              db_type: db_type,
+              ruby_type: ruby_type,
+              csharp_type: csharp_type,
+              structure_type: structure_type,
+              relationships: relationships
+            }
+          end
+
+          private
+
+          def value_as_code(value)
+            return value if value.nil?
+
+            case value
+            when String # , Hash
+              "'#{value}'"
+            else
+              value.to_s
+            end
+          end
         end
 
         class Pk < Dry::Struct
@@ -79,6 +114,12 @@ module KDomain
           pk.exist
         end
 
+        def create_update_timestamp?
+          names = columns_timestamp.map(&:name)
+
+          (names & %w[created_at updated_at]).any?
+        end
+
         # Custom model configurations such as main_key and traits
         def config
           @config ||= KDomain.configuration.find_model(name.to_sym)
@@ -105,6 +146,7 @@ module KDomain
           @columns_foreign ||= columns_for_structure_types(:foreign_key)
         end
 
+        # polymorphic foreign keys
         def columns_foreign_type
           @columns_foreign_type ||= columns_for_structure_types(:foreign_type)
         end
@@ -122,7 +164,7 @@ module KDomain
         end
 
         def columns_data_foreign
-          @columns_data_foreign ||= columns_for_structure_types(:data, :foreign_key)
+          @columns_data_foreign ||= columns_for_structure_types(:data, :foreign_key, :foreign_type)
         end
         alias rows_fields_and_fk columns_data_foreign
 

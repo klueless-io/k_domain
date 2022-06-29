@@ -1,0 +1,412 @@
+{
+  "name": "item",
+  "name_plural": "items",
+  "table_name": "items",
+  "type": "entity",
+  "pk": {
+    "name": "id",
+    "type": "bigint",
+    "exist": true
+  },
+  "file": "/Users/davidcruwys/dev/kgems/k_domain/spec/example_domain/simple/input/models/item.rb",
+  "exist": true,
+  "create_update_timestamp": false,
+  "main_key": null,
+  "traits": [
+    "trait1",
+    "trait2",
+    "trait3"
+  ],
+  "column_names": {
+    "all": [
+      "id",
+      "title",
+      "group"
+    ],
+    "data": [
+      "title",
+      "group"
+    ],
+    "primary": [
+      "id"
+    ],
+    "foreign_key": [
+
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      "title",
+      "group"
+    ],
+    "data_primary": [
+      "id",
+      "title",
+      "group"
+    ],
+    "data_virtual": [
+      "title",
+      "group"
+    ],
+    "data_foreign_virtual": [
+      "title",
+      "group"
+    ]
+  },
+  "columns": {
+    "all": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "primary_key",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "title",
+        "name_plural": "titles",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "group",
+        "name_plural": "groups",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data": [
+      {
+        "name": "title",
+        "name_plural": "titles",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "group",
+        "name_plural": "groups",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "primary": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "primary_key",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "foreign_key": [
+
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      {
+        "name": "title",
+        "name_plural": "titles",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "group",
+        "name_plural": "groups",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_primary": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "primary_key",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "title",
+        "name_plural": "titles",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "group",
+        "name_plural": "groups",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_virtual": [
+      {
+        "name": "title",
+        "name_plural": "titles",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "group",
+        "name_plural": "groups",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_foreign_virtual": [
+      {
+        "name": "title",
+        "name_plural": "titles",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "group",
+        "name_plural": "groups",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ]
+  }
+}

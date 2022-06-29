@@ -1,0 +1,1996 @@
+{
+  "name": "asp_net_user",
+  "name_plural": "asp_net_users",
+  "table_name": "asp_net_users",
+  "type": "entity",
+  "pk": {
+    "name": "id",
+    "type": "bigint",
+    "exist": true
+  },
+  "file": "",
+  "exist": false,
+  "create_update_timestamp": false,
+  "main_key": null,
+  "traits": [
+    "trait1",
+    "trait2",
+    "trait3"
+  ],
+  "column_names": {
+    "all": [
+      "id",
+      "user_name",
+      "normalized_user_name",
+      "email",
+      "normalized_email",
+      "email_confirmed",
+      "password_hash",
+      "security_stamp",
+      "concurrency_stamp",
+      "phone_number",
+      "phone_number_confirmed",
+      "two_factor_enabled",
+      "lockout_end",
+      "lockout_enabled",
+      "access_failed_count"
+    ],
+    "data": [
+      "user_name",
+      "normalized_user_name",
+      "email",
+      "normalized_email",
+      "email_confirmed",
+      "password_hash",
+      "security_stamp",
+      "concurrency_stamp",
+      "phone_number",
+      "phone_number_confirmed",
+      "two_factor_enabled",
+      "lockout_end",
+      "lockout_enabled",
+      "access_failed_count"
+    ],
+    "primary": [
+      "id"
+    ],
+    "foreign_key": [
+
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      "user_name",
+      "normalized_user_name",
+      "email",
+      "normalized_email",
+      "email_confirmed",
+      "password_hash",
+      "security_stamp",
+      "concurrency_stamp",
+      "phone_number",
+      "phone_number_confirmed",
+      "two_factor_enabled",
+      "lockout_end",
+      "lockout_enabled",
+      "access_failed_count"
+    ],
+    "data_primary": [
+      "id",
+      "user_name",
+      "normalized_user_name",
+      "email",
+      "normalized_email",
+      "email_confirmed",
+      "password_hash",
+      "security_stamp",
+      "concurrency_stamp",
+      "phone_number",
+      "phone_number_confirmed",
+      "two_factor_enabled",
+      "lockout_end",
+      "lockout_enabled",
+      "access_failed_count"
+    ],
+    "data_virtual": [
+      "user_name",
+      "normalized_user_name",
+      "email",
+      "normalized_email",
+      "email_confirmed",
+      "password_hash",
+      "security_stamp",
+      "concurrency_stamp",
+      "phone_number",
+      "phone_number_confirmed",
+      "two_factor_enabled",
+      "lockout_end",
+      "lockout_enabled",
+      "access_failed_count"
+    ],
+    "data_foreign_virtual": [
+      "user_name",
+      "normalized_user_name",
+      "email",
+      "normalized_email",
+      "email_confirmed",
+      "password_hash",
+      "security_stamp",
+      "concurrency_stamp",
+      "phone_number",
+      "phone_number_confirmed",
+      "two_factor_enabled",
+      "lockout_end",
+      "lockout_enabled",
+      "access_failed_count"
+    ]
+  },
+  "columns": {
+    "all": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "primary_key",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "user_name",
+        "name_plural": "user_names",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "normalized_user_name",
+        "name_plural": "normalized_user_names",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "email",
+        "name_plural": "emails",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "normalized_email",
+        "name_plural": "normalized_emails",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "email_confirmed",
+        "name_plural": "email_confirmeds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "password_hash",
+        "name_plural": "password_hashes",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "security_stamp",
+        "name_plural": "security_stamps",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "concurrency_stamp",
+        "name_plural": "concurrency_stamps",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "phone_number",
+        "name_plural": "phone_numbers",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "phone_number_confirmed",
+        "name_plural": "phone_number_confirmeds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "two_factor_enabled",
+        "name_plural": "two_factor_enableds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "lockout_end",
+        "name_plural": "lockout_ends",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "lockout_enabled",
+        "name_plural": "lockout_enableds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "access_failed_count",
+        "name_plural": "access_failed_counts",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data": [
+      {
+        "name": "user_name",
+        "name_plural": "user_names",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "normalized_user_name",
+        "name_plural": "normalized_user_names",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "email",
+        "name_plural": "emails",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "normalized_email",
+        "name_plural": "normalized_emails",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "email_confirmed",
+        "name_plural": "email_confirmeds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "password_hash",
+        "name_plural": "password_hashes",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "security_stamp",
+        "name_plural": "security_stamps",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "concurrency_stamp",
+        "name_plural": "concurrency_stamps",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "phone_number",
+        "name_plural": "phone_numbers",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "phone_number_confirmed",
+        "name_plural": "phone_number_confirmeds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "two_factor_enabled",
+        "name_plural": "two_factor_enableds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "lockout_end",
+        "name_plural": "lockout_ends",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "lockout_enabled",
+        "name_plural": "lockout_enableds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "access_failed_count",
+        "name_plural": "access_failed_counts",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "primary": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "primary_key",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "foreign_key": [
+
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      {
+        "name": "user_name",
+        "name_plural": "user_names",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "normalized_user_name",
+        "name_plural": "normalized_user_names",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "email",
+        "name_plural": "emails",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "normalized_email",
+        "name_plural": "normalized_emails",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "email_confirmed",
+        "name_plural": "email_confirmeds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "password_hash",
+        "name_plural": "password_hashes",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "security_stamp",
+        "name_plural": "security_stamps",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "concurrency_stamp",
+        "name_plural": "concurrency_stamps",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "phone_number",
+        "name_plural": "phone_numbers",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "phone_number_confirmed",
+        "name_plural": "phone_number_confirmeds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "two_factor_enabled",
+        "name_plural": "two_factor_enableds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "lockout_end",
+        "name_plural": "lockout_ends",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "lockout_enabled",
+        "name_plural": "lockout_enableds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "access_failed_count",
+        "name_plural": "access_failed_counts",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_primary": [
+      {
+        "name": "id",
+        "name_plural": "ids",
+        "type": "bigint",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "primary_key",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "user_name",
+        "name_plural": "user_names",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "normalized_user_name",
+        "name_plural": "normalized_user_names",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "email",
+        "name_plural": "emails",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "normalized_email",
+        "name_plural": "normalized_emails",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "email_confirmed",
+        "name_plural": "email_confirmeds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "password_hash",
+        "name_plural": "password_hashes",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "security_stamp",
+        "name_plural": "security_stamps",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "concurrency_stamp",
+        "name_plural": "concurrency_stamps",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "phone_number",
+        "name_plural": "phone_numbers",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "phone_number_confirmed",
+        "name_plural": "phone_number_confirmeds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "two_factor_enabled",
+        "name_plural": "two_factor_enableds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "lockout_end",
+        "name_plural": "lockout_ends",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "lockout_enabled",
+        "name_plural": "lockout_enableds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "access_failed_count",
+        "name_plural": "access_failed_counts",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_virtual": [
+      {
+        "name": "user_name",
+        "name_plural": "user_names",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "normalized_user_name",
+        "name_plural": "normalized_user_names",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "email",
+        "name_plural": "emails",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "normalized_email",
+        "name_plural": "normalized_emails",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "email_confirmed",
+        "name_plural": "email_confirmeds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "password_hash",
+        "name_plural": "password_hashes",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "security_stamp",
+        "name_plural": "security_stamps",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "concurrency_stamp",
+        "name_plural": "concurrency_stamps",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "phone_number",
+        "name_plural": "phone_numbers",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "phone_number_confirmed",
+        "name_plural": "phone_number_confirmeds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "two_factor_enabled",
+        "name_plural": "two_factor_enableds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "lockout_end",
+        "name_plural": "lockout_ends",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "lockout_enabled",
+        "name_plural": "lockout_enableds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "access_failed_count",
+        "name_plural": "access_failed_counts",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_foreign_virtual": [
+      {
+        "name": "user_name",
+        "name_plural": "user_names",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "normalized_user_name",
+        "name_plural": "normalized_user_names",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "email",
+        "name_plural": "emails",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "normalized_email",
+        "name_plural": "normalized_emails",
+        "type": "string",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": 256,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "string",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "email_confirmed",
+        "name_plural": "email_confirmeds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "password_hash",
+        "name_plural": "password_hashes",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "security_stamp",
+        "name_plural": "security_stamps",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "concurrency_stamp",
+        "name_plural": "concurrency_stamps",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "phone_number",
+        "name_plural": "phone_numbers",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "phone_number_confirmed",
+        "name_plural": "phone_number_confirmeds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "two_factor_enabled",
+        "name_plural": "two_factor_enableds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "lockout_end",
+        "name_plural": "lockout_ends",
+        "type": "datetime",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": null,
+        "null_as_code": null,
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "datetime",
+        "ruby_type": "DateTime",
+        "csharp_type": "DateTime",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "lockout_enabled",
+        "name_plural": "lockout_enableds",
+        "type": "boolean",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "boolean",
+        "ruby_type": "Boolean",
+        "csharp_type": "bool",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "access_failed_count",
+        "name_plural": "access_failed_counts",
+        "type": "integer",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "integer",
+        "ruby_type": "Integer",
+        "csharp_type": "int",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ]
+  }
+}

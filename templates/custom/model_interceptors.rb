@@ -11,9 +11,30 @@ module ActsAsCommentable
   end
 end
 
+
 module Scopes
   module CompanyScopes
   end
+end
+
+module DeIdentifiable
+  def deidentifiable(*_p, **_o); end
+end
+
+class Company < ActiveRecord::Base
+  extend DeIdentifiable
+end
+class Estimate < ActiveRecord::Base
+  extend DeIdentifiable
+end
+class Invoice < ActiveRecord::Base
+  extend DeIdentifiable
+end
+class Address < ActiveRecord::Base
+  extend DeIdentifiable
+end
+class Contact < ActiveRecord::Base
+  extend DeIdentifiable
 end
 
 class Thread

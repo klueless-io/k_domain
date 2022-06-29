@@ -1,0 +1,348 @@
+{
+  "name": "asp_net_user_role",
+  "name_plural": "asp_net_user_roles",
+  "table_name": "asp_net_user_roles",
+  "type": "entity",
+  "pk": {
+    "name": null,
+    "type": null,
+    "exist": false
+  },
+  "file": "",
+  "exist": false,
+  "create_update_timestamp": false,
+  "main_key": null,
+  "traits": [
+    "trait1",
+    "trait2",
+    "trait3"
+  ],
+  "column_names": {
+    "all": [
+      "user_id",
+      "role_id"
+    ],
+    "data": [
+      "user_id",
+      "role_id"
+    ],
+    "primary": [
+
+    ],
+    "foreign_key": [
+
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      "user_id",
+      "role_id"
+    ],
+    "data_primary": [
+      "user_id",
+      "role_id"
+    ],
+    "data_virtual": [
+      "user_id",
+      "role_id"
+    ],
+    "data_foreign_virtual": [
+      "user_id",
+      "role_id"
+    ]
+  },
+  "columns": {
+    "all": [
+      {
+        "name": "user_id",
+        "name_plural": "user_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "role_id",
+        "name_plural": "role_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data": [
+      {
+        "name": "user_id",
+        "name_plural": "user_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "role_id",
+        "name_plural": "role_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "primary": [
+
+    ],
+    "foreign_key": [
+
+    ],
+    "foreign_type": [
+
+    ],
+    "timestamp": [
+
+    ],
+    "deleted_at": [
+
+    ],
+    "virtual": [
+
+    ],
+    "data_foreign": [
+      {
+        "name": "user_id",
+        "name_plural": "user_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "role_id",
+        "name_plural": "role_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_primary": [
+      {
+        "name": "user_id",
+        "name_plural": "user_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "role_id",
+        "name_plural": "role_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_virtual": [
+      {
+        "name": "user_id",
+        "name_plural": "user_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "role_id",
+        "name_plural": "role_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ],
+    "data_foreign_virtual": [
+      {
+        "name": "user_id",
+        "name_plural": "user_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      },
+      {
+        "name": "role_id",
+        "name_plural": "role_ids",
+        "type": "text",
+        "precision": null,
+        "scale": null,
+        "default": null,
+        "default_as_code": null,
+        "null": false,
+        "null_as_code": "false",
+        "limit": null,
+        "array": null,
+        "array_as_code": null,
+        "db_type": "text",
+        "ruby_type": "String",
+        "csharp_type": "string",
+        "structure_type": "data",
+        "relationships": [
+
+        ]
+      }
+    ]
+  }
+}
