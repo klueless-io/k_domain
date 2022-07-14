@@ -36,6 +36,7 @@ module KDomain
         end
       end
 
+      # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/PerceivedComplexity
       def build_rich_model(model)
         {
           name: model.name,
@@ -78,6 +79,7 @@ module KDomain
           }
         }
       end
+      # rubocop:enable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/PerceivedComplexity
     end
   end
 end

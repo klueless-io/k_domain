@@ -48,6 +48,7 @@ module KDomain
             @csharp_type = KDomain::Schemas::CSHARP_TYPE[type] || '******'
           end
 
+          # rubocop:disable Metrics/AbcSize
           def to_h
             {
               name: name,
@@ -69,6 +70,7 @@ module KDomain
               relationships: relationships
             }
           end
+          # rubocop:enable Metrics/AbcSize
 
           private
 
