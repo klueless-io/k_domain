@@ -39,7 +39,7 @@ Metrics/BlockLength:
     - "**/spec/**/*"
     - "*.gemspec"
     - 'lib/k_domain/domain_model/dtos/erd_file.rb'    
-  IgnoredMethods:
+  AllowedMethods:
     - configure
     - context
     - define
