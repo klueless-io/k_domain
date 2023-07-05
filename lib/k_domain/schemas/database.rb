@@ -18,7 +18,7 @@ module KDomain
       class Index < Dry::Struct
         attribute :name                 , Types::Strict::String
         attribute :fields               , Types::Nominal::Any.optional.default(nil)
-        attribute :using                , Types::Nominal::String
+        attribute :using                , Types::Nominal::String.optional.default(nil)
         attribute :order?               , Types::Nominal::Hash
         attribute :where?               , Types::Nominal::Any.optional.default(nil)
         attribute :unique?              , Types::Nominal::Any.optional.default(nil)
