@@ -18,6 +18,9 @@ Metrics/PerceivedComplexity:
     - "lib/k_domain/domain_model/dtos/entity.rb"
     - "lib/k_domain/domain_model/dtos/old/entity.rb"
 
+Style/RedundantCurrentDirectoryInPath:
+  Enabled: false
+
 Metrics/AbcSize:
   Exclude:
     - "lib/k_domain/domain_model/transform_steps/*.rb"
@@ -39,7 +42,7 @@ Metrics/BlockLength:
     - "**/spec/**/*"
     - "*.gemspec"
     - 'lib/k_domain/domain_model/dtos/erd_file.rb'    
-  IgnoredMethods:
+  AllowedMethods:
     - configure
     - context
     - define

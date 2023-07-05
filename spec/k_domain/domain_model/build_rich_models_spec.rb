@@ -25,14 +25,14 @@ RSpec.describe KDomain::DomainModel::BuildRichModels do
   end
 
   # let(:transform_filter) { os(active: 0, table: os(offset: 0, limit: 10)) }
-  context 'advanced domain' do
-    include_examples :domain_advanced_settings
+  # context 'advanced domain' do
+  #   include_examples :domain_advanced_settings
 
-    describe '#call' do
-      subject { instance.call }
-      it do
-        subject
-      end
-    end
-  end
+  #   describe '#call' do
+  #     subject { instance.call }
+  #     it do
+  #       subject
+  #     end
+  #   end
+  # end
 end

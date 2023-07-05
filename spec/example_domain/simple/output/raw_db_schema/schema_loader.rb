@@ -404,6 +404,10 @@ class LoadSchema
     add_field(name, :integer, **opts)
   end
 
+  def binary(name, **opts)
+    add_field(name, :binary, **opts)
+  end
+
   def bigint(name, **opts)
     add_field(name, :bigint, **opts)
   end

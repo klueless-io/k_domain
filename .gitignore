@@ -11,7 +11,7 @@
 # Ignore Klue Setup.sh
 /bin/runonce/
 k_domain.yml
-
+.DS_Store
 /_/
 /.bundle/
 /.history/
@@ -35,7 +35,7 @@ mkmf.log
 
 # Ruby Version
 .ruby-version
-
+.tool-versions
 # Environment File
 .env
 
