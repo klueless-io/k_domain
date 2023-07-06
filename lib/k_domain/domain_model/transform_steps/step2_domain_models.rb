@@ -68,7 +68,7 @@ class Step2DomainModels < KDomain::DomainModel::Step
   def check_type(type)
     type = type.to_sym if type.is_a?(String)
 
-    return type if %i[string integer bigint bigserial boolean float decimal datetime date hstore text jsonb].include?(type)
+    return type if %i[string integer bigint bigserial boolean float decimal datetime date hstore text jsonb serial binary].include?(type)
 
     if type.nil?
       guard('nil type detected for db_column[:type]')
@@ -78,7 +78,7 @@ class Step2DomainModels < KDomain::DomainModel::Step
 
     guard("new type detected for db_column[:type] - #{type}")
 
-    camel.parse(type.to_s).downcase
+    camel(type.to_s).downcase
   end
 
   def column_data(name)

@@ -37,6 +37,7 @@ module KDomain
       def load_retry(file, times, last_error)
         return if times.negative?
 
+        puts file
         load(file)
 
         @model = ActiveRecord.class_info

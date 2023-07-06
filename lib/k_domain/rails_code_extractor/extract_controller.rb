@@ -36,7 +36,7 @@ module KDomain
       def load_retry(file, times, last_error)
         return if times.negative?
 
-        # puts file
+        puts file
         load(file)
 
         @controller = ActionController::Base.class_info
