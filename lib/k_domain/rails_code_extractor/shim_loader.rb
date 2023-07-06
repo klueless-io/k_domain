@@ -2,7 +2,7 @@
 
 # Code extraction requires shims to be loaded before extraction
 #
-# This shims server two purposes
+# This shims serve two purposes
 #
 # 1. Inject data capture methods calls that intercept DSL macros so that data can be extracted
 # 2. Inject fake module/classes that would otherwise break code loading with various exceptions
