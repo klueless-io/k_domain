@@ -33,7 +33,7 @@ module Common
   end
 end
 
-class Base64
+module Base64
   def self.decode64(*_p); end
 end
 
