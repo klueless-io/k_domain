@@ -2,6 +2,7 @@
 
 require 'active_support/core_ext/string'
 require 'dry-struct'
+require 'cmdlet'
 require 'k_log'
 require 'peeky'
 require 'k_domain/version'
