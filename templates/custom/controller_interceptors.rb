@@ -78,3 +78,7 @@ module ContextContactUpdateable; end
 module ProofDateUpdateable; end
 module PoUpdateable; end
 module SalesRepUpdateable; end
+module LeadsDashboard; end
+module ActsAsListActions; end
+module Searchable; end
+module MixpanelTrackable; end
