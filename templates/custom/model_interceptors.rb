@@ -17,7 +17,7 @@ module ActiveModel
 end
 
 class ActiveRecord::Base
-  def self.validate(*_p, **_o, &block); end
+  # def self.validate(*_p, **_o, &block); end
   def self.validates_with(*_p, **_o, &block); end
   def self.before_save(*_p, **_o, &block); end
   def self.after_commit(*_p, **_o, &block); end
