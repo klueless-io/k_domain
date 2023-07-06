@@ -22,7 +22,7 @@ module KDomain
       def camel(value)
         Cmdlet::Case::Camel.new.call(value)
       end
-  
+
       def call; end
 
       def self.run(domain_data, **opts)
