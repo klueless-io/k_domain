@@ -28,6 +28,7 @@ end
 if ENV.fetch('KLUE_LOCAL_GEMS', 'false').downcase == 'true'
   group :development, :test do
     puts 'Using Local GEMs'
+    gem 'cmdlet'                  , path: '../cmdlet'
     gem 'k_log'                   , path: '../k_log'
     gem 'k_util'                  , path: '../k_util'
     gem 'peeky'                   , path: '../peeky'

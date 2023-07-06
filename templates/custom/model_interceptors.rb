@@ -11,24 +11,60 @@ module ActsAsCommentable
   end
 end
 
+module ActiveModel
+  module Validations
+  end
+end
+
+class ActiveRecord::Base
+  def self.validate(*_p, **_o, &block); end
+  def self.validates_with(*_p, **_o, &block); end
+  def self.before_save(*_p, **_o, &block); end
+  def self.after_commit(*_p, **_o, &block); end
+end
+
+module Common
+  module Debug
+    module Timer
+    end
+  end
+  module Sanitizers
+    module UrlSanitizer; end
+  end
+end
+
+class Base64
+  def self.decode64(*_p); end
+end
 
 module Scopes
   module CompanyScopes
   end
 end
 
+
+module Validators
+  module RuleValidator; end
+end
+
+class ApplicationRecord < ActiveRecord::Base
+end
+
 module DeIdentifiable
   def deidentifiable(*_p, **_o); end
 end
+module Indexable
+end
 
-class Company < ActiveRecord::Base
+class Company < ApplicationRecord
   extend DeIdentifiable
 end
-class Estimate < ActiveRecord::Base
+class Estimate < ApplicationRecord
   extend DeIdentifiable
 end
 class Invoice < ActiveRecord::Base
   extend DeIdentifiable
+  extend Indexable
 end
 class Address < ActiveRecord::Base
   extend DeIdentifiable
@@ -37,14 +73,13 @@ class Contact < ActiveRecord::Base
   extend DeIdentifiable
 end
 
-class Thread
-  def initialize(*_p, **_o, &block); end
+
+class Shipment < ApplicationRecord
+  module Indexable
+  end
 end
 
-class ApplicationRecord < ActiveRecord::Base
-end
-
-class Email < ActiveRecord::Base
+class Email < ApplicationRecord
   def self.ses_send(*_p, **_o); end
 end
 
