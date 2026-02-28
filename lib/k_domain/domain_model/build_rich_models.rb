@@ -22,6 +22,7 @@ module KDomain
         FileUtils.mkdir_p(target_folder)
 
         export_domain_models(query.all) # .take(3))
+        # export_domain_models(query.all.select { |e| e.name == 'wip' })
       end
 
       def export_domain_models(models)
@@ -76,7 +77,8 @@ module KDomain
             data_primary: model.columns_data_primary.map(&:to_h),
             data_virtual: model.columns_data_virtual.map(&:to_h),
             data_foreign_virtual: model.columns_data_foreign_virtual.map(&:to_h)
-          }
+          },
+          rails_model: model.rails_model.to_h
         }
       end
       # rubocop:enable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/PerceivedComplexity
